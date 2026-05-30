@@ -1,0 +1,33 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/api-evangelist/shodan/json-schema/shodan-rest-host-schema.json",
+  "title": "Shodan Host",
+  "description": "A Shodan host record describing all services seen on a given IP address.",
+  "type": "object",
+  "required": ["ip_str"],
+  "properties": {
+    "ip_str": { "type": "string", "description": "IP address in human-readable form." },
+    "ip": { "type": "integer", "description": "Integer-encoded IP address." },
+    "hostnames": { "type": "array", "items": { "type": "string" } },
+    "domains": { "type": "array", "items": { "type": "string" } },
+    "country_code": { "type": "string", "minLength": 2, "maxLength": 2 },
+    "country_name": { "type": "string" },
+    "city": { "type": "string" },
+    "region_code": { "type": "string" },
+    "postal_code": { "type": "string" },
+    "latitude": { "type": "number" },
+    "longitude": { "type": "number" },
+    "org": { "type": "string" },
+    "isp": { "type": "string" },
+    "asn": { "type": "string" },
+    "os": { "type": ["string", "null"] },
+    "last_update": { "type": "string", "format": "date-time" },
+    "ports": { "type": "array", "items": { "type": "integer" } },
+    "vulns": { "type": "array", "items": { "type": "string" } },
+    "tags": { "type": "array", "items": { "type": "string" } },
+    "data": {
+      "type": "array",
+      "items": { "$ref": "shodan-rest-banner-schema.json" }
+    }
+  }
+}

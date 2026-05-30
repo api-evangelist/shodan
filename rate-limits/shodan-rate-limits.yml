@@ -1,0 +1,208 @@
+specification: API Commons Rate Limits
+specificationVersion: '0.1'
+schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main/schema/api-commons.yml#/$defs/RateLimits
+provider: Shodan
+providerId: shodan
+created: '2026-05-28'
+modified: '2026-05-30'
+tags:
+  - Security
+  - Search
+  - Rate Limiting
+  - Quotas
+  - Throttling
+  - Query Credits
+  - Scan Credits
+description: >-
+  Shodan rate-limit and quota model. Operational throttling is a published
+  per-second cap on the REST surface; commercial limits are enforced as
+  monthly query credits, scan credits, and monitored-IP allotments per
+  subscription tier. CVEDB and InternetDB are open APIs that throttle on
+  abusive traffic but do not consume credits.
+headers:
+  limit: ''
+  remaining: ''
+  reset: ''
+  retryAfter: Retry-After
+  policy: ''
+responseCodes:
+  throttled: 429
+  quotaExceeded: 429
+  serviceUnavailable: 503
+limits:
+  - tier: all
+    name: REST API Request Rate
+    scope: api-key
+    metric: requests_per_second
+    limit: 1
+    burst: 2
+    timeFrame: second
+    applies:
+      - Shodan REST API
+  - tier: developer
+    name: Developer Query Credits
+    scope: api-key
+    metric: query_credits
+    limit: 100
+    timeFrame: month
+    applies:
+      - Shodan REST API
+  - tier: developer
+    name: Developer Scan Credits
+    scope: api-key
+    metric: scan_credits
+    limit: 100
+    timeFrame: month
+    applies:
+      - Shodan REST API
+  - tier: developer
+    name: Developer Monitored IPs
+    scope: api-key
+    metric: monitored_ips
+    limit: 16
+    timeFrame: usage
+    applies:
+      - Shodan REST API
+  - tier: membership
+    name: Membership Query Credits
+    scope: api-key
+    metric: query_credits
+    limit: 100
+    timeFrame: month
+    applies:
+      - Shodan REST API
+  - tier: membership
+    name: Membership Scan Credits
+    scope: api-key
+    metric: scan_credits
+    limit: 100
+    timeFrame: month
+    applies:
+      - Shodan REST API
+  - tier: membership
+    name: Membership Monitored IPs
+    scope: api-key
+    metric: monitored_ips
+    limit: 16
+    timeFrame: usage
+    applies:
+      - Shodan REST API
+  - tier: freelancer
+    name: Freelancer Query Credits
+    scope: api-key
+    metric: query_credits
+    limit: 10000
+    timeFrame: month
+    applies:
+      - Shodan REST API
+  - tier: freelancer
+    name: Freelancer Scan Credits
+    scope: api-key
+    metric: scan_credits
+    limit: 5120
+    timeFrame: month
+    applies:
+      - Shodan REST API
+  - tier: freelancer
+    name: Freelancer Monitored IPs
+    scope: api-key
+    metric: monitored_ips
+    limit: 5120
+    timeFrame: usage
+    applies:
+      - Shodan REST API
+      - Shodan Streaming API
+  - tier: small-business
+    name: Small Business Query Credits
+    scope: api-key
+    metric: query_credits
+    limit: 200000
+    timeFrame: month
+    applies:
+      - Shodan REST API
+  - tier: small-business
+    name: Small Business Scan Credits
+    scope: api-key
+    metric: scan_credits
+    limit: 65536
+    timeFrame: month
+    applies:
+      - Shodan REST API
+  - tier: small-business
+    name: Small Business Monitored IPs
+    scope: api-key
+    metric: monitored_ips
+    limit: 65536
+    timeFrame: usage
+    applies:
+      - Shodan REST API
+      - Shodan Streaming API
+  - tier: corporate
+    name: Corporate Query Credits
+    scope: api-key
+    metric: query_credits
+    limit: -1
+    timeFrame: month
+    applies:
+      - Shodan REST API
+  - tier: corporate
+    name: Corporate Scan Credits
+    scope: api-key
+    metric: scan_credits
+    limit: 327680
+    timeFrame: month
+    applies:
+      - Shodan REST API
+  - tier: corporate
+    name: Corporate Monitored IPs
+    scope: api-key
+    metric: monitored_ips
+    limit: 327680
+    timeFrame: usage
+    applies:
+      - Shodan REST API
+      - Shodan Streaming API
+  - tier: enterprise
+    name: Enterprise Negotiated Limits
+    scope: contract
+    metric: requests_per_second
+    limit: -1
+    timeFrame: second
+    applies:
+      - Shodan REST API
+      - Shodan Streaming API
+      - Shodan Trends API
+policies:
+  - name: Credit Consumption
+    description: >-
+      Query credits are consumed on the second and subsequent pages of search
+      results and on searches that use advanced filters (city, country, net,
+      geo, before, after, org, isp, title, html, vuln, tag, etc.). Scan
+      credits are consumed one-per-IP on `/shodan/scan` submissions.
+  - name: Backoff Strategy
+    description: >-
+      Clients should implement exponential backoff with jitter and respect
+      the `Retry-After` header when surfaced. The published cap of roughly
+      one request per second per API key applies to the REST surface; the
+      streaming firehose is connection-based.
+  - name: Credit Reset
+    description: >-
+      Query credits, scan credits, and monitored-IP allotments reset on each
+      subscription billing cycle (monthly for the subscription tiers).
+  - name: InternetDB Commercial Use
+    description: >-
+      InternetDB is free for non-commercial use; commercial use requires an
+      enterprise license. Abusive traffic patterns may be rate-limited
+      without prior notice.
+  - name: CVEDB Commercial Use
+    description: >-
+      CVEDB is free for non-commercial use; commercial use requires an
+      enterprise license. CVEDB is updated daily.
+  - name: Streaming Fair Use
+    description: >-
+      The streaming firehose is a long-lived HTTP connection. Disconnects
+      should be handled with reconnection logic; the `debug=1` parameter
+      surfaces dropped-message counts for monitoring.
+maintainers:
+  - FN: Kin Lane
+    email: kin@apievangelist.com

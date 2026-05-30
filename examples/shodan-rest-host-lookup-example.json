@@ -1,0 +1,58 @@
+{
+  "request": {
+    "method": "GET",
+    "url": "https://api.shodan.io/shodan/host/1.1.1.1?key=YOUR_API_KEY",
+    "headers": {
+      "Accept": "application/json"
+    }
+  },
+  "response": {
+    "status": 200,
+    "headers": {
+      "Content-Type": "application/json"
+    },
+    "body": {
+      "ip_str": "1.1.1.1",
+      "ip": 16843009,
+      "hostnames": ["one.one.one.one"],
+      "domains": ["one.one"],
+      "country_code": "US",
+      "country_name": "United States",
+      "city": "Los Angeles",
+      "region_code": "CA",
+      "postal_code": "90013",
+      "latitude": 34.05223,
+      "longitude": -118.24368,
+      "org": "Cloudflare, Inc.",
+      "isp": "Cloudflare, Inc.",
+      "asn": "AS13335",
+      "os": null,
+      "last_update": "2026-05-15T12:34:56.789012",
+      "ports": [53, 80, 443],
+      "vulns": [],
+      "tags": ["cdn"],
+      "data": [
+        {
+          "port": 443,
+          "transport": "tcp",
+          "product": "cloudflare",
+          "version": "",
+          "data": "HTTP/1.1 200 OK\nServer: cloudflare\nDate: Fri, 15 May 2026 12:34:56 GMT",
+          "timestamp": "2026-05-15T12:34:56.789012",
+          "hash": -1234567890,
+          "ssl": {
+            "cert": {
+              "issuer": { "CN": "Cloudflare Inc ECC CA-3" },
+              "subject": { "CN": "*.cloudflare-dns.com" }
+            }
+          },
+          "http": {
+            "status": 200,
+            "title": "Cloudflare DNS"
+          },
+          "cpe23": ["cpe:2.3:a:cloudflare:nginx:*"]
+        }
+      ]
+    }
+  }
+}

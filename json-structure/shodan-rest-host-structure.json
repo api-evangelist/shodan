@@ -1,0 +1,31 @@
+{
+  "$schema": "https://json-structure.org/draft/2025/schema",
+  "$id": "https://github.com/api-evangelist/shodan/json-structure/shodan-rest-host-structure.json",
+  "title": "Shodan Host Structure",
+  "description": "Canonical structural representation of a Shodan host record.",
+  "type": "object",
+  "name": "ShodanHost",
+  "namespace": "shodan",
+  "fields": [
+    { "name": "ip_str", "type": "string", "required": true, "description": "IP address in dotted-quad form." },
+    { "name": "ip", "type": "integer", "description": "Integer-encoded IP address." },
+    { "name": "hostnames", "type": "array", "items": "string" },
+    { "name": "domains", "type": "array", "items": "string" },
+    { "name": "country_code", "type": "string", "description": "ISO 3166-1 alpha-2." },
+    { "name": "country_name", "type": "string" },
+    { "name": "city", "type": "string" },
+    { "name": "region_code", "type": "string" },
+    { "name": "postal_code", "type": "string" },
+    { "name": "latitude", "type": "number" },
+    { "name": "longitude", "type": "number" },
+    { "name": "org", "type": "string", "description": "Organization owning the network." },
+    { "name": "isp", "type": "string" },
+    { "name": "asn", "type": "string", "description": "Autonomous System Number." },
+    { "name": "os", "type": "string" },
+    { "name": "last_update", "type": "datetime" },
+    { "name": "ports", "type": "array", "items": "integer" },
+    { "name": "vulns", "type": "array", "items": "string", "description": "Known CVE identifiers." },
+    { "name": "tags", "type": "array", "items": "string" },
+    { "name": "data", "type": "array", "items": "ShodanBanner", "description": "Banner records for each observed service." }
+  ]
+}

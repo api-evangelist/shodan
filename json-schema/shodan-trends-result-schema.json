@@ -1,0 +1,45 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/api-evangelist/shodan/json-schema/shodan-trends-result-schema.json",
+  "title": "Shodan Trends Result",
+  "description": "Result envelope for a Shodan Trends historical search.",
+  "type": "object",
+  "required": ["total", "matches"],
+  "properties": {
+    "total": { "type": "integer" },
+    "matches": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["month", "count"],
+        "properties": {
+          "month": { "type": "string", "description": "ISO year-month, e.g. 2024-01." },
+          "count": { "type": "integer" }
+        }
+      }
+    },
+    "facets": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "value": { "type": "string" },
+            "count": { "type": "integer" },
+            "matches": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "month": { "type": "string" },
+                  "count": { "type": "integer" }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

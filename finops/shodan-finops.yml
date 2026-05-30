@@ -1,0 +1,182 @@
+specification: FinOps Framework
+specificationVersion: '1.0'
+alignedWith:
+  framework: FinOps Foundation Framework
+  frameworkUrl: https://www.finops.org/framework/
+  dataSpec: FOCUS
+  dataSpecVersion: '1.3'
+  dataSpecUrl: https://focus.finops.org/focus-specification/v1-3/
+provider: Shodan
+providerId: shodan
+publisherName: Shodan
+serviceCategory: API
+created: '2026-05-28'
+modified: '2026-05-30'
+tags:
+  - Security
+  - Search
+  - Internet
+  - FinOps
+  - Cost Management
+  - FOCUS
+  - Query Credits
+  - Scan Credits
+description: >-
+  FinOps framework definition for the Shodan API surface. Aligns Shodan's
+  subscription billing surface (Membership / Freelancer / Small Business /
+  Corporate / Enterprise) and its three core metered resources — query
+  credits, scan credits, and monitored IPs — to the FOCUS data spec so
+  cost can be allocated, forecasted, and optimized.
+principles:
+  - name: Visibility
+    description: >-
+      Make Shodan consumption visible to engineering, security operations,
+      and finance by tracking query-credit and scan-credit burn against the
+      monthly subscription envelope.
+  - name: Allocation
+    description: >-
+      Tag every chargeable API key with the consuming team, environment,
+      product, and use case (attack-surface monitoring, vulnerability
+      intelligence, M&A diligence, etc.) so credits can be allocated.
+  - name: Optimization
+    description: >-
+      Prefer InternetDB and CVEDB for free lookups, cache repeated `host`
+      lookups, use `/shodan/host/count` instead of full searches when only
+      totals are needed, and right-size the subscription tier to actual burn.
+  - name: Accountability
+    description: >-
+      Establish budget owners per Shodan API key and showback monthly burn
+      against query and scan credit budgets to each consuming team.
+domains:
+  - name: Understand Usage and Cost
+    capabilities:
+      - Data Ingestion
+      - Allocation
+      - Reporting and Analytics
+      - Anomaly Management
+  - name: Quantify Business Value
+    capabilities:
+      - Planning and Estimating
+      - Forecasting
+      - Budgeting
+      - Benchmarking
+      - Unit Economics
+  - name: Optimize Usage and Cost
+    capabilities:
+      - Rate Optimization
+      - Workload Optimization
+      - Licensing and SaaS
+  - name: Manage the FinOps Practice
+    capabilities:
+      - FinOps Practice Operations
+      - Invoicing and Chargeback
+      - Onboarding Workloads
+billingModel:
+  pricingCategory: Subscription with Metered Allotments
+  billingFrequency: Monthly
+  billingCurrency: USD
+  chargeCategories:
+    - Usage
+    - Purchase
+    - Tax
+    - Credit
+    - Adjustment
+  chargeFrequency: Recurring
+focusColumns:
+  ServiceName: Shodan
+  ServiceCategory: Security / Threat Intelligence
+  ProviderName: Shodan
+  PublisherName: Shodan
+  InvoiceIssuerName: Shodan
+  PricingCategory: Subscription with Metered Allotments
+  PricingUnit: credit
+  BillingCurrency: USD
+  ChargeCategory: Usage
+meters:
+  - name: query_credits
+    description: Count of Shodan query credits consumed by paginated and filtered searches.
+    unit: credit
+    aggregation: sum
+    dimensions:
+      - api
+      - endpoint
+      - tier
+      - filter
+      - consumer
+  - name: scan_credits
+    description: Count of Shodan scan credits consumed by on-demand scans of IPs and netblocks.
+    unit: credit
+    aggregation: sum
+    dimensions:
+      - api
+      - tier
+      - target
+      - consumer
+  - name: monitored_ips
+    description: Number of unique IPs the account is keeping under active alert monitoring.
+    unit: ip
+    aggregation: max
+    dimensions:
+      - api
+      - tier
+      - alert
+      - consumer
+  - name: api_requests
+    description: Count of HTTP requests against the Shodan REST surface.
+    unit: request
+    aggregation: sum
+    dimensions:
+      - api
+      - endpoint
+      - tier
+      - consumer
+  - name: stream_connection_seconds
+    description: Connection time consumed against the Shodan Streaming firehose.
+    unit: second
+    aggregation: sum
+    dimensions:
+      - api
+      - filter
+      - consumer
+apis:
+  - name: Shodan REST API
+    baseURL: https://api.shodan.io
+    tags: [Security, Search, REST]
+    serviceName: Shodan REST API
+    serviceCategory: API
+  - name: Shodan Streaming API
+    baseURL: https://stream.shodan.io
+    tags: [Security, Search, Streaming]
+    serviceName: Shodan Streaming API
+    serviceCategory: API
+  - name: Shodan Trends API
+    baseURL: https://trends.shodan.io
+    tags: [Security, Trends, Analytics]
+    serviceName: Shodan Trends API
+    serviceCategory: API
+  - name: Shodan InternetDB API
+    baseURL: https://internetdb.shodan.io
+    tags: [Security, Free, IP Lookup]
+    serviceName: Shodan InternetDB API
+    serviceCategory: API
+  - name: Shodan CVEDB API
+    baseURL: https://cvedb.shodan.io
+    tags: [Security, Vulnerabilities, CVE, Free]
+    serviceName: Shodan CVEDB API
+    serviceCategory: API
+unitEconomics:
+  - name: Cost per 1K Query Credits
+    metric: billed_cost / (query_credits / 1000)
+    target: TBD
+  - name: Cost per 1K Scan Credits
+    metric: billed_cost / (scan_credits / 1000)
+    target: TBD
+  - name: Cost per Monitored IP
+    metric: billed_cost / monitored_ips
+    target: TBD
+  - name: Cost per Active Consumer
+    metric: billed_cost / active_consumers
+    target: TBD
+maintainers:
+  - FN: Kin Lane
+    email: kin@apievangelist.com

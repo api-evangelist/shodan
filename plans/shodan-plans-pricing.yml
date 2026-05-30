@@ -1,0 +1,337 @@
+specification: API Commons Plans
+specificationVersion: '0.1'
+schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main/schema/api-commons.yml#/$defs/Plans
+provider: Shodan
+providerId: shodan
+created: '2026-05-28'
+modified: '2026-05-30'
+reconciled: false
+tags:
+  - Security
+  - Search
+  - Internet
+  - Vulnerabilities
+  - Threat Intelligence
+description: >-
+  Shodan publishes a public, self-service pricing surface consisting of a
+  one-time Membership tier and three monthly subscription tiers (Freelancer,
+  Small Business, Corporate) plus a negotiated Enterprise contract. Each tier
+  budgets three core metered resources — query credits, scan credits, and
+  monitored IPs — and gates feature flags such as advanced filter access,
+  vulnerability search, batch IP lookups, and streaming firehose tier. The
+  free Developer tier comes with any Shodan account registration.
+sources:
+  - https://account.shodan.io/billing
+  - https://developer.shodan.io/api
+  - https://developer.shodan.io/api/stream
+  - https://cvedb.shodan.io/
+  - https://internetdb.shodan.io/
+plans:
+  - id: shodan-developer
+    name: Developer (Free)
+    type: free
+    description: >-
+      Free tier available with any registered Shodan account. Limited query
+      and scan credits, with the most restrictive filter access.
+    entries:
+      - label: Query Credits
+        name: query_credits
+        type: included
+        metric: credit
+        limit: 100
+        timeFrame: month
+        geo: global
+        unit: 1
+        price: 0
+        userMultiplied: false
+      - label: Scan Credits
+        name: scan_credits
+        type: included
+        metric: credit
+        limit: 100
+        timeFrame: month
+        geo: global
+        unit: 1
+        price: 0
+        userMultiplied: false
+      - label: Monitored IPs
+        name: monitored_ips
+        type: included
+        metric: ip
+        limit: 16
+        timeFrame: usage
+        geo: global
+        unit: 1
+        price: 0
+        userMultiplied: false
+    elements:
+      - name: Shodan REST API
+      - name: Shodan InternetDB API
+      - name: Shodan CVEDB API
+  - id: shodan-membership
+    name: Membership (One-Time)
+    type: subscription
+    description: >-
+      One-time $49 upgrade that grants persistent access to the Shodan UI
+      and a small block of query and scan credits. Limited filter access.
+    entries:
+      - label: Membership Fee
+        name: membership_fee
+        type: subscription
+        metric: account
+        limit: 1
+        timeFrame: one-time
+        geo: global
+        unit: 1
+        price: 49
+        userMultiplied: false
+      - label: Query Credits
+        name: query_credits
+        type: included
+        metric: credit
+        limit: 100
+        timeFrame: month
+        geo: global
+        unit: 1
+        price: 0
+        userMultiplied: false
+      - label: Scan Credits
+        name: scan_credits
+        type: included
+        metric: credit
+        limit: 100
+        timeFrame: month
+        geo: global
+        unit: 1
+        price: 0
+        userMultiplied: false
+      - label: Monitored IPs
+        name: monitored_ips
+        type: included
+        metric: ip
+        limit: 16
+        timeFrame: usage
+        geo: global
+        unit: 1
+        price: 0
+        userMultiplied: false
+    elements:
+      - name: Shodan REST API
+      - name: Shodan InternetDB API
+      - name: Shodan CVEDB API
+  - id: shodan-freelancer
+    name: Freelancer
+    type: subscription
+    description: >-
+      $69/month subscription targeting independent researchers and
+      consultants. Most filters available (excludes `vuln` and `tag`),
+      paging enabled, basic streaming API access, commercial use allowed.
+    entries:
+      - label: Monthly Subscription
+        name: monthly_subscription
+        type: subscription
+        metric: account
+        limit: 1
+        timeFrame: month
+        geo: global
+        unit: 1
+        price: 69
+        userMultiplied: false
+      - label: Query Credits
+        name: query_credits
+        type: included
+        metric: credit
+        limit: 10000
+        timeFrame: month
+        geo: global
+        unit: 1
+        price: 0
+        userMultiplied: false
+      - label: Scan Credits
+        name: scan_credits
+        type: included
+        metric: credit
+        limit: 5120
+        timeFrame: month
+        geo: global
+        unit: 1
+        price: 0
+        userMultiplied: false
+      - label: Monitored IPs
+        name: monitored_ips
+        type: included
+        metric: ip
+        limit: 5120
+        timeFrame: usage
+        geo: global
+        unit: 1
+        price: 0
+        userMultiplied: false
+    elements:
+      - name: Shodan REST API
+      - name: Shodan Streaming API
+      - name: Shodan InternetDB API
+      - name: Shodan CVEDB API
+  - id: shodan-small-business
+    name: Small Business
+    type: subscription
+    description: >-
+      $359/month subscription for small security teams. Most filters
+      available (excludes `tag`), vulnerability search, paging, basic
+      streaming API, commercial use.
+    entries:
+      - label: Monthly Subscription
+        name: monthly_subscription
+        type: subscription
+        metric: account
+        limit: 1
+        timeFrame: month
+        geo: global
+        unit: 1
+        price: 359
+        userMultiplied: false
+      - label: Query Credits
+        name: query_credits
+        type: included
+        metric: credit
+        limit: 200000
+        timeFrame: month
+        geo: global
+        unit: 1
+        price: 0
+        userMultiplied: false
+      - label: Scan Credits
+        name: scan_credits
+        type: included
+        metric: credit
+        limit: 65536
+        timeFrame: month
+        geo: global
+        unit: 1
+        price: 0
+        userMultiplied: false
+      - label: Monitored IPs
+        name: monitored_ips
+        type: included
+        metric: ip
+        limit: 65536
+        timeFrame: usage
+        geo: global
+        unit: 1
+        price: 0
+        userMultiplied: false
+    elements:
+      - name: Shodan REST API
+      - name: Shodan Streaming API
+      - name: Shodan InternetDB API
+      - name: Shodan CVEDB API
+  - id: shodan-corporate
+    name: Corporate
+    type: subscription
+    description: >-
+      $1,099/month subscription for security teams. Unlimited query credits,
+      access to all filters (including `tag`), full streaming API, batch
+      IP lookups, vulnerability search, InternetDB commercial use included.
+    entries:
+      - label: Monthly Subscription
+        name: monthly_subscription
+        type: subscription
+        metric: account
+        limit: 1
+        timeFrame: month
+        geo: global
+        unit: 1
+        price: 1099
+        userMultiplied: false
+      - label: Query Credits
+        name: query_credits
+        type: included
+        metric: credit
+        limit: -1
+        timeFrame: month
+        geo: global
+        unit: 1
+        price: 0
+        userMultiplied: false
+      - label: Scan Credits
+        name: scan_credits
+        type: included
+        metric: credit
+        limit: 327680
+        timeFrame: month
+        geo: global
+        unit: 1
+        price: 0
+        userMultiplied: false
+      - label: Monitored IPs
+        name: monitored_ips
+        type: included
+        metric: ip
+        limit: 327680
+        timeFrame: usage
+        geo: global
+        unit: 1
+        price: 0
+        userMultiplied: false
+    elements:
+      - name: Shodan REST API
+      - name: Shodan Streaming API
+      - name: Shodan InternetDB API
+      - name: Shodan CVEDB API
+  - id: shodan-enterprise
+    name: Enterprise
+    type: enterprise
+    description: >-
+      Custom enterprise agreement. Adds bulk data exports, real-time
+      firehose, Internet-wide scanning, Trends API access, unlimited
+      credits, organization management, and contractual support.
+    entries:
+      - label: Annual Contract
+        name: annual_contract
+        type: subscription
+        metric: account
+        limit: 1
+        timeFrame: year
+        geo: global
+        unit: 1
+        price: custom
+        userMultiplied: false
+      - label: Query Credits
+        name: query_credits
+        type: included
+        metric: credit
+        limit: -1
+        timeFrame: month
+        geo: global
+        unit: 1
+        price: 0
+        userMultiplied: false
+      - label: Scan Credits
+        name: scan_credits
+        type: included
+        metric: credit
+        limit: -1
+        timeFrame: month
+        geo: global
+        unit: 1
+        price: 0
+        userMultiplied: false
+      - label: Monitored IPs
+        name: monitored_ips
+        type: included
+        metric: ip
+        limit: -1
+        timeFrame: usage
+        geo: global
+        unit: 1
+        price: 0
+        userMultiplied: false
+    elements:
+      - name: Shodan REST API
+      - name: Shodan Streaming API
+      - name: Shodan Trends API
+      - name: Shodan InternetDB API
+      - name: Shodan CVEDB API
+maintainers:
+  - FN: Kin Lane
+    email: kin@apievangelist.com

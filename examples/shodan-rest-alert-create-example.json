@@ -1,0 +1,35 @@
+{
+  "request": {
+    "method": "POST",
+    "url": "https://api.shodan.io/shodan/alert?key=YOUR_API_KEY",
+    "headers": {
+      "Content-Type": "application/json"
+    },
+    "body": {
+      "name": "Corp External Surface",
+      "filters": {
+        "ip": ["198.51.100.0/24", "203.0.113.0/24"]
+      },
+      "expires": 0
+    }
+  },
+  "response": {
+    "status": 200,
+    "headers": {
+      "Content-Type": "application/json"
+    },
+    "body": {
+      "id": "ALERT_ABC123",
+      "name": "Corp External Surface",
+      "created": "2026-05-15T13:00:00Z",
+      "expires": 0,
+      "size": 512,
+      "filters": {
+        "ip": ["198.51.100.0/24", "203.0.113.0/24"]
+      },
+      "triggers": {
+        "any": { "enabled": true }
+      }
+    }
+  }
+}

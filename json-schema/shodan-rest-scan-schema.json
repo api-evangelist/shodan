@@ -1,0 +1,15 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/api-evangelist/shodan/json-schema/shodan-rest-scan-schema.json",
+  "title": "Shodan On-Demand Scan",
+  "description": "A Shodan on-demand scan submission and its current status.",
+  "type": "object",
+  "required": ["id", "status"],
+  "properties": {
+    "id": { "type": "string" },
+    "count": { "type": "integer", "description": "Number of IPs in the scan." },
+    "credits_left": { "type": "integer" },
+    "status": { "type": "string", "enum": ["SUBMITTING", "QUEUE", "PROCESSING", "DONE"] },
+    "created": { "type": "string", "format": "date-time" }
+  }
+}

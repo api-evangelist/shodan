@@ -1,0 +1,34 @@
+{
+  "$schema": "https://json-structure.org/draft/2025/schema",
+  "$id": "https://github.com/api-evangelist/shodan/json-structure/shodan-rest-alert-structure.json",
+  "title": "Shodan Network Alert Structure",
+  "description": "Canonical structural representation of a Shodan network alert.",
+  "type": "object",
+  "name": "ShodanAlert",
+  "namespace": "shodan",
+  "fields": [
+    { "name": "id", "type": "string", "required": true },
+    { "name": "name", "type": "string", "required": true },
+    { "name": "created", "type": "datetime" },
+    { "name": "expires", "type": "integer", "description": "Seconds until expiration; 0 means never expires." },
+    { "name": "expiration", "type": "datetime" },
+    { "name": "size", "type": "integer", "description": "Number of IPs monitored." },
+    {
+      "name": "filters",
+      "type": "object",
+      "fields": [
+        { "name": "ip", "type": "array", "items": "string", "description": "List of IP CIDR ranges monitored." }
+      ]
+    },
+    {
+      "name": "triggers",
+      "type": "map",
+      "valueType": {
+        "type": "object",
+        "fields": [
+          { "name": "enabled", "type": "boolean" }
+        ]
+      }
+    }
+  ]
+}

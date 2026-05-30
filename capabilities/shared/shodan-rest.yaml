@@ -1,0 +1,109 @@
+name: shodan-rest
+description: >-
+  Core Shodan REST surface for searching the public Internet, looking up host
+  information, scheduling on-demand scans, managing network alerts, and
+  configuring notifiers. This is the day-to-day operational capability set
+  for attack-surface and reconnaissance workflows.
+provider: shodan
+api: shodan-rest-api
+operations:
+  - id: getHost
+    method: GET
+    path: /shodan/host/{ip}
+    description: Return all services Shodan has seen on a specific IP address, including banners, vulnerabilities, and metadata.
+  - id: searchHosts
+    method: GET
+    path: /shodan/host/search
+    description: Run a Shodan search query with optional facets and pagination over the indexed banner database.
+  - id: getHostCount
+    method: GET
+    path: /shodan/host/count
+    description: Return only the count and facet summary for a search, without consuming query credits for results.
+  - id: listSearchFilters
+    method: GET
+    path: /shodan/host/search/filters
+    description: Return the list of filters that can be used in a Shodan search query.
+  - id: listSearchFacets
+    method: GET
+    path: /shodan/host/search/facets
+    description: Return the list of facets that can be used to summarize search results.
+  - id: tokenizeSearchQuery
+    method: GET
+    path: /shodan/host/search/tokens
+    description: Break a Shodan search query into its filter/value tokens for debugging or programmatic use.
+  - id: createScan
+    method: POST
+    path: /shodan/scan
+    description: Submit one or more IPs or CIDR ranges for on-demand crawling, consuming one scan credit per IP.
+  - id: getScan
+    method: GET
+    path: /shodan/scan/{id}
+    description: Return the status of an on-demand scan submission.
+  - id: listScans
+    method: GET
+    path: /shodan/scans
+    description: List on-demand scans submitted by the account.
+  - id: createAlert
+    method: POST
+    path: /shodan/alert
+    description: Create a network alert on one or more IP ranges.
+  - id: listAlerts
+    method: GET
+    path: /shodan/alert/info
+    description: List all network alerts on the account.
+  - id: getAlert
+    method: GET
+    path: /shodan/alert/{id}/info
+    description: Return details for a specific network alert.
+  - id: updateAlert
+    method: POST
+    path: /shodan/alert/{id}
+    description: Edit the IP ranges or name of an existing network alert.
+  - id: deleteAlert
+    method: DELETE
+    path: /shodan/alert/{id}
+    description: Delete a network alert.
+  - id: enableAlertTrigger
+    method: PUT
+    path: /shodan/alert/{id}/trigger/{trigger}
+    description: Enable a trigger on a network alert.
+  - id: disableAlertTrigger
+    method: DELETE
+    path: /shodan/alert/{id}/trigger/{trigger}
+    description: Disable a trigger on a network alert.
+  - id: listNotifiers
+    method: GET
+    path: /notifier
+    description: List notifier integrations configured for the account.
+  - id: createNotifier
+    method: POST
+    path: /notifier
+    description: Create a new notifier (Slack, email, webhook, Discord, Telegram, etc).
+  - id: updateNotifier
+    method: PUT
+    path: /notifier/{id}
+    description: Update an existing notifier configuration.
+  - id: deleteNotifier
+    method: DELETE
+    path: /notifier/{id}
+    description: Delete a notifier.
+  - id: getDomainDns
+    method: GET
+    path: /dns/domain/{domain}
+    description: Return subdomains and DNS history for a domain.
+  - id: resolveHostnames
+    method: GET
+    path: /dns/resolve
+    description: Resolve a list of hostnames to IPs.
+  - id: reverseDnsLookup
+    method: GET
+    path: /dns/reverse
+    description: Reverse-resolve a list of IPs to hostnames.
+  - id: getApiInfo
+    method: GET
+    path: /api-info
+    description: Return account plan information including remaining query and scan credits.
+  - id: getAccountProfile
+    method: GET
+    path: /account/profile
+    description: Return profile information for the authenticated account.

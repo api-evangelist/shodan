@@ -1,0 +1,28 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/api-evangelist/shodan/json-schema/shodan-rest-search-result-schema.json",
+  "title": "Shodan Search Result",
+  "description": "Result envelope for a Shodan search query, including matches and optional facet aggregations.",
+  "type": "object",
+  "required": ["total", "matches"],
+  "properties": {
+    "total": { "type": "integer", "minimum": 0 },
+    "matches": {
+      "type": "array",
+      "items": { "$ref": "shodan-rest-banner-schema.json" }
+    },
+    "facets": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "count": { "type": "integer" },
+            "value": { "type": "string" }
+          }
+        }
+      }
+    }
+  }
+}

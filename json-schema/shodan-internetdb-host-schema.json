@@ -1,0 +1,16 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/api-evangelist/shodan/json-schema/shodan-internetdb-host-schema.json",
+  "title": "Shodan InternetDB Host",
+  "description": "A record from the free Shodan InternetDB lookup service.",
+  "type": "object",
+  "required": ["ip"],
+  "properties": {
+    "ip": { "type": "string" },
+    "ports": { "type": "array", "items": { "type": "integer" } },
+    "cpes": { "type": "array", "items": { "type": "string" } },
+    "hostnames": { "type": "array", "items": { "type": "string" } },
+    "tags": { "type": "array", "items": { "type": "string" } },
+    "vulns": { "type": "array", "items": { "type": "string" } }
+  }
+}

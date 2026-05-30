@@ -1,0 +1,978 @@
+openapi: 3.1.0
+info:
+  title: Shodan REST API
+  description: >-
+    The Shodan REST API exposes search methods, host lookups, on-demand
+    scanning, network alerts, notifiers, the saved-query directory, DNS
+    lookups, utility methods, account/profile information, bulk data, and
+    organization management for the Shodan search engine for Internet-
+    connected devices.
+  version: '1.0'
+  contact:
+    name: Shodan Support
+    email: support@shodan.io
+    url: https://developer.shodan.io/
+  license:
+    name: Shodan API Terms of Service
+    url: https://www.shodan.io/legal/tos
+servers:
+  - url: https://api.shodan.io
+    description: Production
+security:
+  - apiKey: []
+tags:
+  - name: Search Methods
+    description: Search and lookup endpoints for indexed devices.
+  - name: On-Demand Scanning
+    description: Request crawls of specific IPs, netblocks, or the entire Internet.
+  - name: Network Alerts
+    description: Create and manage alerts on monitored IP ranges.
+  - name: Notifiers
+    description: Manage notification providers used by alerts.
+  - name: Directory
+    description: Browse and search saved Shodan queries.
+  - name: Bulk Data
+    description: Enterprise bulk data exports.
+  - name: DNS
+    description: Forward, reverse, and domain DNS lookups.
+  - name: Utility
+    description: Helper endpoints for HTTP headers and IP detection.
+  - name: Account
+    description: Account, profile, and API plan information.
+  - name: Organization
+    description: Enterprise organization management.
+paths:
+  /shodan/host/{ip}:
+    get:
+      tags: [Search Methods]
+      summary: Get Host Information
+      operationId: getHost
+      description: Returns all services that have been found on the given host IP.
+      parameters:
+        - $ref: '#/components/parameters/IpPath'
+        - name: history
+          in: query
+          schema: { type: boolean, default: false }
+          description: Include historical banners.
+        - name: minify
+          in: query
+          schema: { type: boolean, default: false }
+          description: Return a truncated banner record.
+      responses:
+        '200':
+          description: Host record with banners.
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/Host' }
+        '404': { $ref: '#/components/responses/NotFound' }
+  /shodan/host/count:
+    get:
+      tags: [Search Methods]
+      summary: Get Search Result Count
+      operationId: getHostCount
+      description: Returns the number of results a search would have, without consuming query credits or returning results.
+      parameters:
+        - $ref: '#/components/parameters/Query'
+        - $ref: '#/components/parameters/Facets'
+      responses:
+        '200':
+          description: Count and facet summary.
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/SearchCount' }
+  /shodan/host/search:
+    get:
+      tags: [Search Methods]
+      summary: Search Shodan
+      operationId: searchHosts
+      description: Search Shodan using the same query syntax as the website. Uses one query credit per page after the first when filters are used.
+      parameters:
+        - $ref: '#/components/parameters/Query'
+        - $ref: '#/components/parameters/Facets'
+        - name: page
+          in: query
+          schema: { type: integer, default: 1, minimum: 1 }
+        - name: minify
+          in: query
+          schema: { type: boolean, default: true }
+      responses:
+        '200':
+          description: Search results with matches and facets.
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/SearchResult' }
+  /shodan/host/search/facets:
+    get:
+      tags: [Search Methods]
+      summary: List Search Facets
+      operationId: listSearchFacets
+      description: Returns the list of facets that can be used to summarize search results.
+      responses:
+        '200':
+          description: Array of facet names.
+          content:
+            application/json:
+              schema: { type: array, items: { type: string } }
+  /shodan/host/search/filters:
+    get:
+      tags: [Search Methods]
+      summary: List Search Filters
+      operationId: listSearchFilters
+      description: Returns the list of filters that can be used when searching.
+      responses:
+        '200':
+          description: Array of filter names.
+          content:
+            application/json:
+              schema: { type: array, items: { type: string } }
+  /shodan/host/search/tokens:
+    get:
+      tags: [Search Methods]
+      summary: Break Query Into Tokens
+      operationId: tokenizeSearchQuery
+      description: Determine which filters and tokens make up a search query.
+      parameters:
+        - $ref: '#/components/parameters/Query'
+      responses:
+        '200':
+          description: Parsed token structure.
+          content:
+            application/json:
+              schema: { type: object, additionalProperties: true }
+  /shodan/ports:
+    get:
+      tags: [On-Demand Scanning]
+      summary: List Crawled Ports
+      operationId: listPorts
+      description: Returns the list of port numbers that Shodan is crawling on the Internet.
+      responses:
+        '200':
+          description: Array of port numbers.
+          content:
+            application/json:
+              schema: { type: array, items: { type: integer } }
+  /shodan/protocols:
+    get:
+      tags: [On-Demand Scanning]
+      summary: List Supported Protocols
+      operationId: listProtocols
+      description: Returns the list of protocols that can be used when launching an on-demand Internet scan.
+      responses:
+        '200':
+          description: Map of protocol slug to human-readable name.
+          content:
+            application/json:
+              schema: { type: object, additionalProperties: { type: string } }
+  /shodan/scan:
+    post:
+      tags: [On-Demand Scanning]
+      summary: Submit On-Demand Scan
+      operationId: createScan
+      description: Request Shodan to crawl an IP or netblock. Each IP consumes one scan credit.
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              required: [ips]
+              properties:
+                ips:
+                  type: string
+                  description: Comma-separated list of IPs or CIDR ranges.
+      responses:
+        '200':
+          description: Scan submission confirmation.
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/Scan' }
+  /shodan/scan/internet:
+    post:
+      tags: [On-Demand Scanning]
+      summary: Scan Internet For Port
+      operationId: createInternetScan
+      description: Request Shodan to crawl the Internet for a specific port and protocol. Enterprise only.
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              required: [port, protocol]
+              properties:
+                port:
+                  type: integer
+                protocol:
+                  type: string
+      responses:
+        '200':
+          description: Internet scan submission confirmation.
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/Scan' }
+  /shodan/scans:
+    get:
+      tags: [On-Demand Scanning]
+      summary: List On-Demand Scans
+      operationId: listScans
+      description: Returns the list of on-demand scans submitted by the account.
+      responses:
+        '200':
+          description: Paginated list of scans.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  matches:
+                    type: array
+                    items: { $ref: '#/components/schemas/Scan' }
+                  total: { type: integer }
+  /shodan/scan/{id}:
+    get:
+      tags: [On-Demand Scanning]
+      summary: Get Scan Status
+      operationId: getScan
+      description: Returns the status and progress of an on-demand scan.
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema: { type: string }
+      responses:
+        '200':
+          description: Scan status.
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/Scan' }
+        '404': { $ref: '#/components/responses/NotFound' }
+  /shodan/alert:
+    post:
+      tags: [Network Alerts]
+      summary: Create Network Alert
+      operationId: createAlert
+      description: Create a network alert on one or more IP ranges.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [name, filters]
+              properties:
+                name: { type: string }
+                filters:
+                  type: object
+                  properties:
+                    ip:
+                      type: array
+                      items: { type: string }
+                expires:
+                  type: integer
+                  description: Optional expiration in seconds.
+      responses:
+        '200':
+          description: Created alert.
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/Alert' }
+  /shodan/alert/info:
+    get:
+      tags: [Network Alerts]
+      summary: List Network Alerts
+      operationId: listAlerts
+      description: Returns the network alerts that have been created on the account.
+      responses:
+        '200':
+          description: List of alerts.
+          content:
+            application/json:
+              schema:
+                type: array
+                items: { $ref: '#/components/schemas/Alert' }
+  /shodan/alert/{id}/info:
+    get:
+      tags: [Network Alerts]
+      summary: Get Network Alert
+      operationId: getAlert
+      description: Returns the information about a specific network alert.
+      parameters:
+        - $ref: '#/components/parameters/AlertId'
+      responses:
+        '200':
+          description: Alert details.
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/Alert' }
+        '404': { $ref: '#/components/responses/NotFound' }
+  /shodan/alert/{id}:
+    post:
+      tags: [Network Alerts]
+      summary: Update Network Alert
+      operationId: updateAlert
+      description: Edit the IP ranges or name of a network alert.
+      parameters:
+        - $ref: '#/components/parameters/AlertId'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name: { type: string }
+                filters:
+                  type: object
+                  properties:
+                    ip:
+                      type: array
+                      items: { type: string }
+      responses:
+        '200':
+          description: Updated alert.
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/Alert' }
+    delete:
+      tags: [Network Alerts]
+      summary: Delete Network Alert
+      operationId: deleteAlert
+      description: Remove the network alert and its triggers.
+      parameters:
+        - $ref: '#/components/parameters/AlertId'
+      responses:
+        '200':
+          description: Alert deletion result.
+          content:
+            application/json:
+              schema: { type: object, properties: { success: { type: boolean } } }
+  /shodan/alert/triggers:
+    get:
+      tags: [Network Alerts]
+      summary: List Alert Triggers
+      operationId: listAlertTriggers
+      description: Returns the list of triggers that can be enabled on alerts.
+      responses:
+        '200':
+          description: Trigger metadata.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    name: { type: string }
+                    description: { type: string }
+                    rule: { type: string }
+  /shodan/alert/{id}/trigger/{trigger}:
+    put:
+      tags: [Network Alerts]
+      summary: Enable Alert Trigger
+      operationId: enableAlertTrigger
+      description: Enable a trigger on a network alert.
+      parameters:
+        - $ref: '#/components/parameters/AlertId'
+        - $ref: '#/components/parameters/TriggerName'
+      responses:
+        '200':
+          description: Trigger enable result.
+          content:
+            application/json:
+              schema: { type: object, properties: { success: { type: boolean } } }
+    delete:
+      tags: [Network Alerts]
+      summary: Disable Alert Trigger
+      operationId: disableAlertTrigger
+      description: Disable a trigger on a network alert.
+      parameters:
+        - $ref: '#/components/parameters/AlertId'
+        - $ref: '#/components/parameters/TriggerName'
+      responses:
+        '200':
+          description: Trigger disable result.
+          content:
+            application/json:
+              schema: { type: object, properties: { success: { type: boolean } } }
+  /notifier:
+    get:
+      tags: [Notifiers]
+      summary: List Notifiers
+      operationId: listNotifiers
+      description: Returns the list of notifiers the user has configured.
+      responses:
+        '200':
+          description: Notifier list.
+          content:
+            application/json:
+              schema:
+                type: array
+                items: { $ref: '#/components/schemas/Notifier' }
+    post:
+      tags: [Notifiers]
+      summary: Create Notifier
+      operationId: createNotifier
+      description: Create a new notifier for receiving alerts.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema: { $ref: '#/components/schemas/NotifierCreate' }
+      responses:
+        '200':
+          description: Created notifier.
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/Notifier' }
+  /notifier/provider:
+    get:
+      tags: [Notifiers]
+      summary: List Notifier Providers
+      operationId: listNotifierProviders
+      description: Returns the list of available notification provider types.
+      responses:
+        '200':
+          description: Provider catalog.
+          content:
+            application/json:
+              schema: { type: object, additionalProperties: true }
+  /notifier/{id}:
+    get:
+      tags: [Notifiers]
+      summary: Get Notifier
+      operationId: getNotifier
+      description: Returns information about a specific notifier.
+      parameters:
+        - $ref: '#/components/parameters/NotifierId'
+      responses:
+        '200':
+          description: Notifier details.
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/Notifier' }
+    put:
+      tags: [Notifiers]
+      summary: Update Notifier
+      operationId: updateNotifier
+      description: Update an existing notifier configuration.
+      parameters:
+        - $ref: '#/components/parameters/NotifierId'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema: { $ref: '#/components/schemas/NotifierCreate' }
+      responses:
+        '200':
+          description: Updated notifier.
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/Notifier' }
+    delete:
+      tags: [Notifiers]
+      summary: Delete Notifier
+      operationId: deleteNotifier
+      description: Delete a notifier.
+      parameters:
+        - $ref: '#/components/parameters/NotifierId'
+      responses:
+        '200':
+          description: Notifier deletion result.
+          content:
+            application/json:
+              schema: { type: object, properties: { success: { type: boolean } } }
+  /shodan/query:
+    get:
+      tags: [Directory]
+      summary: List Saved Queries
+      operationId: listSavedQueries
+      description: Browse the directory of community-saved Shodan queries.
+      parameters:
+        - name: page
+          in: query
+          schema: { type: integer, default: 1 }
+        - name: sort
+          in: query
+          schema: { type: string, enum: [votes, timestamp] }
+        - name: order
+          in: query
+          schema: { type: string, enum: [asc, desc] }
+      responses:
+        '200':
+          description: List of saved queries.
+          content:
+            application/json:
+              schema: { type: object, additionalProperties: true }
+  /shodan/query/search:
+    get:
+      tags: [Directory]
+      summary: Search Saved Queries
+      operationId: searchSavedQueries
+      description: Search the directory of saved Shodan queries.
+      parameters:
+        - $ref: '#/components/parameters/Query'
+        - name: page
+          in: query
+          schema: { type: integer, default: 1 }
+      responses:
+        '200':
+          description: Search results.
+          content:
+            application/json:
+              schema: { type: object, additionalProperties: true }
+  /shodan/query/tags:
+    get:
+      tags: [Directory]
+      summary: List Popular Query Tags
+      operationId: listSavedQueryTags
+      description: Returns the most popular tags assigned to saved queries.
+      parameters:
+        - name: size
+          in: query
+          schema: { type: integer, default: 10 }
+      responses:
+        '200':
+          description: Tag list.
+          content:
+            application/json:
+              schema: { type: object, additionalProperties: true }
+  /shodan/data:
+    get:
+      tags: [Bulk Data]
+      summary: List Bulk Data Sets
+      operationId: listBulkDatasets
+      description: Returns the list of bulk data sets available to the account. Enterprise only.
+      responses:
+        '200':
+          description: Dataset list.
+          content:
+            application/json:
+              schema: { type: array, items: { $ref: '#/components/schemas/Dataset' } }
+  /shodan/data/{dataset}:
+    get:
+      tags: [Bulk Data]
+      summary: List Bulk Data Files
+      operationId: listBulkDatasetFiles
+      description: Returns the list of files available within a bulk dataset. Enterprise only.
+      parameters:
+        - name: dataset
+          in: path
+          required: true
+          schema: { type: string }
+      responses:
+        '200':
+          description: File list.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    name: { type: string }
+                    size: { type: integer }
+                    timestamp: { type: string, format: date-time }
+                    url: { type: string, format: uri }
+  /dns/domain/{domain}:
+    get:
+      tags: [DNS]
+      summary: Get Domain DNS Information
+      operationId: getDomainDns
+      description: Returns the subdomains and DNS entries known for the given domain.
+      parameters:
+        - name: domain
+          in: path
+          required: true
+          schema: { type: string }
+        - name: history
+          in: query
+          schema: { type: boolean, default: false }
+        - name: type
+          in: query
+          schema: { type: string, enum: [A, AAAA, CNAME, NS, SOA, MX, TXT] }
+        - name: page
+          in: query
+          schema: { type: integer, default: 1 }
+      responses:
+        '200':
+          description: Domain DNS information.
+          content:
+            application/json:
+              schema: { type: object, additionalProperties: true }
+  /dns/resolve:
+    get:
+      tags: [DNS]
+      summary: Resolve Hostnames
+      operationId: resolveHostnames
+      description: Look up IP addresses for the given hostnames.
+      parameters:
+        - name: hostnames
+          in: query
+          required: true
+          schema: { type: string }
+          description: Comma-separated list of hostnames.
+      responses:
+        '200':
+          description: Map of hostname to IP.
+          content:
+            application/json:
+              schema: { type: object, additionalProperties: { type: string } }
+  /dns/reverse:
+    get:
+      tags: [DNS]
+      summary: Reverse DNS Lookup
+      operationId: reverseDnsLookup
+      description: Look up hostnames for the given IP addresses.
+      parameters:
+        - name: ips
+          in: query
+          required: true
+          schema: { type: string }
+          description: Comma-separated list of IP addresses.
+      responses:
+        '200':
+          description: Map of IP to hostnames.
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties:
+                  type: array
+                  items: { type: string }
+  /tools/httpheaders:
+    get:
+      tags: [Utility]
+      summary: Get Request HTTP Headers
+      operationId: getHttpHeaders
+      description: Returns the HTTP headers seen by the Shodan server.
+      responses:
+        '200':
+          description: Request headers as a map.
+          content:
+            application/json:
+              schema: { type: object, additionalProperties: { type: string } }
+  /tools/myip:
+    get:
+      tags: [Utility]
+      summary: Get Client IP
+      operationId: getMyIp
+      description: Returns the IP address that the request was issued from.
+      responses:
+        '200':
+          description: Plain-text IP address.
+          content:
+            application/json:
+              schema: { type: string }
+  /account/profile:
+    get:
+      tags: [Account]
+      summary: Get Account Profile
+      operationId: getAccountProfile
+      description: Returns information about the Shodan account.
+      responses:
+        '200':
+          description: Account profile.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  member: { type: boolean }
+                  credits: { type: integer }
+                  display_name: { type: string }
+                  created: { type: string, format: date-time }
+  /api-info:
+    get:
+      tags: [Account]
+      summary: Get API Plan Info
+      operationId: getApiInfo
+      description: Returns information about the API plan including remaining query and scan credits.
+      responses:
+        '200':
+          description: API plan info.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  query_credits: { type: integer }
+                  scan_credits: { type: integer }
+                  telnet: { type: boolean }
+                  plan: { type: string }
+                  https: { type: boolean }
+                  unlocked: { type: boolean }
+                  monitored_ips: { type: integer }
+                  usage_limits:
+                    type: object
+                    additionalProperties: { type: integer }
+  /org:
+    get:
+      tags: [Organization]
+      summary: Get Organization
+      operationId: getOrganization
+      description: Returns information about the organization the account is part of.
+      responses:
+        '200':
+          description: Organization info.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  name: { type: string }
+                  upgrade_type: { type: string }
+                  domains:
+                    type: array
+                    items: { type: string }
+                  members:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        username: { type: string }
+                        email: { type: string }
+  /org/member/{user}:
+    put:
+      tags: [Organization]
+      summary: Add Organization Member
+      operationId: addOrganizationMember
+      description: Add a user to the organization.
+      parameters:
+        - name: user
+          in: path
+          required: true
+          schema: { type: string }
+        - name: notify
+          in: query
+          schema: { type: boolean, default: true }
+      responses:
+        '200':
+          description: Add result.
+          content:
+            application/json:
+              schema: { type: object, properties: { success: { type: boolean } } }
+    delete:
+      tags: [Organization]
+      summary: Remove Organization Member
+      operationId: removeOrganizationMember
+      description: Remove a user from the organization.
+      parameters:
+        - name: user
+          in: path
+          required: true
+          schema: { type: string }
+      responses:
+        '200':
+          description: Remove result.
+          content:
+            application/json:
+              schema: { type: object, properties: { success: { type: boolean } } }
+components:
+  securitySchemes:
+    apiKey:
+      type: apiKey
+      in: query
+      name: key
+      description: Shodan API key.
+  parameters:
+    IpPath:
+      name: ip
+      in: path
+      required: true
+      schema: { type: string }
+      description: IPv4 or IPv6 address.
+    Query:
+      name: query
+      in: query
+      required: true
+      schema: { type: string }
+      description: Shodan search query.
+    Facets:
+      name: facets
+      in: query
+      schema: { type: string }
+      description: Comma-separated facet definitions (e.g. `country:5,port:10`).
+    AlertId:
+      name: id
+      in: path
+      required: true
+      schema: { type: string }
+      description: Alert identifier.
+    TriggerName:
+      name: trigger
+      in: path
+      required: true
+      schema: { type: string }
+      description: Trigger name.
+    NotifierId:
+      name: id
+      in: path
+      required: true
+      schema: { type: string }
+      description: Notifier identifier.
+  responses:
+    NotFound:
+      description: Resource not found.
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              error: { type: string }
+  schemas:
+    Host:
+      type: object
+      properties:
+        ip_str: { type: string }
+        ip: { type: integer }
+        hostnames:
+          type: array
+          items: { type: string }
+        domains:
+          type: array
+          items: { type: string }
+        country_code: { type: string }
+        country_name: { type: string }
+        city: { type: string }
+        region_code: { type: string }
+        postal_code: { type: string }
+        latitude: { type: number }
+        longitude: { type: number }
+        org: { type: string }
+        isp: { type: string }
+        asn: { type: string }
+        os: { type: string }
+        last_update: { type: string, format: date-time }
+        ports:
+          type: array
+          items: { type: integer }
+        vulns:
+          type: array
+          items: { type: string }
+        tags:
+          type: array
+          items: { type: string }
+        data:
+          type: array
+          items: { $ref: '#/components/schemas/Banner' }
+    Banner:
+      type: object
+      properties:
+        port: { type: integer }
+        transport: { type: string, enum: [tcp, udp] }
+        product: { type: string }
+        version: { type: string }
+        data: { type: string }
+        timestamp: { type: string, format: date-time }
+        hash: { type: integer }
+        ip_str: { type: string }
+        org: { type: string }
+        isp: { type: string }
+        asn: { type: string }
+        hostnames:
+          type: array
+          items: { type: string }
+        domains:
+          type: array
+          items: { type: string }
+        location:
+          type: object
+          properties:
+            city: { type: string }
+            country_code: { type: string }
+            country_name: { type: string }
+            latitude: { type: number }
+            longitude: { type: number }
+        ssl:
+          type: object
+          additionalProperties: true
+        http:
+          type: object
+          additionalProperties: true
+        cpe23:
+          type: array
+          items: { type: string }
+        vulns:
+          type: object
+          additionalProperties: true
+    SearchCount:
+      type: object
+      properties:
+        total: { type: integer }
+        facets:
+          type: object
+          additionalProperties:
+            type: array
+            items:
+              type: object
+              properties:
+                count: { type: integer }
+                value: { type: string }
+    SearchResult:
+      type: object
+      properties:
+        total: { type: integer }
+        matches:
+          type: array
+          items: { $ref: '#/components/schemas/Banner' }
+        facets:
+          type: object
+          additionalProperties:
+            type: array
+            items:
+              type: object
+              properties:
+                count: { type: integer }
+                value: { type: string }
+    Scan:
+      type: object
+      properties:
+        id: { type: string }
+        count: { type: integer }
+        credits_left: { type: integer }
+        status: { type: string, enum: [SUBMITTING, QUEUE, PROCESSING, DONE] }
+        created: { type: string, format: date-time }
+    Alert:
+      type: object
+      properties:
+        id: { type: string }
+        name: { type: string }
+        created: { type: string, format: date-time }
+        expires: { type: integer }
+        expiration: { type: string, format: date-time }
+        filters:
+          type: object
+          properties:
+            ip:
+              type: array
+              items: { type: string }
+        triggers:
+          type: object
+          additionalProperties:
+            type: object
+            properties:
+              enabled: { type: boolean }
+        size: { type: integer }
+    Notifier:
+      type: object
+      properties:
+        id: { type: string }
+        provider: { type: string }
+        description: { type: string }
+        args:
+          type: object
+          additionalProperties: true
+    NotifierCreate:
+      type: object
+      required: [provider, description, args]
+      properties:
+        provider: { type: string }
+        description: { type: string }
+        args:
+          type: object
+          additionalProperties: true
+    Dataset:
+      type: object
+      properties:
+        name: { type: string }
+        description: { type: string }

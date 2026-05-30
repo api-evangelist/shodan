@@ -1,0 +1,18 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/api-evangelist/shodan/json-schema/shodan-rest-notifier-schema.json",
+  "title": "Shodan Notifier",
+  "description": "A notifier defines how Shodan should deliver alert events (e.g. Slack, email, webhook).",
+  "type": "object",
+  "required": ["id", "provider"],
+  "properties": {
+    "id": { "type": "string" },
+    "provider": { "type": "string", "description": "Provider slug such as `slack`, `email`, `webhook`, `discord`, `telegram`." },
+    "description": { "type": "string" },
+    "args": {
+      "type": "object",
+      "additionalProperties": true,
+      "description": "Provider-specific configuration (e.g. Slack token, email address, webhook URL)."
+    }
+  }
+}

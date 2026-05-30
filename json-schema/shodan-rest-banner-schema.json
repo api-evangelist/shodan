@@ -1,0 +1,38 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/api-evangelist/shodan/json-schema/shodan-rest-banner-schema.json",
+  "title": "Shodan Banner",
+  "description": "A single banner record describing one service Shodan observed on one port of one IP at one point in time.",
+  "type": "object",
+  "required": ["port", "transport", "data", "timestamp"],
+  "properties": {
+    "port": { "type": "integer", "minimum": 0, "maximum": 65535 },
+    "transport": { "type": "string", "enum": ["tcp", "udp"] },
+    "product": { "type": "string" },
+    "version": { "type": "string" },
+    "data": { "type": "string", "description": "Raw service banner." },
+    "timestamp": { "type": "string", "format": "date-time" },
+    "hash": { "type": "integer" },
+    "ip_str": { "type": "string" },
+    "org": { "type": "string" },
+    "isp": { "type": "string" },
+    "asn": { "type": "string" },
+    "hostnames": { "type": "array", "items": { "type": "string" } },
+    "domains": { "type": "array", "items": { "type": "string" } },
+    "location": {
+      "type": "object",
+      "properties": {
+        "city": { "type": ["string", "null"] },
+        "country_code": { "type": ["string", "null"] },
+        "country_name": { "type": ["string", "null"] },
+        "latitude": { "type": ["number", "null"] },
+        "longitude": { "type": ["number", "null"] }
+      }
+    },
+    "ssl": { "type": "object", "additionalProperties": true },
+    "http": { "type": "object", "additionalProperties": true },
+    "cpe23": { "type": "array", "items": { "type": "string" } },
+    "vulns": { "type": "object", "additionalProperties": true },
+    "tags": { "type": "array", "items": { "type": "string" } }
+  }
+}

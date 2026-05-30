@@ -1,0 +1,14 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/api-evangelist/shodan/json-schema/shodan-cvedb-cpe-schema.json",
+  "title": "Shodan CVEDB CPE",
+  "description": "A CPE 2.3 dictionary entry returned by the CVEDB API.",
+  "type": "object",
+  "required": ["cpe23"],
+  "properties": {
+    "cpe23": { "type": "string" },
+    "vendor": { "type": "string" },
+    "product": { "type": "string" },
+    "version": { "type": "string" }
+  }
+}

@@ -1,0 +1,12 @@
+name: shodan-internetdb
+description: >-
+  Free, unauthenticated host-lookup capability for the Shodan InternetDB
+  service. Returns open ports, CPEs, hostnames, tags, and known CVEs for
+  any IPv4 address; refreshed weekly.
+provider: shodan
+api: shodan-internetdb-api
+operations:
+  - id: getInternetDbHost
+    method: GET
+    path: /{ip}
+    description: Return InternetDB record (ports, CPEs, hostnames, tags, CVEs) for an IPv4 address.

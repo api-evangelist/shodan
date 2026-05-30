@@ -1,0 +1,151 @@
+openapi: 3.1.0
+info:
+  title: Shodan CVEDB API
+  description: >-
+    Shodan's CVEDB is a free vulnerability database API that supports
+    CVE lookups, CPE-keyed vulnerability search, KEV filtering, EPSS
+    ordering, date-range queries, and product-name search. No API key
+    required; updated daily.
+  version: '1.0'
+  contact:
+    name: Shodan Support
+    email: support@shodan.io
+    url: https://cvedb.shodan.io/
+  license:
+    name: Shodan API Terms of Service
+    url: https://www.shodan.io/legal/tos
+servers:
+  - url: https://cvedb.shodan.io
+    description: Production
+tags:
+  - name: CVE
+  - name: CPE
+paths:
+  /cve/{cveId}:
+    get:
+      tags: [CVE]
+      summary: Get CVE Details
+      operationId: getCve
+      description: Retrieve detailed information for a specific CVE including descriptions, CVSS, EPSS, KEV status, references, and impacted CPEs.
+      parameters:
+        - name: cveId
+          in: path
+          required: true
+          schema:
+            type: string
+            pattern: '^CVE-\d{4}-\d{4,}$'
+      responses:
+        '200':
+          description: CVE record.
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/Cve' }
+        '404':
+          description: CVE not found.
+  /cves:
+    get:
+      tags: [CVE]
+      summary: Search CVEs
+      operationId: searchCves
+      description: Search the CVE catalog by CPE 2.3, product, KEV status, EPSS ordering, or date range.
+      parameters:
+        - name: cpe23
+          in: query
+          schema: { type: string }
+          description: Filter by CPE 2.3 identifier (e.g. `cpe:2.3:a:nginx:nginx:1.21.0`).
+        - name: product
+          in: query
+          schema: { type: string }
+          description: Filter by product name.
+        - name: is_kev
+          in: query
+          schema: { type: boolean }
+          description: Restrict to CISA Known Exploited Vulnerabilities.
+        - name: sort_by_epss
+          in: query
+          schema: { type: boolean }
+          description: Sort results by EPSS score, highest first.
+        - name: start_date
+          in: query
+          schema: { type: string, format: date }
+        - name: end_date
+          in: query
+          schema: { type: string, format: date }
+        - name: skip
+          in: query
+          schema: { type: integer, default: 0 }
+        - name: limit
+          in: query
+          schema: { type: integer, default: 1000 }
+      responses:
+        '200':
+          description: CVE list.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  cves:
+                    type: array
+                    items: { $ref: '#/components/schemas/Cve' }
+  /cpes:
+    get:
+      tags: [CPE]
+      summary: Search CPEs
+      operationId: searchCpes
+      description: Retrieve CPE 2.3 dictionary entries matching the given product.
+      parameters:
+        - name: product
+          in: query
+          required: true
+          schema: { type: string }
+        - name: count
+          in: query
+          schema: { type: boolean, default: false }
+        - name: skip
+          in: query
+          schema: { type: integer, default: 0 }
+        - name: limit
+          in: query
+          schema: { type: integer, default: 1000 }
+      responses:
+        '200':
+          description: CPE entries.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  cpes:
+                    type: array
+                    items: { $ref: '#/components/schemas/Cpe' }
+components:
+  schemas:
+    Cve:
+      type: object
+      properties:
+        cve_id: { type: string }
+        summary: { type: string }
+        cvss: { type: number }
+        cvss_version: { type: string }
+        cvss_v2: { type: number }
+        cvss_v3: { type: number }
+        epss: { type: number }
+        ranking_epss: { type: number }
+        kev: { type: boolean }
+        propose_action: { type: string }
+        ransomware_campaign: { type: string }
+        references:
+          type: array
+          items: { type: string, format: uri }
+        published_time: { type: string, format: date-time }
+        cpes:
+          type: array
+          items: { type: string }
+    Cpe:
+      type: object
+      properties:
+        cpe23: { type: string }
+        vendor: { type: string }
+        product: { type: string }
+        version: { type: string }

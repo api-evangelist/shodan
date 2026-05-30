@@ -1,0 +1,48 @@
+{
+  "request": {
+    "method": "GET",
+    "url": "https://api.shodan.io/shodan/host/search?key=YOUR_API_KEY&query=product:nginx+country:US&facets=country:10",
+    "headers": {
+      "Accept": "application/json"
+    }
+  },
+  "response": {
+    "status": 200,
+    "headers": {
+      "Content-Type": "application/json"
+    },
+    "body": {
+      "total": 1827344,
+      "matches": [
+        {
+          "ip_str": "203.0.113.42",
+          "port": 443,
+          "transport": "tcp",
+          "product": "nginx",
+          "version": "1.25.3",
+          "data": "HTTP/1.1 200 OK\nServer: nginx/1.25.3",
+          "timestamp": "2026-05-14T20:11:08.123456",
+          "hash": 122334455,
+          "org": "Example Hosting LLC",
+          "isp": "Example Hosting LLC",
+          "asn": "AS64500",
+          "hostnames": ["www.example.com"],
+          "domains": ["example.com"],
+          "location": {
+            "city": "Ashburn",
+            "country_code": "US",
+            "country_name": "United States",
+            "latitude": 39.0438,
+            "longitude": -77.4874
+          },
+          "cpe23": ["cpe:2.3:a:nginx:nginx:1.25.3"]
+        }
+      ],
+      "facets": {
+        "country": [
+          { "value": "US", "count": 1827344 }
+        ]
+      }
+    }
+  }
+}

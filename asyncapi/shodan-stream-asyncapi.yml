@@ -1,0 +1,143 @@
+asyncapi: 3.0.0
+info:
+  title: Shodan Streaming API
+  version: '1.0'
+  description: >-
+    Real-time streaming firehose of banner data collected by Shodan,
+    delivered as newline-separated JSON or Server-Sent Events. Subscribers
+    can consume the full firehose or filter by ASN, country, port, or CVE.
+  contact:
+    name: Shodan Support
+    email: support@shodan.io
+    url: https://developer.shodan.io/api/stream
+  license:
+    name: Shodan API Terms of Service
+    url: https://www.shodan.io/legal/tos
+servers:
+  production:
+    host: stream.shodan.io
+    protocol: https
+    description: Production streaming endpoint
+    security:
+      - $ref: '#/components/securitySchemes/apiKey'
+channels:
+  bannersAll:
+    address: /shodan/banners
+    description: Full firehose of every banner Shodan collects.
+    messages:
+      banner:
+        $ref: '#/components/messages/Banner'
+  bannersByAsn:
+    address: /shodan/asn/{asn}
+    description: Filtered firehose for the supplied comma-separated ASN list.
+    parameters:
+      asn:
+        description: Comma-separated ASN list.
+    messages:
+      banner:
+        $ref: '#/components/messages/Banner'
+  bannersByCountry:
+    address: /shodan/countries/{countries}
+    description: Filtered firehose for the supplied comma-separated country codes.
+    parameters:
+      countries:
+        description: Comma-separated ISO 3166-1 alpha-2 country codes.
+    messages:
+      banner:
+        $ref: '#/components/messages/Banner'
+  bannersByPort:
+    address: /shodan/ports/{ports}
+    description: Filtered firehose for the supplied comma-separated ports.
+    parameters:
+      ports:
+        description: Comma-separated port list.
+    messages:
+      banner:
+        $ref: '#/components/messages/Banner'
+  bannersByVuln:
+    address: /shodan/vulns/{vulns}
+    description: Filtered firehose for banners matching the supplied CVE identifiers.
+    parameters:
+      vulns:
+        description: Comma-separated CVE identifiers.
+    messages:
+      banner:
+        $ref: '#/components/messages/Banner'
+operations:
+  subscribeAllBanners:
+    action: receive
+    channel:
+      $ref: '#/channels/bannersAll'
+    summary: Subscribe To Full Banner Firehose
+  subscribeBannersByAsn:
+    action: receive
+    channel:
+      $ref: '#/channels/bannersByAsn'
+    summary: Subscribe To Banner Firehose By ASN
+  subscribeBannersByCountry:
+    action: receive
+    channel:
+      $ref: '#/channels/bannersByCountry'
+    summary: Subscribe To Banner Firehose By Country
+  subscribeBannersByPort:
+    action: receive
+    channel:
+      $ref: '#/channels/bannersByPort'
+    summary: Subscribe To Banner Firehose By Port
+  subscribeBannersByVuln:
+    action: receive
+    channel:
+      $ref: '#/channels/bannersByVuln'
+    summary: Subscribe To Banner Firehose By Vulnerability
+components:
+  securitySchemes:
+    apiKey:
+      type: apiKey
+      in: query
+      description: Shodan API key passed as the `key` query parameter.
+  messages:
+    Banner:
+      name: Banner
+      title: Banner
+      contentType: application/json
+      summary: A single Shodan banner record.
+      payload:
+        type: object
+        properties:
+          ip_str: { type: string }
+          port: { type: integer }
+          transport: { type: string, enum: [tcp, udp] }
+          product: { type: string }
+          version: { type: string }
+          data: { type: string }
+          timestamp: { type: string, format: date-time }
+          hash: { type: integer }
+          org: { type: string }
+          isp: { type: string }
+          asn: { type: string }
+          hostnames:
+            type: array
+            items: { type: string }
+          domains:
+            type: array
+            items: { type: string }
+          location:
+            type: object
+            properties:
+              city: { type: string }
+              country_code: { type: string }
+              country_name: { type: string }
+              latitude: { type: number }
+              longitude: { type: number }
+          ssl:
+            type: object
+            additionalProperties: true
+          http:
+            type: object
+            additionalProperties: true
+          cpe23:
+            type: array
+            items: { type: string }
+          vulns:
+            type: object
+            additionalProperties: true

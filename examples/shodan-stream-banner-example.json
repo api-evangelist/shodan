@@ -1,0 +1,35 @@
+{
+  "request": {
+    "method": "GET",
+    "url": "https://stream.shodan.io/shodan/ports/22,443?key=YOUR_API_KEY&t=json"
+  },
+  "response": {
+    "status": 200,
+    "headers": {
+      "Content-Type": "application/x-ndjson"
+    },
+    "body_example_line": {
+      "ip_str": "192.0.2.17",
+      "port": 22,
+      "transport": "tcp",
+      "product": "OpenSSH",
+      "version": "9.6p1",
+      "data": "SSH-2.0-OpenSSH_9.6\n",
+      "timestamp": "2026-05-15T13:15:42.000000",
+      "hash": 884523190,
+      "org": "Example Cloud",
+      "isp": "Example Cloud",
+      "asn": "AS64501",
+      "hostnames": ["host17.example.net"],
+      "domains": ["example.net"],
+      "location": {
+        "city": "Frankfurt",
+        "country_code": "DE",
+        "country_name": "Germany",
+        "latitude": 50.1109,
+        "longitude": 8.6821
+      },
+      "cpe23": ["cpe:2.3:a:openbsd:openssh:9.6p1"]
+    }
+  }
+}

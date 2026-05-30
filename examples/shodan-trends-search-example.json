@@ -1,0 +1,40 @@
+{
+  "request": {
+    "method": "GET",
+    "url": "https://trends.shodan.io/api/v1/search?query=product:nginx&facets=country:5&key=YOUR_API_KEY"
+  },
+  "response": {
+    "status": 200,
+    "headers": {
+      "Content-Type": "application/json"
+    },
+    "body": {
+      "total": 18223344,
+      "matches": [
+        { "month": "2024-01", "count": 14021110 },
+        { "month": "2024-02", "count": 14302244 },
+        { "month": "2024-03", "count": 14584455 }
+      ],
+      "facets": {
+        "country": [
+          {
+            "value": "US",
+            "count": 4022100,
+            "matches": [
+              { "month": "2024-01", "count": 1320700 },
+              { "month": "2024-02", "count": 1340900 }
+            ]
+          },
+          {
+            "value": "CN",
+            "count": 2950100,
+            "matches": [
+              { "month": "2024-01", "count": 980200 },
+              { "month": "2024-02", "count": 985500 }
+            ]
+          }
+        ]
+      }
+    }
+  }
+}

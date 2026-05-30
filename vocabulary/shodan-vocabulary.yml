@@ -1,0 +1,86 @@
+name: Shodan Domain Vocabulary
+provider: Shodan
+providerId: shodan
+description: >-
+  Controlled vocabulary describing the operational and conceptual surface of
+  the Shodan APIs, derived from the REST, Streaming, Trends, InternetDB,
+  and CVEDB specifications.
+terms:
+  - term: Search Methods
+    description: Operations for searching the Shodan banner index and looking up individual hosts.
+  - term: On-Demand Scanning
+    description: Operations for requesting scans of specific IPs, netblocks, or the entire Internet.
+  - term: Network Alerts
+    description: Operations for creating and managing monitored alerts on owned IP ranges.
+  - term: Notifiers
+    description: Operations for managing notification providers used by alerts.
+  - term: Directory
+    description: Operations for browsing and searching saved Shodan queries.
+  - term: Bulk Data
+    description: Enterprise operations for listing and downloading bulk data exports.
+  - term: Streaming
+    description: Long-lived HTTP streams that emit banner events in real time.
+  - term: DNS
+    description: Operations for forward, reverse, and domain-level DNS lookups backed by Shodan's passive DNS dataset.
+  - term: Utility
+    description: Helper endpoints (request HTTP headers, observed client IP) for client diagnostics.
+  - term: Account
+    description: Operations returning information about the authenticated account and its API plan.
+  - term: Organization
+    description: Enterprise operations for managing organization membership and shared credits.
+  - term: Trends
+    description: Historical analytics operations returning monthly counts and facet breakdowns.
+  - term: InternetDB
+    description: Free, unauthenticated host lookup over a weekly-refreshed dataset.
+  - term: CVE
+    description: Operations for retrieving and searching CVE records via the CVEDB API.
+  - term: CPE
+    description: Operations for retrieving CPE 2.3 dictionary entries via the CVEDB API.
+  - term: Banner
+    description: A single record describing one service Shodan observed on one port of one IP at one point in time.
+  - term: Host
+    description: The aggregate view of all services and metadata Shodan has collected for a specific IP address.
+  - term: Facet
+    description: A property used to bucket search results into summary counts (e.g. country, port, product).
+  - term: Filter
+    description: A query keyword that constrains a Shodan search to specific banner properties (e.g. `port:`, `country:`, `product:`, `vuln:`).
+  - term: Query Credit
+    description: The metered unit consumed by paginated and filtered Shodan searches.
+  - term: Scan Credit
+    description: The metered unit consumed by on-demand scans of IPs and netblocks.
+  - term: Monitored IPs
+    description: The number of unique IPs the account is allowed to keep under active alert monitoring.
+  - term: Trigger
+    description: A condition attached to a network alert that fires when a matching event is observed.
+  - term: ASN
+    description: Autonomous System Number used to identify the operator of a network.
+  - term: CPE 2.3
+    description: Common Platform Enumeration identifier (version 2.3) describing a hardware or software asset.
+  - term: CVE
+    description: Common Vulnerabilities and Exposures identifier for a publicly disclosed vulnerability.
+  - term: KEV
+    description: CISA's Known Exploited Vulnerabilities catalog flag, surfaced on each CVEDB record.
+  - term: EPSS
+    description: Exploit Prediction Scoring System probability that a CVE will be exploited in the wild.
+  - term: Vulnerability
+    description: A specific CVE associated with a banner, host, or InternetDB record.
+  - term: Honeypot
+    description: A tag indicating Shodan believes the host is a honeypot rather than a production system.
+  - term: IoT
+    description: A tag applied to consumer or industrial Internet-of-Things devices.
+  - term: ICS
+    description: Industrial Control System; tag applied to OT/ICS protocol exposures.
+  - term: SSL/TLS
+    description: Banner sub-document describing the TLS certificate, cipher, and chain observed.
+  - term: HTTP
+    description: Banner sub-document describing observed HTTP status, headers, title, and HTML.
+  - term: Notifier Provider
+    description: A delivery channel type (Slack, email, webhook, Discord, Telegram, etc.) used by a notifier.
+  - term: Attack Surface
+    description: The set of Internet-exposed services associated with an organization or IP range.
+  - term: Reconnaissance
+    description: The information-gathering phase of security testing or threat actor activity.
+  - term: Threat Intelligence
+    description: Curated information about adversaries, vulnerabilities, and exposures used to drive defensive action.
+  - term: Saved Query
+    description: A named Shodan query stored in the public directory and browsable by other users.

@@ -1,0 +1,37 @@
+{
+  "$schema": "https://json-structure.org/draft/2025/schema",
+  "$id": "https://github.com/api-evangelist/shodan/json-structure/shodan-stream-banner-structure.json",
+  "title": "Shodan Streaming Banner Structure",
+  "description": "Canonical structural representation of a banner event emitted by the Shodan streaming firehose.",
+  "type": "object",
+  "name": "ShodanStreamBanner",
+  "namespace": "shodan",
+  "fields": [
+    { "name": "ip_str", "type": "string", "required": true },
+    { "name": "port", "type": "integer", "required": true },
+    { "name": "transport", "type": "string", "enum": ["tcp", "udp"], "required": true },
+    { "name": "product", "type": "string" },
+    { "name": "version", "type": "string" },
+    { "name": "data", "type": "string", "required": true, "description": "Raw service banner." },
+    { "name": "timestamp", "type": "datetime", "required": true },
+    { "name": "hash", "type": "integer" },
+    { "name": "org", "type": "string" },
+    { "name": "isp", "type": "string" },
+    { "name": "asn", "type": "string" },
+    { "name": "hostnames", "type": "array", "items": "string" },
+    { "name": "domains", "type": "array", "items": "string" },
+    {
+      "name": "location",
+      "type": "object",
+      "fields": [
+        { "name": "city", "type": "string" },
+        { "name": "country_code", "type": "string" },
+        { "name": "country_name", "type": "string" },
+        { "name": "latitude", "type": "number" },
+        { "name": "longitude", "type": "number" }
+      ]
+    },
+    { "name": "cpe23", "type": "array", "items": "string" },
+    { "name": "vulns", "type": "map", "description": "CVE -> details." }
+  ]
+}

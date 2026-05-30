@@ -1,0 +1,20 @@
+name: shodan-cvedb
+description: >-
+  Vulnerability database capability for Shodan CVEDB. Supports CVE lookups,
+  CPE-keyed search, KEV filtering, EPSS ordering, date-range queries, and
+  CPE dictionary search. Free for non-commercial use; no API key required.
+provider: shodan
+api: shodan-cvedb-api
+operations:
+  - id: getCve
+    method: GET
+    path: /cve/{cveId}
+    description: Retrieve full details for a specific CVE including CVSS, EPSS, KEV, CPEs, and references.
+  - id: searchCves
+    method: GET
+    path: /cves
+    description: Search CVEs by CPE 2.3, product, KEV status, EPSS ordering, or date range.
+  - id: searchCpes
+    method: GET
+    path: /cpes
+    description: Search the CPE 2.3 dictionary by product name.
