@@ -1,0 +1,126 @@
+arazzo: 1.0.1
+info:
+  title: Shodan Network Alert Lifecycle
+  summary: Create a network alert, enable a trigger, verify it, then update the IP set.
+  description: >-
+    A full network alert management pattern. The workflow creates a network
+    alert over a set of IP ranges, enables a monitoring trigger on it, reads the
+    alert back to confirm the trigger is active, and then updates the alert's IP
+    set. Every step spells out its request inline so the flow can be read and
+    executed without opening the underlying OpenAPI description.
+  version: 1.0.0
+sourceDescriptions:
+- name: shodanRest
+  url: ../openapi/shodan-rest-openapi.yml
+  type: openapi
+workflows:
+- workflowId: network-alert-lifecycle
+  summary: Create, arm, verify, and update a Shodan network alert.
+  description: >-
+    Creates a network alert, enables a trigger on it, retrieves it to confirm
+    the trigger, and updates the monitored IP ranges.
+  inputs:
+    type: object
+    required:
+    - apiKey
+    - name
+    - ips
+    - trigger
+    properties:
+      apiKey:
+        type: string
+        description: Shodan API key passed as the `key` query parameter.
+      name:
+        type: string
+        description: A human-readable name for the network alert.
+      ips:
+        type: array
+        items:
+          type: string
+        description: The IP ranges to monitor with this alert.
+      trigger:
+        type: string
+        description: The trigger name to enable (e.g. "malware", "new_service").
+      updatedIps:
+        type: array
+        items:
+          type: string
+        description: The revised IP ranges to apply when updating the alert.
+  steps:
+  - stepId: createAlert
+    description: >-
+      Create a network alert over the supplied IP ranges.
+    operationId: createAlert
+    requestBody:
+      contentType: application/json
+      payload:
+        name: $inputs.name
+        filters:
+          ip: $inputs.ips
+    parameters:
+    - name: key
+      in: query
+      value: $inputs.apiKey
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      alertId: $response.body#/id
+  - stepId: enableTrigger
+    description: >-
+      Enable the requested monitoring trigger on the newly created alert.
+    operationId: enableAlertTrigger
+    parameters:
+    - name: key
+      in: query
+      value: $inputs.apiKey
+    - name: id
+      in: path
+      value: $steps.createAlert.outputs.alertId
+    - name: trigger
+      in: path
+      value: $inputs.trigger
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      success: $response.body#/success
+  - stepId: verifyAlert
+    description: >-
+      Read the alert back to confirm its configuration and active triggers.
+    operationId: getAlert
+    parameters:
+    - name: key
+      in: query
+      value: $inputs.apiKey
+    - name: id
+      in: path
+      value: $steps.createAlert.outputs.alertId
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      triggers: $response.body#/triggers
+      filters: $response.body#/filters
+  - stepId: updateAlert
+    description: >-
+      Update the alert's monitored IP ranges.
+    operationId: updateAlert
+    requestBody:
+      contentType: application/json
+      payload:
+        name: $inputs.name
+        filters:
+          ip: $inputs.updatedIps
+    parameters:
+    - name: key
+      in: query
+      value: $inputs.apiKey
+    - name: id
+      in: path
+      value: $steps.createAlert.outputs.alertId
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      updatedFilters: $response.body#/filters
+  outputs:
+    alertId: $steps.createAlert.outputs.alertId
+    triggers: $steps.verifyAlert.outputs.triggers
+    updatedFilters: $steps.updateAlert.outputs.updatedFilters

@@ -1,0 +1,102 @@
+arazzo: 1.0.1
+info:
+  title: Shodan Search Builder
+  summary: Discover available filters and facets, validate a query, then count its results.
+  description: >-
+    A query-construction pattern that grounds a search in Shodan's own
+    metadata. The workflow lists the available search filters and facets, breaks
+    a candidate query into its tokens to confirm it parses, and then runs a
+    credit-free count to size the result set before any credits are spent. Every
+    step spells out its request inline so the flow can be read and executed
+    without opening the underlying OpenAPI description.
+  version: 1.0.0
+sourceDescriptions:
+- name: shodanRest
+  url: ../openapi/shodan-rest-openapi.yml
+  type: openapi
+workflows:
+- workflowId: search-builder
+  summary: Build and validate a Shodan search query against live metadata.
+  description: >-
+    Lists searchable filters and facets, tokenizes a candidate query to confirm
+    it is valid, and counts how many results it would return.
+  inputs:
+    type: object
+    required:
+    - apiKey
+    - query
+    properties:
+      apiKey:
+        type: string
+        description: Shodan API key passed as the `key` query parameter.
+      query:
+        type: string
+        description: The candidate search query to validate and size.
+      facets:
+        type: string
+        description: Comma-separated facet definitions to summarize the count by.
+  steps:
+  - stepId: listFilters
+    description: >-
+      Retrieve the list of filters that can be used when searching.
+    operationId: listSearchFilters
+    parameters:
+    - name: key
+      in: query
+      value: $inputs.apiKey
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      filters: $response.body
+  - stepId: listFacets
+    description: >-
+      Retrieve the list of facets that can be used to summarize search results.
+    operationId: listSearchFacets
+    parameters:
+    - name: key
+      in: query
+      value: $inputs.apiKey
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      facetsAvailable: $response.body
+  - stepId: tokenizeQuery
+    description: >-
+      Break the candidate query into its filters and tokens to confirm it
+      parses cleanly before spending any credits.
+    operationId: tokenizeSearchQuery
+    parameters:
+    - name: key
+      in: query
+      value: $inputs.apiKey
+    - name: query
+      in: query
+      value: $inputs.query
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      parsed: $response.body
+  - stepId: countResults
+    description: >-
+      Run a credit-free count to size the result set for the validated query.
+    operationId: getHostCount
+    parameters:
+    - name: key
+      in: query
+      value: $inputs.apiKey
+    - name: query
+      in: query
+      value: $inputs.query
+    - name: facets
+      in: query
+      value: $inputs.facets
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      total: $response.body#/total
+      facetSummary: $response.body#/facets
+  outputs:
+    filters: $steps.listFilters.outputs.filters
+    facetsAvailable: $steps.listFacets.outputs.facetsAvailable
+    parsed: $steps.tokenizeQuery.outputs.parsed
+    total: $steps.countResults.outputs.total

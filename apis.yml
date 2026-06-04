@@ -182,6 +182,54 @@ apis:
       - type: Example
         url: examples/shodan-cvedb-cve-lookup-example.json
 common:
+  - type: ArazzoWorkflows
+    url: arazzo/
+    workflows:
+    - url: arazzo/shodan-account-overview-workflow.yml
+      name: Shodan Account Overview
+      summary: Pull the account profile, API plan limits, and the client's own IP.
+    - url: arazzo/shodan-alert-with-notifier-workflow.yml
+      name: Shodan Alert With Notifier
+      summary: Create a notifier, attach it via an alert, and arm a trigger for delivery.
+    - url: arazzo/shodan-cve-enrichment-workflow.yml
+      name: Shodan CVEDB Product Vulnerability Enrichment
+      summary: Resolve a product to a CPE, search its CVEs, then pull full CVE details.
+    - url: arazzo/shodan-domain-recon-workflow.yml
+      name: Shodan Domain Reconnaissance
+      summary: Enumerate a domain's DNS records, resolve a subdomain, and inspect the host.
+    - url: arazzo/shodan-internetdb-vuln-triage-workflow.yml
+      name: Shodan InternetDB Vulnerability Triage
+      summary: Pull an IP's free InternetDB record, then detail one of its known CVEs.
+    - url: arazzo/shodan-network-alert-lifecycle-workflow.yml
+      name: Shodan Network Alert Lifecycle
+      summary: Create a network alert, enable a trigger, verify it, then update the IP set.
+    - url: arazzo/shodan-notifier-lifecycle-workflow.yml
+      name: Shodan Notifier Lifecycle
+      summary: Create a notifier, read it back, update it, then delete it.
+    - url: arazzo/shodan-query-directory-workflow.yml
+      name: Shodan Query Directory Explorer
+      summary: Browse popular query tags, search the saved-query directory, then run a match.
+    - url: arazzo/shodan-resolve-and-host-info-workflow.yml
+      name: Shodan Resolve Hostname and Inspect Host
+      summary: Resolve a hostname to an IP and pull the full Shodan host record for that IP.
+    - url: arazzo/shodan-reverse-dns-to-host-info-workflow.yml
+      name: Shodan Reverse DNS to Host Info
+      summary: Reverse-resolve an IP to its hostnames, then pull the full host record.
+    - url: arazzo/shodan-scan-then-inspect-host-workflow.yml
+      name: Shodan Scan Then Inspect Host
+      summary: Submit a single-IP scan, poll until done, then pull the fresh host record.
+    - url: arazzo/shodan-search-builder-workflow.yml
+      name: Shodan Search Builder
+      summary: Discover available filters and facets, validate a query, then count its results.
+    - url: arazzo/shodan-search-to-host-detail-workflow.yml
+      name: Shodan Search to Host Detail
+      summary: Estimate a search, run it, then drill into the first matching host.
+    - url: arazzo/shodan-submit-scan-and-poll-workflow.yml
+      name: Shodan Submit On-Demand Scan and Poll
+      summary: Submit an on-demand scan and poll its status until the crawl completes.
+    - url: arazzo/shodan-trends-vs-live-workflow.yml
+      name: Shodan Historical Trends vs Live Exposure
+      summary: Pull historical monthly trends for a query, then compare to the live count.
   - type: Website
     url: https://www.shodan.io/
   - type: DeveloperPortal

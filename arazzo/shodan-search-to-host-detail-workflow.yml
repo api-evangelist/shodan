@@ -1,0 +1,110 @@
+arazzo: 1.0.1
+info:
+  title: Shodan Search to Host Detail
+  summary: Estimate a search, run it, then drill into the first matching host.
+  description: >-
+    A complete search-and-pivot pattern. The workflow first checks how many
+    results a query would return without spending query credits, runs the
+    search to retrieve the matching banners, and then pivots into a full host
+    lookup for the first matching IP. Every step spells out its request inline
+    so the flow can be read and executed without opening the underlying OpenAPI
+    description.
+  version: 1.0.0
+sourceDescriptions:
+- name: shodanRest
+  url: ../openapi/shodan-rest-openapi.yml
+  type: openapi
+workflows:
+- workflowId: search-to-host-detail
+  summary: Count, search, and inspect the top matching host for a Shodan query.
+  description: >-
+    Runs a credit-free count for the query, executes the search to retrieve
+    matches and facets, then retrieves the full host record for the first
+    matched IP.
+  inputs:
+    type: object
+    required:
+    - apiKey
+    - query
+    properties:
+      apiKey:
+        type: string
+        description: Shodan API key passed as the `key` query parameter.
+      query:
+        type: string
+        description: Shodan search query (e.g. "product:nginx country:US").
+      facets:
+        type: string
+        description: Comma-separated facet definitions (e.g. "country:5,port:10").
+      page:
+        type: integer
+        description: The page of search results to retrieve.
+        default: 1
+  steps:
+  - stepId: countResults
+    description: >-
+      Determine how many results the query would return, along with a facet
+      summary, without consuming query credits.
+    operationId: getHostCount
+    parameters:
+    - name: key
+      in: query
+      value: $inputs.apiKey
+    - name: query
+      in: query
+      value: $inputs.query
+    - name: facets
+      in: query
+      value: $inputs.facets
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      total: $response.body#/total
+      facets: $response.body#/facets
+  - stepId: runSearch
+    description: >-
+      Execute the search to retrieve the matching banners and any requested
+      facet breakdowns.
+    operationId: searchHosts
+    parameters:
+    - name: key
+      in: query
+      value: $inputs.apiKey
+    - name: query
+      in: query
+      value: $inputs.query
+    - name: facets
+      in: query
+      value: $inputs.facets
+    - name: page
+      in: query
+      value: $inputs.page
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      total: $response.body#/total
+      matches: $response.body#/matches
+      firstMatchIp: $response.body#/matches/0/ip_str
+  - stepId: hostDetail
+    description: >-
+      Retrieve the full host record for the first matching IP, returning every
+      indexed service found on the host.
+    operationId: getHost
+    parameters:
+    - name: key
+      in: query
+      value: $inputs.apiKey
+    - name: ip
+      in: path
+      value: $steps.runSearch.outputs.firstMatchIp
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      ip: $response.body#/ip_str
+      ports: $response.body#/ports
+      vulns: $response.body#/vulns
+  outputs:
+    total: $steps.countResults.outputs.total
+    facets: $steps.countResults.outputs.facets
+    firstMatchIp: $steps.runSearch.outputs.firstMatchIp
+    ports: $steps.hostDetail.outputs.ports

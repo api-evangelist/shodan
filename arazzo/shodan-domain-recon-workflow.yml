@@ -1,0 +1,96 @@
+arazzo: 1.0.1
+info:
+  title: Shodan Domain Reconnaissance
+  summary: Enumerate a domain's DNS records, resolve a subdomain, and inspect the host.
+  description: >-
+    A domain footprinting pattern. The workflow pulls the known subdomains and
+    DNS entries for a domain, resolves a chosen hostname to an IP, and then
+    retrieves the full Shodan host record for that IP. Every step spells out its
+    request inline so the flow can be read and executed without opening the
+    underlying OpenAPI description.
+  version: 1.0.0
+sourceDescriptions:
+- name: shodanRest
+  url: ../openapi/shodan-rest-openapi.yml
+  type: openapi
+workflows:
+- workflowId: domain-recon
+  summary: Map a domain's DNS footprint and inspect a resolved host.
+  description: >-
+    Retrieves the DNS information for a domain, resolves a chosen hostname to an
+    IP, and inspects the resulting host in Shodan.
+  inputs:
+    type: object
+    required:
+    - apiKey
+    - domain
+    - hostname
+    - resolvedIp
+    properties:
+      apiKey:
+        type: string
+        description: Shodan API key passed as the `key` query parameter.
+      domain:
+        type: string
+        description: The apex domain to enumerate (e.g. "example.com").
+      hostname:
+        type: string
+        description: A hostname under the domain to resolve (e.g. "www.example.com").
+      resolvedIp:
+        type: string
+        description: >-
+          The IP returned by the resolve step for the chosen hostname. The
+          resolver responds with a map keyed by hostname, so the chosen IP is
+          carried forward through this input for the host lookup.
+  steps:
+  - stepId: domainDns
+    description: >-
+      Retrieve the subdomains and DNS entries known for the domain.
+    operationId: getDomainDns
+    parameters:
+    - name: key
+      in: query
+      value: $inputs.apiKey
+    - name: domain
+      in: path
+      value: $inputs.domain
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      dnsInfo: $response.body
+  - stepId: resolveHostname
+    description: >-
+      Resolve the chosen hostname under the domain to its IP address. The
+      response is a map of hostname to IP address.
+    operationId: resolveHostnames
+    parameters:
+    - name: key
+      in: query
+      value: $inputs.apiKey
+    - name: hostnames
+      in: query
+      value: $inputs.hostname
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      resolution: $response.body
+  - stepId: hostInfo
+    description: >-
+      Retrieve the full Shodan host record for the resolved IP.
+    operationId: getHost
+    parameters:
+    - name: key
+      in: query
+      value: $inputs.apiKey
+    - name: ip
+      in: path
+      value: $inputs.resolvedIp
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      ports: $response.body#/ports
+      vulns: $response.body#/vulns
+  outputs:
+    dnsInfo: $steps.domainDns.outputs.dnsInfo
+    resolution: $steps.resolveHostname.outputs.resolution
+    ports: $steps.hostInfo.outputs.ports

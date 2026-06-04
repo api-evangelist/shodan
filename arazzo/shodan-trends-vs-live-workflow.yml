@@ -1,0 +1,86 @@
+arazzo: 1.0.1
+info:
+  title: Shodan Historical Trends vs Live Exposure
+  summary: Pull historical monthly trends for a query, then compare to the live count.
+  description: >-
+    A then-versus-now exposure pattern. The workflow runs a query against the
+    Trends API to retrieve monthly historical counts and faceted breakdowns,
+    then runs the same query against the live REST count endpoint so the current
+    exposure can be compared to the historical trend. Both APIs use the same
+    `key` query parameter. Every step spells out its request inline so the flow
+    can be read and executed without opening the underlying OpenAPI description.
+  version: 1.0.0
+sourceDescriptions:
+- name: shodanTrends
+  url: ../openapi/shodan-trends-openapi.yml
+  type: openapi
+- name: shodanRest
+  url: ../openapi/shodan-rest-openapi.yml
+  type: openapi
+workflows:
+- workflowId: trends-vs-live
+  summary: Compare a query's historical trend to its current live count.
+  description: >-
+    Retrieves monthly historical counts and facets for a query from the Trends
+    API, then retrieves the current live count for the same query.
+  inputs:
+    type: object
+    required:
+    - apiKey
+    - query
+    properties:
+      apiKey:
+        type: string
+        description: Shodan API key passed as the `key` query parameter.
+      query:
+        type: string
+        description: The historical Shodan search query (e.g. "product:nginx").
+      facets:
+        type: string
+        description: Comma-separated facets with optional size suffix (e.g. "country:10").
+  steps:
+  - stepId: historicalTrends
+    description: >-
+      Retrieve the monthly counts and faceted aggregations for the query from
+      the Trends API.
+    operationId: searchTrends
+    parameters:
+    - name: key
+      in: query
+      value: $inputs.apiKey
+    - name: query
+      in: query
+      value: $inputs.query
+    - name: facets
+      in: query
+      value: $inputs.facets
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      historicalTotal: $response.body#/total
+      monthly: $response.body#/matches
+      historicalFacets: $response.body#/facets
+  - stepId: liveCount
+    description: >-
+      Retrieve the current live count for the same query without consuming
+      query credits.
+    operationId: getHostCount
+    parameters:
+    - name: key
+      in: query
+      value: $inputs.apiKey
+    - name: query
+      in: query
+      value: $inputs.query
+    - name: facets
+      in: query
+      value: $inputs.facets
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      liveTotal: $response.body#/total
+      liveFacets: $response.body#/facets
+  outputs:
+    historicalTotal: $steps.historicalTrends.outputs.historicalTotal
+    monthly: $steps.historicalTrends.outputs.monthly
+    liveTotal: $steps.liveCount.outputs.liveTotal

@@ -1,0 +1,78 @@
+arazzo: 1.0.1
+info:
+  title: Shodan Account Overview
+  summary: Pull the account profile, API plan limits, and the client's own IP.
+  description: >-
+    An account onboarding and self-check pattern. The workflow reads the account
+    profile, retrieves the API plan information including remaining query and
+    scan credits, and reports the IP address the request was issued from. Every
+    step spells out its request inline so the flow can be read and executed
+    without opening the underlying OpenAPI description.
+  version: 1.0.0
+sourceDescriptions:
+- name: shodanRest
+  url: ../openapi/shodan-rest-openapi.yml
+  type: openapi
+workflows:
+- workflowId: account-overview
+  summary: Summarize the account profile, plan credits, and client IP.
+  description: >-
+    Retrieves the account profile, the API plan information with remaining
+    credits, and the client IP as seen by Shodan.
+  inputs:
+    type: object
+    required:
+    - apiKey
+    properties:
+      apiKey:
+        type: string
+        description: Shodan API key passed as the `key` query parameter.
+  steps:
+  - stepId: getProfile
+    description: >-
+      Read the account profile, including membership status and display name.
+    operationId: getAccountProfile
+    parameters:
+    - name: key
+      in: query
+      value: $inputs.apiKey
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      member: $response.body#/member
+      displayName: $response.body#/display_name
+      credits: $response.body#/credits
+  - stepId: getPlan
+    description: >-
+      Retrieve the API plan information, including remaining query and scan
+      credits and usage limits.
+    operationId: getApiInfo
+    parameters:
+    - name: key
+      in: query
+      value: $inputs.apiKey
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      plan: $response.body#/plan
+      queryCredits: $response.body#/query_credits
+      scanCredits: $response.body#/scan_credits
+      monitoredIps: $response.body#/monitored_ips
+  - stepId: getClientIp
+    description: >-
+      Report the IP address that the request was issued from.
+    operationId: getMyIp
+    parameters:
+    - name: key
+      in: query
+      value: $inputs.apiKey
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      clientIp: $response.body
+  outputs:
+    displayName: $steps.getProfile.outputs.displayName
+    plan: $steps.getPlan.outputs.plan
+    queryCredits: $steps.getPlan.outputs.queryCredits
+    scanCredits: $steps.getPlan.outputs.scanCredits
+    clientIp: $steps.getClientIp.outputs.clientIp

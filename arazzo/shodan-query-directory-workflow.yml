@@ -1,0 +1,88 @@
+arazzo: 1.0.1
+info:
+  title: Shodan Query Directory Explorer
+  summary: Browse popular query tags, search the saved-query directory, then run a match.
+  description: >-
+    A directory-driven discovery pattern. The workflow lists the most popular
+    tags in the community saved-query directory, searches that directory for
+    queries matching a term, and then executes one of the surfaced queries
+    against the live Shodan index. Every step spells out its request inline so
+    the flow can be read and executed without opening the underlying OpenAPI
+    description.
+  version: 1.0.0
+sourceDescriptions:
+- name: shodanRest
+  url: ../openapi/shodan-rest-openapi.yml
+  type: openapi
+workflows:
+- workflowId: query-directory-explorer
+  summary: Explore the saved-query directory and run a discovered query.
+  description: >-
+    Lists popular query tags, searches the saved-query directory for a term,
+    and executes a chosen query string against the live index.
+  inputs:
+    type: object
+    required:
+    - apiKey
+    - searchTerm
+    - chosenQuery
+    properties:
+      apiKey:
+        type: string
+        description: Shodan API key passed as the `key` query parameter.
+      searchTerm:
+        type: string
+        description: The term to search the saved-query directory for.
+      chosenQuery:
+        type: string
+        description: >-
+          The query string to run against the live index, typically taken from
+          a saved query surfaced by the directory search.
+  steps:
+  - stepId: popularTags
+    description: >-
+      Retrieve the most popular tags assigned to saved queries in the directory.
+    operationId: listSavedQueryTags
+    parameters:
+    - name: key
+      in: query
+      value: $inputs.apiKey
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      tags: $response.body
+  - stepId: searchDirectory
+    description: >-
+      Search the saved-query directory for queries matching the supplied term.
+    operationId: searchSavedQueries
+    parameters:
+    - name: key
+      in: query
+      value: $inputs.apiKey
+    - name: query
+      in: query
+      value: $inputs.searchTerm
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      directoryMatches: $response.body
+  - stepId: runChosenQuery
+    description: >-
+      Run the chosen query against the live Shodan index and return the count
+      without spending result credits.
+    operationId: getHostCount
+    parameters:
+    - name: key
+      in: query
+      value: $inputs.apiKey
+    - name: query
+      in: query
+      value: $inputs.chosenQuery
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      total: $response.body#/total
+  outputs:
+    tags: $steps.popularTags.outputs.tags
+    directoryMatches: $steps.searchDirectory.outputs.directoryMatches
+    total: $steps.runChosenQuery.outputs.total

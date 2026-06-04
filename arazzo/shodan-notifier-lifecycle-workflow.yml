@@ -1,0 +1,121 @@
+arazzo: 1.0.1
+info:
+  title: Shodan Notifier Lifecycle
+  summary: Create a notifier, read it back, update it, then delete it.
+  description: >-
+    A full notifier management pattern. The workflow creates a notifier, reads
+    it back to confirm its configuration, updates its description and provider
+    arguments, and finally deletes it. Every step spells out its request inline
+    so the flow can be read and executed without opening the underlying OpenAPI
+    description.
+  version: 1.0.0
+sourceDescriptions:
+- name: shodanRest
+  url: ../openapi/shodan-rest-openapi.yml
+  type: openapi
+workflows:
+- workflowId: notifier-lifecycle
+  summary: Create, verify, update, and delete a Shodan notifier.
+  description: >-
+    Creates a notifier, retrieves it to confirm configuration, updates it, and
+    deletes it.
+  inputs:
+    type: object
+    required:
+    - apiKey
+    - provider
+    - description
+    - notifierArgs
+    - updatedDescription
+    properties:
+      apiKey:
+        type: string
+        description: Shodan API key passed as the `key` query parameter.
+      provider:
+        type: string
+        description: The notifier provider type (e.g. "email", "slack").
+      description:
+        type: string
+        description: A human-readable description for the notifier.
+      notifierArgs:
+        type: object
+        description: Provider-specific configuration arguments for the notifier.
+      updatedDescription:
+        type: string
+        description: The revised description to apply when updating the notifier.
+  steps:
+  - stepId: createNotifier
+    description: >-
+      Create a new notifier for receiving alerts.
+    operationId: createNotifier
+    requestBody:
+      contentType: application/json
+      payload:
+        provider: $inputs.provider
+        description: $inputs.description
+        args: $inputs.notifierArgs
+    parameters:
+    - name: key
+      in: query
+      value: $inputs.apiKey
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      notifierId: $response.body#/id
+  - stepId: getNotifier
+    description: >-
+      Read the notifier back to confirm its configuration.
+    operationId: getNotifier
+    parameters:
+    - name: key
+      in: query
+      value: $inputs.apiKey
+    - name: id
+      in: path
+      value: $steps.createNotifier.outputs.notifierId
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      provider: $response.body#/provider
+      description: $response.body#/description
+  - stepId: updateNotifier
+    description: >-
+      Update the notifier with a revised description, keeping the same provider
+      and arguments.
+    operationId: updateNotifier
+    requestBody:
+      contentType: application/json
+      payload:
+        provider: $inputs.provider
+        description: $inputs.updatedDescription
+        args: $inputs.notifierArgs
+    parameters:
+    - name: key
+      in: query
+      value: $inputs.apiKey
+    - name: id
+      in: path
+      value: $steps.createNotifier.outputs.notifierId
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      updatedDescription: $response.body#/description
+  - stepId: deleteNotifier
+    description: >-
+      Delete the notifier to clean up.
+    operationId: deleteNotifier
+    parameters:
+    - name: key
+      in: query
+      value: $inputs.apiKey
+    - name: id
+      in: path
+      value: $steps.createNotifier.outputs.notifierId
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      success: $response.body#/success
+  outputs:
+    notifierId: $steps.createNotifier.outputs.notifierId
+    updatedDescription: $steps.updateNotifier.outputs.updatedDescription
+    deleted: $steps.deleteNotifier.outputs.success
