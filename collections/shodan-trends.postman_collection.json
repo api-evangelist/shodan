@@ -1,0 +1,149 @@
+{
+  "item": [
+    {
+      "id": "623abb6a-f286-48fa-ae2d-4d3c6d389d72",
+      "name": "Trends",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "016cde1d-e551-4cc0-8240-9984ab8c7859",
+          "name": "Search Historical Trends",
+          "request": {
+            "name": "Search Historical Trends",
+            "description": {
+              "content": "Return monthly counts and faceted aggregations for a historical Shodan search.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "search"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "query",
+                  "value": "<string>",
+                  "description": "(Required) Historical Shodan search query (e.g. `product:nginx`)."
+                },
+                {
+                  "disabled": false,
+                  "key": "facets",
+                  "value": "<string>",
+                  "description": "Comma-separated facets with optional size suffix (e.g. `country:10`)."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "32e0f0c7-6624-4866-bc89-c2827086375e",
+              "name": "Monthly counts and facet breakdowns.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "query",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "facets",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"total\": 9961,\n  \"matches\": [\n    {\n      \"month\": \"string\",\n      \"count\": 8999\n    },\n    {\n      \"month\": \"string\",\n      \"count\": 2434\n    }\n  ],\n  \"facets\": {\n    \"key_0\": [\n      {\n        \"value\": \"string\",\n        \"count\": 3903,\n        \"matches\": [\n          {\n            \"month\": \"string\",\n            \"count\": 6567\n          },\n          {\n            \"month\": \"string\",\n            \"count\": 5970\n          }\n        ]\n      },\n      {\n        \"value\": \"string\",\n        \"count\": 8360,\n        \"matches\": [\n          {\n            \"month\": \"string\",\n            \"count\": 6946\n          },\n          {\n            \"month\": \"string\",\n            \"count\": 2662\n          }\n        ]\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://trends.shodan.io",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "key"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "query"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "bdf24db0-7c3b-4e79-93d1-973f294f5e44",
+    "name": "Shodan Trends API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Shodan Trends API provides historical analytics on top of the complete Shodan scan dataset. Queries return monthly counts and faceted breakdowns over time. Enterprise plan required.\n\nContact Support:\n Name: Shodan Support\n Email: support@shodan.io",
+      "type": "text/plain"
+    }
+  }
+}

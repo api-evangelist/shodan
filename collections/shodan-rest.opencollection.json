@@ -1,0 +1,837 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Shodan REST API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "key",
+      "value": "{{key}}",
+      "placement": "query"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Search Methods",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Host Information",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.shodan.io/shodan/host/:ip",
+            "params": [
+              {
+                "name": "ip",
+                "value": "",
+                "type": "path",
+                "description": "IPv4 or IPv6 address."
+              },
+              {
+                "name": "history",
+                "value": "",
+                "type": "query",
+                "description": "Include historical banners."
+              },
+              {
+                "name": "minify",
+                "value": "",
+                "type": "query",
+                "description": "Return a truncated banner record."
+              }
+            ]
+          },
+          "docs": "Returns all services that have been found on the given host IP."
+        },
+        {
+          "info": {
+            "name": "Get Search Result Count",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.shodan.io/shodan/host/count",
+            "params": [
+              {
+                "name": "query",
+                "value": "",
+                "type": "query",
+                "description": "Shodan search query."
+              },
+              {
+                "name": "facets",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated facet definitions (e.g. `country:5,port:10`)."
+              }
+            ]
+          },
+          "docs": "Returns the number of results a search would have, without consuming query credits or returning results."
+        },
+        {
+          "info": {
+            "name": "Search Shodan",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.shodan.io/shodan/host/search",
+            "params": [
+              {
+                "name": "query",
+                "value": "",
+                "type": "query",
+                "description": "Shodan search query."
+              },
+              {
+                "name": "facets",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated facet definitions (e.g. `country:5,port:10`)."
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "minify",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Search Shodan using the same query syntax as the website. Uses one query credit per page after the first when filters are used."
+        },
+        {
+          "info": {
+            "name": "List Search Facets",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.shodan.io/shodan/host/search/facets"
+          },
+          "docs": "Returns the list of facets that can be used to summarize search results."
+        },
+        {
+          "info": {
+            "name": "List Search Filters",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.shodan.io/shodan/host/search/filters"
+          },
+          "docs": "Returns the list of filters that can be used when searching."
+        },
+        {
+          "info": {
+            "name": "Break Query Into Tokens",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.shodan.io/shodan/host/search/tokens",
+            "params": [
+              {
+                "name": "query",
+                "value": "",
+                "type": "query",
+                "description": "Shodan search query."
+              }
+            ]
+          },
+          "docs": "Determine which filters and tokens make up a search query."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "On-Demand Scanning",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Crawled Ports",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.shodan.io/shodan/ports"
+          },
+          "docs": "Returns the list of port numbers that Shodan is crawling on the Internet."
+        },
+        {
+          "info": {
+            "name": "List Supported Protocols",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.shodan.io/shodan/protocols"
+          },
+          "docs": "Returns the list of protocols that can be used when launching an on-demand Internet scan."
+        },
+        {
+          "info": {
+            "name": "Submit On-Demand Scan",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.shodan.io/shodan/scan",
+            "body": {
+              "type": "form-urlencoded",
+              "data": [
+                {
+                  "name": "ips",
+                  "value": ""
+                }
+              ]
+            }
+          },
+          "docs": "Request Shodan to crawl an IP or netblock. Each IP consumes one scan credit."
+        },
+        {
+          "info": {
+            "name": "Scan Internet For Port",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.shodan.io/shodan/scan/internet",
+            "body": {
+              "type": "form-urlencoded",
+              "data": [
+                {
+                  "name": "port",
+                  "value": ""
+                },
+                {
+                  "name": "protocol",
+                  "value": ""
+                }
+              ]
+            }
+          },
+          "docs": "Request Shodan to crawl the Internet for a specific port and protocol. Enterprise only."
+        },
+        {
+          "info": {
+            "name": "List On-Demand Scans",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.shodan.io/shodan/scans"
+          },
+          "docs": "Returns the list of on-demand scans submitted by the account."
+        },
+        {
+          "info": {
+            "name": "Get Scan Status",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.shodan.io/shodan/scan/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Returns the status and progress of an on-demand scan."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Network Alerts",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Create Network Alert",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.shodan.io/shodan/alert",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a network alert on one or more IP ranges."
+        },
+        {
+          "info": {
+            "name": "List Network Alerts",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.shodan.io/shodan/alert/info"
+          },
+          "docs": "Returns the network alerts that have been created on the account."
+        },
+        {
+          "info": {
+            "name": "Get Network Alert",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.shodan.io/shodan/alert/:id/info",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Alert identifier."
+              }
+            ]
+          },
+          "docs": "Returns the information about a specific network alert."
+        },
+        {
+          "info": {
+            "name": "Update Network Alert",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.shodan.io/shodan/alert/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Alert identifier."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Edit the IP ranges or name of a network alert."
+        },
+        {
+          "info": {
+            "name": "Delete Network Alert",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.shodan.io/shodan/alert/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Alert identifier."
+              }
+            ]
+          },
+          "docs": "Remove the network alert and its triggers."
+        },
+        {
+          "info": {
+            "name": "List Alert Triggers",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.shodan.io/shodan/alert/triggers"
+          },
+          "docs": "Returns the list of triggers that can be enabled on alerts."
+        },
+        {
+          "info": {
+            "name": "Enable Alert Trigger",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.shodan.io/shodan/alert/:id/trigger/:trigger",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Alert identifier."
+              },
+              {
+                "name": "trigger",
+                "value": "",
+                "type": "path",
+                "description": "Trigger name."
+              }
+            ]
+          },
+          "docs": "Enable a trigger on a network alert."
+        },
+        {
+          "info": {
+            "name": "Disable Alert Trigger",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.shodan.io/shodan/alert/:id/trigger/:trigger",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Alert identifier."
+              },
+              {
+                "name": "trigger",
+                "value": "",
+                "type": "path",
+                "description": "Trigger name."
+              }
+            ]
+          },
+          "docs": "Disable a trigger on a network alert."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Notifiers",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Notifiers",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.shodan.io/notifier"
+          },
+          "docs": "Returns the list of notifiers the user has configured."
+        },
+        {
+          "info": {
+            "name": "Create Notifier",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.shodan.io/notifier",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a new notifier for receiving alerts."
+        },
+        {
+          "info": {
+            "name": "List Notifier Providers",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.shodan.io/notifier/provider"
+          },
+          "docs": "Returns the list of available notification provider types."
+        },
+        {
+          "info": {
+            "name": "Get Notifier",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.shodan.io/notifier/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Notifier identifier."
+              }
+            ]
+          },
+          "docs": "Returns information about a specific notifier."
+        },
+        {
+          "info": {
+            "name": "Update Notifier",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.shodan.io/notifier/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Notifier identifier."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update an existing notifier configuration."
+        },
+        {
+          "info": {
+            "name": "Delete Notifier",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.shodan.io/notifier/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Notifier identifier."
+              }
+            ]
+          },
+          "docs": "Delete a notifier."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Directory",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Saved Queries",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.shodan.io/shodan/query",
+            "params": [
+              {
+                "name": "page",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "sort",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "order",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Browse the directory of community-saved Shodan queries."
+        },
+        {
+          "info": {
+            "name": "Search Saved Queries",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.shodan.io/shodan/query/search",
+            "params": [
+              {
+                "name": "query",
+                "value": "",
+                "type": "query",
+                "description": "Shodan search query."
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Search the directory of saved Shodan queries."
+        },
+        {
+          "info": {
+            "name": "List Popular Query Tags",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.shodan.io/shodan/query/tags",
+            "params": [
+              {
+                "name": "size",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Returns the most popular tags assigned to saved queries."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Bulk Data",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Bulk Data Sets",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.shodan.io/shodan/data"
+          },
+          "docs": "Returns the list of bulk data sets available to the account. Enterprise only."
+        },
+        {
+          "info": {
+            "name": "List Bulk Data Files",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.shodan.io/shodan/data/:dataset",
+            "params": [
+              {
+                "name": "dataset",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Returns the list of files available within a bulk dataset. Enterprise only."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "DNS",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Domain DNS Information",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.shodan.io/dns/domain/:domain",
+            "params": [
+              {
+                "name": "domain",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "history",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "type",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Returns the subdomains and DNS entries known for the given domain."
+        },
+        {
+          "info": {
+            "name": "Resolve Hostnames",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.shodan.io/dns/resolve",
+            "params": [
+              {
+                "name": "hostnames",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated list of hostnames."
+              }
+            ]
+          },
+          "docs": "Look up IP addresses for the given hostnames."
+        },
+        {
+          "info": {
+            "name": "Reverse DNS Lookup",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.shodan.io/dns/reverse",
+            "params": [
+              {
+                "name": "ips",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated list of IP addresses."
+              }
+            ]
+          },
+          "docs": "Look up hostnames for the given IP addresses."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Utility",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Request HTTP Headers",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.shodan.io/tools/httpheaders"
+          },
+          "docs": "Returns the HTTP headers seen by the Shodan server."
+        },
+        {
+          "info": {
+            "name": "Get Client IP",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.shodan.io/tools/myip"
+          },
+          "docs": "Returns the IP address that the request was issued from."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Account",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Account Profile",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.shodan.io/account/profile"
+          },
+          "docs": "Returns information about the Shodan account."
+        },
+        {
+          "info": {
+            "name": "Get API Plan Info",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.shodan.io/api-info"
+          },
+          "docs": "Returns information about the API plan including remaining query and scan credits."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Organization",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Organization",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.shodan.io/org"
+          },
+          "docs": "Returns information about the organization the account is part of."
+        },
+        {
+          "info": {
+            "name": "Add Organization Member",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.shodan.io/org/member/:user",
+            "params": [
+              {
+                "name": "user",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "notify",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Add a user to the organization."
+        },
+        {
+          "info": {
+            "name": "Remove Organization Member",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.shodan.io/org/member/:user",
+            "params": [
+              {
+                "name": "user",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Remove a user from the organization."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

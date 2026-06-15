@@ -1,0 +1,426 @@
+{
+  "item": [
+    {
+      "id": "5f961630-08a2-46a1-bafa-46aa21d54c16",
+      "name": "CVE",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "addb46eb-a4ad-45de-ab48-45efcfca453b",
+          "name": "Get CVE Details",
+          "request": {
+            "name": "Get CVE Details",
+            "description": {
+              "content": "Retrieve detailed information for a specific CVE including descriptions, CVSS, EPSS, KEV status, references, and impacted CPEs.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "cve",
+                ":cveId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "cveId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "a0eb4db2-a8f6-483c-90e3-15c39e6a27ab",
+              "name": "CVE record.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "cve",
+                    ":cveId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "cveId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"cve_id\": \"string\",\n  \"summary\": \"string\",\n  \"cvss\": 2897.2476260461112,\n  \"cvss_version\": \"string\",\n  \"cvss_v2\": 7567.029812263715,\n  \"cvss_v3\": 3284.0615323116717,\n  \"epss\": 5890.540819106407,\n  \"ranking_epss\": 5993.9537332194905,\n  \"kev\": false,\n  \"propose_action\": \"string\",\n  \"ransomware_campaign\": \"string\",\n  \"references\": [\n    \"https://kCPWieWsDdsazjcLaGA.fgamc1ag-jlGLM5gBfXLxkY+iAh0vea27GAl+ekC8DaBgQ+Mr,2XGcb5GBzC+7QB7WMSMVV,tYFE\",\n    \"https://bqElKdgtMQEtXDrrA.rfbCHU,iNoheCO+A+ZyJvobgj\"\n  ],\n  \"published_time\": \"1973-04-17T09:00:49.799Z\",\n  \"cpes\": [\n    \"string\",\n    \"string\"\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "105448ea-2e6d-4e6e-93c2-c4431092b2a6",
+              "name": "CVE not found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "cve",
+                    ":cveId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "cveId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "00ab1683-3cdc-4d9d-9db3-ccc8b229ddac",
+          "name": "Search CVEs",
+          "request": {
+            "name": "Search CVEs",
+            "description": {
+              "content": "Search the CVE catalog by CPE 2.3, product, KEV status, EPSS ordering, or date range.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "cves"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "cpe23",
+                  "value": "<string>",
+                  "description": "Filter by CPE 2.3 identifier (e.g. `cpe:2.3:a:nginx:nginx:1.21.0`)."
+                },
+                {
+                  "disabled": false,
+                  "key": "product",
+                  "value": "<string>",
+                  "description": "Filter by product name."
+                },
+                {
+                  "disabled": false,
+                  "key": "is_kev",
+                  "value": "<boolean>",
+                  "description": "Restrict to CISA Known Exploited Vulnerabilities."
+                },
+                {
+                  "disabled": false,
+                  "key": "sort_by_epss",
+                  "value": "<boolean>",
+                  "description": "Sort results by EPSS score, highest first."
+                },
+                {
+                  "disabled": false,
+                  "key": "start_date",
+                  "value": "<date>"
+                },
+                {
+                  "disabled": false,
+                  "key": "end_date",
+                  "value": "<date>"
+                },
+                {
+                  "disabled": false,
+                  "key": "skip",
+                  "value": "0"
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "1000"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "1386cc6d-5e08-4af8-98a2-14ce3b49b041",
+              "name": "CVE list.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "cves"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "cpe23",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "product",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "is_kev",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "sort_by_epss",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "start_date",
+                      "value": "<date>"
+                    },
+                    {
+                      "key": "end_date",
+                      "value": "<date>"
+                    },
+                    {
+                      "key": "skip",
+                      "value": "0"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "1000"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"cves\": [\n    {\n      \"cve_id\": \"string\",\n      \"summary\": \"string\",\n      \"cvss\": 2439.228502144287,\n      \"cvss_version\": \"string\",\n      \"cvss_v2\": 9858.195125169717,\n      \"cvss_v3\": 7157.996397778844,\n      \"epss\": 3978.14838067031,\n      \"ranking_epss\": 8252.508912753936,\n      \"kev\": true,\n      \"propose_action\": \"string\",\n      \"ransomware_campaign\": \"string\",\n      \"references\": [\n        \"http://qiMYMSGupjl.dszfrmOu0Jso7lgmaEhvFaemXPVM0k5rLdxc-enVtE4mqC8c+-Rls-+\",\n        \"https://QV.ius,1MfWGleW1ggkB4Rf3KpJ..r\"\n      ],\n      \"published_time\": \"1948-07-21T12:40:41.923Z\",\n      \"cpes\": [\n        \"string\",\n        \"string\"\n      ]\n    },\n    {\n      \"cve_id\": \"string\",\n      \"summary\": \"string\",\n      \"cvss\": 2292.786688774786,\n      \"cvss_version\": \"string\",\n      \"cvss_v2\": 2273.697432634725,\n      \"cvss_v3\": 5689.914505772868,\n      \"epss\": 4381.575789147816,\n      \"ranking_epss\": 3558.125591112452,\n      \"kev\": false,\n      \"propose_action\": \"string\",\n      \"ransomware_campaign\": \"string\",\n      \"references\": [\n        \"https://uhzLUGiHPYwbnYMkHwdShjeuaGDY.nionba2SIIJKrnytL80TeWYlfnOrRAXNlanuhJI9xyrVg2s0xpyR\",\n        \"https://RpZhQaBFZDx.axcO5WoTD.wQP.SY5B4wP8v+blEhnYcSYFeB\"\n      ],\n      \"published_time\": \"2005-01-24T00:27:13.581Z\",\n      \"cpes\": [\n        \"string\",\n        \"string\"\n      ]\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "9d1667ff-44f7-4894-ba05-4e20495e84f1",
+      "name": "CPE",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "358ef691-6725-435a-a583-0ff098e32f75",
+          "name": "Search CPEs",
+          "request": {
+            "name": "Search CPEs",
+            "description": {
+              "content": "Retrieve CPE 2.3 dictionary entries matching the given product.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "cpes"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "product",
+                  "value": "<string>",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "count",
+                  "value": "false"
+                },
+                {
+                  "disabled": false,
+                  "key": "skip",
+                  "value": "0"
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "1000"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "48625a07-6d58-4d98-947b-d5245672c670",
+              "name": "CPE entries.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "cpes"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "product",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "count",
+                      "value": "false"
+                    },
+                    {
+                      "key": "skip",
+                      "value": "0"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "1000"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"cpes\": [\n    {\n      \"cpe23\": \"string\",\n      \"vendor\": \"string\",\n      \"product\": \"string\",\n      \"version\": \"string\"\n    },\n    {\n      \"cpe23\": \"string\",\n      \"vendor\": \"string\",\n      \"product\": \"string\",\n      \"version\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://cvedb.shodan.io",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "51abfce8-73bb-4af6-ad7b-3de6508e09cb",
+    "name": "Shodan CVEDB API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Shodan's CVEDB is a free vulnerability database API that supports CVE lookups, CPE-keyed vulnerability search, KEV filtering, EPSS ordering, date-range queries, and product-name search. No API key required; updated daily.\n\nContact Support:\n Name: Shodan Support\n Email: support@shodan.io",
+      "type": "text/plain"
+    }
+  }
+}

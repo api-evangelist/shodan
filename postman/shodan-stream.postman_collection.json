@@ -1,0 +1,645 @@
+{
+  "info": {
+    "_postman_id": "d815be6d-560a-444e-b7ff-cb2e353d1fa6",
+    "name": "Shodan Streaming API",
+    "description": "The Shodan Streaming API delivers a real-time firehose of banner data collected by Shodan. Filtered streams are available by ASN, country, port, and CVE. Output is delivered either as newline-separated JSON or Server-Sent Events.\n\nContact Support:\n Name: Shodan Support\n Email: support@shodan.io",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-06-05T15:01:47.000Z",
+    "updatedAt": "2026-06-05T15:01:48.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-d815be6d-560a-444e-b7ff-cb2e353d1fa6"
+  },
+  "item": [
+    {
+      "name": "shodan",
+      "item": [
+        {
+          "name": "banners",
+          "item": [
+            {
+              "name": "Stream All Banners",
+              "id": "1fb12c15-4a31-472c-8abd-c6a2d63d4a2f",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/x-ndjson"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/shodan/banners?t=sse&debug=1",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "shodan",
+                    "banners"
+                  ],
+                  "query": [
+                    {
+                      "description": "Output format. `json` returns newline-separated JSON; `sse` returns Server-Sent Events.",
+                      "key": "t",
+                      "value": "sse"
+                    },
+                    {
+                      "description": "Set to 1 to include discarded message counts.",
+                      "key": "debug",
+                      "value": "1"
+                    }
+                  ]
+                },
+                "description": "Stream every banner Shodan collects in real time. Intended for accounts that need the full firehose to build a local Shodan database."
+              },
+              "response": [
+                {
+                  "id": "0254feb9-e8bb-44f5-a8f2-de2e1240adea",
+                  "name": "Newline-separated JSON or SSE stream.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/x-ndjson"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/shodan/banners?t=sse&debug=1&key=<API Key>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "shodan",
+                        "banners"
+                      ],
+                      "query": [
+                        {
+                          "description": "Output format. `json` returns newline-separated JSON; `sse` returns Server-Sent Events.",
+                          "key": "t",
+                          "value": "sse"
+                        },
+                        {
+                          "description": "Set to 1 to include discarded message counts.",
+                          "key": "debug",
+                          "value": "1"
+                        },
+                        {
+                          "description": "Added as a part of security scheme: apikey",
+                          "key": "key",
+                          "value": "<API Key>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "text",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/x-ndjson"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"ip_str\": \"<string>\",\n  \"port\": \"<integer>\",\n  \"transport\": \"udp\",\n  \"product\": \"<string>\",\n  \"version\": \"<string>\",\n  \"data\": \"<string>\",\n  \"timestamp\": \"<dateTime>\",\n  \"hash\": \"<integer>\",\n  \"org\": \"<string>\",\n  \"isp\": \"<string>\",\n  \"asn\": \"<string>\",\n  \"hostnames\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"domains\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"location\": {\n    \"city\": \"<string>\",\n    \"country_code\": \"<string>\",\n    \"country_name\": \"<string>\",\n    \"latitude\": \"<number>\",\n    \"longitude\": \"<number>\"\n  },\n  \"ssl\": {\n    \"ut_3d9\": false,\n    \"consectetur_978\": 68438332.78782779,\n    \"id3ee\": false\n  },\n  \"http\": {\n    \"Duis9\": -20899320.110158205\n  },\n  \"cpe23\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"vulns\": {\n    \"sed52\": -29673816,\n    \"et_ce\": 65840448.63720578\n  }\n}",
+                  "createdAt": "2026-06-05T15:01:48.000Z",
+                  "updatedAt": "2026-06-05T15:01:48.000Z",
+                  "uid": "35240-0254feb9-e8bb-44f5-a8f2-de2e1240adea"
+                }
+              ],
+              "createdAt": "2026-06-05T15:01:48.000Z",
+              "updatedAt": "2026-06-05T15:01:48.000Z",
+              "uid": "35240-1fb12c15-4a31-472c-8abd-c6a2d63d4a2f"
+            }
+          ],
+          "id": "4884d4de-c598-4334-8f59-a3f07f551813",
+          "createdAt": "2026-06-05T15:01:48.000Z",
+          "updatedAt": "2026-06-05T15:01:48.000Z",
+          "uid": "35240-4884d4de-c598-4334-8f59-a3f07f551813"
+        },
+        {
+          "name": "asn",
+          "item": [
+            {
+              "name": "{asn}",
+              "item": [
+                {
+                  "name": "Stream Banners By ASN",
+                  "id": "055cc372-5796-4ba0-b436-6780331f9458",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/x-ndjson"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/shodan/asn/:asn?t=sse",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "shodan",
+                        "asn",
+                        ":asn"
+                      ],
+                      "query": [
+                        {
+                          "description": "Output format. `json` returns newline-separated JSON; `sse` returns Server-Sent Events.",
+                          "key": "t",
+                          "value": "sse"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "id": "5dfbb9f5-9dd4-424a-bcc6-0d87e1183b14",
+                          "key": "asn",
+                          "value": "<string>",
+                          "description": "(Required) Comma-separated ASN list (e.g. `3303,32475`)."
+                        }
+                      ]
+                    },
+                    "description": "Stream banners limited to one or more Autonomous System Numbers."
+                  },
+                  "response": [
+                    {
+                      "id": "881f5e31-32c3-461e-bb24-084f3b7f2e65",
+                      "name": "Filtered banner stream.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/x-ndjson"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/shodan/asn/:asn?t=sse&key=<API Key>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "shodan",
+                            "asn",
+                            ":asn"
+                          ],
+                          "query": [
+                            {
+                              "description": "Output format. `json` returns newline-separated JSON; `sse` returns Server-Sent Events.",
+                              "key": "t",
+                              "value": "sse"
+                            },
+                            {
+                              "description": "Added as a part of security scheme: apikey",
+                              "key": "key",
+                              "value": "<API Key>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "asn"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "text",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/x-ndjson"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"ip_str\": \"<string>\",\n  \"port\": \"<integer>\",\n  \"transport\": \"udp\",\n  \"product\": \"<string>\",\n  \"version\": \"<string>\",\n  \"data\": \"<string>\",\n  \"timestamp\": \"<dateTime>\",\n  \"hash\": \"<integer>\",\n  \"org\": \"<string>\",\n  \"isp\": \"<string>\",\n  \"asn\": \"<string>\",\n  \"hostnames\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"domains\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"location\": {\n    \"city\": \"<string>\",\n    \"country_code\": \"<string>\",\n    \"country_name\": \"<string>\",\n    \"latitude\": \"<number>\",\n    \"longitude\": \"<number>\"\n  },\n  \"ssl\": {\n    \"ut_3d9\": false,\n    \"consectetur_978\": 68438332.78782779,\n    \"id3ee\": false\n  },\n  \"http\": {\n    \"Duis9\": -20899320.110158205\n  },\n  \"cpe23\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"vulns\": {\n    \"sed52\": -29673816,\n    \"et_ce\": 65840448.63720578\n  }\n}",
+                      "createdAt": "2026-06-05T15:01:48.000Z",
+                      "updatedAt": "2026-06-05T15:01:48.000Z",
+                      "uid": "35240-881f5e31-32c3-461e-bb24-084f3b7f2e65"
+                    }
+                  ],
+                  "createdAt": "2026-06-05T15:01:48.000Z",
+                  "updatedAt": "2026-06-05T15:01:48.000Z",
+                  "uid": "35240-055cc372-5796-4ba0-b436-6780331f9458"
+                }
+              ],
+              "id": "7b8c623e-8ec3-4477-88bb-d550d92f174e",
+              "createdAt": "2026-06-05T15:01:48.000Z",
+              "updatedAt": "2026-06-05T15:01:48.000Z",
+              "uid": "35240-7b8c623e-8ec3-4477-88bb-d550d92f174e"
+            }
+          ],
+          "id": "0f0efa39-b663-464f-947b-6b8e6c4a57cc",
+          "createdAt": "2026-06-05T15:01:48.000Z",
+          "updatedAt": "2026-06-05T15:01:48.000Z",
+          "uid": "35240-0f0efa39-b663-464f-947b-6b8e6c4a57cc"
+        },
+        {
+          "name": "countries",
+          "item": [
+            {
+              "name": "{countries}",
+              "item": [
+                {
+                  "name": "Stream Banners By Country",
+                  "id": "77015246-f966-48ef-ad08-b29171dfe0a1",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/x-ndjson"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/shodan/countries/:countries?t=sse",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "shodan",
+                        "countries",
+                        ":countries"
+                      ],
+                      "query": [
+                        {
+                          "description": "Output format. `json` returns newline-separated JSON; `sse` returns Server-Sent Events.",
+                          "key": "t",
+                          "value": "sse"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "id": "04acddea-4c74-43ca-97ac-c32f79f32d58",
+                          "key": "countries",
+                          "value": "<string>",
+                          "description": "(Required) Comma-separated ISO 3166-1 alpha-2 codes (e.g. `DE,US`)."
+                        }
+                      ]
+                    },
+                    "description": "Stream banners limited to one or more two-letter country codes."
+                  },
+                  "response": [
+                    {
+                      "id": "be9c44a3-3f84-400e-bf64-41a4ef6ec353",
+                      "name": "Filtered banner stream.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/x-ndjson"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/shodan/countries/:countries?t=sse&key=<API Key>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "shodan",
+                            "countries",
+                            ":countries"
+                          ],
+                          "query": [
+                            {
+                              "description": "Output format. `json` returns newline-separated JSON; `sse` returns Server-Sent Events.",
+                              "key": "t",
+                              "value": "sse"
+                            },
+                            {
+                              "description": "Added as a part of security scheme: apikey",
+                              "key": "key",
+                              "value": "<API Key>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "countries"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "text",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/x-ndjson"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"ip_str\": \"<string>\",\n  \"port\": \"<integer>\",\n  \"transport\": \"udp\",\n  \"product\": \"<string>\",\n  \"version\": \"<string>\",\n  \"data\": \"<string>\",\n  \"timestamp\": \"<dateTime>\",\n  \"hash\": \"<integer>\",\n  \"org\": \"<string>\",\n  \"isp\": \"<string>\",\n  \"asn\": \"<string>\",\n  \"hostnames\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"domains\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"location\": {\n    \"city\": \"<string>\",\n    \"country_code\": \"<string>\",\n    \"country_name\": \"<string>\",\n    \"latitude\": \"<number>\",\n    \"longitude\": \"<number>\"\n  },\n  \"ssl\": {\n    \"ut_3d9\": false,\n    \"consectetur_978\": 68438332.78782779,\n    \"id3ee\": false\n  },\n  \"http\": {\n    \"Duis9\": -20899320.110158205\n  },\n  \"cpe23\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"vulns\": {\n    \"sed52\": -29673816,\n    \"et_ce\": 65840448.63720578\n  }\n}",
+                      "createdAt": "2026-06-05T15:01:48.000Z",
+                      "updatedAt": "2026-06-05T15:01:48.000Z",
+                      "uid": "35240-be9c44a3-3f84-400e-bf64-41a4ef6ec353"
+                    }
+                  ],
+                  "createdAt": "2026-06-05T15:01:48.000Z",
+                  "updatedAt": "2026-06-05T15:01:48.000Z",
+                  "uid": "35240-77015246-f966-48ef-ad08-b29171dfe0a1"
+                }
+              ],
+              "id": "2277a1f4-0920-476f-bde2-1442c3d3f298",
+              "createdAt": "2026-06-05T15:01:48.000Z",
+              "updatedAt": "2026-06-05T15:01:48.000Z",
+              "uid": "35240-2277a1f4-0920-476f-bde2-1442c3d3f298"
+            }
+          ],
+          "id": "41569fb1-1609-46cf-899d-552eb6df0495",
+          "createdAt": "2026-06-05T15:01:48.000Z",
+          "updatedAt": "2026-06-05T15:01:48.000Z",
+          "uid": "35240-41569fb1-1609-46cf-899d-552eb6df0495"
+        },
+        {
+          "name": "ports",
+          "item": [
+            {
+              "name": "{ports}",
+              "item": [
+                {
+                  "name": "Stream Banners By Port",
+                  "id": "1188c8a9-acc3-4df6-8c2a-0426877a3701",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/x-ndjson"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/shodan/ports/:ports?t=sse",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "shodan",
+                        "ports",
+                        ":ports"
+                      ],
+                      "query": [
+                        {
+                          "description": "Output format. `json` returns newline-separated JSON; `sse` returns Server-Sent Events.",
+                          "key": "t",
+                          "value": "sse"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "id": "083f7ad9-531f-464e-a2f1-210fc23d0969",
+                          "key": "ports",
+                          "value": "<string>",
+                          "description": "(Required) Comma-separated list of ports (e.g. `22,443`)."
+                        }
+                      ]
+                    },
+                    "description": "Stream banners limited to one or more ports."
+                  },
+                  "response": [
+                    {
+                      "id": "b5fb686e-b990-41f2-89db-0a15054b290a",
+                      "name": "Filtered banner stream.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/x-ndjson"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/shodan/ports/:ports?t=sse&key=<API Key>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "shodan",
+                            "ports",
+                            ":ports"
+                          ],
+                          "query": [
+                            {
+                              "description": "Output format. `json` returns newline-separated JSON; `sse` returns Server-Sent Events.",
+                              "key": "t",
+                              "value": "sse"
+                            },
+                            {
+                              "description": "Added as a part of security scheme: apikey",
+                              "key": "key",
+                              "value": "<API Key>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "ports"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "text",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/x-ndjson"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"ip_str\": \"<string>\",\n  \"port\": \"<integer>\",\n  \"transport\": \"udp\",\n  \"product\": \"<string>\",\n  \"version\": \"<string>\",\n  \"data\": \"<string>\",\n  \"timestamp\": \"<dateTime>\",\n  \"hash\": \"<integer>\",\n  \"org\": \"<string>\",\n  \"isp\": \"<string>\",\n  \"asn\": \"<string>\",\n  \"hostnames\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"domains\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"location\": {\n    \"city\": \"<string>\",\n    \"country_code\": \"<string>\",\n    \"country_name\": \"<string>\",\n    \"latitude\": \"<number>\",\n    \"longitude\": \"<number>\"\n  },\n  \"ssl\": {\n    \"ut_3d9\": false,\n    \"consectetur_978\": 68438332.78782779,\n    \"id3ee\": false\n  },\n  \"http\": {\n    \"Duis9\": -20899320.110158205\n  },\n  \"cpe23\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"vulns\": {\n    \"sed52\": -29673816,\n    \"et_ce\": 65840448.63720578\n  }\n}",
+                      "createdAt": "2026-06-05T15:01:48.000Z",
+                      "updatedAt": "2026-06-05T15:01:48.000Z",
+                      "uid": "35240-b5fb686e-b990-41f2-89db-0a15054b290a"
+                    }
+                  ],
+                  "createdAt": "2026-06-05T15:01:48.000Z",
+                  "updatedAt": "2026-06-05T15:01:48.000Z",
+                  "uid": "35240-1188c8a9-acc3-4df6-8c2a-0426877a3701"
+                }
+              ],
+              "id": "4a935e35-c840-4fdb-b6b4-8c566a795ea2",
+              "createdAt": "2026-06-05T15:01:48.000Z",
+              "updatedAt": "2026-06-05T15:01:48.000Z",
+              "uid": "35240-4a935e35-c840-4fdb-b6b4-8c566a795ea2"
+            }
+          ],
+          "id": "31ccd6cc-2298-4ecf-a76d-f0c674cdbfce",
+          "createdAt": "2026-06-05T15:01:48.000Z",
+          "updatedAt": "2026-06-05T15:01:48.000Z",
+          "uid": "35240-31ccd6cc-2298-4ecf-a76d-f0c674cdbfce"
+        },
+        {
+          "name": "vulns",
+          "item": [
+            {
+              "name": "{vulns}",
+              "item": [
+                {
+                  "name": "Stream Banners By Vulnerability",
+                  "id": "1a17b1d2-a060-4b62-9efa-e0a57e43d944",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/x-ndjson"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/shodan/vulns/:vulns?t=sse",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "shodan",
+                        "vulns",
+                        ":vulns"
+                      ],
+                      "query": [
+                        {
+                          "description": "Output format. `json` returns newline-separated JSON; `sse` returns Server-Sent Events.",
+                          "key": "t",
+                          "value": "sse"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "id": "4516589b-d87b-42d1-b90e-d15aad3a80e3",
+                          "key": "vulns",
+                          "value": "<string>",
+                          "description": "(Required) Comma-separated CVE identifiers (e.g. `CVE-2017-7679`)."
+                        }
+                      ]
+                    },
+                    "description": "Stream banners limited to one or more CVE identifiers."
+                  },
+                  "response": [
+                    {
+                      "id": "6b146101-eba6-4ad9-9b2d-795873a68e48",
+                      "name": "Filtered banner stream.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/x-ndjson"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/shodan/vulns/:vulns?t=sse&key=<API Key>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "shodan",
+                            "vulns",
+                            ":vulns"
+                          ],
+                          "query": [
+                            {
+                              "description": "Output format. `json` returns newline-separated JSON; `sse` returns Server-Sent Events.",
+                              "key": "t",
+                              "value": "sse"
+                            },
+                            {
+                              "description": "Added as a part of security scheme: apikey",
+                              "key": "key",
+                              "value": "<API Key>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "vulns"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "text",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/x-ndjson"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"ip_str\": \"<string>\",\n  \"port\": \"<integer>\",\n  \"transport\": \"udp\",\n  \"product\": \"<string>\",\n  \"version\": \"<string>\",\n  \"data\": \"<string>\",\n  \"timestamp\": \"<dateTime>\",\n  \"hash\": \"<integer>\",\n  \"org\": \"<string>\",\n  \"isp\": \"<string>\",\n  \"asn\": \"<string>\",\n  \"hostnames\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"domains\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"location\": {\n    \"city\": \"<string>\",\n    \"country_code\": \"<string>\",\n    \"country_name\": \"<string>\",\n    \"latitude\": \"<number>\",\n    \"longitude\": \"<number>\"\n  },\n  \"ssl\": {\n    \"ut_3d9\": false,\n    \"consectetur_978\": 68438332.78782779,\n    \"id3ee\": false\n  },\n  \"http\": {\n    \"Duis9\": -20899320.110158205\n  },\n  \"cpe23\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"vulns\": {\n    \"sed52\": -29673816,\n    \"et_ce\": 65840448.63720578\n  }\n}",
+                      "createdAt": "2026-06-05T15:01:48.000Z",
+                      "updatedAt": "2026-06-05T15:01:48.000Z",
+                      "uid": "35240-6b146101-eba6-4ad9-9b2d-795873a68e48"
+                    }
+                  ],
+                  "createdAt": "2026-06-05T15:01:48.000Z",
+                  "updatedAt": "2026-06-05T15:01:48.000Z",
+                  "uid": "35240-1a17b1d2-a060-4b62-9efa-e0a57e43d944"
+                }
+              ],
+              "id": "02bb1b5c-c56a-4e31-952b-e49df5441a45",
+              "createdAt": "2026-06-05T15:01:48.000Z",
+              "updatedAt": "2026-06-05T15:01:48.000Z",
+              "uid": "35240-02bb1b5c-c56a-4e31-952b-e49df5441a45"
+            }
+          ],
+          "id": "d8e76d20-3836-4d4b-a8e8-adc2afa677a7",
+          "createdAt": "2026-06-05T15:01:48.000Z",
+          "updatedAt": "2026-06-05T15:01:48.000Z",
+          "uid": "35240-d8e76d20-3836-4d4b-a8e8-adc2afa677a7"
+        }
+      ],
+      "id": "6dc38e67-e4a0-472d-b222-2c6c4ac0516f",
+      "createdAt": "2026-06-05T15:01:48.000Z",
+      "updatedAt": "2026-06-05T15:01:48.000Z",
+      "uid": "35240-6dc38e67-e4a0-472d-b222-2c6c4ac0516f"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "key",
+        "type": "string"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}",
+        "type": "string"
+      },
+      {
+        "key": "in",
+        "value": "query",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://stream.shodan.io"
+    }
+  ]
+}

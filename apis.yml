@@ -1,15 +1,12 @@
 aid: shodan
 name: Shodan
 description: >-
-  Shodan is the world's first search engine for Internet-connected devices.
-  It continuously crawls the public Internet to build a searchable database of
-  servers, IoT devices, industrial control systems, routers, webcams, databases,
-  and any other host that exposes a service. Shodan provides REST, Streaming,
-  and Trends APIs along with on-demand scanning, network alerts, notifiers,
-  DNS lookups, the InternetDB API, and the CVEDB vulnerability database. It
-  is widely used for attack-surface management, security research, threat
-  intelligence, vulnerability discovery, market research, and academic study
-  of the Internet itself.
+  Shodan is the world's first search engine for Internet-connected devices. It continuously crawls the public Internet
+  to build a searchable database of servers, IoT devices, industrial control systems, routers, webcams, databases, and
+  any other host that exposes a service. Shodan provides REST, Streaming, and Trends APIs along with on-demand scanning,
+  network alerts, notifiers, DNS lookups, the InternetDB API, and the CVEDB vulnerability database. It is widely used
+  for attack-surface management, security research, threat intelligence, vulnerability discovery, market research, and
+  academic study of the Internet itself.
 url: https://developer.shodan.io/
 specificationVersion: '0.20'
 created: '2026-05-28'
@@ -36,10 +33,9 @@ tags:
 apis:
   - name: Shodan REST API
     description: >-
-      The primary Shodan REST API exposes search methods, host lookups,
-      on-demand scanning, network alerts, notifiers, the saved-query directory,
-      DNS lookups, utility methods, account information, bulk data, and
-      organization management. Auth is via the `key` query parameter.
+      The primary Shodan REST API exposes search methods, host lookups, on-demand scanning, network alerts, notifiers,
+      the saved-query directory, DNS lookups, utility methods, account information, bulk data, and organization
+      management. Auth is via the `key` query parameter.
     humanURL: https://developer.shodan.io/api
     baseURL: https://api.shodan.io
     tags:
@@ -85,9 +81,8 @@ apis:
         url: examples/shodan-rest-alert-create-example.json
   - name: Shodan Streaming API
     description: >-
-      The Shodan Streaming API provides a real-time firehose of banner data as
-      Shodan collects it. Filtered streams are available by ASN, country, port,
-      and CVE. Output is either newline-separated JSON or Server-Sent Events.
+      The Shodan Streaming API provides a real-time firehose of banner data as Shodan collects it. Filtered streams are
+      available by ASN, country, port, and CVE. Output is either newline-separated JSON or Server-Sent Events.
     humanURL: https://developer.shodan.io/api/stream
     baseURL: https://stream.shodan.io
     tags:
@@ -112,9 +107,8 @@ apis:
         url: examples/shodan-stream-banner-example.json
   - name: Shodan Trends API
     description: >-
-      Trends is the historical analytics API for Shodan, exposing breakdowns
-      of historical scan results aggregated by facet (product, port, country,
-      organization, etc.) by month. Access is Enterprise-only.
+      Trends is the historical analytics API for Shodan, exposing breakdowns of historical scan results aggregated by
+      facet (product, port, country, organization, etc.) by month. Access is Enterprise-only.
     humanURL: https://developer.shodan.io/api/trends
     baseURL: https://trends.shodan.io
     tags:
@@ -135,10 +129,9 @@ apis:
         url: examples/shodan-trends-search-example.json
   - name: InternetDB API
     description: >-
-      The InternetDB API is a free, unauthenticated lookup service that returns
-      the open ports, CPEs, hostnames, tags, and known CVEs for any IPv4
-      address. The dataset is refreshed once per week. Free for non-commercial
-      use; commercial use requires an enterprise license.
+      The InternetDB API is a free, unauthenticated lookup service that returns the open ports, CPEs, hostnames, tags,
+      and known CVEs for any IPv4 address. The dataset is refreshed once per week. Free for non-commercial use;
+      commercial use requires an enterprise license.
     humanURL: https://internetdb.shodan.io/
     baseURL: https://internetdb.shodan.io
     tags:
@@ -157,10 +150,8 @@ apis:
         url: examples/shodan-internetdb-host-example.json
   - name: CVEDB API
     description: >-
-      CVEDB is Shodan's open vulnerability database API. It provides CVE
-      lookups, CPE-keyed vulnerability search, KEV filtering, EPSS ordering,
-      and date-range queries. No API key required; updated daily. Free for
-      non-commercial use.
+      CVEDB is Shodan's open vulnerability database API. It provides CVE lookups, CPE-keyed vulnerability search, KEV
+      filtering, EPSS ordering, and date-range queries. No API key required; updated daily. Free for non-commercial use.
     humanURL: https://cvedb.shodan.io/
     baseURL: https://cvedb.shodan.io
     tags:
@@ -182,54 +173,56 @@ apis:
       - type: Example
         url: examples/shodan-cvedb-cve-lookup-example.json
 common:
+  - type: PostmanWorkspace
+    url: https://www.postman.com/kinlaneapi/shodan/overview
   - type: ArazzoWorkflows
     url: arazzo/
     workflows:
-    - url: arazzo/shodan-account-overview-workflow.yml
-      name: Shodan Account Overview
-      summary: Pull the account profile, API plan limits, and the client's own IP.
-    - url: arazzo/shodan-alert-with-notifier-workflow.yml
-      name: Shodan Alert With Notifier
-      summary: Create a notifier, attach it via an alert, and arm a trigger for delivery.
-    - url: arazzo/shodan-cve-enrichment-workflow.yml
-      name: Shodan CVEDB Product Vulnerability Enrichment
-      summary: Resolve a product to a CPE, search its CVEs, then pull full CVE details.
-    - url: arazzo/shodan-domain-recon-workflow.yml
-      name: Shodan Domain Reconnaissance
-      summary: Enumerate a domain's DNS records, resolve a subdomain, and inspect the host.
-    - url: arazzo/shodan-internetdb-vuln-triage-workflow.yml
-      name: Shodan InternetDB Vulnerability Triage
-      summary: Pull an IP's free InternetDB record, then detail one of its known CVEs.
-    - url: arazzo/shodan-network-alert-lifecycle-workflow.yml
-      name: Shodan Network Alert Lifecycle
-      summary: Create a network alert, enable a trigger, verify it, then update the IP set.
-    - url: arazzo/shodan-notifier-lifecycle-workflow.yml
-      name: Shodan Notifier Lifecycle
-      summary: Create a notifier, read it back, update it, then delete it.
-    - url: arazzo/shodan-query-directory-workflow.yml
-      name: Shodan Query Directory Explorer
-      summary: Browse popular query tags, search the saved-query directory, then run a match.
-    - url: arazzo/shodan-resolve-and-host-info-workflow.yml
-      name: Shodan Resolve Hostname and Inspect Host
-      summary: Resolve a hostname to an IP and pull the full Shodan host record for that IP.
-    - url: arazzo/shodan-reverse-dns-to-host-info-workflow.yml
-      name: Shodan Reverse DNS to Host Info
-      summary: Reverse-resolve an IP to its hostnames, then pull the full host record.
-    - url: arazzo/shodan-scan-then-inspect-host-workflow.yml
-      name: Shodan Scan Then Inspect Host
-      summary: Submit a single-IP scan, poll until done, then pull the fresh host record.
-    - url: arazzo/shodan-search-builder-workflow.yml
-      name: Shodan Search Builder
-      summary: Discover available filters and facets, validate a query, then count its results.
-    - url: arazzo/shodan-search-to-host-detail-workflow.yml
-      name: Shodan Search to Host Detail
-      summary: Estimate a search, run it, then drill into the first matching host.
-    - url: arazzo/shodan-submit-scan-and-poll-workflow.yml
-      name: Shodan Submit On-Demand Scan and Poll
-      summary: Submit an on-demand scan and poll its status until the crawl completes.
-    - url: arazzo/shodan-trends-vs-live-workflow.yml
-      name: Shodan Historical Trends vs Live Exposure
-      summary: Pull historical monthly trends for a query, then compare to the live count.
+      - url: arazzo/shodan-account-overview-workflow.yml
+        name: Shodan Account Overview
+        summary: Pull the account profile, API plan limits, and the client's own IP.
+      - url: arazzo/shodan-alert-with-notifier-workflow.yml
+        name: Shodan Alert With Notifier
+        summary: Create a notifier, attach it via an alert, and arm a trigger for delivery.
+      - url: arazzo/shodan-cve-enrichment-workflow.yml
+        name: Shodan CVEDB Product Vulnerability Enrichment
+        summary: Resolve a product to a CPE, search its CVEs, then pull full CVE details.
+      - url: arazzo/shodan-domain-recon-workflow.yml
+        name: Shodan Domain Reconnaissance
+        summary: Enumerate a domain's DNS records, resolve a subdomain, and inspect the host.
+      - url: arazzo/shodan-internetdb-vuln-triage-workflow.yml
+        name: Shodan InternetDB Vulnerability Triage
+        summary: Pull an IP's free InternetDB record, then detail one of its known CVEs.
+      - url: arazzo/shodan-network-alert-lifecycle-workflow.yml
+        name: Shodan Network Alert Lifecycle
+        summary: Create a network alert, enable a trigger, verify it, then update the IP set.
+      - url: arazzo/shodan-notifier-lifecycle-workflow.yml
+        name: Shodan Notifier Lifecycle
+        summary: Create a notifier, read it back, update it, then delete it.
+      - url: arazzo/shodan-query-directory-workflow.yml
+        name: Shodan Query Directory Explorer
+        summary: Browse popular query tags, search the saved-query directory, then run a match.
+      - url: arazzo/shodan-resolve-and-host-info-workflow.yml
+        name: Shodan Resolve Hostname and Inspect Host
+        summary: Resolve a hostname to an IP and pull the full Shodan host record for that IP.
+      - url: arazzo/shodan-reverse-dns-to-host-info-workflow.yml
+        name: Shodan Reverse DNS to Host Info
+        summary: Reverse-resolve an IP to its hostnames, then pull the full host record.
+      - url: arazzo/shodan-scan-then-inspect-host-workflow.yml
+        name: Shodan Scan Then Inspect Host
+        summary: Submit a single-IP scan, poll until done, then pull the fresh host record.
+      - url: arazzo/shodan-search-builder-workflow.yml
+        name: Shodan Search Builder
+        summary: Discover available filters and facets, validate a query, then count its results.
+      - url: arazzo/shodan-search-to-host-detail-workflow.yml
+        name: Shodan Search to Host Detail
+        summary: Estimate a search, run it, then drill into the first matching host.
+      - url: arazzo/shodan-submit-scan-and-poll-workflow.yml
+        name: Shodan Submit On-Demand Scan and Poll
+        summary: Submit an on-demand scan and poll its status until the crawl completes.
+      - url: arazzo/shodan-trends-vs-live-workflow.yml
+        name: Shodan Historical Trends vs Live Exposure
+        summary: Pull historical monthly trends for a query, then compare to the live count.
   - type: Website
     url: https://www.shodan.io/
   - type: DeveloperPortal
@@ -378,173 +371,122 @@ common:
     url: rules/shodan-rules.yml
   - type: Vocabulary
     url: vocabulary/shodan-vocabulary.yml
-  - type: NaftikoCapability
-    url: capabilities/shared/shodan-rest.yaml
-  - type: NaftikoCapability
-    url: capabilities/shared/shodan-stream.yaml
-  - type: NaftikoCapability
-    url: capabilities/shared/shodan-internetdb.yaml
-  - type: NaftikoCapability
-    url: capabilities/shared/shodan-cvedb.yaml
-  - type: NaftikoCapability
-    url: capabilities/attack-surface-monitoring.yaml
-  - type: NaftikoCapability
-    url: capabilities/vulnerability-intelligence.yaml
-  - type: NaftikoCapability
-    url: capabilities/internet-asset-discovery.yaml
   - type: FinOps
     url: finops/shodan-finops.yml
   - type: Features
     data:
       - name: Internet-Wide Device Search
         description: >-
-          Search billions of indexed banners from servers, routers, webcams,
-          industrial control systems, and IoT devices using a powerful query
-          language with facets and filters.
+          Search billions of indexed banners from servers, routers, webcams, industrial control systems, and IoT devices
+          using a powerful query language with facets and filters.
       - name: Host Information Lookup
         description: >-
-          Retrieve all known information for an IP including open ports,
-          service banners, geolocation, ASN/ISP, hostnames, vulnerabilities,
-          SSL/TLS certificates, and detected technologies.
+          Retrieve all known information for an IP including open ports, service banners, geolocation, ASN/ISP,
+          hostnames, vulnerabilities, SSL/TLS certificates, and detected technologies.
       - name: On-Demand Scanning
         description: >-
-          Submit IPs, CIDR ranges, or netblocks for an on-demand crawl using
-          scan credits. Enterprise plans can request Internet-wide scans for
-          a specific port or protocol.
+          Submit IPs, CIDR ranges, or netblocks for an on-demand crawl using scan credits. Enterprise plans can request
+          Internet-wide scans for a specific port or protocol.
       - name: Network Alerts and Notifiers
         description: >-
-          Create alerts on monitored IP ranges that fire when new services,
-          changes, vulnerabilities, or expirations are detected, with delivery
-          via Slack, email, webhook, and other notifier providers.
+          Create alerts on monitored IP ranges that fire when new services, changes, vulnerabilities, or expirations are
+          detected, with delivery via Slack, email, webhook, and other notifier providers.
       - name: DNS Lookup Suite
         description: >-
-          Forward, reverse, and full-domain DNS lookups including subdomain
-          enumeration backed by Shodan's passive DNS database.
+          Forward, reverse, and full-domain DNS lookups including subdomain enumeration backed by Shodan's passive DNS
+          database.
       - name: Streaming Firehose
         description: >-
-          Subscribe to real-time banner data filtered by ASN, country, port,
-          or CVE for SIEMs, data lakes, and bespoke analytics pipelines.
+          Subscribe to real-time banner data filtered by ASN, country, port, or CVE for SIEMs, data lakes, and bespoke
+          analytics pipelines.
       - name: Trends Analytics
         description: >-
-          Run faceted queries against the full historical scan database to
-          analyze product adoption, regional exposure, and changes over time.
+          Run faceted queries against the full historical scan database to analyze product adoption, regional exposure,
+          and changes over time.
       - name: InternetDB Free Lookup
         description: >-
-          Open, key-free lookup that returns the open ports, CPEs, tags, and
-          CVEs for any IPv4 address; refreshed weekly.
+          Open, key-free lookup that returns the open ports, CPEs, tags, and CVEs for any IPv4 address; refreshed
+          weekly.
       - name: CVEDB Vulnerability Database
-        description: >-
-          Open vulnerability lookup with CPE search, KEV filter, EPSS sorting,
-          and date-range queries.
+        description: Open vulnerability lookup with CPE search, KEV filter, EPSS sorting, and date-range queries.
       - name: Bulk Data Exports
         description: >-
-          Enterprise-tier daily and on-demand bulk exports of Shodan's
-          underlying datasets for offline analysis and warehousing.
+          Enterprise-tier daily and on-demand bulk exports of Shodan's underlying datasets for offline analysis and
+          warehousing.
       - name: Organization Management
-        description: >-
-          Enterprise organization support for sharing credits and managing
-          members through the API.
+        description: Enterprise organization support for sharing credits and managing members through the API.
       - name: Saved Query Directory
         description: >-
-          Browse, search, and tag community-contributed Shodan queries
-          covering common technologies, exposures, and devices.
+          Browse, search, and tag community-contributed Shodan queries covering common technologies, exposures, and
+          devices.
       - name: Notifier Providers
-        description: >-
-          Built-in notification provider integrations for Slack, email,
-          Discord, Telegram, webhook, and more.
+        description: Built-in notification provider integrations for Slack, email, Discord, Telegram, webhook, and more.
   - type: UseCases
     data:
       - name: Attack Surface Management
         description: >-
-          Continuously monitor an organization's external attack surface for
-          new services, configuration drift, and vulnerable software.
+          Continuously monitor an organization's external attack surface for new services, configuration drift, and
+          vulnerable software.
       - name: Vulnerability Intelligence
         description: >-
-          Quantify exposure to specific CVEs across the Internet or a defined
-          customer footprint using CVEDB and the search/trends APIs.
+          Quantify exposure to specific CVEs across the Internet or a defined customer footprint using CVEDB and the
+          search/trends APIs.
       - name: Threat Hunting and OSINT
-        description: >-
-          Pivot from IPs, certificates, banners, and ASNs to map adversary
-          infrastructure and discover related hosts.
+        description: Pivot from IPs, certificates, banners, and ASNs to map adversary infrastructure and discover related hosts.
       - name: Security Research
         description: >-
-          Study the distribution of misconfigured services, exposed databases,
-          and emerging IoT ecosystems across the public Internet.
+          Study the distribution of misconfigured services, exposed databases, and emerging IoT ecosystems across the
+          public Internet.
       - name: Competitive and Market Research
         description: >-
-          Track adoption of products, web servers, cloud providers, and
-          frameworks across regions and industries using Trends.
+          Track adoption of products, web servers, cloud providers, and frameworks across regions and industries using
+          Trends.
       - name: Regulatory and Compliance Reporting
-        description: >-
-          Demonstrate visibility into externally exposed assets for
-          frameworks that require attack-surface inventories.
+        description: Demonstrate visibility into externally exposed assets for frameworks that require attack-surface inventories.
       - name: Insurance Underwriting
         description: >-
-          Inform cyber-insurance scoring with externally observable evidence
-          of exposed services, vulnerabilities, and hygiene.
+          Inform cyber-insurance scoring with externally observable evidence of exposed services, vulnerabilities, and
+          hygiene.
       - name: Incident Response
-        description: >-
-          Triage IPs observed in alerts against Shodan history to determine
-          who they are and what services they expose.
+        description: Triage IPs observed in alerts against Shodan history to determine who they are and what services they expose.
   - type: Integrations
     data:
       - name: Splunk
         description: >-
-          Shodan data is widely ingested into Splunk for security analytics
-          via the streaming API and the Splunk add-on ecosystem.
+          Shodan data is widely ingested into Splunk for security analytics via the streaming API and the Splunk add-on
+          ecosystem.
       - name: Maltego
-        description: >-
-          Shodan transforms for Maltego enable graph-based pivoting on
-          banners, certificates, and IPs.
+        description: Shodan transforms for Maltego enable graph-based pivoting on banners, certificates, and IPs.
       - name: Slack
-        description: >-
-          Notifier integration delivers alert events to Slack channels.
+        description: Notifier integration delivers alert events to Slack channels.
       - name: Email
-        description: >-
-          Notifier integration delivers alert events to mailboxes.
+        description: Notifier integration delivers alert events to mailboxes.
       - name: Webhook
-        description: >-
-          Notifier integration posts alert events to arbitrary HTTPS endpoints.
+        description: Notifier integration posts alert events to arbitrary HTTPS endpoints.
       - name: Discord
-        description: >-
-          Notifier integration delivers alert events to Discord servers.
+        description: Notifier integration delivers alert events to Discord servers.
       - name: Telegram
-        description: >-
-          Notifier integration delivers alert events to Telegram chats.
+        description: Notifier integration delivers alert events to Telegram chats.
       - name: Steampipe
-        description: >-
-          Official Steampipe plugin lets you query Shodan host, DNS, and
-          exploit data using standard SQL.
+        description: Official Steampipe plugin lets you query Shodan host, DNS, and exploit data using standard SQL.
       - name: Model Context Protocol
-        description: >-
-          Multiple community MCP servers expose Shodan tools to AI assistants
-          including Claude, Cursor, and VS Code.
+        description: Multiple community MCP servers expose Shodan tools to AI assistants including Claude, Cursor, and VS Code.
       - name: Nmap
-        description: >-
-          Shodan's CLI ships helpers to enrich Nmap scan output with
-          Shodan-derived banner context.
+        description: Shodan's CLI ships helpers to enrich Nmap scan output with Shodan-derived banner context.
   - type: Solutions
     data:
       - name: Shodan Monitor
-        description: >-
-          Hosted attack-surface monitoring product built on the network
-          alerts and notifiers APIs.
+        description: Hosted attack-surface monitoring product built on the network alerts and notifiers APIs.
       - name: Enterprise Data Feed
         description: >-
-          Real-time firehose and daily bulk data exports for SOCs, threat
-          intelligence platforms, and academic researchers.
+          Real-time firehose and daily bulk data exports for SOCs, threat intelligence platforms, and academic
+          researchers.
       - name: InternetDB
-        description: >-
-          Free, unauthenticated host lookup designed for embedding into
-          security tools and dashboards.
+        description: Free, unauthenticated host lookup designed for embedding into security tools and dashboards.
       - name: CVEDB
-        description: >-
-          Free vulnerability database with KEV and EPSS metadata for
-          prioritization workflows.
+        description: Free vulnerability database with KEV and EPSS metadata for prioritization workflows.
       - name: Internet-Wide Scanning
-        description: >-
-          Enterprise-only capability to request a scan of the entire Internet
-          for a specific port or protocol.
+        description: Enterprise-only capability to request a scan of the entire Internet for a specific port or protocol.
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com

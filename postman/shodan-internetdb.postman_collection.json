@@ -1,0 +1,142 @@
+{
+  "info": {
+    "_postman_id": "aea75cd1-f31c-4ce9-8b8e-8c71b5743f6c",
+    "name": "Shodan InternetDB API",
+    "description": "The InternetDB API is a free, unauthenticated lookup that returns the open ports, CPEs, hostnames, tags, and known CVEs for any IPv4 address. The dataset is refreshed weekly. Free for non-commercial use; commercial use requires an enterprise license.\n\nContact Support:\n Name: Shodan Support\n Email: support@shodan.io",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-06-05T15:01:50.000Z",
+    "updatedAt": "2026-06-05T15:01:50.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-aea75cd1-f31c-4ce9-8b8e-8c71b5743f6c"
+  },
+  "item": [
+    {
+      "name": "{ip}",
+      "item": [
+        {
+          "name": "Get InternetDB Record",
+          "id": "0d256b82-5d76-4920-8f78-1767a2859f32",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/:ip",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                ":ip"
+              ],
+              "variable": [
+                {
+                  "id": "2c0b932b-7532-4f8a-bc76-2784c5381001",
+                  "key": "ip",
+                  "value": "<string>",
+                  "description": "(Required) IPv4 address."
+                }
+              ]
+            },
+            "description": "Return the open ports, CPEs, hostnames, tags, and known CVEs for the given IPv4 address."
+          },
+          "response": [
+            {
+              "id": "d0028d1c-aaed-471b-93e8-0b281493587c",
+              "name": "InternetDB host record.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/:ip",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    ":ip"
+                  ],
+                  "variable": [
+                    {
+                      "key": "ip"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"ip\": \"<string>\",\n  \"ports\": [\n    \"<integer>\",\n    \"<integer>\"\n  ],\n  \"cpes\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"hostnames\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"tags\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"vulns\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+              "createdAt": "2026-06-05T15:01:51.000Z",
+              "updatedAt": "2026-06-05T15:01:51.000Z",
+              "uid": "35240-d0028d1c-aaed-471b-93e8-0b281493587c"
+            },
+            {
+              "id": "99a33d5d-cd7a-44ad-bc49-15dca899ab09",
+              "name": "No data available for the given IP.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrl}}/:ip",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    ":ip"
+                  ],
+                  "variable": [
+                    {
+                      "key": "ip"
+                    }
+                  ]
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "_postman_previewlanguage": "text",
+              "header": [],
+              "cookie": [],
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-06-05T15:01:51.000Z",
+              "updatedAt": "2026-06-05T15:01:51.000Z",
+              "uid": "35240-99a33d5d-cd7a-44ad-bc49-15dca899ab09"
+            }
+          ],
+          "createdAt": "2026-06-05T15:01:51.000Z",
+          "updatedAt": "2026-06-05T15:01:51.000Z",
+          "uid": "35240-0d256b82-5d76-4920-8f78-1767a2859f32"
+        }
+      ],
+      "id": "bf4567ab-4631-4726-8fe1-78a898749ae6",
+      "createdAt": "2026-06-05T15:01:51.000Z",
+      "updatedAt": "2026-06-05T15:01:51.000Z",
+      "uid": "35240-bf4567ab-4631-4726-8fe1-78a898749ae6"
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://internetdb.shodan.io"
+    }
+  ]
+}

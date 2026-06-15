@@ -1,0 +1,168 @@
+{
+  "info": {
+    "_postman_id": "47a6b0f5-9778-406c-ad07-c80e7475f3a7",
+    "name": "Shodan Trends API",
+    "description": "The Shodan Trends API provides historical analytics on top of the complete Shodan scan dataset. Queries return monthly counts and faceted breakdowns over time. Enterprise plan required.\n\nContact Support:\n Name: Shodan Support\n Email: support@shodan.io",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-06-05T15:01:49.000Z",
+    "updatedAt": "2026-06-05T15:01:49.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-47a6b0f5-9778-406c-ad07-c80e7475f3a7"
+  },
+  "item": [
+    {
+      "name": "api",
+      "item": [
+        {
+          "name": "v1",
+          "item": [
+            {
+              "name": "search",
+              "item": [
+                {
+                  "name": "Search Historical Trends",
+                  "id": "c9c9d613-31e6-4f56-97c4-38c3290f6282",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/api/v1/search?query=<string>&facets=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "api",
+                        "v1",
+                        "search"
+                      ],
+                      "query": [
+                        {
+                          "description": "(Required) Historical Shodan search query (e.g. `product:nginx`).",
+                          "key": "query",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Comma-separated facets with optional size suffix (e.g. `country:10`).",
+                          "key": "facets",
+                          "value": "<string>"
+                        }
+                      ]
+                    },
+                    "description": "Return monthly counts and faceted aggregations for a historical Shodan search."
+                  },
+                  "response": [
+                    {
+                      "id": "f023f70c-501e-4de5-8ba5-6b45dee553e1",
+                      "name": "Monthly counts and facet breakdowns.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/api/v1/search?query=<string>&facets=<string>&key=<API Key>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "v1",
+                            "search"
+                          ],
+                          "query": [
+                            {
+                              "description": "(Required) Historical Shodan search query (e.g. `product:nginx`).",
+                              "key": "query",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Comma-separated facets with optional size suffix (e.g. `country:10`).",
+                              "key": "facets",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Added as a part of security scheme: apikey",
+                              "key": "key",
+                              "value": "<API Key>"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"total\": \"<integer>\",\n  \"matches\": [\n    {\n      \"month\": \"<string>\",\n      \"count\": \"<integer>\"\n    },\n    {\n      \"month\": \"<string>\",\n      \"count\": \"<integer>\"\n    }\n  ],\n  \"facets\": {\n    \"nostrudb\": [\n      {\n        \"value\": \"<string>\",\n        \"count\": \"<integer>\",\n        \"matches\": [\n          {\n            \"month\": \"<string>\",\n            \"count\": \"<integer>\"\n          },\n          {\n            \"month\": \"<string>\",\n            \"count\": \"<integer>\"\n          }\n        ]\n      },\n      {\n        \"value\": \"<string>\",\n        \"count\": \"<integer>\",\n        \"matches\": [\n          {\n            \"month\": \"<string>\",\n            \"count\": \"<integer>\"\n          },\n          {\n            \"month\": \"<string>\",\n            \"count\": \"<integer>\"\n          }\n        ]\n      }\n    ],\n    \"quis_93\": [\n      {\n        \"value\": \"<string>\",\n        \"count\": \"<integer>\",\n        \"matches\": [\n          {\n            \"month\": \"<string>\",\n            \"count\": \"<integer>\"\n          },\n          {\n            \"month\": \"<string>\",\n            \"count\": \"<integer>\"\n          }\n        ]\n      },\n      {\n        \"value\": \"<string>\",\n        \"count\": \"<integer>\",\n        \"matches\": [\n          {\n            \"month\": \"<string>\",\n            \"count\": \"<integer>\"\n          },\n          {\n            \"month\": \"<string>\",\n            \"count\": \"<integer>\"\n          }\n        ]\n      }\n    ],\n    \"voluptate_1b\": [\n      {\n        \"value\": \"<string>\",\n        \"count\": \"<integer>\",\n        \"matches\": [\n          {\n            \"month\": \"<string>\",\n            \"count\": \"<integer>\"\n          },\n          {\n            \"month\": \"<string>\",\n            \"count\": \"<integer>\"\n          }\n        ]\n      },\n      {\n        \"value\": \"<string>\",\n        \"count\": \"<integer>\",\n        \"matches\": [\n          {\n            \"month\": \"<string>\",\n            \"count\": \"<integer>\"\n          },\n          {\n            \"month\": \"<string>\",\n            \"count\": \"<integer>\"\n          }\n        ]\n      }\n    ]\n  }\n}",
+                      "createdAt": "2026-06-05T15:01:49.000Z",
+                      "updatedAt": "2026-06-05T15:01:49.000Z",
+                      "uid": "35240-f023f70c-501e-4de5-8ba5-6b45dee553e1"
+                    }
+                  ],
+                  "createdAt": "2026-06-05T15:01:49.000Z",
+                  "updatedAt": "2026-06-05T15:01:49.000Z",
+                  "uid": "35240-c9c9d613-31e6-4f56-97c4-38c3290f6282"
+                }
+              ],
+              "id": "8fdbbf80-26a9-49b0-8e64-0c87c43e2a30",
+              "createdAt": "2026-06-05T15:01:49.000Z",
+              "updatedAt": "2026-06-05T15:01:49.000Z",
+              "uid": "35240-8fdbbf80-26a9-49b0-8e64-0c87c43e2a30"
+            }
+          ],
+          "id": "cea88a77-251f-4a22-9bbd-35c613f9e21f",
+          "createdAt": "2026-06-05T15:01:49.000Z",
+          "updatedAt": "2026-06-05T15:01:49.000Z",
+          "uid": "35240-cea88a77-251f-4a22-9bbd-35c613f9e21f"
+        }
+      ],
+      "id": "1fea758e-65de-4b26-ac59-9ad54d565f45",
+      "createdAt": "2026-06-05T15:01:49.000Z",
+      "updatedAt": "2026-06-05T15:01:49.000Z",
+      "uid": "35240-1fea758e-65de-4b26-ac59-9ad54d565f45"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "key",
+        "type": "string"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}",
+        "type": "string"
+      },
+      {
+        "key": "in",
+        "value": "query",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://trends.shodan.io"
+    }
+  ]
+}

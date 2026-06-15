@@ -1,0 +1,37 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Shodan InternetDB API",
+    "version": "1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "InternetDB",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get InternetDB Record",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://internetdb.shodan.io/:ip",
+            "params": [
+              {
+                "name": "ip",
+                "value": "",
+                "type": "path",
+                "description": "IPv4 address."
+              }
+            ]
+          },
+          "docs": "Return the open ports, CPEs, hostnames, tags, and known CVEs for the given IPv4 address."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,4386 @@
+{
+  "info": {
+    "_postman_id": "8247e2a0-2a50-4d44-a4cc-39a5e10a482f",
+    "name": "Shodan REST API",
+    "description": "The Shodan REST API exposes search methods, host lookups, on-demand scanning, network alerts, notifiers, the saved-query directory, DNS lookups, utility methods, account/profile information, bulk data, and organization management for the Shodan search engine for Internet- connected devices.\n\nContact Support:\n Name: Shodan Support\n Email: support@shodan.io",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-06-05T15:01:46.000Z",
+    "updatedAt": "2026-06-05T15:01:46.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-8247e2a0-2a50-4d44-a4cc-39a5e10a482f"
+  },
+  "item": [
+    {
+      "name": "shodan",
+      "item": [
+        {
+          "name": "host",
+          "item": [
+            {
+              "name": "{ip}",
+              "item": [
+                {
+                  "name": "Get Host Information",
+                  "id": "36aeba6f-0862-408a-be5f-914c1a0cac08",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/shodan/host/:ip?history=false&minify=false",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "shodan",
+                        "host",
+                        ":ip"
+                      ],
+                      "query": [
+                        {
+                          "description": "Include historical banners.",
+                          "key": "history",
+                          "value": "false"
+                        },
+                        {
+                          "description": "Return a truncated banner record.",
+                          "key": "minify",
+                          "value": "false"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "id": "4a1ede54-ffbb-41c4-a1d7-4c113a84e2be",
+                          "key": "ip",
+                          "value": "<string>",
+                          "description": "(Required) IPv4 or IPv6 address."
+                        }
+                      ]
+                    },
+                    "description": "Returns all services that have been found on the given host IP."
+                  },
+                  "response": [
+                    {
+                      "id": "06c20fc7-40b2-44a8-a984-423f1d2fb8ee",
+                      "name": "Host record with banners.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/shodan/host/:ip?history=false&minify=false&key=<API Key>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "shodan",
+                            "host",
+                            ":ip"
+                          ],
+                          "query": [
+                            {
+                              "description": "Include historical banners.",
+                              "key": "history",
+                              "value": "false"
+                            },
+                            {
+                              "description": "Return a truncated banner record.",
+                              "key": "minify",
+                              "value": "false"
+                            },
+                            {
+                              "description": "Added as a part of security scheme: apikey",
+                              "key": "key",
+                              "value": "<API Key>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "ip"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"ip_str\": \"<string>\",\n  \"ip\": \"<integer>\",\n  \"hostnames\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"domains\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"country_code\": \"<string>\",\n  \"country_name\": \"<string>\",\n  \"city\": \"<string>\",\n  \"region_code\": \"<string>\",\n  \"postal_code\": \"<string>\",\n  \"latitude\": \"<number>\",\n  \"longitude\": \"<number>\",\n  \"org\": \"<string>\",\n  \"isp\": \"<string>\",\n  \"asn\": \"<string>\",\n  \"os\": \"<string>\",\n  \"last_update\": \"<dateTime>\",\n  \"ports\": [\n    \"<integer>\",\n    \"<integer>\"\n  ],\n  \"vulns\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"tags\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"data\": [\n    {\n      \"port\": \"<integer>\",\n      \"transport\": \"udp\",\n      \"product\": \"<string>\",\n      \"version\": \"<string>\",\n      \"data\": \"<string>\",\n      \"timestamp\": \"<dateTime>\",\n      \"hash\": \"<integer>\",\n      \"ip_str\": \"<string>\",\n      \"org\": \"<string>\",\n      \"isp\": \"<string>\",\n      \"asn\": \"<string>\",\n      \"hostnames\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"domains\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"location\": {\n        \"city\": \"<string>\",\n        \"country_code\": \"<string>\",\n        \"country_name\": \"<string>\",\n        \"latitude\": \"<number>\",\n        \"longitude\": \"<number>\"\n      },\n      \"ssl\": {\n        \"sint884\": 90965789\n      },\n      \"http\": {\n        \"tempor_3\": 90273848.66556048\n      },\n      \"cpe23\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"vulns\": {\n        \"pariatur40\": 73509689,\n        \"et_6f\": 30170822,\n        \"sit_9\": 48235194\n      }\n    },\n    {\n      \"port\": \"<integer>\",\n      \"transport\": \"udp\",\n      \"product\": \"<string>\",\n      \"version\": \"<string>\",\n      \"data\": \"<string>\",\n      \"timestamp\": \"<dateTime>\",\n      \"hash\": \"<integer>\",\n      \"ip_str\": \"<string>\",\n      \"org\": \"<string>\",\n      \"isp\": \"<string>\",\n      \"asn\": \"<string>\",\n      \"hostnames\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"domains\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"location\": {\n        \"city\": \"<string>\",\n        \"country_code\": \"<string>\",\n        \"country_name\": \"<string>\",\n        \"latitude\": \"<number>\",\n        \"longitude\": \"<number>\"\n      },\n      \"ssl\": {\n        \"ullamco85\": -47269347.1635202,\n        \"adipisicing_63d\": false\n      },\n      \"http\": {\n        \"cilluma6e\": -41590958.71515888\n      },\n      \"cpe23\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"vulns\": {\n        \"culpa5\": 51326384.777036786,\n        \"deserunt9\": -32024980\n      }\n    }\n  ]\n}",
+                      "createdAt": "2026-06-05T15:01:47.000Z",
+                      "updatedAt": "2026-06-05T15:01:47.000Z",
+                      "uid": "35240-06c20fc7-40b2-44a8-a984-423f1d2fb8ee"
+                    },
+                    {
+                      "id": "f394dca5-3873-4d1f-b52e-4289ed8e0686",
+                      "name": "Resource not found.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/shodan/host/:ip?history=false&minify=false&key=<API Key>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "shodan",
+                            "host",
+                            ":ip"
+                          ],
+                          "query": [
+                            {
+                              "description": "Include historical banners.",
+                              "key": "history",
+                              "value": "false"
+                            },
+                            {
+                              "description": "Return a truncated banner record.",
+                              "key": "minify",
+                              "value": "false"
+                            },
+                            {
+                              "description": "Added as a part of security scheme: apikey",
+                              "key": "key",
+                              "value": "<API Key>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "ip"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": \"<string>\"\n}",
+                      "createdAt": "2026-06-05T15:01:47.000Z",
+                      "updatedAt": "2026-06-05T15:01:47.000Z",
+                      "uid": "35240-f394dca5-3873-4d1f-b52e-4289ed8e0686"
+                    }
+                  ],
+                  "createdAt": "2026-06-05T15:01:47.000Z",
+                  "updatedAt": "2026-06-05T15:01:47.000Z",
+                  "uid": "35240-36aeba6f-0862-408a-be5f-914c1a0cac08"
+                }
+              ],
+              "id": "f01d7c21-569b-4235-9c7f-bbbf29e844cf",
+              "createdAt": "2026-06-05T15:01:47.000Z",
+              "updatedAt": "2026-06-05T15:01:47.000Z",
+              "uid": "35240-f01d7c21-569b-4235-9c7f-bbbf29e844cf"
+            },
+            {
+              "name": "count",
+              "item": [
+                {
+                  "name": "Get Search Result Count",
+                  "id": "38e693b4-a40b-4ebe-8612-72094bb306be",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/shodan/host/count?query=<string>&facets=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "shodan",
+                        "host",
+                        "count"
+                      ],
+                      "query": [
+                        {
+                          "description": "(Required) Shodan search query.",
+                          "key": "query",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Comma-separated facet definitions (e.g. `country:5,port:10`).",
+                          "key": "facets",
+                          "value": "<string>"
+                        }
+                      ]
+                    },
+                    "description": "Returns the number of results a search would have, without consuming query credits or returning results."
+                  },
+                  "response": [
+                    {
+                      "id": "637a53c8-750c-4cbc-b88c-b4c057fa8eea",
+                      "name": "Count and facet summary.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/shodan/host/count?query=<string>&facets=<string>&key=<API Key>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "shodan",
+                            "host",
+                            "count"
+                          ],
+                          "query": [
+                            {
+                              "description": "(Required) Shodan search query.",
+                              "key": "query",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Comma-separated facet definitions (e.g. `country:5,port:10`).",
+                              "key": "facets",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Added as a part of security scheme: apikey",
+                              "key": "key",
+                              "value": "<API Key>"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"total\": \"<integer>\",\n  \"facets\": {\n    \"anim2e\": [\n      {\n        \"count\": \"<integer>\",\n        \"value\": \"<string>\"\n      },\n      {\n        \"count\": \"<integer>\",\n        \"value\": \"<string>\"\n      }\n    ],\n    \"Lorem1\": [\n      {\n        \"count\": \"<integer>\",\n        \"value\": \"<string>\"\n      },\n      {\n        \"count\": \"<integer>\",\n        \"value\": \"<string>\"\n      }\n    ]\n  }\n}",
+                      "createdAt": "2026-06-05T15:01:47.000Z",
+                      "updatedAt": "2026-06-05T15:01:47.000Z",
+                      "uid": "35240-637a53c8-750c-4cbc-b88c-b4c057fa8eea"
+                    }
+                  ],
+                  "createdAt": "2026-06-05T15:01:47.000Z",
+                  "updatedAt": "2026-06-05T15:01:47.000Z",
+                  "uid": "35240-38e693b4-a40b-4ebe-8612-72094bb306be"
+                }
+              ],
+              "id": "34a72645-d073-4ce7-b3d2-24b04048dbcd",
+              "createdAt": "2026-06-05T15:01:47.000Z",
+              "updatedAt": "2026-06-05T15:01:47.000Z",
+              "uid": "35240-34a72645-d073-4ce7-b3d2-24b04048dbcd"
+            },
+            {
+              "name": "search",
+              "item": [
+                {
+                  "name": "facets",
+                  "item": [
+                    {
+                      "name": "List Search Facets",
+                      "id": "b4e5066e-951e-4a78-9762-f1c51c36fc4a",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/shodan/host/search/facets",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "shodan",
+                            "host",
+                            "search",
+                            "facets"
+                          ]
+                        },
+                        "description": "Returns the list of facets that can be used to summarize search results."
+                      },
+                      "response": [
+                        {
+                          "id": "c4cfd71c-895f-4df0-8325-a47d04fcf0cd",
+                          "name": "Array of facet names.",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/shodan/host/search/facets?key=<API Key>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "shodan",
+                                "host",
+                                "search",
+                                "facets"
+                              ],
+                              "query": [
+                                {
+                                  "description": "Added as a part of security scheme: apikey",
+                                  "key": "key",
+                                  "value": "<API Key>"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "[\n  \"<string>\",\n  \"<string>\"\n]",
+                          "createdAt": "2026-06-05T15:01:47.000Z",
+                          "updatedAt": "2026-06-05T15:01:47.000Z",
+                          "uid": "35240-c4cfd71c-895f-4df0-8325-a47d04fcf0cd"
+                        }
+                      ],
+                      "createdAt": "2026-06-05T15:01:47.000Z",
+                      "updatedAt": "2026-06-05T15:01:47.000Z",
+                      "uid": "35240-b4e5066e-951e-4a78-9762-f1c51c36fc4a"
+                    }
+                  ],
+                  "id": "05e38cc0-93d7-4b46-9ec7-9ec0bb2d89fd",
+                  "createdAt": "2026-06-05T15:01:47.000Z",
+                  "updatedAt": "2026-06-05T15:01:47.000Z",
+                  "uid": "35240-05e38cc0-93d7-4b46-9ec7-9ec0bb2d89fd"
+                },
+                {
+                  "name": "filters",
+                  "item": [
+                    {
+                      "name": "List Search Filters",
+                      "id": "8012783f-1477-4089-abb0-a615c76945aa",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/shodan/host/search/filters",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "shodan",
+                            "host",
+                            "search",
+                            "filters"
+                          ]
+                        },
+                        "description": "Returns the list of filters that can be used when searching."
+                      },
+                      "response": [
+                        {
+                          "id": "f3e8ae2a-d30f-447b-9960-de7d0488487e",
+                          "name": "Array of filter names.",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/shodan/host/search/filters?key=<API Key>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "shodan",
+                                "host",
+                                "search",
+                                "filters"
+                              ],
+                              "query": [
+                                {
+                                  "description": "Added as a part of security scheme: apikey",
+                                  "key": "key",
+                                  "value": "<API Key>"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "[\n  \"<string>\",\n  \"<string>\"\n]",
+                          "createdAt": "2026-06-05T15:01:47.000Z",
+                          "updatedAt": "2026-06-05T15:01:47.000Z",
+                          "uid": "35240-f3e8ae2a-d30f-447b-9960-de7d0488487e"
+                        }
+                      ],
+                      "createdAt": "2026-06-05T15:01:47.000Z",
+                      "updatedAt": "2026-06-05T15:01:47.000Z",
+                      "uid": "35240-8012783f-1477-4089-abb0-a615c76945aa"
+                    }
+                  ],
+                  "id": "bd49cc7e-717c-434a-8e45-3db70740b186",
+                  "createdAt": "2026-06-05T15:01:47.000Z",
+                  "updatedAt": "2026-06-05T15:01:47.000Z",
+                  "uid": "35240-bd49cc7e-717c-434a-8e45-3db70740b186"
+                },
+                {
+                  "name": "tokens",
+                  "item": [
+                    {
+                      "name": "Break Query Into Tokens",
+                      "id": "a248f1c8-9314-4dd3-8f08-d751f3867c71",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/shodan/host/search/tokens?query=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "shodan",
+                            "host",
+                            "search",
+                            "tokens"
+                          ],
+                          "query": [
+                            {
+                              "description": "(Required) Shodan search query.",
+                              "key": "query",
+                              "value": "<string>"
+                            }
+                          ]
+                        },
+                        "description": "Determine which filters and tokens make up a search query."
+                      },
+                      "response": [
+                        {
+                          "id": "4374dda1-adfd-4dc4-9a8f-0c15065feacd",
+                          "name": "Parsed token structure.",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/shodan/host/search/tokens?query=<string>&key=<API Key>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "shodan",
+                                "host",
+                                "search",
+                                "tokens"
+                              ],
+                              "query": [
+                                {
+                                  "description": "(Required) Shodan search query.",
+                                  "key": "query",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "Added as a part of security scheme: apikey",
+                                  "key": "key",
+                                  "value": "<API Key>"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"adipisicinge95\": true\n}",
+                          "createdAt": "2026-06-05T15:01:47.000Z",
+                          "updatedAt": "2026-06-05T15:01:47.000Z",
+                          "uid": "35240-4374dda1-adfd-4dc4-9a8f-0c15065feacd"
+                        }
+                      ],
+                      "createdAt": "2026-06-05T15:01:47.000Z",
+                      "updatedAt": "2026-06-05T15:01:47.000Z",
+                      "uid": "35240-a248f1c8-9314-4dd3-8f08-d751f3867c71"
+                    }
+                  ],
+                  "id": "a1c2b04b-7687-4e49-9aee-ed131f425ba2",
+                  "createdAt": "2026-06-05T15:01:47.000Z",
+                  "updatedAt": "2026-06-05T15:01:47.000Z",
+                  "uid": "35240-a1c2b04b-7687-4e49-9aee-ed131f425ba2"
+                },
+                {
+                  "name": "Search Shodan",
+                  "id": "6bf5b408-1d5d-4f85-b7c2-1959216e745f",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/shodan/host/search?query=<string>&facets=<string>&page=1&minify=true",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "shodan",
+                        "host",
+                        "search"
+                      ],
+                      "query": [
+                        {
+                          "description": "(Required) Shodan search query.",
+                          "key": "query",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Comma-separated facet definitions (e.g. `country:5,port:10`).",
+                          "key": "facets",
+                          "value": "<string>"
+                        },
+                        {
+                          "key": "page",
+                          "value": "1"
+                        },
+                        {
+                          "key": "minify",
+                          "value": "true"
+                        }
+                      ]
+                    },
+                    "description": "Search Shodan using the same query syntax as the website. Uses one query credit per page after the first when filters are used."
+                  },
+                  "response": [
+                    {
+                      "id": "1869fb00-2d8a-4e52-a67e-3c48c2e6ed9f",
+                      "name": "Search results with matches and facets.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/shodan/host/search?query=<string>&facets=<string>&page=1&minify=true&key=<API Key>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "shodan",
+                            "host",
+                            "search"
+                          ],
+                          "query": [
+                            {
+                              "description": "(Required) Shodan search query.",
+                              "key": "query",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Comma-separated facet definitions (e.g. `country:5,port:10`).",
+                              "key": "facets",
+                              "value": "<string>"
+                            },
+                            {
+                              "key": "page",
+                              "value": "1"
+                            },
+                            {
+                              "key": "minify",
+                              "value": "true"
+                            },
+                            {
+                              "description": "Added as a part of security scheme: apikey",
+                              "key": "key",
+                              "value": "<API Key>"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"total\": \"<integer>\",\n  \"matches\": [\n    {\n      \"port\": \"<integer>\",\n      \"transport\": \"tcp\",\n      \"product\": \"<string>\",\n      \"version\": \"<string>\",\n      \"data\": \"<string>\",\n      \"timestamp\": \"<dateTime>\",\n      \"hash\": \"<integer>\",\n      \"ip_str\": \"<string>\",\n      \"org\": \"<string>\",\n      \"isp\": \"<string>\",\n      \"asn\": \"<string>\",\n      \"hostnames\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"domains\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"location\": {\n        \"city\": \"<string>\",\n        \"country_code\": \"<string>\",\n        \"country_name\": \"<string>\",\n        \"latitude\": \"<number>\",\n        \"longitude\": \"<number>\"\n      },\n      \"ssl\": {\n        \"Duis2d8\": \"i\"\n      },\n      \"http\": {\n        \"Lorem_f8\": -88815032\n      },\n      \"cpe23\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"vulns\": {\n        \"irured9\": -62990359.03333467,\n        \"quis_7\": \"elit\",\n        \"Duis_8_e\": 65387801.03748092\n      }\n    },\n    {\n      \"port\": \"<integer>\",\n      \"transport\": \"udp\",\n      \"product\": \"<string>\",\n      \"version\": \"<string>\",\n      \"data\": \"<string>\",\n      \"timestamp\": \"<dateTime>\",\n      \"hash\": \"<integer>\",\n      \"ip_str\": \"<string>\",\n      \"org\": \"<string>\",\n      \"isp\": \"<string>\",\n      \"asn\": \"<string>\",\n      \"hostnames\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"domains\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"location\": {\n        \"city\": \"<string>\",\n        \"country_code\": \"<string>\",\n        \"country_name\": \"<string>\",\n        \"latitude\": \"<number>\",\n        \"longitude\": \"<number>\"\n      },\n      \"ssl\": {\n        \"irure_023\": 41079276.428578615,\n        \"incididunt_c\": 48962086\n      },\n      \"http\": {\n        \"aliqua__01\": 37460821.444061846\n      },\n      \"cpe23\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"vulns\": {\n        \"consecteturfe9\": -17699808,\n        \"Lorem_f2a\": true,\n        \"culpa1b\": 2149197\n      }\n    }\n  ],\n  \"facets\": {\n    \"laborisa38\": [\n      {\n        \"count\": \"<integer>\",\n        \"value\": \"<string>\"\n      },\n      {\n        \"count\": \"<integer>\",\n        \"value\": \"<string>\"\n      }\n    ],\n    \"ipsum_1_\": [\n      {\n        \"count\": \"<integer>\",\n        \"value\": \"<string>\"\n      },\n      {\n        \"count\": \"<integer>\",\n        \"value\": \"<string>\"\n      }\n    ],\n    \"adipisicing_563\": [\n      {\n        \"count\": \"<integer>\",\n        \"value\": \"<string>\"\n      },\n      {\n        \"count\": \"<integer>\",\n        \"value\": \"<string>\"\n      }\n    ],\n    \"ullamcoa_\": [\n      {\n        \"count\": \"<integer>\",\n        \"value\": \"<string>\"\n      },\n      {\n        \"count\": \"<integer>\",\n        \"value\": \"<string>\"\n      }\n    ],\n    \"in_c\": [\n      {\n        \"count\": \"<integer>\",\n        \"value\": \"<string>\"\n      },\n      {\n        \"count\": \"<integer>\",\n        \"value\": \"<string>\"\n      }\n    ]\n  }\n}",
+                      "createdAt": "2026-06-05T15:01:47.000Z",
+                      "updatedAt": "2026-06-05T15:01:47.000Z",
+                      "uid": "35240-1869fb00-2d8a-4e52-a67e-3c48c2e6ed9f"
+                    }
+                  ],
+                  "createdAt": "2026-06-05T15:01:47.000Z",
+                  "updatedAt": "2026-06-05T15:01:47.000Z",
+                  "uid": "35240-6bf5b408-1d5d-4f85-b7c2-1959216e745f"
+                }
+              ],
+              "id": "d01fdb36-b46b-4506-b9f0-8fdcefb63959",
+              "createdAt": "2026-06-05T15:01:47.000Z",
+              "updatedAt": "2026-06-05T15:01:47.000Z",
+              "uid": "35240-d01fdb36-b46b-4506-b9f0-8fdcefb63959"
+            }
+          ],
+          "id": "11b844bf-a44c-4bf4-ad0c-bc48228202f6",
+          "createdAt": "2026-06-05T15:01:47.000Z",
+          "updatedAt": "2026-06-05T15:01:47.000Z",
+          "uid": "35240-11b844bf-a44c-4bf4-ad0c-bc48228202f6"
+        },
+        {
+          "name": "ports",
+          "item": [
+            {
+              "name": "List Crawled Ports",
+              "id": "e49dfd77-1289-44e5-a08a-97fba9701d92",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/shodan/ports",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "shodan",
+                    "ports"
+                  ]
+                },
+                "description": "Returns the list of port numbers that Shodan is crawling on the Internet."
+              },
+              "response": [
+                {
+                  "id": "76f665e2-adfa-4902-8f17-fc2b44d3b607",
+                  "name": "Array of port numbers.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/shodan/ports?key=<API Key>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "shodan",
+                        "ports"
+                      ],
+                      "query": [
+                        {
+                          "description": "Added as a part of security scheme: apikey",
+                          "key": "key",
+                          "value": "<API Key>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "[\n  \"<integer>\",\n  \"<integer>\"\n]",
+                  "createdAt": "2026-06-05T15:01:47.000Z",
+                  "updatedAt": "2026-06-05T15:01:47.000Z",
+                  "uid": "35240-76f665e2-adfa-4902-8f17-fc2b44d3b607"
+                }
+              ],
+              "createdAt": "2026-06-05T15:01:47.000Z",
+              "updatedAt": "2026-06-05T15:01:47.000Z",
+              "uid": "35240-e49dfd77-1289-44e5-a08a-97fba9701d92"
+            }
+          ],
+          "id": "934c2f58-6300-4269-8ac8-bf4be995ad3f",
+          "createdAt": "2026-06-05T15:01:47.000Z",
+          "updatedAt": "2026-06-05T15:01:47.000Z",
+          "uid": "35240-934c2f58-6300-4269-8ac8-bf4be995ad3f"
+        },
+        {
+          "name": "protocols",
+          "item": [
+            {
+              "name": "List Supported Protocols",
+              "id": "6df4f3de-c88a-4a03-9775-aa6db299437f",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/shodan/protocols",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "shodan",
+                    "protocols"
+                  ]
+                },
+                "description": "Returns the list of protocols that can be used when launching an on-demand Internet scan."
+              },
+              "response": [
+                {
+                  "id": "ad6af009-6e1b-4351-adb9-6f4ab3109304",
+                  "name": "Map of protocol slug to human-readable name.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/shodan/protocols?key=<API Key>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "shodan",
+                        "protocols"
+                      ],
+                      "query": [
+                        {
+                          "description": "Added as a part of security scheme: apikey",
+                          "key": "key",
+                          "value": "<API Key>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"idb8\": \"<string>\",\n  \"voluptatee88\": \"<string>\"\n}",
+                  "createdAt": "2026-06-05T15:01:47.000Z",
+                  "updatedAt": "2026-06-05T15:01:47.000Z",
+                  "uid": "35240-ad6af009-6e1b-4351-adb9-6f4ab3109304"
+                }
+              ],
+              "createdAt": "2026-06-05T15:01:47.000Z",
+              "updatedAt": "2026-06-05T15:01:47.000Z",
+              "uid": "35240-6df4f3de-c88a-4a03-9775-aa6db299437f"
+            }
+          ],
+          "id": "ce781f0b-289f-4980-9253-5fd312f7402d",
+          "createdAt": "2026-06-05T15:01:47.000Z",
+          "updatedAt": "2026-06-05T15:01:47.000Z",
+          "uid": "35240-ce781f0b-289f-4980-9253-5fd312f7402d"
+        },
+        {
+          "name": "scan",
+          "item": [
+            {
+              "name": "internet",
+              "item": [
+                {
+                  "name": "Scan Internet For Port",
+                  "id": "e76427c8-c1f2-4234-a34c-5dcd6e9c111e",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/x-www-form-urlencoded"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "urlencoded",
+                      "urlencoded": [
+                        {
+                          "description": "(Required) ",
+                          "key": "port",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "(Required) ",
+                          "key": "protocol",
+                          "value": "<string>"
+                        }
+                      ]
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/shodan/scan/internet",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "shodan",
+                        "scan",
+                        "internet"
+                      ]
+                    },
+                    "description": "Request Shodan to crawl the Internet for a specific port and protocol. Enterprise only."
+                  },
+                  "response": [
+                    {
+                      "id": "cbdd64a1-1ea4-476e-ae2e-3397edf3dd05",
+                      "name": "Internet scan submission confirmation.",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/x-www-form-urlencoded"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "urlencoded",
+                          "urlencoded": [
+                            {
+                              "description": "(Required) ",
+                              "key": "port",
+                              "value": "<integer>"
+                            },
+                            {
+                              "description": "(Required) ",
+                              "key": "protocol",
+                              "value": "<string>"
+                            }
+                          ]
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/shodan/scan/internet?key=<API Key>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "shodan",
+                            "scan",
+                            "internet"
+                          ],
+                          "query": [
+                            {
+                              "description": "Added as a part of security scheme: apikey",
+                              "key": "key",
+                              "value": "<API Key>"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"id\": \"<string>\",\n  \"count\": \"<integer>\",\n  \"credits_left\": \"<integer>\",\n  \"status\": \"SUBMITTING\",\n  \"created\": \"<dateTime>\"\n}",
+                      "createdAt": "2026-06-05T15:01:47.000Z",
+                      "updatedAt": "2026-06-05T15:01:47.000Z",
+                      "uid": "35240-cbdd64a1-1ea4-476e-ae2e-3397edf3dd05"
+                    }
+                  ],
+                  "createdAt": "2026-06-05T15:01:47.000Z",
+                  "updatedAt": "2026-06-05T15:01:47.000Z",
+                  "uid": "35240-e76427c8-c1f2-4234-a34c-5dcd6e9c111e"
+                }
+              ],
+              "id": "c7e46dd4-03e9-4a10-8b20-477348525eef",
+              "createdAt": "2026-06-05T15:01:47.000Z",
+              "updatedAt": "2026-06-05T15:01:47.000Z",
+              "uid": "35240-c7e46dd4-03e9-4a10-8b20-477348525eef"
+            },
+            {
+              "name": "{id}",
+              "item": [
+                {
+                  "name": "Get Scan Status",
+                  "id": "aeb7f1e3-ed0d-4b15-8df8-839f5a4f2c6e",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/shodan/scan/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "shodan",
+                        "scan",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "id": "05637014-4ea9-459d-9b58-b4571fc6943f",
+                          "key": "id",
+                          "value": "<string>",
+                          "description": "(Required) "
+                        }
+                      ]
+                    },
+                    "description": "Returns the status and progress of an on-demand scan."
+                  },
+                  "response": [
+                    {
+                      "id": "df22a4fa-e1d7-4fd6-901b-f402ce41d637",
+                      "name": "Scan status.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/shodan/scan/:id?key=<API Key>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "shodan",
+                            "scan",
+                            ":id"
+                          ],
+                          "query": [
+                            {
+                              "description": "Added as a part of security scheme: apikey",
+                              "key": "key",
+                              "value": "<API Key>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"id\": \"<string>\",\n  \"count\": \"<integer>\",\n  \"credits_left\": \"<integer>\",\n  \"status\": \"SUBMITTING\",\n  \"created\": \"<dateTime>\"\n}",
+                      "createdAt": "2026-06-05T15:01:47.000Z",
+                      "updatedAt": "2026-06-05T15:01:47.000Z",
+                      "uid": "35240-df22a4fa-e1d7-4fd6-901b-f402ce41d637"
+                    },
+                    {
+                      "id": "69c4c90b-a1b4-48d6-8d35-91a67436c504",
+                      "name": "Resource not found.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/shodan/scan/:id?key=<API Key>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "shodan",
+                            "scan",
+                            ":id"
+                          ],
+                          "query": [
+                            {
+                              "description": "Added as a part of security scheme: apikey",
+                              "key": "key",
+                              "value": "<API Key>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": \"<string>\"\n}",
+                      "createdAt": "2026-06-05T15:01:47.000Z",
+                      "updatedAt": "2026-06-05T15:01:47.000Z",
+                      "uid": "35240-69c4c90b-a1b4-48d6-8d35-91a67436c504"
+                    }
+                  ],
+                  "createdAt": "2026-06-05T15:01:47.000Z",
+                  "updatedAt": "2026-06-05T15:01:47.000Z",
+                  "uid": "35240-aeb7f1e3-ed0d-4b15-8df8-839f5a4f2c6e"
+                }
+              ],
+              "id": "d6a9e5e6-273d-4833-86f7-e110900f8f75",
+              "createdAt": "2026-06-05T15:01:47.000Z",
+              "updatedAt": "2026-06-05T15:01:47.000Z",
+              "uid": "35240-d6a9e5e6-273d-4833-86f7-e110900f8f75"
+            },
+            {
+              "name": "Submit On-Demand Scan",
+              "id": "983105f0-b48e-448d-b1bc-79760cfecc24",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/x-www-form-urlencoded"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "description": "(Required) Comma-separated list of IPs or CIDR ranges.",
+                      "key": "ips",
+                      "value": "<string>"
+                    }
+                  ]
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/shodan/scan",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "shodan",
+                    "scan"
+                  ]
+                },
+                "description": "Request Shodan to crawl an IP or netblock. Each IP consumes one scan credit."
+              },
+              "response": [
+                {
+                  "id": "b5767e99-44ce-4842-934e-0b8d70c66527",
+                  "name": "Scan submission confirmation.",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/x-www-form-urlencoded"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "urlencoded",
+                      "urlencoded": [
+                        {
+                          "description": "(Required) Comma-separated list of IPs or CIDR ranges.",
+                          "key": "ips",
+                          "value": "<string>"
+                        }
+                      ]
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/shodan/scan?key=<API Key>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "shodan",
+                        "scan"
+                      ],
+                      "query": [
+                        {
+                          "description": "Added as a part of security scheme: apikey",
+                          "key": "key",
+                          "value": "<API Key>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"id\": \"<string>\",\n  \"count\": \"<integer>\",\n  \"credits_left\": \"<integer>\",\n  \"status\": \"SUBMITTING\",\n  \"created\": \"<dateTime>\"\n}",
+                  "createdAt": "2026-06-05T15:01:47.000Z",
+                  "updatedAt": "2026-06-05T15:01:47.000Z",
+                  "uid": "35240-b5767e99-44ce-4842-934e-0b8d70c66527"
+                }
+              ],
+              "createdAt": "2026-06-05T15:01:47.000Z",
+              "updatedAt": "2026-06-05T15:01:47.000Z",
+              "uid": "35240-983105f0-b48e-448d-b1bc-79760cfecc24"
+            }
+          ],
+          "id": "ef8b37cb-bfa3-461a-8805-1547ad6f1dd2",
+          "createdAt": "2026-06-05T15:01:47.000Z",
+          "updatedAt": "2026-06-05T15:01:47.000Z",
+          "uid": "35240-ef8b37cb-bfa3-461a-8805-1547ad6f1dd2"
+        },
+        {
+          "name": "scans",
+          "item": [
+            {
+              "name": "List On-Demand Scans",
+              "id": "288279e1-7bf2-4dab-bab4-e087d0581014",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/shodan/scans",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "shodan",
+                    "scans"
+                  ]
+                },
+                "description": "Returns the list of on-demand scans submitted by the account."
+              },
+              "response": [
+                {
+                  "id": "2bd4434e-08fa-45a3-978c-17eeecb8ff4b",
+                  "name": "Paginated list of scans.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/shodan/scans?key=<API Key>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "shodan",
+                        "scans"
+                      ],
+                      "query": [
+                        {
+                          "description": "Added as a part of security scheme: apikey",
+                          "key": "key",
+                          "value": "<API Key>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"matches\": [\n    {\n      \"id\": \"<string>\",\n      \"count\": \"<integer>\",\n      \"credits_left\": \"<integer>\",\n      \"status\": \"DONE\",\n      \"created\": \"<dateTime>\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"count\": \"<integer>\",\n      \"credits_left\": \"<integer>\",\n      \"status\": \"SUBMITTING\",\n      \"created\": \"<dateTime>\"\n    }\n  ],\n  \"total\": \"<integer>\"\n}",
+                  "createdAt": "2026-06-05T15:01:47.000Z",
+                  "updatedAt": "2026-06-05T15:01:47.000Z",
+                  "uid": "35240-2bd4434e-08fa-45a3-978c-17eeecb8ff4b"
+                }
+              ],
+              "createdAt": "2026-06-05T15:01:47.000Z",
+              "updatedAt": "2026-06-05T15:01:47.000Z",
+              "uid": "35240-288279e1-7bf2-4dab-bab4-e087d0581014"
+            }
+          ],
+          "id": "ab68d77b-19b9-4473-86da-cb315d6319ba",
+          "createdAt": "2026-06-05T15:01:47.000Z",
+          "updatedAt": "2026-06-05T15:01:47.000Z",
+          "uid": "35240-ab68d77b-19b9-4473-86da-cb315d6319ba"
+        },
+        {
+          "name": "alert",
+          "item": [
+            {
+              "name": "info",
+              "item": [
+                {
+                  "name": "List Network Alerts",
+                  "id": "81220bfc-3d8e-4bbf-9072-8703fe5ddcf5",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/shodan/alert/info",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "shodan",
+                        "alert",
+                        "info"
+                      ]
+                    },
+                    "description": "Returns the network alerts that have been created on the account."
+                  },
+                  "response": [
+                    {
+                      "id": "f6f4c3ca-3758-47e3-b1cb-89c495ca67c9",
+                      "name": "List of alerts.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/shodan/alert/info?key=<API Key>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "shodan",
+                            "alert",
+                            "info"
+                          ],
+                          "query": [
+                            {
+                              "description": "Added as a part of security scheme: apikey",
+                              "key": "key",
+                              "value": "<API Key>"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "[\n  {\n    \"id\": \"<string>\",\n    \"name\": \"<string>\",\n    \"created\": \"<dateTime>\",\n    \"expires\": \"<integer>\",\n    \"expiration\": \"<dateTime>\",\n    \"filters\": {\n      \"ip\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    },\n    \"triggers\": {\n      \"veniamfe\": {\n        \"enabled\": \"<boolean>\"\n      }\n    },\n    \"size\": \"<integer>\"\n  },\n  {\n    \"id\": \"<string>\",\n    \"name\": \"<string>\",\n    \"created\": \"<dateTime>\",\n    \"expires\": \"<integer>\",\n    \"expiration\": \"<dateTime>\",\n    \"filters\": {\n      \"ip\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    },\n    \"triggers\": {\n      \"laborum_f\": {\n        \"enabled\": \"<boolean>\"\n      },\n      \"aliquip_1\": {\n        \"enabled\": \"<boolean>\"\n      }\n    },\n    \"size\": \"<integer>\"\n  }\n]",
+                      "createdAt": "2026-06-05T15:01:47.000Z",
+                      "updatedAt": "2026-06-05T15:01:47.000Z",
+                      "uid": "35240-f6f4c3ca-3758-47e3-b1cb-89c495ca67c9"
+                    }
+                  ],
+                  "createdAt": "2026-06-05T15:01:47.000Z",
+                  "updatedAt": "2026-06-05T15:01:47.000Z",
+                  "uid": "35240-81220bfc-3d8e-4bbf-9072-8703fe5ddcf5"
+                }
+              ],
+              "id": "29e4739e-011c-4a4c-b8d9-67c078856194",
+              "createdAt": "2026-06-05T15:01:47.000Z",
+              "updatedAt": "2026-06-05T15:01:47.000Z",
+              "uid": "35240-29e4739e-011c-4a4c-b8d9-67c078856194"
+            },
+            {
+              "name": "{id}",
+              "item": [
+                {
+                  "name": "info",
+                  "item": [
+                    {
+                      "name": "Get Network Alert",
+                      "id": "fe517886-1b85-4156-8213-ab77c3907d5b",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/shodan/alert/:id/info",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "shodan",
+                            "alert",
+                            ":id",
+                            "info"
+                          ],
+                          "variable": [
+                            {
+                              "id": "d93caa5f-4158-4162-8301-57ba68bf4987",
+                              "key": "id",
+                              "value": "<string>",
+                              "description": "(Required) Alert identifier."
+                            }
+                          ]
+                        },
+                        "description": "Returns the information about a specific network alert."
+                      },
+                      "response": [
+                        {
+                          "id": "31f74848-a7dc-4164-953d-99317407d1c5",
+                          "name": "Alert details.",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/shodan/alert/:id/info?key=<API Key>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "shodan",
+                                "alert",
+                                ":id",
+                                "info"
+                              ],
+                              "query": [
+                                {
+                                  "description": "Added as a part of security scheme: apikey",
+                                  "key": "key",
+                                  "value": "<API Key>"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"id\": \"<string>\",\n  \"name\": \"<string>\",\n  \"created\": \"<dateTime>\",\n  \"expires\": \"<integer>\",\n  \"expiration\": \"<dateTime>\",\n  \"filters\": {\n    \"ip\": [\n      \"<string>\",\n      \"<string>\"\n    ]\n  },\n  \"triggers\": {\n    \"Loremf1\": {\n      \"enabled\": \"<boolean>\"\n    }\n  },\n  \"size\": \"<integer>\"\n}",
+                          "createdAt": "2026-06-05T15:01:47.000Z",
+                          "updatedAt": "2026-06-05T15:01:47.000Z",
+                          "uid": "35240-31f74848-a7dc-4164-953d-99317407d1c5"
+                        },
+                        {
+                          "id": "5c025f29-eb75-4b28-8709-04d9df389281",
+                          "name": "Resource not found.",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/shodan/alert/:id/info?key=<API Key>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "shodan",
+                                "alert",
+                                ":id",
+                                "info"
+                              ],
+                              "query": [
+                                {
+                                  "description": "Added as a part of security scheme: apikey",
+                                  "key": "key",
+                                  "value": "<API Key>"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Not Found",
+                          "code": 404,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"error\": \"<string>\"\n}",
+                          "createdAt": "2026-06-05T15:01:47.000Z",
+                          "updatedAt": "2026-06-05T15:01:47.000Z",
+                          "uid": "35240-5c025f29-eb75-4b28-8709-04d9df389281"
+                        }
+                      ],
+                      "createdAt": "2026-06-05T15:01:47.000Z",
+                      "updatedAt": "2026-06-05T15:01:47.000Z",
+                      "uid": "35240-fe517886-1b85-4156-8213-ab77c3907d5b"
+                    }
+                  ],
+                  "id": "056d1e84-386b-49c2-b4b3-1ba91d272574",
+                  "createdAt": "2026-06-05T15:01:47.000Z",
+                  "updatedAt": "2026-06-05T15:01:47.000Z",
+                  "uid": "35240-056d1e84-386b-49c2-b4b3-1ba91d272574"
+                },
+                {
+                  "name": "trigger",
+                  "item": [
+                    {
+                      "name": "{trigger}",
+                      "item": [
+                        {
+                          "name": "Enable Alert Trigger",
+                          "id": "95238c7b-1b68-487d-95ca-d337edc92f8e",
+                          "protocolProfileBehavior": {
+                            "disableBodyPruning": true
+                          },
+                          "request": {
+                            "method": "PUT",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/shodan/alert/:id/trigger/:trigger",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "shodan",
+                                "alert",
+                                ":id",
+                                "trigger",
+                                ":trigger"
+                              ],
+                              "variable": [
+                                {
+                                  "id": "9613a37b-c0d3-41fa-b642-febd32d13991",
+                                  "key": "id",
+                                  "value": "<string>",
+                                  "description": "(Required) Alert identifier."
+                                },
+                                {
+                                  "id": "06e01cf4-3df9-4b90-b58a-e2c54b78fdd1",
+                                  "key": "trigger",
+                                  "value": "<string>",
+                                  "description": "(Required) Trigger name."
+                                }
+                              ]
+                            },
+                            "description": "Enable a trigger on a network alert."
+                          },
+                          "response": [
+                            {
+                              "id": "bfc9979f-4bc7-43c1-8fdd-13fdbd021a30",
+                              "name": "Trigger enable result.",
+                              "originalRequest": {
+                                "method": "PUT",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/shodan/alert/:id/trigger/:trigger?key=<API Key>",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "shodan",
+                                    "alert",
+                                    ":id",
+                                    "trigger",
+                                    ":trigger"
+                                  ],
+                                  "query": [
+                                    {
+                                      "description": "Added as a part of security scheme: apikey",
+                                      "key": "key",
+                                      "value": "<API Key>"
+                                    }
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "id"
+                                    },
+                                    {
+                                      "key": "trigger"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "OK",
+                              "code": 200,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"success\": \"<boolean>\"\n}",
+                              "createdAt": "2026-06-05T15:01:47.000Z",
+                              "updatedAt": "2026-06-05T15:01:47.000Z",
+                              "uid": "35240-bfc9979f-4bc7-43c1-8fdd-13fdbd021a30"
+                            }
+                          ],
+                          "createdAt": "2026-06-05T15:01:47.000Z",
+                          "updatedAt": "2026-06-05T15:01:47.000Z",
+                          "uid": "35240-95238c7b-1b68-487d-95ca-d337edc92f8e"
+                        },
+                        {
+                          "name": "Disable Alert Trigger",
+                          "id": "40e321b7-e905-4e49-afa9-772c22d847c1",
+                          "protocolProfileBehavior": {
+                            "disableBodyPruning": true
+                          },
+                          "request": {
+                            "method": "DELETE",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/shodan/alert/:id/trigger/:trigger",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "shodan",
+                                "alert",
+                                ":id",
+                                "trigger",
+                                ":trigger"
+                              ],
+                              "variable": [
+                                {
+                                  "id": "1a730181-954e-4f8a-8161-0e2f7a1d2b1c",
+                                  "key": "id",
+                                  "value": "<string>",
+                                  "description": "(Required) Alert identifier."
+                                },
+                                {
+                                  "id": "8e9f883d-42c5-4641-ae6d-b125e0b4f87a",
+                                  "key": "trigger",
+                                  "value": "<string>",
+                                  "description": "(Required) Trigger name."
+                                }
+                              ]
+                            },
+                            "description": "Disable a trigger on a network alert."
+                          },
+                          "response": [
+                            {
+                              "id": "e77f2f81-2ea9-4181-9339-806f3931bbab",
+                              "name": "Trigger disable result.",
+                              "originalRequest": {
+                                "method": "DELETE",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/shodan/alert/:id/trigger/:trigger?key=<API Key>",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "shodan",
+                                    "alert",
+                                    ":id",
+                                    "trigger",
+                                    ":trigger"
+                                  ],
+                                  "query": [
+                                    {
+                                      "description": "Added as a part of security scheme: apikey",
+                                      "key": "key",
+                                      "value": "<API Key>"
+                                    }
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "id"
+                                    },
+                                    {
+                                      "key": "trigger"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "OK",
+                              "code": 200,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"success\": \"<boolean>\"\n}",
+                              "createdAt": "2026-06-05T15:01:47.000Z",
+                              "updatedAt": "2026-06-05T15:01:47.000Z",
+                              "uid": "35240-e77f2f81-2ea9-4181-9339-806f3931bbab"
+                            }
+                          ],
+                          "createdAt": "2026-06-05T15:01:47.000Z",
+                          "updatedAt": "2026-06-05T15:01:47.000Z",
+                          "uid": "35240-40e321b7-e905-4e49-afa9-772c22d847c1"
+                        }
+                      ],
+                      "id": "e86f7a40-68cd-42aa-a3ec-4c820ffa39d6",
+                      "createdAt": "2026-06-05T15:01:47.000Z",
+                      "updatedAt": "2026-06-05T15:01:47.000Z",
+                      "uid": "35240-e86f7a40-68cd-42aa-a3ec-4c820ffa39d6"
+                    }
+                  ],
+                  "id": "ba5d7390-18c4-4a9a-8ffd-3f3e6d3fb929",
+                  "createdAt": "2026-06-05T15:01:47.000Z",
+                  "updatedAt": "2026-06-05T15:01:47.000Z",
+                  "uid": "35240-ba5d7390-18c4-4a9a-8ffd-3f3e6d3fb929"
+                },
+                {
+                  "name": "Update Network Alert",
+                  "id": "6e0de493-60b1-4971-b914-d6aefbd2fb5b",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"name\": \"<string>\",\n  \"filters\": {\n    \"ip\": [\n      \"<string>\",\n      \"<string>\"\n    ]\n  }\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/shodan/alert/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "shodan",
+                        "alert",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "id": "40814492-6617-4abe-8389-5ba8900f12f9",
+                          "key": "id",
+                          "value": "<string>",
+                          "description": "(Required) Alert identifier."
+                        }
+                      ]
+                    },
+                    "description": "Edit the IP ranges or name of a network alert."
+                  },
+                  "response": [
+                    {
+                      "id": "9fd013e6-d332-497b-9a5d-8df11ce3ac0d",
+                      "name": "Updated alert.",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"name\": \"<string>\",\n  \"filters\": {\n    \"ip\": [\n      \"<string>\",\n      \"<string>\"\n    ]\n  }\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/shodan/alert/:id?key=<API Key>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "shodan",
+                            "alert",
+                            ":id"
+                          ],
+                          "query": [
+                            {
+                              "description": "Added as a part of security scheme: apikey",
+                              "key": "key",
+                              "value": "<API Key>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"id\": \"<string>\",\n  \"name\": \"<string>\",\n  \"created\": \"<dateTime>\",\n  \"expires\": \"<integer>\",\n  \"expiration\": \"<dateTime>\",\n  \"filters\": {\n    \"ip\": [\n      \"<string>\",\n      \"<string>\"\n    ]\n  },\n  \"triggers\": {\n    \"Loremf1\": {\n      \"enabled\": \"<boolean>\"\n    }\n  },\n  \"size\": \"<integer>\"\n}",
+                      "createdAt": "2026-06-05T15:01:47.000Z",
+                      "updatedAt": "2026-06-05T15:01:47.000Z",
+                      "uid": "35240-9fd013e6-d332-497b-9a5d-8df11ce3ac0d"
+                    }
+                  ],
+                  "createdAt": "2026-06-05T15:01:47.000Z",
+                  "updatedAt": "2026-06-05T15:01:47.000Z",
+                  "uid": "35240-6e0de493-60b1-4971-b914-d6aefbd2fb5b"
+                },
+                {
+                  "name": "Delete Network Alert",
+                  "id": "c08f74da-0e8a-4b92-bda6-d1790410b34e",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/shodan/alert/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "shodan",
+                        "alert",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "id": "f94494e3-1abb-4289-b52f-5d02ac4a2981",
+                          "key": "id",
+                          "value": "<string>",
+                          "description": "(Required) Alert identifier."
+                        }
+                      ]
+                    },
+                    "description": "Remove the network alert and its triggers."
+                  },
+                  "response": [
+                    {
+                      "id": "cb858bc5-c205-43c0-b6ff-2832c7c0185c",
+                      "name": "Alert deletion result.",
+                      "originalRequest": {
+                        "method": "DELETE",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/shodan/alert/:id?key=<API Key>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "shodan",
+                            "alert",
+                            ":id"
+                          ],
+                          "query": [
+                            {
+                              "description": "Added as a part of security scheme: apikey",
+                              "key": "key",
+                              "value": "<API Key>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"success\": \"<boolean>\"\n}",
+                      "createdAt": "2026-06-05T15:01:47.000Z",
+                      "updatedAt": "2026-06-05T15:01:47.000Z",
+                      "uid": "35240-cb858bc5-c205-43c0-b6ff-2832c7c0185c"
+                    }
+                  ],
+                  "createdAt": "2026-06-05T15:01:47.000Z",
+                  "updatedAt": "2026-06-05T15:01:47.000Z",
+                  "uid": "35240-c08f74da-0e8a-4b92-bda6-d1790410b34e"
+                }
+              ],
+              "id": "55cf8b74-1099-4f1d-a80e-bbe04156a857",
+              "createdAt": "2026-06-05T15:01:47.000Z",
+              "updatedAt": "2026-06-05T15:01:47.000Z",
+              "uid": "35240-55cf8b74-1099-4f1d-a80e-bbe04156a857"
+            },
+            {
+              "name": "triggers",
+              "item": [
+                {
+                  "name": "List Alert Triggers",
+                  "id": "a35f33e0-c5c3-4d15-acc7-299a207294a8",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/shodan/alert/triggers",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "shodan",
+                        "alert",
+                        "triggers"
+                      ]
+                    },
+                    "description": "Returns the list of triggers that can be enabled on alerts."
+                  },
+                  "response": [
+                    {
+                      "id": "f723fd70-119c-45a8-aad9-7bf1d808a611",
+                      "name": "Trigger metadata.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/shodan/alert/triggers?key=<API Key>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "shodan",
+                            "alert",
+                            "triggers"
+                          ],
+                          "query": [
+                            {
+                              "description": "Added as a part of security scheme: apikey",
+                              "key": "key",
+                              "value": "<API Key>"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "[\n  {\n    \"name\": \"<string>\",\n    \"description\": \"<string>\",\n    \"rule\": \"<string>\"\n  },\n  {\n    \"name\": \"<string>\",\n    \"description\": \"<string>\",\n    \"rule\": \"<string>\"\n  }\n]",
+                      "createdAt": "2026-06-05T15:01:47.000Z",
+                      "updatedAt": "2026-06-05T15:01:47.000Z",
+                      "uid": "35240-f723fd70-119c-45a8-aad9-7bf1d808a611"
+                    }
+                  ],
+                  "createdAt": "2026-06-05T15:01:47.000Z",
+                  "updatedAt": "2026-06-05T15:01:47.000Z",
+                  "uid": "35240-a35f33e0-c5c3-4d15-acc7-299a207294a8"
+                }
+              ],
+              "id": "df2adcf7-5d32-48c2-bf29-ded2208bb054",
+              "createdAt": "2026-06-05T15:01:47.000Z",
+              "updatedAt": "2026-06-05T15:01:47.000Z",
+              "uid": "35240-df2adcf7-5d32-48c2-bf29-ded2208bb054"
+            },
+            {
+              "name": "Create Network Alert",
+              "id": "8609b42c-1d0f-4c7f-a145-38662ee72e88",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"filters\": {\n    \"ip\": [\n      \"<string>\",\n      \"<string>\"\n    ]\n  },\n  \"expires\": \"<integer>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/shodan/alert",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "shodan",
+                    "alert"
+                  ]
+                },
+                "description": "Create a network alert on one or more IP ranges."
+              },
+              "response": [
+                {
+                  "id": "c5173be4-b96f-423e-b505-0266eb497e87",
+                  "name": "Created alert.",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"name\": \"<string>\",\n  \"filters\": {\n    \"ip\": [\n      \"<string>\",\n      \"<string>\"\n    ]\n  },\n  \"expires\": \"<integer>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/shodan/alert?key=<API Key>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "shodan",
+                        "alert"
+                      ],
+                      "query": [
+                        {
+                          "description": "Added as a part of security scheme: apikey",
+                          "key": "key",
+                          "value": "<API Key>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"id\": \"<string>\",\n  \"name\": \"<string>\",\n  \"created\": \"<dateTime>\",\n  \"expires\": \"<integer>\",\n  \"expiration\": \"<dateTime>\",\n  \"filters\": {\n    \"ip\": [\n      \"<string>\",\n      \"<string>\"\n    ]\n  },\n  \"triggers\": {\n    \"Loremf1\": {\n      \"enabled\": \"<boolean>\"\n    }\n  },\n  \"size\": \"<integer>\"\n}",
+                  "createdAt": "2026-06-05T15:01:47.000Z",
+                  "updatedAt": "2026-06-05T15:01:47.000Z",
+                  "uid": "35240-c5173be4-b96f-423e-b505-0266eb497e87"
+                }
+              ],
+              "createdAt": "2026-06-05T15:01:47.000Z",
+              "updatedAt": "2026-06-05T15:01:47.000Z",
+              "uid": "35240-8609b42c-1d0f-4c7f-a145-38662ee72e88"
+            }
+          ],
+          "id": "d096fd6e-5ac2-43ca-b1d3-4e2f0d2c8b04",
+          "createdAt": "2026-06-05T15:01:47.000Z",
+          "updatedAt": "2026-06-05T15:01:47.000Z",
+          "uid": "35240-d096fd6e-5ac2-43ca-b1d3-4e2f0d2c8b04"
+        },
+        {
+          "name": "query",
+          "item": [
+            {
+              "name": "search",
+              "item": [
+                {
+                  "name": "Search Saved Queries",
+                  "id": "6b402cca-207f-4033-9df8-8cf1dd4e10ed",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/shodan/query/search?query=<string>&page=1",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "shodan",
+                        "query",
+                        "search"
+                      ],
+                      "query": [
+                        {
+                          "description": "(Required) Shodan search query.",
+                          "key": "query",
+                          "value": "<string>"
+                        },
+                        {
+                          "key": "page",
+                          "value": "1"
+                        }
+                      ]
+                    },
+                    "description": "Search the directory of saved Shodan queries."
+                  },
+                  "response": [
+                    {
+                      "id": "724622fe-c6ac-4057-a574-6d6eb09dbb15",
+                      "name": "Search results.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/shodan/query/search?query=<string>&page=1&key=<API Key>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "shodan",
+                            "query",
+                            "search"
+                          ],
+                          "query": [
+                            {
+                              "description": "(Required) Shodan search query.",
+                              "key": "query",
+                              "value": "<string>"
+                            },
+                            {
+                              "key": "page",
+                              "value": "1"
+                            },
+                            {
+                              "description": "Added as a part of security scheme: apikey",
+                              "key": "key",
+                              "value": "<API Key>"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"adipisicinge95\": true\n}",
+                      "createdAt": "2026-06-05T15:01:47.000Z",
+                      "updatedAt": "2026-06-05T15:01:47.000Z",
+                      "uid": "35240-724622fe-c6ac-4057-a574-6d6eb09dbb15"
+                    }
+                  ],
+                  "createdAt": "2026-06-05T15:01:47.000Z",
+                  "updatedAt": "2026-06-05T15:01:47.000Z",
+                  "uid": "35240-6b402cca-207f-4033-9df8-8cf1dd4e10ed"
+                }
+              ],
+              "id": "7bdd5a70-2d5b-41e8-87ec-c7e178a4366a",
+              "createdAt": "2026-06-05T15:01:47.000Z",
+              "updatedAt": "2026-06-05T15:01:47.000Z",
+              "uid": "35240-7bdd5a70-2d5b-41e8-87ec-c7e178a4366a"
+            },
+            {
+              "name": "tags",
+              "item": [
+                {
+                  "name": "List Popular Query Tags",
+                  "id": "cbeadec6-3d57-4beb-ba8a-ac561345bc96",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/shodan/query/tags?size=10",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "shodan",
+                        "query",
+                        "tags"
+                      ],
+                      "query": [
+                        {
+                          "key": "size",
+                          "value": "10"
+                        }
+                      ]
+                    },
+                    "description": "Returns the most popular tags assigned to saved queries."
+                  },
+                  "response": [
+                    {
+                      "id": "5278758e-9d3d-433a-b518-6599947df548",
+                      "name": "Tag list.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/shodan/query/tags?size=10&key=<API Key>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "shodan",
+                            "query",
+                            "tags"
+                          ],
+                          "query": [
+                            {
+                              "key": "size",
+                              "value": "10"
+                            },
+                            {
+                              "description": "Added as a part of security scheme: apikey",
+                              "key": "key",
+                              "value": "<API Key>"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"adipisicinge95\": true\n}",
+                      "createdAt": "2026-06-05T15:01:47.000Z",
+                      "updatedAt": "2026-06-05T15:01:47.000Z",
+                      "uid": "35240-5278758e-9d3d-433a-b518-6599947df548"
+                    }
+                  ],
+                  "createdAt": "2026-06-05T15:01:47.000Z",
+                  "updatedAt": "2026-06-05T15:01:47.000Z",
+                  "uid": "35240-cbeadec6-3d57-4beb-ba8a-ac561345bc96"
+                }
+              ],
+              "id": "edd6b3e9-7e2c-4ae3-86a4-970c39f22584",
+              "createdAt": "2026-06-05T15:01:47.000Z",
+              "updatedAt": "2026-06-05T15:01:47.000Z",
+              "uid": "35240-edd6b3e9-7e2c-4ae3-86a4-970c39f22584"
+            },
+            {
+              "name": "List Saved Queries",
+              "id": "0581ffa9-a9d2-45d5-87a2-ad1e9ca483ae",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/shodan/query?page=1&sort=timestamp&order=asc",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "shodan",
+                    "query"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "sort",
+                      "value": "timestamp"
+                    },
+                    {
+                      "key": "order",
+                      "value": "asc"
+                    }
+                  ]
+                },
+                "description": "Browse the directory of community-saved Shodan queries."
+              },
+              "response": [
+                {
+                  "id": "e217ea06-f5c2-4740-96b3-402e2b943f7d",
+                  "name": "List of saved queries.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/shodan/query?page=1&sort=timestamp&order=asc&key=<API Key>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "shodan",
+                        "query"
+                      ],
+                      "query": [
+                        {
+                          "key": "page",
+                          "value": "1"
+                        },
+                        {
+                          "key": "sort",
+                          "value": "timestamp"
+                        },
+                        {
+                          "key": "order",
+                          "value": "asc"
+                        },
+                        {
+                          "description": "Added as a part of security scheme: apikey",
+                          "key": "key",
+                          "value": "<API Key>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"adipisicinge95\": true\n}",
+                  "createdAt": "2026-06-05T15:01:47.000Z",
+                  "updatedAt": "2026-06-05T15:01:47.000Z",
+                  "uid": "35240-e217ea06-f5c2-4740-96b3-402e2b943f7d"
+                }
+              ],
+              "createdAt": "2026-06-05T15:01:47.000Z",
+              "updatedAt": "2026-06-05T15:01:47.000Z",
+              "uid": "35240-0581ffa9-a9d2-45d5-87a2-ad1e9ca483ae"
+            }
+          ],
+          "id": "0bcc425f-8f8a-4a45-8552-28b8b950cea6",
+          "createdAt": "2026-06-05T15:01:47.000Z",
+          "updatedAt": "2026-06-05T15:01:47.000Z",
+          "uid": "35240-0bcc425f-8f8a-4a45-8552-28b8b950cea6"
+        },
+        {
+          "name": "data",
+          "item": [
+            {
+              "name": "{dataset}",
+              "item": [
+                {
+                  "name": "List Bulk Data Files",
+                  "id": "8fc92edc-0705-4a3c-a559-7bebc930f023",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/shodan/data/:dataset",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "shodan",
+                        "data",
+                        ":dataset"
+                      ],
+                      "variable": [
+                        {
+                          "id": "3ffc0c23-9750-47dc-a17f-c56825011ba9",
+                          "key": "dataset",
+                          "value": "<string>",
+                          "description": "(Required) "
+                        }
+                      ]
+                    },
+                    "description": "Returns the list of files available within a bulk dataset. Enterprise only."
+                  },
+                  "response": [
+                    {
+                      "id": "840a5410-3501-44b1-8639-c8bd1feba6c2",
+                      "name": "File list.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/shodan/data/:dataset?key=<API Key>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "shodan",
+                            "data",
+                            ":dataset"
+                          ],
+                          "query": [
+                            {
+                              "description": "Added as a part of security scheme: apikey",
+                              "key": "key",
+                              "value": "<API Key>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "dataset"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "[\n  {\n    \"name\": \"<string>\",\n    \"size\": \"<integer>\",\n    \"timestamp\": \"<dateTime>\",\n    \"url\": \"<uri>\"\n  },\n  {\n    \"name\": \"<string>\",\n    \"size\": \"<integer>\",\n    \"timestamp\": \"<dateTime>\",\n    \"url\": \"<uri>\"\n  }\n]",
+                      "createdAt": "2026-06-05T15:01:47.000Z",
+                      "updatedAt": "2026-06-05T15:01:47.000Z",
+                      "uid": "35240-840a5410-3501-44b1-8639-c8bd1feba6c2"
+                    }
+                  ],
+                  "createdAt": "2026-06-05T15:01:47.000Z",
+                  "updatedAt": "2026-06-05T15:01:47.000Z",
+                  "uid": "35240-8fc92edc-0705-4a3c-a559-7bebc930f023"
+                }
+              ],
+              "id": "9e94fb2a-b76e-47d9-8842-634b44468d5d",
+              "createdAt": "2026-06-05T15:01:47.000Z",
+              "updatedAt": "2026-06-05T15:01:47.000Z",
+              "uid": "35240-9e94fb2a-b76e-47d9-8842-634b44468d5d"
+            },
+            {
+              "name": "List Bulk Data Sets",
+              "id": "4b66dcf8-f8da-4e66-ae51-b0d85d36fee8",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/shodan/data",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "shodan",
+                    "data"
+                  ]
+                },
+                "description": "Returns the list of bulk data sets available to the account. Enterprise only."
+              },
+              "response": [
+                {
+                  "id": "2ee85956-eee3-4f4f-a9df-5a908d25d80e",
+                  "name": "Dataset list.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/shodan/data?key=<API Key>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "shodan",
+                        "data"
+                      ],
+                      "query": [
+                        {
+                          "description": "Added as a part of security scheme: apikey",
+                          "key": "key",
+                          "value": "<API Key>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "[\n  {\n    \"name\": \"<string>\",\n    \"description\": \"<string>\"\n  },\n  {\n    \"name\": \"<string>\",\n    \"description\": \"<string>\"\n  }\n]",
+                  "createdAt": "2026-06-05T15:01:47.000Z",
+                  "updatedAt": "2026-06-05T15:01:47.000Z",
+                  "uid": "35240-2ee85956-eee3-4f4f-a9df-5a908d25d80e"
+                }
+              ],
+              "createdAt": "2026-06-05T15:01:47.000Z",
+              "updatedAt": "2026-06-05T15:01:47.000Z",
+              "uid": "35240-4b66dcf8-f8da-4e66-ae51-b0d85d36fee8"
+            }
+          ],
+          "id": "76b3c888-f797-47a0-a6c2-9eace9d05357",
+          "createdAt": "2026-06-05T15:01:47.000Z",
+          "updatedAt": "2026-06-05T15:01:47.000Z",
+          "uid": "35240-76b3c888-f797-47a0-a6c2-9eace9d05357"
+        }
+      ],
+      "id": "e70b407b-5c5c-472b-98b4-11ad0ba83e20",
+      "createdAt": "2026-06-05T15:01:47.000Z",
+      "updatedAt": "2026-06-05T15:01:47.000Z",
+      "uid": "35240-e70b407b-5c5c-472b-98b4-11ad0ba83e20"
+    },
+    {
+      "name": "notifier",
+      "item": [
+        {
+          "name": "provider",
+          "item": [
+            {
+              "name": "List Notifier Providers",
+              "id": "04004c25-c13c-4b00-8067-83ed60c2dd39",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/notifier/provider",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "notifier",
+                    "provider"
+                  ]
+                },
+                "description": "Returns the list of available notification provider types."
+              },
+              "response": [
+                {
+                  "id": "1723a1a2-5b82-4dfe-8266-45ad154dde64",
+                  "name": "Provider catalog.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/notifier/provider?key=<API Key>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "notifier",
+                        "provider"
+                      ],
+                      "query": [
+                        {
+                          "description": "Added as a part of security scheme: apikey",
+                          "key": "key",
+                          "value": "<API Key>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"adipisicinge95\": true\n}",
+                  "createdAt": "2026-06-05T15:01:47.000Z",
+                  "updatedAt": "2026-06-05T15:01:47.000Z",
+                  "uid": "35240-1723a1a2-5b82-4dfe-8266-45ad154dde64"
+                }
+              ],
+              "createdAt": "2026-06-05T15:01:47.000Z",
+              "updatedAt": "2026-06-05T15:01:47.000Z",
+              "uid": "35240-04004c25-c13c-4b00-8067-83ed60c2dd39"
+            }
+          ],
+          "id": "1f290c02-cde8-4130-8d58-f1148d2474e9",
+          "createdAt": "2026-06-05T15:01:47.000Z",
+          "updatedAt": "2026-06-05T15:01:47.000Z",
+          "uid": "35240-1f290c02-cde8-4130-8d58-f1148d2474e9"
+        },
+        {
+          "name": "{id}",
+          "item": [
+            {
+              "name": "Get Notifier",
+              "id": "1c23ff68-ba4d-4c89-8b31-0d5dc1fb7c3a",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/notifier/:id",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "notifier",
+                    ":id"
+                  ],
+                  "variable": [
+                    {
+                      "id": "57e8d21f-393f-429a-868a-d488001e6cc7",
+                      "key": "id",
+                      "value": "<string>",
+                      "description": "(Required) Notifier identifier."
+                    }
+                  ]
+                },
+                "description": "Returns information about a specific notifier."
+              },
+              "response": [
+                {
+                  "id": "44529b20-d4be-4f05-9d8d-a312cc40b3d8",
+                  "name": "Notifier details.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/notifier/:id?key=<API Key>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "notifier",
+                        ":id"
+                      ],
+                      "query": [
+                        {
+                          "description": "Added as a part of security scheme: apikey",
+                          "key": "key",
+                          "value": "<API Key>"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"id\": \"<string>\",\n  \"provider\": \"<string>\",\n  \"description\": \"<string>\",\n  \"args\": {\n    \"voluptate_22e\": 15985431,\n    \"incididunt5\": -69243256.96891169\n  }\n}",
+                  "createdAt": "2026-06-05T15:01:47.000Z",
+                  "updatedAt": "2026-06-05T15:01:47.000Z",
+                  "uid": "35240-44529b20-d4be-4f05-9d8d-a312cc40b3d8"
+                }
+              ],
+              "createdAt": "2026-06-05T15:01:47.000Z",
+              "updatedAt": "2026-06-05T15:01:47.000Z",
+              "uid": "35240-1c23ff68-ba4d-4c89-8b31-0d5dc1fb7c3a"
+            },
+            {
+              "name": "Update Notifier",
+              "id": "65a53af7-e73d-4da8-98fe-be5d22587e64",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "PUT",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"provider\": \"<string>\",\n  \"description\": \"<string>\",\n  \"args\": {\n    \"ut_33_\": 5712178.520999789\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/notifier/:id",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "notifier",
+                    ":id"
+                  ],
+                  "variable": [
+                    {
+                      "id": "a4051f2d-2d5c-4a6a-9a18-2c8c549fec28",
+                      "key": "id",
+                      "value": "<string>",
+                      "description": "(Required) Notifier identifier."
+                    }
+                  ]
+                },
+                "description": "Update an existing notifier configuration."
+              },
+              "response": [
+                {
+                  "id": "68c48ad8-e0f4-4226-af5b-b5e552ebe569",
+                  "name": "Updated notifier.",
+                  "originalRequest": {
+                    "method": "PUT",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"provider\": \"<string>\",\n  \"description\": \"<string>\",\n  \"args\": {\n    \"ut_33_\": 5712178.520999789\n  }\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/notifier/:id?key=<API Key>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "notifier",
+                        ":id"
+                      ],
+                      "query": [
+                        {
+                          "description": "Added as a part of security scheme: apikey",
+                          "key": "key",
+                          "value": "<API Key>"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"id\": \"<string>\",\n  \"provider\": \"<string>\",\n  \"description\": \"<string>\",\n  \"args\": {\n    \"voluptate_22e\": 15985431,\n    \"incididunt5\": -69243256.96891169\n  }\n}",
+                  "createdAt": "2026-06-05T15:01:47.000Z",
+                  "updatedAt": "2026-06-05T15:01:47.000Z",
+                  "uid": "35240-68c48ad8-e0f4-4226-af5b-b5e552ebe569"
+                }
+              ],
+              "createdAt": "2026-06-05T15:01:47.000Z",
+              "updatedAt": "2026-06-05T15:01:47.000Z",
+              "uid": "35240-65a53af7-e73d-4da8-98fe-be5d22587e64"
+            },
+            {
+              "name": "Delete Notifier",
+              "id": "8dcda7e4-8eef-4a4e-8779-291cb63a952d",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "DELETE",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/notifier/:id",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "notifier",
+                    ":id"
+                  ],
+                  "variable": [
+                    {
+                      "id": "d6788fed-0e05-4e1d-87ae-ef89d8c6910e",
+                      "key": "id",
+                      "value": "<string>",
+                      "description": "(Required) Notifier identifier."
+                    }
+                  ]
+                },
+                "description": "Delete a notifier."
+              },
+              "response": [
+                {
+                  "id": "cfec948d-598c-4fbe-a0c7-a88b84cbfc5e",
+                  "name": "Notifier deletion result.",
+                  "originalRequest": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/notifier/:id?key=<API Key>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "notifier",
+                        ":id"
+                      ],
+                      "query": [
+                        {
+                          "description": "Added as a part of security scheme: apikey",
+                          "key": "key",
+                          "value": "<API Key>"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"success\": \"<boolean>\"\n}",
+                  "createdAt": "2026-06-05T15:01:47.000Z",
+                  "updatedAt": "2026-06-05T15:01:47.000Z",
+                  "uid": "35240-cfec948d-598c-4fbe-a0c7-a88b84cbfc5e"
+                }
+              ],
+              "createdAt": "2026-06-05T15:01:47.000Z",
+              "updatedAt": "2026-06-05T15:01:47.000Z",
+              "uid": "35240-8dcda7e4-8eef-4a4e-8779-291cb63a952d"
+            }
+          ],
+          "id": "40eabb5f-f4b4-4cd5-a1cf-9b19465e5a87",
+          "createdAt": "2026-06-05T15:01:47.000Z",
+          "updatedAt": "2026-06-05T15:01:47.000Z",
+          "uid": "35240-40eabb5f-f4b4-4cd5-a1cf-9b19465e5a87"
+        },
+        {
+          "name": "List Notifiers",
+          "id": "78600375-be99-4024-aba8-3308c5d9859f",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/notifier",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "notifier"
+              ]
+            },
+            "description": "Returns the list of notifiers the user has configured."
+          },
+          "response": [
+            {
+              "id": "7ff18519-7d87-485c-90ac-50bde64ca97c",
+              "name": "Notifier list.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/notifier?key=<API Key>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "notifier"
+                  ],
+                  "query": [
+                    {
+                      "description": "Added as a part of security scheme: apikey",
+                      "key": "key",
+                      "value": "<API Key>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "[\n  {\n    \"id\": \"<string>\",\n    \"provider\": \"<string>\",\n    \"description\": \"<string>\",\n    \"args\": {\n      \"amet_cc_\": true,\n      \"consequat_a\": 6369718,\n      \"iruref\": true\n    }\n  },\n  {\n    \"id\": \"<string>\",\n    \"provider\": \"<string>\",\n    \"description\": \"<string>\",\n    \"args\": {\n      \"quia22\": 19490447\n    }\n  }\n]",
+              "createdAt": "2026-06-05T15:01:47.000Z",
+              "updatedAt": "2026-06-05T15:01:47.000Z",
+              "uid": "35240-7ff18519-7d87-485c-90ac-50bde64ca97c"
+            }
+          ],
+          "createdAt": "2026-06-05T15:01:47.000Z",
+          "updatedAt": "2026-06-05T15:01:47.000Z",
+          "uid": "35240-78600375-be99-4024-aba8-3308c5d9859f"
+        },
+        {
+          "name": "Create Notifier",
+          "id": "a7839d59-cb04-4132-8f2a-9c5d231cbe4b",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"provider\": \"<string>\",\n  \"description\": \"<string>\",\n  \"args\": {\n    \"ut_33_\": 5712178.520999789\n  }\n}",
+              "options": {
+                "raw": {
+                  "headerFamily": "json",
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/notifier",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "notifier"
+              ]
+            },
+            "description": "Create a new notifier for receiving alerts."
+          },
+          "response": [
+            {
+              "id": "d503af96-3ac2-44ba-a82f-7dbf735c20c1",
+              "name": "Created notifier.",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"provider\": \"<string>\",\n  \"description\": \"<string>\",\n  \"args\": {\n    \"ut_33_\": 5712178.520999789\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/notifier?key=<API Key>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "notifier"
+                  ],
+                  "query": [
+                    {
+                      "description": "Added as a part of security scheme: apikey",
+                      "key": "key",
+                      "value": "<API Key>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"id\": \"<string>\",\n  \"provider\": \"<string>\",\n  \"description\": \"<string>\",\n  \"args\": {\n    \"voluptate_22e\": 15985431,\n    \"incididunt5\": -69243256.96891169\n  }\n}",
+              "createdAt": "2026-06-05T15:01:47.000Z",
+              "updatedAt": "2026-06-05T15:01:47.000Z",
+              "uid": "35240-d503af96-3ac2-44ba-a82f-7dbf735c20c1"
+            }
+          ],
+          "createdAt": "2026-06-05T15:01:47.000Z",
+          "updatedAt": "2026-06-05T15:01:47.000Z",
+          "uid": "35240-a7839d59-cb04-4132-8f2a-9c5d231cbe4b"
+        }
+      ],
+      "id": "8da328ff-36e0-42b4-9d27-59947296168c",
+      "createdAt": "2026-06-05T15:01:47.000Z",
+      "updatedAt": "2026-06-05T15:01:47.000Z",
+      "uid": "35240-8da328ff-36e0-42b4-9d27-59947296168c"
+    },
+    {
+      "name": "dns",
+      "item": [
+        {
+          "name": "domain",
+          "item": [
+            {
+              "name": "{domain}",
+              "item": [
+                {
+                  "name": "Get Domain DNS Information",
+                  "id": "b8a0afa9-0e24-428c-b3e8-bc3fe3f4fcdf",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/dns/domain/:domain?history=false&type=CNAME&page=1",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "dns",
+                        "domain",
+                        ":domain"
+                      ],
+                      "query": [
+                        {
+                          "key": "history",
+                          "value": "false"
+                        },
+                        {
+                          "key": "type",
+                          "value": "CNAME"
+                        },
+                        {
+                          "key": "page",
+                          "value": "1"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "id": "ad799204-aa66-4ab6-89b7-9ab8a678a2da",
+                          "key": "domain",
+                          "value": "<string>",
+                          "description": "(Required) "
+                        }
+                      ]
+                    },
+                    "description": "Returns the subdomains and DNS entries known for the given domain."
+                  },
+                  "response": [
+                    {
+                      "id": "fc0da3fe-4a47-4b77-8dc0-f387829f3814",
+                      "name": "Domain DNS information.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/dns/domain/:domain?history=false&type=CNAME&page=1&key=<API Key>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "dns",
+                            "domain",
+                            ":domain"
+                          ],
+                          "query": [
+                            {
+                              "key": "history",
+                              "value": "false"
+                            },
+                            {
+                              "key": "type",
+                              "value": "CNAME"
+                            },
+                            {
+                              "key": "page",
+                              "value": "1"
+                            },
+                            {
+                              "description": "Added as a part of security scheme: apikey",
+                              "key": "key",
+                              "value": "<API Key>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "domain"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"adipisicinge95\": true\n}",
+                      "createdAt": "2026-06-05T15:01:47.000Z",
+                      "updatedAt": "2026-06-05T15:01:47.000Z",
+                      "uid": "35240-fc0da3fe-4a47-4b77-8dc0-f387829f3814"
+                    }
+                  ],
+                  "createdAt": "2026-06-05T15:01:47.000Z",
+                  "updatedAt": "2026-06-05T15:01:47.000Z",
+                  "uid": "35240-b8a0afa9-0e24-428c-b3e8-bc3fe3f4fcdf"
+                }
+              ],
+              "id": "5415d87a-e00a-4b46-94fe-e60cb2c942f7",
+              "createdAt": "2026-06-05T15:01:47.000Z",
+              "updatedAt": "2026-06-05T15:01:47.000Z",
+              "uid": "35240-5415d87a-e00a-4b46-94fe-e60cb2c942f7"
+            }
+          ],
+          "id": "81d3ec1a-a447-43a2-a3e8-a96fab149555",
+          "createdAt": "2026-06-05T15:01:47.000Z",
+          "updatedAt": "2026-06-05T15:01:47.000Z",
+          "uid": "35240-81d3ec1a-a447-43a2-a3e8-a96fab149555"
+        },
+        {
+          "name": "resolve",
+          "item": [
+            {
+              "name": "Resolve Hostnames",
+              "id": "5db7195e-d0c8-403e-b6be-0371f5a7749e",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/dns/resolve?hostnames=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "dns",
+                    "resolve"
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) Comma-separated list of hostnames.",
+                      "key": "hostnames",
+                      "value": "<string>"
+                    }
+                  ]
+                },
+                "description": "Look up IP addresses for the given hostnames."
+              },
+              "response": [
+                {
+                  "id": "dcfe2630-228b-4d72-b388-b92ac84e9f0e",
+                  "name": "Map of hostname to IP.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/dns/resolve?hostnames=<string>&key=<API Key>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "dns",
+                        "resolve"
+                      ],
+                      "query": [
+                        {
+                          "description": "(Required) Comma-separated list of hostnames.",
+                          "key": "hostnames",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Added as a part of security scheme: apikey",
+                          "key": "key",
+                          "value": "<API Key>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"idb8\": \"<string>\",\n  \"voluptatee88\": \"<string>\"\n}",
+                  "createdAt": "2026-06-05T15:01:47.000Z",
+                  "updatedAt": "2026-06-05T15:01:47.000Z",
+                  "uid": "35240-dcfe2630-228b-4d72-b388-b92ac84e9f0e"
+                }
+              ],
+              "createdAt": "2026-06-05T15:01:47.000Z",
+              "updatedAt": "2026-06-05T15:01:47.000Z",
+              "uid": "35240-5db7195e-d0c8-403e-b6be-0371f5a7749e"
+            }
+          ],
+          "id": "d8737464-25f5-47df-9c38-96b2dc909c6e",
+          "createdAt": "2026-06-05T15:01:47.000Z",
+          "updatedAt": "2026-06-05T15:01:47.000Z",
+          "uid": "35240-d8737464-25f5-47df-9c38-96b2dc909c6e"
+        },
+        {
+          "name": "reverse",
+          "item": [
+            {
+              "name": "Reverse DNS Lookup",
+              "id": "04d83092-413e-4f79-88a1-5883f4ea3287",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/dns/reverse?ips=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "dns",
+                    "reverse"
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) Comma-separated list of IP addresses.",
+                      "key": "ips",
+                      "value": "<string>"
+                    }
+                  ]
+                },
+                "description": "Look up hostnames for the given IP addresses."
+              },
+              "response": [
+                {
+                  "id": "ffb1ae61-9635-4f6e-88de-ff5de8f592ed",
+                  "name": "Map of IP to hostnames.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/dns/reverse?ips=<string>&key=<API Key>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "dns",
+                        "reverse"
+                      ],
+                      "query": [
+                        {
+                          "description": "(Required) Comma-separated list of IP addresses.",
+                          "key": "ips",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Added as a part of security scheme: apikey",
+                          "key": "key",
+                          "value": "<API Key>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"minim822\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"eiusmod7be\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"sit_f\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"laboris_9\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                  "createdAt": "2026-06-05T15:01:47.000Z",
+                  "updatedAt": "2026-06-05T15:01:47.000Z",
+                  "uid": "35240-ffb1ae61-9635-4f6e-88de-ff5de8f592ed"
+                }
+              ],
+              "createdAt": "2026-06-05T15:01:47.000Z",
+              "updatedAt": "2026-06-05T15:01:47.000Z",
+              "uid": "35240-04d83092-413e-4f79-88a1-5883f4ea3287"
+            }
+          ],
+          "id": "073b5bb1-c4b9-4e0a-aadb-90648292d9e4",
+          "createdAt": "2026-06-05T15:01:47.000Z",
+          "updatedAt": "2026-06-05T15:01:47.000Z",
+          "uid": "35240-073b5bb1-c4b9-4e0a-aadb-90648292d9e4"
+        }
+      ],
+      "id": "be3cc2d1-dce9-47c3-829d-3d4edfcf837b",
+      "createdAt": "2026-06-05T15:01:47.000Z",
+      "updatedAt": "2026-06-05T15:01:47.000Z",
+      "uid": "35240-be3cc2d1-dce9-47c3-829d-3d4edfcf837b"
+    },
+    {
+      "name": "tools",
+      "item": [
+        {
+          "name": "httpheaders",
+          "item": [
+            {
+              "name": "Get Request HTTP Headers",
+              "id": "600073a7-97fa-4c2c-8509-c6930e8da6d5",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/tools/httpheaders",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "tools",
+                    "httpheaders"
+                  ]
+                },
+                "description": "Returns the HTTP headers seen by the Shodan server."
+              },
+              "response": [
+                {
+                  "id": "b3185fd3-78e6-4ab8-ab5c-c9aab5d79380",
+                  "name": "Request headers as a map.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/tools/httpheaders?key=<API Key>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "tools",
+                        "httpheaders"
+                      ],
+                      "query": [
+                        {
+                          "description": "Added as a part of security scheme: apikey",
+                          "key": "key",
+                          "value": "<API Key>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"idb8\": \"<string>\",\n  \"voluptatee88\": \"<string>\"\n}",
+                  "createdAt": "2026-06-05T15:01:47.000Z",
+                  "updatedAt": "2026-06-05T15:01:47.000Z",
+                  "uid": "35240-b3185fd3-78e6-4ab8-ab5c-c9aab5d79380"
+                }
+              ],
+              "createdAt": "2026-06-05T15:01:47.000Z",
+              "updatedAt": "2026-06-05T15:01:47.000Z",
+              "uid": "35240-600073a7-97fa-4c2c-8509-c6930e8da6d5"
+            }
+          ],
+          "id": "193d0a27-2601-4502-b691-e25828be0ddf",
+          "createdAt": "2026-06-05T15:01:47.000Z",
+          "updatedAt": "2026-06-05T15:01:47.000Z",
+          "uid": "35240-193d0a27-2601-4502-b691-e25828be0ddf"
+        },
+        {
+          "name": "myip",
+          "item": [
+            {
+              "name": "Get Client IP",
+              "id": "3b96c385-6d4b-4a3a-9e6d-0b88b390e0ee",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/tools/myip",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "tools",
+                    "myip"
+                  ]
+                },
+                "description": "Returns the IP address that the request was issued from."
+              },
+              "response": [
+                {
+                  "id": "7e3865aa-126c-4d5b-a66b-cb0b302a3939",
+                  "name": "Plain-text IP address.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/tools/myip?key=<API Key>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "tools",
+                        "myip"
+                      ],
+                      "query": [
+                        {
+                          "description": "Added as a part of security scheme: apikey",
+                          "key": "key",
+                          "value": "<API Key>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "<string>",
+                  "createdAt": "2026-06-05T15:01:47.000Z",
+                  "updatedAt": "2026-06-05T15:01:47.000Z",
+                  "uid": "35240-7e3865aa-126c-4d5b-a66b-cb0b302a3939"
+                }
+              ],
+              "createdAt": "2026-06-05T15:01:47.000Z",
+              "updatedAt": "2026-06-05T15:01:47.000Z",
+              "uid": "35240-3b96c385-6d4b-4a3a-9e6d-0b88b390e0ee"
+            }
+          ],
+          "id": "8c9d09df-4234-4f02-aee7-d021fdbfd013",
+          "createdAt": "2026-06-05T15:01:47.000Z",
+          "updatedAt": "2026-06-05T15:01:47.000Z",
+          "uid": "35240-8c9d09df-4234-4f02-aee7-d021fdbfd013"
+        }
+      ],
+      "id": "887689e9-e76a-4bd6-ba49-50b66ab826d1",
+      "createdAt": "2026-06-05T15:01:47.000Z",
+      "updatedAt": "2026-06-05T15:01:47.000Z",
+      "uid": "35240-887689e9-e76a-4bd6-ba49-50b66ab826d1"
+    },
+    {
+      "name": "account",
+      "item": [
+        {
+          "name": "profile",
+          "item": [
+            {
+              "name": "Get Account Profile",
+              "id": "9cc64d88-5e84-44f4-994e-cab8a305b988",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/account/profile",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "account",
+                    "profile"
+                  ]
+                },
+                "description": "Returns information about the Shodan account."
+              },
+              "response": [
+                {
+                  "id": "87b3c8e6-8669-41dc-ac92-a7e09c8dcd21",
+                  "name": "Account profile.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/account/profile?key=<API Key>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "account",
+                        "profile"
+                      ],
+                      "query": [
+                        {
+                          "description": "Added as a part of security scheme: apikey",
+                          "key": "key",
+                          "value": "<API Key>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"member\": \"<boolean>\",\n  \"credits\": \"<integer>\",\n  \"display_name\": \"<string>\",\n  \"created\": \"<dateTime>\"\n}",
+                  "createdAt": "2026-06-05T15:01:47.000Z",
+                  "updatedAt": "2026-06-05T15:01:47.000Z",
+                  "uid": "35240-87b3c8e6-8669-41dc-ac92-a7e09c8dcd21"
+                }
+              ],
+              "createdAt": "2026-06-05T15:01:47.000Z",
+              "updatedAt": "2026-06-05T15:01:47.000Z",
+              "uid": "35240-9cc64d88-5e84-44f4-994e-cab8a305b988"
+            }
+          ],
+          "id": "c1a6d2ca-22a9-49a9-ac84-39e98a9a839e",
+          "createdAt": "2026-06-05T15:01:47.000Z",
+          "updatedAt": "2026-06-05T15:01:47.000Z",
+          "uid": "35240-c1a6d2ca-22a9-49a9-ac84-39e98a9a839e"
+        }
+      ],
+      "id": "45d26be7-218c-4fcc-8fbc-ec975e039b0d",
+      "createdAt": "2026-06-05T15:01:47.000Z",
+      "updatedAt": "2026-06-05T15:01:47.000Z",
+      "uid": "35240-45d26be7-218c-4fcc-8fbc-ec975e039b0d"
+    },
+    {
+      "name": "api-info",
+      "item": [
+        {
+          "name": "Get API Plan Info",
+          "id": "54d29630-c4c8-4722-9cc6-e2cf713f6e59",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api-info",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api-info"
+              ]
+            },
+            "description": "Returns information about the API plan including remaining query and scan credits."
+          },
+          "response": [
+            {
+              "id": "6d1ad105-803d-4e1d-b30c-018b97b59d5b",
+              "name": "API plan info.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/api-info?key=<API Key>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api-info"
+                  ],
+                  "query": [
+                    {
+                      "description": "Added as a part of security scheme: apikey",
+                      "key": "key",
+                      "value": "<API Key>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"query_credits\": \"<integer>\",\n  \"scan_credits\": \"<integer>\",\n  \"telnet\": \"<boolean>\",\n  \"plan\": \"<string>\",\n  \"https\": \"<boolean>\",\n  \"unlocked\": \"<boolean>\",\n  \"monitored_ips\": \"<integer>\",\n  \"usage_limits\": {\n    \"consectetur_cce\": \"<integer>\",\n    \"nostrud8\": \"<integer>\"\n  }\n}",
+              "createdAt": "2026-06-05T15:01:47.000Z",
+              "updatedAt": "2026-06-05T15:01:47.000Z",
+              "uid": "35240-6d1ad105-803d-4e1d-b30c-018b97b59d5b"
+            }
+          ],
+          "createdAt": "2026-06-05T15:01:47.000Z",
+          "updatedAt": "2026-06-05T15:01:47.000Z",
+          "uid": "35240-54d29630-c4c8-4722-9cc6-e2cf713f6e59"
+        }
+      ],
+      "id": "bd1ef165-005b-474b-9589-8f837703b1f9",
+      "createdAt": "2026-06-05T15:01:47.000Z",
+      "updatedAt": "2026-06-05T15:01:47.000Z",
+      "uid": "35240-bd1ef165-005b-474b-9589-8f837703b1f9"
+    },
+    {
+      "name": "org",
+      "item": [
+        {
+          "name": "member",
+          "item": [
+            {
+              "name": "{user}",
+              "item": [
+                {
+                  "name": "Add Organization Member",
+                  "id": "d844a3e8-199a-456a-990f-a6ea6f530f6f",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "PUT",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/org/member/:user?notify=true",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "org",
+                        "member",
+                        ":user"
+                      ],
+                      "query": [
+                        {
+                          "key": "notify",
+                          "value": "true"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "id": "97122f97-f110-4367-b2bc-669fc15497d9",
+                          "key": "user",
+                          "value": "<string>",
+                          "description": "(Required) "
+                        }
+                      ]
+                    },
+                    "description": "Add a user to the organization."
+                  },
+                  "response": [
+                    {
+                      "id": "52ed82ce-273d-44aa-9608-f38bdc9ae16b",
+                      "name": "Add result.",
+                      "originalRequest": {
+                        "method": "PUT",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/org/member/:user?notify=true&key=<API Key>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "org",
+                            "member",
+                            ":user"
+                          ],
+                          "query": [
+                            {
+                              "key": "notify",
+                              "value": "true"
+                            },
+                            {
+                              "description": "Added as a part of security scheme: apikey",
+                              "key": "key",
+                              "value": "<API Key>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "user"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"success\": \"<boolean>\"\n}",
+                      "createdAt": "2026-06-05T15:01:47.000Z",
+                      "updatedAt": "2026-06-05T15:01:47.000Z",
+                      "uid": "35240-52ed82ce-273d-44aa-9608-f38bdc9ae16b"
+                    }
+                  ],
+                  "createdAt": "2026-06-05T15:01:47.000Z",
+                  "updatedAt": "2026-06-05T15:01:47.000Z",
+                  "uid": "35240-d844a3e8-199a-456a-990f-a6ea6f530f6f"
+                },
+                {
+                  "name": "Remove Organization Member",
+                  "id": "0c433657-6b06-4879-8301-863febe66d84",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/org/member/:user",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "org",
+                        "member",
+                        ":user"
+                      ],
+                      "variable": [
+                        {
+                          "id": "941be901-46e2-4815-83fd-a54503f2fb9d",
+                          "key": "user",
+                          "value": "<string>",
+                          "description": "(Required) "
+                        }
+                      ]
+                    },
+                    "description": "Remove a user from the organization."
+                  },
+                  "response": [
+                    {
+                      "id": "cf321534-0513-40e5-bb61-eff5586e70a3",
+                      "name": "Remove result.",
+                      "originalRequest": {
+                        "method": "DELETE",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/org/member/:user?key=<API Key>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "org",
+                            "member",
+                            ":user"
+                          ],
+                          "query": [
+                            {
+                              "description": "Added as a part of security scheme: apikey",
+                              "key": "key",
+                              "value": "<API Key>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "user"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"success\": \"<boolean>\"\n}",
+                      "createdAt": "2026-06-05T15:01:47.000Z",
+                      "updatedAt": "2026-06-05T15:01:47.000Z",
+                      "uid": "35240-cf321534-0513-40e5-bb61-eff5586e70a3"
+                    }
+                  ],
+                  "createdAt": "2026-06-05T15:01:47.000Z",
+                  "updatedAt": "2026-06-05T15:01:47.000Z",
+                  "uid": "35240-0c433657-6b06-4879-8301-863febe66d84"
+                }
+              ],
+              "id": "f132d064-339d-472d-b625-c62967cadb31",
+              "createdAt": "2026-06-05T15:01:47.000Z",
+              "updatedAt": "2026-06-05T15:01:47.000Z",
+              "uid": "35240-f132d064-339d-472d-b625-c62967cadb31"
+            }
+          ],
+          "id": "72108226-805e-4cd6-b9d1-e3e75e15a55d",
+          "createdAt": "2026-06-05T15:01:47.000Z",
+          "updatedAt": "2026-06-05T15:01:47.000Z",
+          "uid": "35240-72108226-805e-4cd6-b9d1-e3e75e15a55d"
+        },
+        {
+          "name": "Get Organization",
+          "id": "dff4ccf4-5190-4016-8133-02c233f06f9c",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/org",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "org"
+              ]
+            },
+            "description": "Returns information about the organization the account is part of."
+          },
+          "response": [
+            {
+              "id": "5265cd5b-3f57-4867-9188-2ce5527657b0",
+              "name": "Organization info.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/org?key=<API Key>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "org"
+                  ],
+                  "query": [
+                    {
+                      "description": "Added as a part of security scheme: apikey",
+                      "key": "key",
+                      "value": "<API Key>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"name\": \"<string>\",\n  \"upgrade_type\": \"<string>\",\n  \"domains\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"members\": [\n    {\n      \"username\": \"<string>\",\n      \"email\": \"<string>\"\n    },\n    {\n      \"username\": \"<string>\",\n      \"email\": \"<string>\"\n    }\n  ]\n}",
+              "createdAt": "2026-06-05T15:01:47.000Z",
+              "updatedAt": "2026-06-05T15:01:47.000Z",
+              "uid": "35240-5265cd5b-3f57-4867-9188-2ce5527657b0"
+            }
+          ],
+          "createdAt": "2026-06-05T15:01:47.000Z",
+          "updatedAt": "2026-06-05T15:01:47.000Z",
+          "uid": "35240-dff4ccf4-5190-4016-8133-02c233f06f9c"
+        }
+      ],
+      "id": "42634f62-acd2-401f-a2bc-329ff336d443",
+      "createdAt": "2026-06-05T15:01:47.000Z",
+      "updatedAt": "2026-06-05T15:01:47.000Z",
+      "uid": "35240-42634f62-acd2-401f-a2bc-329ff336d443"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "key",
+        "type": "string"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}",
+        "type": "string"
+      },
+      {
+        "key": "in",
+        "value": "query",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.shodan.io"
+    }
+  ]
+}

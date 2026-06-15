@@ -1,0 +1,571 @@
+{
+  "item": [
+    {
+      "id": "92c2c639-6901-4302-a4de-964e9ffe343d",
+      "name": "Streaming",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "97bbebf5-5fbb-4569-8319-6707dd7e33b1",
+          "name": "Stream All Banners",
+          "request": {
+            "name": "Stream All Banners",
+            "description": {
+              "content": "Stream every banner Shodan collects in real time. Intended for accounts that need the full firehose to build a local Shodan database.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "shodan",
+                "banners"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "t",
+                  "value": "<string>",
+                  "description": "Output format. `json` returns newline-separated JSON; `sse` returns Server-Sent Events."
+                },
+                {
+                  "disabled": false,
+                  "key": "debug",
+                  "value": "<integer>",
+                  "description": "Set to 1 to include discarded message counts."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/x-ndjson"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "fc31f139-d97b-4359-8594-cf1b93de830e",
+              "name": "Newline-separated JSON or SSE stream.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "shodan",
+                    "banners"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "t",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "debug",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/x-ndjson"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/x-ndjson"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "653eb491-0f2f-4394-9d9c-7c022e4c5120",
+          "name": "Stream Banners By ASN",
+          "request": {
+            "name": "Stream Banners By ASN",
+            "description": {
+              "content": "Stream banners limited to one or more Autonomous System Numbers.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "shodan",
+                "asn",
+                ":asn"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "t",
+                  "value": "<string>",
+                  "description": "Output format. `json` returns newline-separated JSON; `sse` returns Server-Sent Events."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "asn",
+                  "description": "(Required) Comma-separated ASN list (e.g. `3303,32475`)."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/x-ndjson"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "7c70f337-220a-4005-8760-bb4e3f207943",
+              "name": "Filtered banner stream.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "shodan",
+                    "asn",
+                    ":asn"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "t",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "asn",
+                      "description": "(Required) Comma-separated ASN list (e.g. `3303,32475`)."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/x-ndjson"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/x-ndjson"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "1f476462-324d-48e0-900b-3a6a39d3417a",
+          "name": "Stream Banners By Country",
+          "request": {
+            "name": "Stream Banners By Country",
+            "description": {
+              "content": "Stream banners limited to one or more two-letter country codes.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "shodan",
+                "countries",
+                ":countries"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "t",
+                  "value": "<string>",
+                  "description": "Output format. `json` returns newline-separated JSON; `sse` returns Server-Sent Events."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "countries",
+                  "description": "(Required) Comma-separated ISO 3166-1 alpha-2 codes (e.g. `DE,US`)."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/x-ndjson"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "9ae2b050-c42c-4320-bd93-f11a6e5f11d9",
+              "name": "Filtered banner stream.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "shodan",
+                    "countries",
+                    ":countries"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "t",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "countries",
+                      "description": "(Required) Comma-separated ISO 3166-1 alpha-2 codes (e.g. `DE,US`)."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/x-ndjson"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/x-ndjson"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "c294b930-4d48-479a-bad5-43de4bc362a4",
+          "name": "Stream Banners By Port",
+          "request": {
+            "name": "Stream Banners By Port",
+            "description": {
+              "content": "Stream banners limited to one or more ports.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "shodan",
+                "ports",
+                ":ports"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "t",
+                  "value": "<string>",
+                  "description": "Output format. `json` returns newline-separated JSON; `sse` returns Server-Sent Events."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "ports",
+                  "description": "(Required) Comma-separated list of ports (e.g. `22,443`)."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/x-ndjson"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "1fde9c7f-be2d-41e6-8396-65ca4cc48062",
+              "name": "Filtered banner stream.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "shodan",
+                    "ports",
+                    ":ports"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "t",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "ports",
+                      "description": "(Required) Comma-separated list of ports (e.g. `22,443`)."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/x-ndjson"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/x-ndjson"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "b09481ee-aee0-4448-b25f-d7e18794da6d",
+          "name": "Stream Banners By Vulnerability",
+          "request": {
+            "name": "Stream Banners By Vulnerability",
+            "description": {
+              "content": "Stream banners limited to one or more CVE identifiers.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "shodan",
+                "vulns",
+                ":vulns"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "t",
+                  "value": "<string>",
+                  "description": "Output format. `json` returns newline-separated JSON; `sse` returns Server-Sent Events."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "vulns",
+                  "description": "(Required) Comma-separated CVE identifiers (e.g. `CVE-2017-7679`)."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/x-ndjson"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "0d58e54f-5190-4143-916f-fd6e9c98ced5",
+              "name": "Filtered banner stream.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "shodan",
+                    "vulns",
+                    ":vulns"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "t",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "vulns",
+                      "description": "(Required) Comma-separated CVE identifiers (e.g. `CVE-2017-7679`)."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/x-ndjson"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/x-ndjson"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://stream.shodan.io",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "key"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "query"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "1e0984b6-fbe9-45d1-a2c4-77bdc2586ff8",
+    "name": "Shodan Streaming API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Shodan Streaming API delivers a real-time firehose of banner data collected by Shodan. Filtered streams are available by ASN, country, port, and CVE. Output is delivered either as newline-separated JSON or Server-Sent Events.\n\nContact Support:\n Name: Shodan Support\n Email: support@shodan.io",
+      "type": "text/plain"
+    }
+  }
+}

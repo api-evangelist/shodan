@@ -1,0 +1,151 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Shodan Streaming API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "key",
+      "value": "{{key}}",
+      "placement": "query"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Streaming",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Stream All Banners",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://stream.shodan.io/shodan/banners",
+            "params": [
+              {
+                "name": "t",
+                "value": "",
+                "type": "query",
+                "description": "Output format. `json` returns newline-separated JSON; `sse` returns Server-Sent Events."
+              },
+              {
+                "name": "debug",
+                "value": "",
+                "type": "query",
+                "description": "Set to 1 to include discarded message counts."
+              }
+            ]
+          },
+          "docs": "Stream every banner Shodan collects in real time. Intended for accounts that need the full firehose to build a local Shodan database."
+        },
+        {
+          "info": {
+            "name": "Stream Banners By ASN",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://stream.shodan.io/shodan/asn/:asn",
+            "params": [
+              {
+                "name": "asn",
+                "value": "",
+                "type": "path",
+                "description": "Comma-separated ASN list (e.g. `3303,32475`)."
+              },
+              {
+                "name": "t",
+                "value": "",
+                "type": "query",
+                "description": "Output format. `json` returns newline-separated JSON; `sse` returns Server-Sent Events."
+              }
+            ]
+          },
+          "docs": "Stream banners limited to one or more Autonomous System Numbers."
+        },
+        {
+          "info": {
+            "name": "Stream Banners By Country",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://stream.shodan.io/shodan/countries/:countries",
+            "params": [
+              {
+                "name": "countries",
+                "value": "",
+                "type": "path",
+                "description": "Comma-separated ISO 3166-1 alpha-2 codes (e.g. `DE,US`)."
+              },
+              {
+                "name": "t",
+                "value": "",
+                "type": "query",
+                "description": "Output format. `json` returns newline-separated JSON; `sse` returns Server-Sent Events."
+              }
+            ]
+          },
+          "docs": "Stream banners limited to one or more two-letter country codes."
+        },
+        {
+          "info": {
+            "name": "Stream Banners By Port",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://stream.shodan.io/shodan/ports/:ports",
+            "params": [
+              {
+                "name": "ports",
+                "value": "",
+                "type": "path",
+                "description": "Comma-separated list of ports (e.g. `22,443`)."
+              },
+              {
+                "name": "t",
+                "value": "",
+                "type": "query",
+                "description": "Output format. `json` returns newline-separated JSON; `sse` returns Server-Sent Events."
+              }
+            ]
+          },
+          "docs": "Stream banners limited to one or more ports."
+        },
+        {
+          "info": {
+            "name": "Stream Banners By Vulnerability",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://stream.shodan.io/shodan/vulns/:vulns",
+            "params": [
+              {
+                "name": "vulns",
+                "value": "",
+                "type": "path",
+                "description": "Comma-separated CVE identifiers (e.g. `CVE-2017-7679`)."
+              },
+              {
+                "name": "t",
+                "value": "",
+                "type": "query",
+                "description": "Output format. `json` returns newline-separated JSON; `sse` returns Server-Sent Events."
+              }
+            ]
+          },
+          "docs": "Stream banners limited to one or more CVE identifiers."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

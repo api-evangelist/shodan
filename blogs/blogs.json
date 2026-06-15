@@ -1,0 +1,14 @@
+{
+  "repo": "shodan",
+  "feeds": [
+    {
+      "source": "https://blog.shodan.io/",
+      "feed_url": "https://blog.shodan.io/rss/",
+      "title": "",
+      "saved": 0,
+      "method": "feed"
+    }
+  ],
+  "post_count": 0,
+  "fetched": "2026-06-07T00:00:00Z"
+}

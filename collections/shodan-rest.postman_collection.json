@@ -1,0 +1,4131 @@
+{
+  "item": [
+    {
+      "id": "82ef3733-4150-46a1-8c47-10b3dc1f9354",
+      "name": "Search Methods",
+      "description": {
+        "content": "Search and lookup endpoints for indexed devices.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "42640ea9-0483-41b5-a4d0-067e5727197b",
+          "name": "Get Host Information",
+          "request": {
+            "name": "Get Host Information",
+            "description": {
+              "content": "Returns all services that have been found on the given host IP.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "shodan",
+                "host",
+                ":ip"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "history",
+                  "value": "false",
+                  "description": "Include historical banners."
+                },
+                {
+                  "disabled": false,
+                  "key": "minify",
+                  "value": "false",
+                  "description": "Return a truncated banner record."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "ip",
+                  "description": "(Required) IPv4 or IPv6 address."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "6e67a97e-d862-4aa6-aecc-ad9c568f9a62",
+              "name": "Host record with banners.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "shodan",
+                    "host",
+                    ":ip"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "history",
+                      "value": "false"
+                    },
+                    {
+                      "key": "minify",
+                      "value": "false"
+                    },
+                    {
+                      "key": "key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "ip",
+                      "description": "(Required) IPv4 or IPv6 address."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"ip_str\": \"string\",\n  \"ip\": 5205,\n  \"hostnames\": [\n    \"string\",\n    \"string\"\n  ],\n  \"domains\": [\n    \"string\",\n    \"string\"\n  ],\n  \"country_code\": \"string\",\n  \"country_name\": \"string\",\n  \"city\": \"string\",\n  \"region_code\": \"string\",\n  \"postal_code\": \"string\",\n  \"latitude\": 9364.63702603203,\n  \"longitude\": 3479.488912131983,\n  \"org\": \"string\",\n  \"isp\": \"string\",\n  \"asn\": \"string\",\n  \"os\": \"string\",\n  \"last_update\": \"1968-04-27T04:26:19.125Z\",\n  \"ports\": [\n    1324,\n    1880\n  ],\n  \"vulns\": [\n    \"string\",\n    \"string\"\n  ],\n  \"tags\": [\n    \"string\",\n    \"string\"\n  ],\n  \"data\": [\n    {\n      \"port\": 9114,\n      \"transport\": \"udp\",\n      \"product\": \"string\",\n      \"version\": \"string\",\n      \"data\": \"string\",\n      \"timestamp\": \"1998-08-01T04:54:02.855Z\",\n      \"hash\": 3739,\n      \"ip_str\": \"string\",\n      \"org\": \"string\",\n      \"isp\": \"string\",\n      \"asn\": \"string\",\n      \"hostnames\": [\n        \"string\",\n        \"string\"\n      ],\n      \"domains\": [\n        \"string\",\n        \"string\"\n      ],\n      \"location\": {\n        \"city\": \"string\",\n        \"country_code\": \"string\",\n        \"country_name\": \"string\",\n        \"latitude\": 7683.226143707663,\n        \"longitude\": 8756.759572158842\n      },\n      \"ssl\": {\n        \"key_0\": 1451.7828425705925,\n        \"key_1\": \"string\",\n        \"key_2\": 1163.1716465568475\n      },\n      \"http\": {\n        \"key_0\": 3811.765525083587,\n        \"key_1\": 6974\n      },\n      \"cpe23\": [\n        \"string\",\n        \"string\"\n      ],\n      \"vulns\": {\n        \"key_0\": \"string\",\n        \"key_1\": 7013.554212762623\n      }\n    },\n    {\n      \"port\": 4647,\n      \"transport\": \"tcp\",\n      \"product\": \"string\",\n      \"version\": \"string\",\n      \"data\": \"string\",\n      \"timestamp\": \"2004-04-06T17:46:53.634Z\",\n      \"hash\": 927,\n      \"ip_str\": \"string\",\n      \"org\": \"string\",\n      \"isp\": \"string\",\n      \"asn\": \"string\",\n      \"hostnames\": [\n        \"string\",\n        \"string\"\n      ],\n      \"domains\": [\n        \"string\",\n        \"string\"\n      ],\n      \"location\": {\n        \"city\": \"string\",\n        \"country_code\": \"string\",\n        \"country_name\": \"string\",\n        \"latitude\": 8792.348324181376,\n        \"longitude\": 8394.450546002734\n      },\n      \"ssl\": {\n        \"key_0\": 9165\n      },\n      \"http\": {\n        \"key_0\": false,\n        \"key_1\": 5740.6702162777465,\n        \"key_2\": 2815.3732619248385\n      },\n      \"cpe23\": [\n        \"string\",\n        \"string\"\n      ],\n      \"vulns\": {\n        \"key_0\": 654.5691655613017,\n        \"key_1\": \"string\"\n      }\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "20e64b3c-347d-444d-af67-fdacfa1a647e",
+              "name": "Resource not found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "shodan",
+                    "host",
+                    ":ip"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "history",
+                      "value": "false"
+                    },
+                    {
+                      "key": "minify",
+                      "value": "false"
+                    },
+                    {
+                      "key": "key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "ip",
+                      "description": "(Required) IPv4 or IPv6 address."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "50a51b05-98fc-4fd0-919f-110e86472c11",
+          "name": "Get Search Result Count",
+          "request": {
+            "name": "Get Search Result Count",
+            "description": {
+              "content": "Returns the number of results a search would have, without consuming query credits or returning results.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "shodan",
+                "host",
+                "count"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "query",
+                  "value": "<string>",
+                  "description": "(Required) Shodan search query."
+                },
+                {
+                  "disabled": false,
+                  "key": "facets",
+                  "value": "<string>",
+                  "description": "Comma-separated facet definitions (e.g. `country:5,port:10`)."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "89a46f09-f7a0-483c-b49d-7f4da7dadc37",
+              "name": "Count and facet summary.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "shodan",
+                    "host",
+                    "count"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "query",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "facets",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"total\": 5669,\n  \"facets\": {\n    \"key_0\": [\n      {\n        \"count\": 4220,\n        \"value\": \"string\"\n      },\n      {\n        \"count\": 9383,\n        \"value\": \"string\"\n      }\n    ],\n    \"key_1\": [\n      {\n        \"count\": 6190,\n        \"value\": \"string\"\n      },\n      {\n        \"count\": 5351,\n        \"value\": \"string\"\n      }\n    ],\n    \"key_2\": [\n      {\n        \"count\": 906,\n        \"value\": \"string\"\n      },\n      {\n        \"count\": 6665,\n        \"value\": \"string\"\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "60a81443-10a9-4865-a134-bea05f273fe8",
+          "name": "Search Shodan",
+          "request": {
+            "name": "Search Shodan",
+            "description": {
+              "content": "Search Shodan using the same query syntax as the website. Uses one query credit per page after the first when filters are used.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "shodan",
+                "host",
+                "search"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "query",
+                  "value": "<string>",
+                  "description": "(Required) Shodan search query."
+                },
+                {
+                  "disabled": false,
+                  "key": "facets",
+                  "value": "<string>",
+                  "description": "Comma-separated facet definitions (e.g. `country:5,port:10`)."
+                },
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "1"
+                },
+                {
+                  "disabled": false,
+                  "key": "minify",
+                  "value": "true"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "fb39e69b-e8af-450b-a71a-a8ecf9d854c2",
+              "name": "Search results with matches and facets.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "shodan",
+                    "host",
+                    "search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "query",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "facets",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "minify",
+                      "value": "true"
+                    },
+                    {
+                      "key": "key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"total\": 2334,\n  \"matches\": [\n    {\n      \"port\": 3046,\n      \"transport\": \"udp\",\n      \"product\": \"string\",\n      \"version\": \"string\",\n      \"data\": \"string\",\n      \"timestamp\": \"1961-04-19T22:15:08.167Z\",\n      \"hash\": 2337,\n      \"ip_str\": \"string\",\n      \"org\": \"string\",\n      \"isp\": \"string\",\n      \"asn\": \"string\",\n      \"hostnames\": [\n        \"string\",\n        \"string\"\n      ],\n      \"domains\": [\n        \"string\",\n        \"string\"\n      ],\n      \"location\": {\n        \"city\": \"string\",\n        \"country_code\": \"string\",\n        \"country_name\": \"string\",\n        \"latitude\": 3285.4152590020744,\n        \"longitude\": 6876.978212516782\n      },\n      \"ssl\": {\n        \"key_0\": \"string\"\n      },\n      \"http\": {\n        \"key_0\": false,\n        \"key_1\": \"string\",\n        \"key_2\": 6853\n      },\n      \"cpe23\": [\n        \"string\",\n        \"string\"\n      ],\n      \"vulns\": {\n        \"key_0\": 5677.989229099838,\n        \"key_1\": 8309\n      }\n    },\n    {\n      \"port\": 5704,\n      \"transport\": \"tcp\",\n      \"product\": \"string\",\n      \"version\": \"string\",\n      \"data\": \"string\",\n      \"timestamp\": \"1946-12-22T16:47:06.091Z\",\n      \"hash\": 4235,\n      \"ip_str\": \"string\",\n      \"org\": \"string\",\n      \"isp\": \"string\",\n      \"asn\": \"string\",\n      \"hostnames\": [\n        \"string\",\n        \"string\"\n      ],\n      \"domains\": [\n        \"string\",\n        \"string\"\n      ],\n      \"location\": {\n        \"city\": \"string\",\n        \"country_code\": \"string\",\n        \"country_name\": \"string\",\n        \"latitude\": 2473.981334643105,\n        \"longitude\": 1637.7220037550233\n      },\n      \"ssl\": {\n        \"key_0\": 287\n      },\n      \"http\": {\n        \"key_0\": 8790.407002208467,\n        \"key_1\": \"string\",\n        \"key_2\": \"string\",\n        \"key_3\": 8261.479841261047\n      },\n      \"cpe23\": [\n        \"string\",\n        \"string\"\n      ],\n      \"vulns\": {\n        \"key_0\": \"string\"\n      }\n    }\n  ],\n  \"facets\": {\n    \"key_0\": [\n      {\n        \"count\": 9299,\n        \"value\": \"string\"\n      },\n      {\n        \"count\": 8198,\n        \"value\": \"string\"\n      }\n    ],\n    \"key_1\": [\n      {\n        \"count\": 3112,\n        \"value\": \"string\"\n      },\n      {\n        \"count\": 2733,\n        \"value\": \"string\"\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "e9bbb2ed-757a-4a6a-a703-14c94852b940",
+          "name": "List Search Facets",
+          "request": {
+            "name": "List Search Facets",
+            "description": {
+              "content": "Returns the list of facets that can be used to summarize search results.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "shodan",
+                "host",
+                "search",
+                "facets"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "47534f8e-e529-4604-979d-e79236d467af",
+              "name": "Array of facet names.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "shodan",
+                    "host",
+                    "search",
+                    "facets"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  \"string\",\n  \"string\"\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d2fd92be-c8f3-4601-b193-92b5ddf123ce",
+          "name": "List Search Filters",
+          "request": {
+            "name": "List Search Filters",
+            "description": {
+              "content": "Returns the list of filters that can be used when searching.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "shodan",
+                "host",
+                "search",
+                "filters"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "ccc0d76d-27b5-4116-8207-7b5fd6b13a5d",
+              "name": "Array of filter names.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "shodan",
+                    "host",
+                    "search",
+                    "filters"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  \"string\",\n  \"string\"\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d4326c02-3375-4808-b301-0f7d231ac97e",
+          "name": "Break Query Into Tokens",
+          "request": {
+            "name": "Break Query Into Tokens",
+            "description": {
+              "content": "Determine which filters and tokens make up a search query.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "shodan",
+                "host",
+                "search",
+                "tokens"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "query",
+                  "value": "<string>",
+                  "description": "(Required) Shodan search query."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "82435525-1436-4ec8-8d1d-d557a5a7f46d",
+              "name": "Parsed token structure.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "shodan",
+                    "host",
+                    "search",
+                    "tokens"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "query",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"key_0\": 876.5495539704449\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "0c211cbc-21bf-401e-bca7-4e954521e90a",
+      "name": "On-Demand Scanning",
+      "description": {
+        "content": "Request crawls of specific IPs, netblocks, or the entire Internet.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "c2ff47d4-b2f8-40d8-b34d-7d4022015f49",
+          "name": "List Crawled Ports",
+          "request": {
+            "name": "List Crawled Ports",
+            "description": {
+              "content": "Returns the list of port numbers that Shodan is crawling on the Internet.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "shodan",
+                "ports"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "642baedf-46b4-4f33-8178-b39792c1b32b",
+              "name": "Array of port numbers.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "shodan",
+                    "ports"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  5839,\n  9456\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "c9a6d743-bfd1-4755-9dd5-838abf2dd787",
+          "name": "List Supported Protocols",
+          "request": {
+            "name": "List Supported Protocols",
+            "description": {
+              "content": "Returns the list of protocols that can be used when launching an on-demand Internet scan.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "shodan",
+                "protocols"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "032e9fea-f2e4-4801-9566-630b7cb07bc0",
+              "name": "Map of protocol slug to human-readable name.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "shodan",
+                    "protocols"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"key_0\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "77096a28-43e9-4406-85a9-e9b50a2d6e50",
+          "name": "Submit On-Demand Scan",
+          "request": {
+            "name": "Submit On-Demand Scan",
+            "description": {
+              "content": "Request Shodan to crawl an IP or netblock. Each IP consumes one scan credit.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "shodan",
+                "scan"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/x-www-form-urlencoded"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "disabled": false,
+                  "key": "ips",
+                  "value": "<string>",
+                  "description": "(Required) Comma-separated list of IPs or CIDR ranges."
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "7c6036f9-5b4d-4450-a4cd-6a2379941d06",
+              "name": "Scan submission confirmation.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "shodan",
+                    "scan"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) Comma-separated list of IPs or CIDR ranges.",
+                        "type": "text/plain"
+                      },
+                      "key": "ips",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"count\": 8205,\n  \"credits_left\": 4322,\n  \"status\": \"DONE\",\n  \"created\": \"1998-10-19T02:49:44.336Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "4c2dc5c1-14a2-4f9c-9f95-3951646de16d",
+          "name": "Scan Internet For Port",
+          "request": {
+            "name": "Scan Internet For Port",
+            "description": {
+              "content": "Request Shodan to crawl the Internet for a specific port and protocol. Enterprise only.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "shodan",
+                "scan",
+                "internet"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/x-www-form-urlencoded"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "disabled": false,
+                  "key": "port",
+                  "value": "<integer>",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "protocol",
+                  "value": "<string>",
+                  "description": "(Required) "
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "26dafe08-a86f-479d-b869-8dcb6d9b3c3a",
+              "name": "Internet scan submission confirmation.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "shodan",
+                    "scan",
+                    "internet"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "port",
+                      "value": "<integer>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "protocol",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"count\": 8205,\n  \"credits_left\": 4322,\n  \"status\": \"DONE\",\n  \"created\": \"1998-10-19T02:49:44.336Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "1f0a5514-335e-4f9a-8c90-403e08988d69",
+          "name": "List On-Demand Scans",
+          "request": {
+            "name": "List On-Demand Scans",
+            "description": {
+              "content": "Returns the list of on-demand scans submitted by the account.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "shodan",
+                "scans"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "f5f7d399-8fd6-4aaa-890c-0d5fa8a4a9cb",
+              "name": "Paginated list of scans.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "shodan",
+                    "scans"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"matches\": [\n    {\n      \"id\": \"string\",\n      \"count\": 9320,\n      \"credits_left\": 2775,\n      \"status\": \"DONE\",\n      \"created\": \"1981-05-18T22:42:24.598Z\"\n    },\n    {\n      \"id\": \"string\",\n      \"count\": 6888,\n      \"credits_left\": 2915,\n      \"status\": \"PROCESSING\",\n      \"created\": \"1963-01-26T09:36:00.419Z\"\n    }\n  ],\n  \"total\": 3843\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "e364cf5b-8e20-4d1e-a6f6-79bfa34a7c31",
+          "name": "Get Scan Status",
+          "request": {
+            "name": "Get Scan Status",
+            "description": {
+              "content": "Returns the status and progress of an on-demand scan.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "shodan",
+                "scan",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "8f48d98b-2df0-4e06-be50-d8786a7bcec8",
+              "name": "Scan status.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "shodan",
+                    "scan",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"count\": 8205,\n  \"credits_left\": 4322,\n  \"status\": \"DONE\",\n  \"created\": \"1998-10-19T02:49:44.336Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f266f405-0e7b-4033-935d-d3347ac5bf02",
+              "name": "Resource not found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "shodan",
+                    "scan",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "fc1b28ba-7ef5-47e2-b49f-5359bd1d733a",
+      "name": "Network Alerts",
+      "description": {
+        "content": "Create and manage alerts on monitored IP ranges.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "50162d83-6132-4240-be24-edbd836b261a",
+          "name": "Create Network Alert",
+          "request": {
+            "name": "Create Network Alert",
+            "description": {
+              "content": "Create a network alert on one or more IP ranges.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "shodan",
+                "alert"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"filters\": {\n    \"ip\": [\n      \"<string>\",\n      \"<string>\"\n    ]\n  },\n  \"expires\": \"<integer>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "72eb07b1-3bf0-4cee-b1cf-d55c5c849e3c",
+              "name": "Created alert.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "shodan",
+                    "alert"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"filters\": {\n    \"ip\": [\n      \"<string>\",\n      \"<string>\"\n    ]\n  },\n  \"expires\": \"<integer>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"name\": \"string\",\n  \"created\": \"1987-08-15T16:52:18.008Z\",\n  \"expires\": 3430,\n  \"expiration\": \"1985-11-26T17:53:26.658Z\",\n  \"filters\": {\n    \"ip\": [\n      \"string\",\n      \"string\"\n    ]\n  },\n  \"triggers\": {\n    \"key_0\": {\n      \"enabled\": false\n    },\n    \"key_1\": {\n      \"enabled\": true\n    },\n    \"key_2\": {\n      \"enabled\": false\n    }\n  },\n  \"size\": 5812\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d991dc22-58a3-4946-8585-a17723ff2050",
+          "name": "List Network Alerts",
+          "request": {
+            "name": "List Network Alerts",
+            "description": {
+              "content": "Returns the network alerts that have been created on the account.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "shodan",
+                "alert",
+                "info"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "690d012e-b800-4d3a-bc68-451eacc59415",
+              "name": "List of alerts.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "shodan",
+                    "alert",
+                    "info"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"id\": \"string\",\n    \"name\": \"string\",\n    \"created\": \"1968-09-19T12:41:43.658Z\",\n    \"expires\": 7179,\n    \"expiration\": \"1969-03-23T03:23:47.438Z\",\n    \"filters\": {\n      \"ip\": [\n        \"string\",\n        \"string\"\n      ]\n    },\n    \"triggers\": {\n      \"key_0\": {\n        \"enabled\": true\n      }\n    },\n    \"size\": 999\n  },\n  {\n    \"id\": \"string\",\n    \"name\": \"string\",\n    \"created\": \"2020-11-25T06:56:49.949Z\",\n    \"expires\": 1093,\n    \"expiration\": \"2003-02-03T04:05:03.830Z\",\n    \"filters\": {\n      \"ip\": [\n        \"string\",\n        \"string\"\n      ]\n    },\n    \"triggers\": {\n      \"key_0\": {\n        \"enabled\": false\n      },\n      \"key_1\": {\n        \"enabled\": true\n      }\n    },\n    \"size\": 4614\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "6a519c92-95e7-4f72-8ec1-09889bfb9e15",
+          "name": "Get Network Alert",
+          "request": {
+            "name": "Get Network Alert",
+            "description": {
+              "content": "Returns the information about a specific network alert.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "shodan",
+                "alert",
+                ":id",
+                "info"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) Alert identifier."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "b9deb788-606d-401a-a157-6b1cace0a562",
+              "name": "Alert details.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "shodan",
+                    "alert",
+                    ":id",
+                    "info"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Alert identifier."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"name\": \"string\",\n  \"created\": \"1987-08-15T16:52:18.008Z\",\n  \"expires\": 3430,\n  \"expiration\": \"1985-11-26T17:53:26.658Z\",\n  \"filters\": {\n    \"ip\": [\n      \"string\",\n      \"string\"\n    ]\n  },\n  \"triggers\": {\n    \"key_0\": {\n      \"enabled\": false\n    },\n    \"key_1\": {\n      \"enabled\": true\n    },\n    \"key_2\": {\n      \"enabled\": false\n    }\n  },\n  \"size\": 5812\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "8193eb3f-fd7a-4273-bede-34546ae914d2",
+              "name": "Resource not found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "shodan",
+                    "alert",
+                    ":id",
+                    "info"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Alert identifier."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "9bde30aa-0990-476d-9556-b6bd3acae287",
+          "name": "Update Network Alert",
+          "request": {
+            "name": "Update Network Alert",
+            "description": {
+              "content": "Edit the IP ranges or name of a network alert.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "shodan",
+                "alert",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) Alert identifier."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"filters\": {\n    \"ip\": [\n      \"<string>\",\n      \"<string>\"\n    ]\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "50b1ab92-56da-4072-b35b-f2b7c686848a",
+              "name": "Updated alert.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "shodan",
+                    "alert",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Alert identifier."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"filters\": {\n    \"ip\": [\n      \"<string>\",\n      \"<string>\"\n    ]\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"name\": \"string\",\n  \"created\": \"1987-08-15T16:52:18.008Z\",\n  \"expires\": 3430,\n  \"expiration\": \"1985-11-26T17:53:26.658Z\",\n  \"filters\": {\n    \"ip\": [\n      \"string\",\n      \"string\"\n    ]\n  },\n  \"triggers\": {\n    \"key_0\": {\n      \"enabled\": false\n    },\n    \"key_1\": {\n      \"enabled\": true\n    },\n    \"key_2\": {\n      \"enabled\": false\n    }\n  },\n  \"size\": 5812\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "878c4012-fee4-4209-b718-83ee683e2378",
+          "name": "Delete Network Alert",
+          "request": {
+            "name": "Delete Network Alert",
+            "description": {
+              "content": "Remove the network alert and its triggers.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "shodan",
+                "alert",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) Alert identifier."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "69478ec1-b9b7-4faf-bb83-47f8c6117d3d",
+              "name": "Alert deletion result.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "shodan",
+                    "alert",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Alert identifier."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": false\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "70feaecc-2ee8-42eb-949a-7cc3304ba9ea",
+          "name": "List Alert Triggers",
+          "request": {
+            "name": "List Alert Triggers",
+            "description": {
+              "content": "Returns the list of triggers that can be enabled on alerts.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "shodan",
+                "alert",
+                "triggers"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "fe6b74e7-e911-4523-a3f8-7a3179d4f19d",
+              "name": "Trigger metadata.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "shodan",
+                    "alert",
+                    "triggers"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"name\": \"string\",\n    \"description\": \"string\",\n    \"rule\": \"string\"\n  },\n  {\n    \"name\": \"string\",\n    \"description\": \"string\",\n    \"rule\": \"string\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "3b5d9a43-70a6-44cf-a49b-ec31d93dd3c8",
+          "name": "Enable Alert Trigger",
+          "request": {
+            "name": "Enable Alert Trigger",
+            "description": {
+              "content": "Enable a trigger on a network alert.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "shodan",
+                "alert",
+                ":id",
+                "trigger",
+                ":trigger"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) Alert identifier."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "trigger",
+                  "description": "(Required) Trigger name."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "487d8937-e040-4286-930d-34647e18fda1",
+              "name": "Trigger enable result.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "shodan",
+                    "alert",
+                    ":id",
+                    "trigger",
+                    ":trigger"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Alert identifier."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "trigger",
+                      "description": "(Required) Trigger name."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": false\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "88ff5bf5-432a-4b0a-84c7-ab8a672d72d2",
+          "name": "Disable Alert Trigger",
+          "request": {
+            "name": "Disable Alert Trigger",
+            "description": {
+              "content": "Disable a trigger on a network alert.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "shodan",
+                "alert",
+                ":id",
+                "trigger",
+                ":trigger"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) Alert identifier."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "trigger",
+                  "description": "(Required) Trigger name."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "4c0462dc-7e9f-498f-b703-afce38a31cd8",
+              "name": "Trigger disable result.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "shodan",
+                    "alert",
+                    ":id",
+                    "trigger",
+                    ":trigger"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Alert identifier."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "trigger",
+                      "description": "(Required) Trigger name."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": false\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "a2f31dea-588c-474b-9ec7-0b53a9705e70",
+      "name": "Notifiers",
+      "description": {
+        "content": "Manage notification providers used by alerts.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "1e23b230-a68f-4469-bbdb-017071b092a6",
+          "name": "List Notifiers",
+          "request": {
+            "name": "List Notifiers",
+            "description": {
+              "content": "Returns the list of notifiers the user has configured.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "notifier"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "742f27cb-9a4b-456f-ba3e-d52f58700f4e",
+              "name": "Notifier list.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "notifier"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"id\": \"string\",\n    \"provider\": \"string\",\n    \"description\": \"string\",\n    \"args\": {\n      \"key_0\": 3882.4354344965973,\n      \"key_1\": \"string\"\n    }\n  },\n  {\n    \"id\": \"string\",\n    \"provider\": \"string\",\n    \"description\": \"string\",\n    \"args\": {\n      \"key_0\": 6236,\n      \"key_1\": \"string\",\n      \"key_2\": 2370,\n      \"key_3\": 2807\n    }\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "9680d78a-c773-4a35-9e52-7d0b7636819e",
+          "name": "Create Notifier",
+          "request": {
+            "name": "Create Notifier",
+            "description": {
+              "content": "Create a new notifier for receiving alerts.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "notifier"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"provider\": \"<string>\",\n  \"description\": \"<string>\",\n  \"args\": {\n    \"key_0\": \"string\",\n    \"key_1\": 9656\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "c1fa3219-687f-463c-857e-4287f2d73505",
+              "name": "Created notifier.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "notifier"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"provider\": \"<string>\",\n  \"description\": \"<string>\",\n  \"args\": {\n    \"key_0\": true\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"provider\": \"string\",\n  \"description\": \"string\",\n  \"args\": {\n    \"key_0\": 3202.261733464097,\n    \"key_1\": false\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "e5295246-2268-4452-bf29-301de8c1ab98",
+          "name": "List Notifier Providers",
+          "request": {
+            "name": "List Notifier Providers",
+            "description": {
+              "content": "Returns the list of available notification provider types.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "notifier",
+                "provider"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "48ee9621-b120-4b3c-8f33-5a4daf18f8fa",
+              "name": "Provider catalog.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "notifier",
+                    "provider"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"key_0\": 876.5495539704449\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "834a8e1e-93a1-4118-8a41-230a13c1148b",
+          "name": "Get Notifier",
+          "request": {
+            "name": "Get Notifier",
+            "description": {
+              "content": "Returns information about a specific notifier.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "notifier",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) Notifier identifier."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "f6e469bf-775f-4009-9426-7aee78b016fe",
+              "name": "Notifier details.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "notifier",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Notifier identifier."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"provider\": \"string\",\n  \"description\": \"string\",\n  \"args\": {\n    \"key_0\": 3202.261733464097,\n    \"key_1\": false\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "7023443d-f84d-4827-9e75-13e410d9b55a",
+          "name": "Update Notifier",
+          "request": {
+            "name": "Update Notifier",
+            "description": {
+              "content": "Update an existing notifier configuration.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "notifier",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) Notifier identifier."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"provider\": \"<string>\",\n  \"description\": \"<string>\",\n  \"args\": {\n    \"key_0\": \"string\",\n    \"key_1\": 9656\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "7124ec3e-9b49-4aff-81d0-b67da6006ac7",
+              "name": "Updated notifier.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "notifier",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Notifier identifier."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"provider\": \"<string>\",\n  \"description\": \"<string>\",\n  \"args\": {\n    \"key_0\": true\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"provider\": \"string\",\n  \"description\": \"string\",\n  \"args\": {\n    \"key_0\": 3202.261733464097,\n    \"key_1\": false\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "b4c6947e-1d36-44ba-ae64-5e839840a02e",
+          "name": "Delete Notifier",
+          "request": {
+            "name": "Delete Notifier",
+            "description": {
+              "content": "Delete a notifier.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "notifier",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) Notifier identifier."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "2815eb72-8e7e-4931-bf4d-45cb8d5283b3",
+              "name": "Notifier deletion result.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "notifier",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Notifier identifier."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": false\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "e3dc3b99-b3ed-4d98-b7f4-380fd2f0f2aa",
+      "name": "Directory",
+      "description": {
+        "content": "Browse and search saved Shodan queries.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "2304ba3f-2c5a-420b-b5e3-fbe0fc1fc678",
+          "name": "List Saved Queries",
+          "request": {
+            "name": "List Saved Queries",
+            "description": {
+              "content": "Browse the directory of community-saved Shodan queries.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "shodan",
+                "query"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "1"
+                },
+                {
+                  "disabled": false,
+                  "key": "sort",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "order",
+                  "value": "<string>"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "640fef14-3689-43a9-ab72-ee6a09311779",
+              "name": "List of saved queries.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "shodan",
+                    "query"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "sort",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "order",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"key_0\": 876.5495539704449\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "fc74c38e-95e9-4e75-9672-287194dd6e7e",
+          "name": "Search Saved Queries",
+          "request": {
+            "name": "Search Saved Queries",
+            "description": {
+              "content": "Search the directory of saved Shodan queries.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "shodan",
+                "query",
+                "search"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "query",
+                  "value": "<string>",
+                  "description": "(Required) Shodan search query."
+                },
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "1"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "1734fb77-9080-40b8-8fbd-2cb460f2e576",
+              "name": "Search results.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "shodan",
+                    "query",
+                    "search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "query",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"key_0\": 876.5495539704449\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "c5079d69-921d-4d4a-854a-72f9ad34d156",
+          "name": "List Popular Query Tags",
+          "request": {
+            "name": "List Popular Query Tags",
+            "description": {
+              "content": "Returns the most popular tags assigned to saved queries.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "shodan",
+                "query",
+                "tags"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "size",
+                  "value": "10"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "41829783-11dd-42c6-a044-b8ec9cb5b8fe",
+              "name": "Tag list.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "shodan",
+                    "query",
+                    "tags"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "size",
+                      "value": "10"
+                    },
+                    {
+                      "key": "key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"key_0\": 876.5495539704449\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "5f5a0bb2-6a84-4062-b79a-1ec5c5e59d45",
+      "name": "Bulk Data",
+      "description": {
+        "content": "Enterprise bulk data exports.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "612c689c-c8fb-4de1-94cf-c655de1c856b",
+          "name": "List Bulk Data Sets",
+          "request": {
+            "name": "List Bulk Data Sets",
+            "description": {
+              "content": "Returns the list of bulk data sets available to the account. Enterprise only.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "shodan",
+                "data"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "2c000b30-5b9f-4692-a492-93727f677627",
+              "name": "Dataset list.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "shodan",
+                    "data"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"name\": \"string\",\n    \"description\": \"string\"\n  },\n  {\n    \"name\": \"string\",\n    \"description\": \"string\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "ef4728c3-2d07-4533-a0cf-344a58179b21",
+          "name": "List Bulk Data Files",
+          "request": {
+            "name": "List Bulk Data Files",
+            "description": {
+              "content": "Returns the list of files available within a bulk dataset. Enterprise only.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "shodan",
+                "data",
+                ":dataset"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "dataset",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "0aef21f2-c825-4c47-b3d0-45951e5d1cd5",
+              "name": "File list.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "shodan",
+                    "data",
+                    ":dataset"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "dataset",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"name\": \"string\",\n    \"size\": 6358,\n    \"timestamp\": \"1958-02-06T13:11:20.034Z\",\n    \"url\": \"https://PNuTQspGAPa.lglvV,JzU0sf\"\n  },\n  {\n    \"name\": \"string\",\n    \"size\": 6059,\n    \"timestamp\": \"1963-09-23T04:20:04.944Z\",\n    \"url\": \"https://zLlxpBrfOPSiDpMoQacCf.cwqQRZUKu\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "bec503a5-a4c7-498d-b807-b36cf78ed9a2",
+      "name": "DNS",
+      "description": {
+        "content": "Forward, reverse, and domain DNS lookups.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "2f89d59f-4872-4667-82e0-d568c31a1c23",
+          "name": "Get Domain DNS Information",
+          "request": {
+            "name": "Get Domain DNS Information",
+            "description": {
+              "content": "Returns the subdomains and DNS entries known for the given domain.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "dns",
+                "domain",
+                ":domain"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "history",
+                  "value": "false"
+                },
+                {
+                  "disabled": false,
+                  "key": "type",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "1"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "domain",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "5781e4e8-a8dc-48e4-8167-481f187ee4f3",
+              "name": "Domain DNS information.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "dns",
+                    "domain",
+                    ":domain"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "history",
+                      "value": "false"
+                    },
+                    {
+                      "key": "type",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "domain",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"key_0\": 876.5495539704449\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d33f77f5-0856-4bf0-a41d-5e2220aca991",
+          "name": "Resolve Hostnames",
+          "request": {
+            "name": "Resolve Hostnames",
+            "description": {
+              "content": "Look up IP addresses for the given hostnames.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "dns",
+                "resolve"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "hostnames",
+                  "value": "<string>",
+                  "description": "(Required) Comma-separated list of hostnames."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "24a50477-6e11-4439-89e4-0911aad5a954",
+              "name": "Map of hostname to IP.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "dns",
+                    "resolve"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "hostnames",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"key_0\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "c3772e19-0159-49d1-9405-1e5ecba70a34",
+          "name": "Reverse DNS Lookup",
+          "request": {
+            "name": "Reverse DNS Lookup",
+            "description": {
+              "content": "Look up hostnames for the given IP addresses.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "dns",
+                "reverse"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "ips",
+                  "value": "<string>",
+                  "description": "(Required) Comma-separated list of IP addresses."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "cda36833-03c7-4972-8b43-d258021c7680",
+              "name": "Map of IP to hostnames.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "dns",
+                    "reverse"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "ips",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"key_0\": [\n    \"string\",\n    \"string\"\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "0f3150ce-e60e-496c-9a73-4e6a530add77",
+      "name": "Utility",
+      "description": {
+        "content": "Helper endpoints for HTTP headers and IP detection.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "32b929f0-8f7d-4e16-b5e5-4246841b4c0e",
+          "name": "Get Request HTTP Headers",
+          "request": {
+            "name": "Get Request HTTP Headers",
+            "description": {
+              "content": "Returns the HTTP headers seen by the Shodan server.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "tools",
+                "httpheaders"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "25f89c05-238f-4523-92a1-9ec14d487672",
+              "name": "Request headers as a map.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "tools",
+                    "httpheaders"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"key_0\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "b5a3df82-8bcd-4be2-b5f2-9c611a5e4d9a",
+          "name": "Get Client IP",
+          "request": {
+            "name": "Get Client IP",
+            "description": {
+              "content": "Returns the IP address that the request was issued from.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "tools",
+                "myip"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "ffb89c88-860f-4c58-ad77-af05639e1e70",
+              "name": "Plain-text IP address.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "tools",
+                    "myip"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"string\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "daebb21a-ccb6-403e-92ab-617d686f37c6",
+      "name": "Account",
+      "description": {
+        "content": "Account, profile, and API plan information.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "42f53bda-07a4-413a-a7f4-7ec110018234",
+          "name": "Get Account Profile",
+          "request": {
+            "name": "Get Account Profile",
+            "description": {
+              "content": "Returns information about the Shodan account.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "account",
+                "profile"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "681961e2-906d-492a-97d9-93efd3c2d104",
+              "name": "Account profile.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "account",
+                    "profile"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"member\": true,\n  \"credits\": 2584,\n  \"display_name\": \"string\",\n  \"created\": \"1950-11-16T13:45:45.318Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "8f8b792e-8256-471e-9c84-53f078fb7e96",
+          "name": "Get API Plan Info",
+          "request": {
+            "name": "Get API Plan Info",
+            "description": {
+              "content": "Returns information about the API plan including remaining query and scan credits.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api-info"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "6fe7fcd1-f1c8-4de4-9a8c-5056120a3fa6",
+              "name": "API plan info.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api-info"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"query_credits\": 1808,\n  \"scan_credits\": 2470,\n  \"telnet\": true,\n  \"plan\": \"string\",\n  \"https\": true,\n  \"unlocked\": false,\n  \"monitored_ips\": 1698,\n  \"usage_limits\": {\n    \"key_0\": 8358,\n    \"key_1\": 6090\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "9cf46d76-777d-420c-9b93-48b4e098b751",
+      "name": "Organization",
+      "description": {
+        "content": "Enterprise organization management.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "7fd7d2f8-596a-4ccd-8c6a-b9680025c2b5",
+          "name": "Get Organization",
+          "request": {
+            "name": "Get Organization",
+            "description": {
+              "content": "Returns information about the organization the account is part of.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "org"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "9444ebf0-8fe6-4f12-bc1e-5ead43a2c8c4",
+              "name": "Organization info.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "org"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"name\": \"string\",\n  \"upgrade_type\": \"string\",\n  \"domains\": [\n    \"string\",\n    \"string\"\n  ],\n  \"members\": [\n    {\n      \"username\": \"string\",\n      \"email\": \"string\"\n    },\n    {\n      \"username\": \"string\",\n      \"email\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "e3e5ab17-a928-471a-a660-2ab6d6ed728b",
+          "name": "Add Organization Member",
+          "request": {
+            "name": "Add Organization Member",
+            "description": {
+              "content": "Add a user to the organization.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "org",
+                "member",
+                ":user"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "notify",
+                  "value": "true"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "user",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "acad0de8-d4f1-4d5a-bd18-42963bcf882f",
+              "name": "Add result.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "org",
+                    "member",
+                    ":user"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "notify",
+                      "value": "true"
+                    },
+                    {
+                      "key": "key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "user",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": false\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "0ea06c42-42ec-41d3-be43-dfe7ecb5c9ad",
+          "name": "Remove Organization Member",
+          "request": {
+            "name": "Remove Organization Member",
+            "description": {
+              "content": "Remove a user from the organization.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "org",
+                "member",
+                ":user"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "user",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "857af3ab-1318-49e9-b839-88722a6bbeef",
+              "name": "Remove result.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "org",
+                    "member",
+                    ":user"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "user",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": false\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.shodan.io",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "key"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "query"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "61c4b5f8-ae97-4218-a483-5c4e8063dbc9",
+    "name": "Shodan REST API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Shodan REST API exposes search methods, host lookups, on-demand scanning, network alerts, notifiers, the saved-query directory, DNS lookups, utility methods, account/profile information, bulk data, and organization management for the Shodan search engine for Internet- connected devices.\n\nContact Support:\n Name: Shodan Support\n Email: support@shodan.io",
+      "type": "text/plain"
+    }
+  }
+}
