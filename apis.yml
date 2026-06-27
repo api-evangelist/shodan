@@ -69,15 +69,15 @@ apis:
         url: json-structure/shodan-rest-host-structure.json
       - type: JSONStructure
         url: json-structure/shodan-rest-alert-structure.json
-      - type: JSON-LD
+      - type: JSONLD
         url: json-ld/shodan-context.jsonld
-      - type: Example
+      - type: Examples
         url: examples/shodan-rest-host-lookup-example.json
-      - type: Example
+      - type: Examples
         url: examples/shodan-rest-search-example.json
-      - type: Example
+      - type: Examples
         url: examples/shodan-rest-scan-create-example.json
-      - type: Example
+      - type: Examples
         url: examples/shodan-rest-alert-create-example.json
   - name: Shodan Streaming API
     description: >-
@@ -103,7 +103,7 @@ apis:
         url: json-schema/shodan-stream-banner-schema.json
       - type: JSONStructure
         url: json-structure/shodan-stream-banner-structure.json
-      - type: Example
+      - type: Examples
         url: examples/shodan-stream-banner-example.json
   - name: Shodan Trends API
     description: >-
@@ -125,7 +125,7 @@ apis:
         url: openapi/shodan-trends-openapi.yml
       - type: JSONSchema
         url: json-schema/shodan-trends-result-schema.json
-      - type: Example
+      - type: Examples
         url: examples/shodan-trends-search-example.json
   - name: InternetDB API
     description: >-
@@ -146,7 +146,7 @@ apis:
         url: openapi/shodan-internetdb-openapi.yml
       - type: JSONSchema
         url: json-schema/shodan-internetdb-host-schema.json
-      - type: Example
+      - type: Examples
         url: examples/shodan-internetdb-host-example.json
   - name: CVEDB API
     description: >-
@@ -170,59 +170,56 @@ apis:
         url: json-schema/shodan-cvedb-cve-schema.json
       - type: JSONSchema
         url: json-schema/shodan-cvedb-cpe-schema.json
-      - type: Example
+      - type: Examples
         url: examples/shodan-cvedb-cve-lookup-example.json
 common:
   - type: PostmanWorkspace
     url: https://www.postman.com/kinlaneapi/shodan/overview
-  - type: ArazzoWorkflows
-    url: arazzo/
-    workflows:
-      - url: arazzo/shodan-account-overview-workflow.yml
-        name: Shodan Account Overview
-        summary: Pull the account profile, API plan limits, and the client's own IP.
-      - url: arazzo/shodan-alert-with-notifier-workflow.yml
-        name: Shodan Alert With Notifier
-        summary: Create a notifier, attach it via an alert, and arm a trigger for delivery.
-      - url: arazzo/shodan-cve-enrichment-workflow.yml
-        name: Shodan CVEDB Product Vulnerability Enrichment
-        summary: Resolve a product to a CPE, search its CVEs, then pull full CVE details.
-      - url: arazzo/shodan-domain-recon-workflow.yml
-        name: Shodan Domain Reconnaissance
-        summary: Enumerate a domain's DNS records, resolve a subdomain, and inspect the host.
-      - url: arazzo/shodan-internetdb-vuln-triage-workflow.yml
-        name: Shodan InternetDB Vulnerability Triage
-        summary: Pull an IP's free InternetDB record, then detail one of its known CVEs.
-      - url: arazzo/shodan-network-alert-lifecycle-workflow.yml
-        name: Shodan Network Alert Lifecycle
-        summary: Create a network alert, enable a trigger, verify it, then update the IP set.
-      - url: arazzo/shodan-notifier-lifecycle-workflow.yml
-        name: Shodan Notifier Lifecycle
-        summary: Create a notifier, read it back, update it, then delete it.
-      - url: arazzo/shodan-query-directory-workflow.yml
-        name: Shodan Query Directory Explorer
-        summary: Browse popular query tags, search the saved-query directory, then run a match.
-      - url: arazzo/shodan-resolve-and-host-info-workflow.yml
-        name: Shodan Resolve Hostname and Inspect Host
-        summary: Resolve a hostname to an IP and pull the full Shodan host record for that IP.
-      - url: arazzo/shodan-reverse-dns-to-host-info-workflow.yml
-        name: Shodan Reverse DNS to Host Info
-        summary: Reverse-resolve an IP to its hostnames, then pull the full host record.
-      - url: arazzo/shodan-scan-then-inspect-host-workflow.yml
-        name: Shodan Scan Then Inspect Host
-        summary: Submit a single-IP scan, poll until done, then pull the fresh host record.
-      - url: arazzo/shodan-search-builder-workflow.yml
-        name: Shodan Search Builder
-        summary: Discover available filters and facets, validate a query, then count its results.
-      - url: arazzo/shodan-search-to-host-detail-workflow.yml
-        name: Shodan Search to Host Detail
-        summary: Estimate a search, run it, then drill into the first matching host.
-      - url: arazzo/shodan-submit-scan-and-poll-workflow.yml
-        name: Shodan Submit On-Demand Scan and Poll
-        summary: Submit an on-demand scan and poll its status until the crawl completes.
-      - url: arazzo/shodan-trends-vs-live-workflow.yml
-        name: Shodan Historical Trends vs Live Exposure
-        summary: Pull historical monthly trends for a query, then compare to the live count.
+  - type: Arazzo
+    url: arazzo/shodan-account-overview-workflow.yml
+    name: Shodan Account Overview
+  - type: Arazzo
+    url: arazzo/shodan-alert-with-notifier-workflow.yml
+    name: Shodan Alert With Notifier
+  - type: Arazzo
+    url: arazzo/shodan-cve-enrichment-workflow.yml
+    name: Shodan CVEDB Product Vulnerability Enrichment
+  - type: Arazzo
+    url: arazzo/shodan-domain-recon-workflow.yml
+    name: Shodan Domain Reconnaissance
+  - type: Arazzo
+    url: arazzo/shodan-internetdb-vuln-triage-workflow.yml
+    name: Shodan InternetDB Vulnerability Triage
+  - type: Arazzo
+    url: arazzo/shodan-network-alert-lifecycle-workflow.yml
+    name: Shodan Network Alert Lifecycle
+  - type: Arazzo
+    url: arazzo/shodan-notifier-lifecycle-workflow.yml
+    name: Shodan Notifier Lifecycle
+  - type: Arazzo
+    url: arazzo/shodan-query-directory-workflow.yml
+    name: Shodan Query Directory Explorer
+  - type: Arazzo
+    url: arazzo/shodan-resolve-and-host-info-workflow.yml
+    name: Shodan Resolve Hostname and Inspect Host
+  - type: Arazzo
+    url: arazzo/shodan-reverse-dns-to-host-info-workflow.yml
+    name: Shodan Reverse DNS to Host Info
+  - type: Arazzo
+    url: arazzo/shodan-scan-then-inspect-host-workflow.yml
+    name: Shodan Scan Then Inspect Host
+  - type: Arazzo
+    url: arazzo/shodan-search-builder-workflow.yml
+    name: Shodan Search Builder
+  - type: Arazzo
+    url: arazzo/shodan-search-to-host-detail-workflow.yml
+    name: Shodan Search to Host Detail
+  - type: Arazzo
+    url: arazzo/shodan-submit-scan-and-poll-workflow.yml
+    name: Shodan Submit On-Demand Scan and Poll
+  - type: Arazzo
+    url: arazzo/shodan-trends-vs-live-workflow.yml
+    name: Shodan Historical Trends vs Live Exposure
   - type: Website
     url: https://www.shodan.io/
   - type: DeveloperPortal
@@ -237,7 +234,7 @@ common:
     url: plans/shodan-plans-pricing.yml
   - type: RateLimits
     url: rate-limits/shodan-rate-limits.yml
-  - type: SignUp
+  - type: Signup
     url: https://account.shodan.io/register
   - type: Login
     url: https://account.shodan.io/login
@@ -247,7 +244,7 @@ common:
     url: https://developer.shodan.io/api/requirements
   - type: GettingStarted
     url: https://help.shodan.io/the-basics/what-is-shodan
-  - type: Quickstart
+  - type: GettingStarted
     url: https://help.shodan.io/the-basics/search-query-fundamentals
   - type: Tutorials
     url: https://help.shodan.io/
@@ -289,49 +286,49 @@ common:
     url: https://github.com/achillean/steampipe-plugin-shodan
   - type: CLI
     url: https://help.shodan.io/command-line-interface/0-installation
-  - type: SDK
+  - type: SDKs
     name: Python
     url: https://github.com/achillean/shodan-python
-  - type: SDK
+  - type: SDKs
     name: Ruby
     url: https://github.com/picatz/shodanz
-  - type: SDK
+  - type: SDKs
     name: PHP
     url: https://github.com/ScadaExposure/Shodan-PHP-REST-API
-  - type: SDK
+  - type: SDKs
     name: C++
     url: https://github.com/prophetl33t/ShodanCPP
-  - type: SDK
+  - type: SDKs
     name: C#
     url: https://www.nuget.org/packages/Shodan/
-  - type: SDK
+  - type: SDKs
     name: C# (alt)
     url: https://github.com/tparnell8/Shodan.Net
-  - type: SDK
+  - type: SDKs
     name: Go
     url: https://github.com/shadowscatcher/shodan
-  - type: SDK
+  - type: SDKs
     name: Go (ns3777k)
     url: https://github.com/ns3777k/go-shodan
-  - type: SDK
+  - type: SDKs
     name: Haskell
     url: https://github.com/iomonad/shodan
-  - type: SDK
+  - type: SDKs
     name: Java
     url: https://github.com/fooock/jshodan
-  - type: SDK
+  - type: SDKs
     name: Node.js
     url: https://github.com/jesusprubio/shodan-client.js
-  - type: SDK
+  - type: SDKs
     name: Perl
     url: https://github.com/Dudley5000/WWW-Shodan-API
-  - type: SDK
+  - type: SDKs
     name: PowerShell
     url: https://github.com/darkoperator/Posh-Shodan
-  - type: SDK
+  - type: SDKs
     name: Rust
     url: https://github.com/femiagbabiaka/shodan-rust
-  - type: SDK
+  - type: SDKs
     name: Crystal
     url: https://github.com/PercussiveElbow/Shodan
   - type: Tools
