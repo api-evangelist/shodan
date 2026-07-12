@@ -1,0 +1,18 @@
+generated: '2026-07-11'
+method: derived
+source: openapi/shodan-rest-openapi.yml, openapi/shodan-stream-openapi.yml, openapi/shodan-trends-openapi.yml
+summary:
+  types:
+  - apiKey
+  api_key_in:
+  - query
+schemes:
+- name: apiKey
+  type: apiKey
+  in: query
+  parameter: key
+  description: Shodan API key.
+  sources:
+  - openapi/shodan-rest-openapi.yml
+  - openapi/shodan-stream-openapi.yml
+  - openapi/shodan-trends-openapi.yml

@@ -173,6 +173,10 @@ apis:
       - type: Examples
         url: examples/shodan-cvedb-cve-lookup-example.json
 common:
+  - type: DomainSecurity
+    url: security/shodan-domain-security.yml
+  - type: Authentication
+    url: authentication/shodan-authentication.yml
   - type: PostmanWorkspace
     url: https://www.postman.com/kinlaneapi/shodan/overview
   - type: Arazzo
