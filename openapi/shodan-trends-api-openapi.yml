@@ -1,0 +1,80 @@
+openapi: 3.1.0
+info:
+  title: Shodan CVEDB Account Trends API
+  description: Shodan's CVEDB is a free vulnerability database API that supports CVE lookups, CPE-keyed vulnerability search, KEV filtering, EPSS ordering, date-range queries, and product-name search. No API key required; updated daily.
+  version: '1.0'
+  contact:
+    name: Shodan Support
+    email: support@shodan.io
+    url: https://cvedb.shodan.io/
+  license:
+    name: Shodan API Terms of Service
+    url: https://www.shodan.io/legal/tos
+servers:
+- url: https://cvedb.shodan.io
+  description: Production
+tags:
+- name: Trends
+paths:
+  /api/v1/search:
+    get:
+      tags:
+      - Trends
+      summary: Search Historical Trends
+      operationId: searchTrends
+      description: Return monthly counts and faceted aggregations for a historical Shodan search.
+      parameters:
+      - name: query
+        in: query
+        required: true
+        schema:
+          type: string
+        description: Historical Shodan search query (e.g. `product:nginx`).
+      - name: facets
+        in: query
+        schema:
+          type: string
+        description: Comma-separated facets with optional size suffix (e.g. `country:10`).
+      responses:
+        '200':
+          description: Monthly counts and facet breakdowns.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TrendsResult'
+components:
+  schemas:
+    TrendsResult:
+      type: object
+      properties:
+        total:
+          type: integer
+        matches:
+          type: array
+          items:
+            $ref: '#/components/schemas/MonthlyCount'
+        facets:
+          type: object
+          additionalProperties:
+            type: array
+            items:
+              $ref: '#/components/schemas/FacetBucket'
+    FacetBucket:
+      type: object
+      properties:
+        value:
+          type: string
+        count:
+          type: integer
+        matches:
+          type: array
+          items:
+            $ref: '#/components/schemas/MonthlyCount'
+    MonthlyCount:
+      type: object
+      properties:
+        month:
+          type: string
+          description: YYYY-MM
+        count:
+          type: integer

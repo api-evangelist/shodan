@@ -1,0 +1,110 @@
+openapi: 3.1.0
+info:
+  title: Shodan CVEDB Account DNS API
+  description: Shodan's CVEDB is a free vulnerability database API that supports CVE lookups, CPE-keyed vulnerability search, KEV filtering, EPSS ordering, date-range queries, and product-name search. No API key required; updated daily.
+  version: '1.0'
+  contact:
+    name: Shodan Support
+    email: support@shodan.io
+    url: https://cvedb.shodan.io/
+  license:
+    name: Shodan API Terms of Service
+    url: https://www.shodan.io/legal/tos
+servers:
+- url: https://cvedb.shodan.io
+  description: Production
+tags:
+- name: DNS
+  description: Forward, reverse, and domain DNS lookups.
+paths:
+  /dns/domain/{domain}:
+    get:
+      tags:
+      - DNS
+      summary: Get Domain DNS Information
+      operationId: getDomainDns
+      description: Returns the subdomains and DNS entries known for the given domain.
+      parameters:
+      - name: domain
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: history
+        in: query
+        schema:
+          type: boolean
+          default: false
+      - name: type
+        in: query
+        schema:
+          type: string
+          enum:
+          - A
+          - AAAA
+          - CNAME
+          - NS
+          - SOA
+          - MX
+          - TXT
+      - name: page
+        in: query
+        schema:
+          type: integer
+          default: 1
+      responses:
+        '200':
+          description: Domain DNS information.
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: true
+  /dns/resolve:
+    get:
+      tags:
+      - DNS
+      summary: Resolve Hostnames
+      operationId: resolveHostnames
+      description: Look up IP addresses for the given hostnames.
+      parameters:
+      - name: hostnames
+        in: query
+        required: true
+        schema:
+          type: string
+        description: Comma-separated list of hostnames.
+      responses:
+        '200':
+          description: Map of hostname to IP.
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties:
+                  type: string
+  /dns/reverse:
+    get:
+      tags:
+      - DNS
+      summary: Reverse DNS Lookup
+      operationId: reverseDnsLookup
+      description: Look up hostnames for the given IP addresses.
+      parameters:
+      - name: ips
+        in: query
+        required: true
+        schema:
+          type: string
+        description: Comma-separated list of IP addresses.
+      responses:
+        '200':
+          description: Map of IP to hostnames.
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties:
+                  type: array
+                  items:
+                    type: string

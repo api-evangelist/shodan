@@ -1,0 +1,76 @@
+openapi: 3.1.0
+info:
+  title: Shodan CVEDB Account API
+  description: Shodan's CVEDB is a free vulnerability database API that supports CVE lookups, CPE-keyed vulnerability search, KEV filtering, EPSS ordering, date-range queries, and product-name search. No API key required; updated daily.
+  version: '1.0'
+  contact:
+    name: Shodan Support
+    email: support@shodan.io
+    url: https://cvedb.shodan.io/
+  license:
+    name: Shodan API Terms of Service
+    url: https://www.shodan.io/legal/tos
+servers:
+- url: https://cvedb.shodan.io
+  description: Production
+tags:
+- name: Account
+  description: Account, profile, and API plan information.
+paths:
+  /account/profile:
+    get:
+      tags:
+      - Account
+      summary: Get Account Profile
+      operationId: getAccountProfile
+      description: Returns information about the Shodan account.
+      responses:
+        '200':
+          description: Account profile.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  member:
+                    type: boolean
+                  credits:
+                    type: integer
+                  display_name:
+                    type: string
+                  created:
+                    type: string
+                    format: date-time
+  /api-info:
+    get:
+      tags:
+      - Account
+      summary: Get API Plan Info
+      operationId: getApiInfo
+      description: Returns information about the API plan including remaining query and scan credits.
+      responses:
+        '200':
+          description: API plan info.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  query_credits:
+                    type: integer
+                  scan_credits:
+                    type: integer
+                  telnet:
+                    type: boolean
+                  plan:
+                    type: string
+                  https:
+                    type: boolean
+                  unlocked:
+                    type: boolean
+                  monitored_ips:
+                    type: integer
+                  usage_limits:
+                    type: object
+                    additionalProperties:
+                      type: integer

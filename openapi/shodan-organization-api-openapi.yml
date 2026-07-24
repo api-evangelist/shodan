@@ -1,0 +1,101 @@
+openapi: 3.1.0
+info:
+  title: Shodan CVEDB Account Organization API
+  description: Shodan's CVEDB is a free vulnerability database API that supports CVE lookups, CPE-keyed vulnerability search, KEV filtering, EPSS ordering, date-range queries, and product-name search. No API key required; updated daily.
+  version: '1.0'
+  contact:
+    name: Shodan Support
+    email: support@shodan.io
+    url: https://cvedb.shodan.io/
+  license:
+    name: Shodan API Terms of Service
+    url: https://www.shodan.io/legal/tos
+servers:
+- url: https://cvedb.shodan.io
+  description: Production
+tags:
+- name: Organization
+  description: Enterprise organization management.
+paths:
+  /org:
+    get:
+      tags:
+      - Organization
+      summary: Get Organization
+      operationId: getOrganization
+      description: Returns information about the organization the account is part of.
+      responses:
+        '200':
+          description: Organization info.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  name:
+                    type: string
+                  upgrade_type:
+                    type: string
+                  domains:
+                    type: array
+                    items:
+                      type: string
+                  members:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        username:
+                          type: string
+                        email:
+                          type: string
+  /org/member/{user}:
+    put:
+      tags:
+      - Organization
+      summary: Add Organization Member
+      operationId: addOrganizationMember
+      description: Add a user to the organization.
+      parameters:
+      - name: user
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: notify
+        in: query
+        schema:
+          type: boolean
+          default: true
+      responses:
+        '200':
+          description: Add result.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+    delete:
+      tags:
+      - Organization
+      summary: Remove Organization Member
+      operationId: removeOrganizationMember
+      description: Remove a user from the organization.
+      parameters:
+      - name: user
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Remove result.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean

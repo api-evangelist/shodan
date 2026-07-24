@@ -1,0 +1,77 @@
+openapi: 3.1.0
+info:
+  title: Shodan CVEDB Account Bulk Data API
+  description: Shodan's CVEDB is a free vulnerability database API that supports CVE lookups, CPE-keyed vulnerability search, KEV filtering, EPSS ordering, date-range queries, and product-name search. No API key required; updated daily.
+  version: '1.0'
+  contact:
+    name: Shodan Support
+    email: support@shodan.io
+    url: https://cvedb.shodan.io/
+  license:
+    name: Shodan API Terms of Service
+    url: https://www.shodan.io/legal/tos
+servers:
+- url: https://cvedb.shodan.io
+  description: Production
+tags:
+- name: Bulk Data
+  description: Enterprise bulk data exports.
+paths:
+  /shodan/data:
+    get:
+      tags:
+      - Bulk Data
+      summary: List Bulk Data Sets
+      operationId: listBulkDatasets
+      description: Returns the list of bulk data sets available to the account. Enterprise only.
+      responses:
+        '200':
+          description: Dataset list.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Dataset'
+  /shodan/data/{dataset}:
+    get:
+      tags:
+      - Bulk Data
+      summary: List Bulk Data Files
+      operationId: listBulkDatasetFiles
+      description: Returns the list of files available within a bulk dataset. Enterprise only.
+      parameters:
+      - name: dataset
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: File list.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    name:
+                      type: string
+                    size:
+                      type: integer
+                    timestamp:
+                      type: string
+                      format: date-time
+                    url:
+                      type: string
+                      format: uri
+components:
+  schemas:
+    Dataset:
+      type: object
+      properties:
+        name:
+          type: string
+        description:
+          type: string

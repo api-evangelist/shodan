@@ -1,0 +1,331 @@
+openapi: 3.1.0
+info:
+  title: Shodan CVEDB Account Search Methods API
+  description: Shodan's CVEDB is a free vulnerability database API that supports CVE lookups, CPE-keyed vulnerability search, KEV filtering, EPSS ordering, date-range queries, and product-name search. No API key required; updated daily.
+  version: '1.0'
+  contact:
+    name: Shodan Support
+    email: support@shodan.io
+    url: https://cvedb.shodan.io/
+  license:
+    name: Shodan API Terms of Service
+    url: https://www.shodan.io/legal/tos
+servers:
+- url: https://cvedb.shodan.io
+  description: Production
+tags:
+- name: Search Methods
+  description: Search and lookup endpoints for indexed devices.
+paths:
+  /shodan/host/{ip}:
+    get:
+      tags:
+      - Search Methods
+      summary: Get Host Information
+      operationId: getHost
+      description: Returns all services that have been found on the given host IP.
+      parameters:
+      - $ref: '#/components/parameters/IpPath'
+      - name: history
+        in: query
+        schema:
+          type: boolean
+          default: false
+        description: Include historical banners.
+      - name: minify
+        in: query
+        schema:
+          type: boolean
+          default: false
+        description: Return a truncated banner record.
+      responses:
+        '200':
+          description: Host record with banners.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Host'
+        '404':
+          $ref: '#/components/responses/NotFound'
+  /shodan/host/count:
+    get:
+      tags:
+      - Search Methods
+      summary: Get Search Result Count
+      operationId: getHostCount
+      description: Returns the number of results a search would have, without consuming query credits or returning results.
+      parameters:
+      - $ref: '#/components/parameters/Query'
+      - $ref: '#/components/parameters/Facets'
+      responses:
+        '200':
+          description: Count and facet summary.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SearchCount'
+  /shodan/host/search:
+    get:
+      tags:
+      - Search Methods
+      summary: Search Shodan
+      operationId: searchHosts
+      description: Search Shodan using the same query syntax as the website. Uses one query credit per page after the first when filters are used.
+      parameters:
+      - $ref: '#/components/parameters/Query'
+      - $ref: '#/components/parameters/Facets'
+      - name: page
+        in: query
+        schema:
+          type: integer
+          default: 1
+          minimum: 1
+      - name: minify
+        in: query
+        schema:
+          type: boolean
+          default: true
+      responses:
+        '200':
+          description: Search results with matches and facets.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SearchResult'
+  /shodan/host/search/facets:
+    get:
+      tags:
+      - Search Methods
+      summary: List Search Facets
+      operationId: listSearchFacets
+      description: Returns the list of facets that can be used to summarize search results.
+      responses:
+        '200':
+          description: Array of facet names.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: string
+  /shodan/host/search/filters:
+    get:
+      tags:
+      - Search Methods
+      summary: List Search Filters
+      operationId: listSearchFilters
+      description: Returns the list of filters that can be used when searching.
+      responses:
+        '200':
+          description: Array of filter names.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: string
+  /shodan/host/search/tokens:
+    get:
+      tags:
+      - Search Methods
+      summary: Break Query Into Tokens
+      operationId: tokenizeSearchQuery
+      description: Determine which filters and tokens make up a search query.
+      parameters:
+      - $ref: '#/components/parameters/Query'
+      responses:
+        '200':
+          description: Parsed token structure.
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: true
+components:
+  schemas:
+    Banner:
+      type: object
+      properties:
+        port:
+          type: integer
+        transport:
+          type: string
+          enum:
+          - tcp
+          - udp
+        product:
+          type: string
+        version:
+          type: string
+        data:
+          type: string
+        timestamp:
+          type: string
+          format: date-time
+        hash:
+          type: integer
+        ip_str:
+          type: string
+        org:
+          type: string
+        isp:
+          type: string
+        asn:
+          type: string
+        hostnames:
+          type: array
+          items:
+            type: string
+        domains:
+          type: array
+          items:
+            type: string
+        location:
+          type: object
+          properties:
+            city:
+              type: string
+            country_code:
+              type: string
+            country_name:
+              type: string
+            latitude:
+              type: number
+            longitude:
+              type: number
+        ssl:
+          type: object
+          additionalProperties: true
+        http:
+          type: object
+          additionalProperties: true
+        cpe23:
+          type: array
+          items:
+            type: string
+        vulns:
+          type: object
+          additionalProperties: true
+    SearchCount:
+      type: object
+      properties:
+        total:
+          type: integer
+        facets:
+          type: object
+          additionalProperties:
+            type: array
+            items:
+              type: object
+              properties:
+                count:
+                  type: integer
+                value:
+                  type: string
+    SearchResult:
+      type: object
+      properties:
+        total:
+          type: integer
+        matches:
+          type: array
+          items:
+            $ref: '#/components/schemas/Banner'
+        facets:
+          type: object
+          additionalProperties:
+            type: array
+            items:
+              type: object
+              properties:
+                count:
+                  type: integer
+                value:
+                  type: string
+    Host:
+      type: object
+      properties:
+        ip_str:
+          type: string
+        ip:
+          type: integer
+        hostnames:
+          type: array
+          items:
+            type: string
+        domains:
+          type: array
+          items:
+            type: string
+        country_code:
+          type: string
+        country_name:
+          type: string
+        city:
+          type: string
+        region_code:
+          type: string
+        postal_code:
+          type: string
+        latitude:
+          type: number
+        longitude:
+          type: number
+        org:
+          type: string
+        isp:
+          type: string
+        asn:
+          type: string
+        os:
+          type: string
+        last_update:
+          type: string
+          format: date-time
+        ports:
+          type: array
+          items:
+            type: integer
+        vulns:
+          type: array
+          items:
+            type: string
+        tags:
+          type: array
+          items:
+            type: string
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/Banner'
+  parameters:
+    Facets:
+      name: facets
+      in: query
+      schema:
+        type: string
+      description: Comma-separated facet definitions (e.g. `country:5,port:10`).
+    Query:
+      name: query
+      in: query
+      required: true
+      schema:
+        type: string
+      description: Shodan search query.
+    IpPath:
+      name: ip
+      in: path
+      required: true
+      schema:
+        type: string
+      description: IPv4 or IPv6 address.
+  responses:
+    NotFound:
+      description: Resource not found.
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              error:
+                type: string

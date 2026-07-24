@@ -1,0 +1,49 @@
+openapi: 3.1.0
+info:
+  title: Shodan CVEDB Account Utility API
+  description: Shodan's CVEDB is a free vulnerability database API that supports CVE lookups, CPE-keyed vulnerability search, KEV filtering, EPSS ordering, date-range queries, and product-name search. No API key required; updated daily.
+  version: '1.0'
+  contact:
+    name: Shodan Support
+    email: support@shodan.io
+    url: https://cvedb.shodan.io/
+  license:
+    name: Shodan API Terms of Service
+    url: https://www.shodan.io/legal/tos
+servers:
+- url: https://cvedb.shodan.io
+  description: Production
+tags:
+- name: Utility
+  description: Helper endpoints for HTTP headers and IP detection.
+paths:
+  /tools/httpheaders:
+    get:
+      tags:
+      - Utility
+      summary: Get Request HTTP Headers
+      operationId: getHttpHeaders
+      description: Returns the HTTP headers seen by the Shodan server.
+      responses:
+        '200':
+          description: Request headers as a map.
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties:
+                  type: string
+  /tools/myip:
+    get:
+      tags:
+      - Utility
+      summary: Get Client IP
+      operationId: getMyIp
+      description: Returns the IP address that the request was issued from.
+      responses:
+        '200':
+          description: Plain-text IP address.
+          content:
+            application/json:
+              schema:
+                type: string

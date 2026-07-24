@@ -1,0 +1,106 @@
+openapi: 3.1.0
+info:
+  title: Shodan CVEDB Account Directory API
+  description: Shodan's CVEDB is a free vulnerability database API that supports CVE lookups, CPE-keyed vulnerability search, KEV filtering, EPSS ordering, date-range queries, and product-name search. No API key required; updated daily.
+  version: '1.0'
+  contact:
+    name: Shodan Support
+    email: support@shodan.io
+    url: https://cvedb.shodan.io/
+  license:
+    name: Shodan API Terms of Service
+    url: https://www.shodan.io/legal/tos
+servers:
+- url: https://cvedb.shodan.io
+  description: Production
+tags:
+- name: Directory
+  description: Browse and search saved Shodan queries.
+paths:
+  /shodan/query:
+    get:
+      tags:
+      - Directory
+      summary: List Saved Queries
+      operationId: listSavedQueries
+      description: Browse the directory of community-saved Shodan queries.
+      parameters:
+      - name: page
+        in: query
+        schema:
+          type: integer
+          default: 1
+      - name: sort
+        in: query
+        schema:
+          type: string
+          enum:
+          - votes
+          - timestamp
+      - name: order
+        in: query
+        schema:
+          type: string
+          enum:
+          - asc
+          - desc
+      responses:
+        '200':
+          description: List of saved queries.
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: true
+  /shodan/query/search:
+    get:
+      tags:
+      - Directory
+      summary: Search Saved Queries
+      operationId: searchSavedQueries
+      description: Search the directory of saved Shodan queries.
+      parameters:
+      - $ref: '#/components/parameters/Query'
+      - name: page
+        in: query
+        schema:
+          type: integer
+          default: 1
+      responses:
+        '200':
+          description: Search results.
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: true
+  /shodan/query/tags:
+    get:
+      tags:
+      - Directory
+      summary: List Popular Query Tags
+      operationId: listSavedQueryTags
+      description: Returns the most popular tags assigned to saved queries.
+      parameters:
+      - name: size
+        in: query
+        schema:
+          type: integer
+          default: 10
+      responses:
+        '200':
+          description: Tag list.
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: true
+components:
+  parameters:
+    Query:
+      name: query
+      in: query
+      required: true
+      schema:
+        type: string
+      description: Shodan search query.

@@ -1,0 +1,71 @@
+openapi: 3.1.0
+info:
+  title: Shodan CVEDB Account CPE API
+  description: Shodan's CVEDB is a free vulnerability database API that supports CVE lookups, CPE-keyed vulnerability search, KEV filtering, EPSS ordering, date-range queries, and product-name search. No API key required; updated daily.
+  version: '1.0'
+  contact:
+    name: Shodan Support
+    email: support@shodan.io
+    url: https://cvedb.shodan.io/
+  license:
+    name: Shodan API Terms of Service
+    url: https://www.shodan.io/legal/tos
+servers:
+- url: https://cvedb.shodan.io
+  description: Production
+tags:
+- name: CPE
+paths:
+  /cpes:
+    get:
+      tags:
+      - CPE
+      summary: Search CPEs
+      operationId: searchCpes
+      description: Retrieve CPE 2.3 dictionary entries matching the given product.
+      parameters:
+      - name: product
+        in: query
+        required: true
+        schema:
+          type: string
+      - name: count
+        in: query
+        schema:
+          type: boolean
+          default: false
+      - name: skip
+        in: query
+        schema:
+          type: integer
+          default: 0
+      - name: limit
+        in: query
+        schema:
+          type: integer
+          default: 1000
+      responses:
+        '200':
+          description: CPE entries.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  cpes:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Cpe'
+components:
+  schemas:
+    Cpe:
+      type: object
+      properties:
+        cpe23:
+          type: string
+        vendor:
+          type: string
+        product:
+          type: string
+        version:
+          type: string

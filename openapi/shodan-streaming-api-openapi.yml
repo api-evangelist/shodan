@@ -1,0 +1,210 @@
+openapi: 3.1.0
+info:
+  title: Shodan CVEDB Account Streaming API
+  description: Shodan's CVEDB is a free vulnerability database API that supports CVE lookups, CPE-keyed vulnerability search, KEV filtering, EPSS ordering, date-range queries, and product-name search. No API key required; updated daily.
+  version: '1.0'
+  contact:
+    name: Shodan Support
+    email: support@shodan.io
+    url: https://cvedb.shodan.io/
+  license:
+    name: Shodan API Terms of Service
+    url: https://www.shodan.io/legal/tos
+servers:
+- url: https://cvedb.shodan.io
+  description: Production
+tags:
+- name: Streaming
+paths:
+  /shodan/banners:
+    get:
+      tags:
+      - Streaming
+      summary: Stream All Banners
+      operationId: streamBanners
+      description: Stream every banner Shodan collects in real time. Intended for accounts that need the full firehose to build a local Shodan database.
+      parameters:
+      - $ref: '#/components/parameters/Format'
+      - $ref: '#/components/parameters/Debug'
+      responses:
+        '200':
+          description: Newline-separated JSON or SSE stream.
+          content:
+            application/x-ndjson:
+              schema:
+                $ref: '#/components/schemas/Banner'
+            text/event-stream:
+              schema:
+                $ref: '#/components/schemas/Banner'
+  /shodan/asn/{asn}:
+    get:
+      tags:
+      - Streaming
+      summary: Stream Banners By ASN
+      operationId: streamBannersByAsn
+      description: Stream banners limited to one or more Autonomous System Numbers.
+      parameters:
+      - name: asn
+        in: path
+        required: true
+        schema:
+          type: string
+        description: Comma-separated ASN list (e.g. `3303,32475`).
+      - $ref: '#/components/parameters/Format'
+      responses:
+        '200':
+          description: Filtered banner stream.
+          content:
+            application/x-ndjson:
+              schema:
+                $ref: '#/components/schemas/Banner'
+  /shodan/countries/{countries}:
+    get:
+      tags:
+      - Streaming
+      summary: Stream Banners By Country
+      operationId: streamBannersByCountry
+      description: Stream banners limited to one or more two-letter country codes.
+      parameters:
+      - name: countries
+        in: path
+        required: true
+        schema:
+          type: string
+        description: Comma-separated ISO 3166-1 alpha-2 codes (e.g. `DE,US`).
+      - $ref: '#/components/parameters/Format'
+      responses:
+        '200':
+          description: Filtered banner stream.
+          content:
+            application/x-ndjson:
+              schema:
+                $ref: '#/components/schemas/Banner'
+  /shodan/ports/{ports}:
+    get:
+      tags:
+      - Streaming
+      summary: Stream Banners By Port
+      operationId: streamBannersByPort
+      description: Stream banners limited to one or more ports.
+      parameters:
+      - name: ports
+        in: path
+        required: true
+        schema:
+          type: string
+        description: Comma-separated list of ports (e.g. `22,443`).
+      - $ref: '#/components/parameters/Format'
+      responses:
+        '200':
+          description: Filtered banner stream.
+          content:
+            application/x-ndjson:
+              schema:
+                $ref: '#/components/schemas/Banner'
+  /shodan/vulns/{vulns}:
+    get:
+      tags:
+      - Streaming
+      summary: Stream Banners By Vulnerability
+      operationId: streamBannersByVuln
+      description: Stream banners limited to one or more CVE identifiers.
+      parameters:
+      - name: vulns
+        in: path
+        required: true
+        schema:
+          type: string
+        description: Comma-separated CVE identifiers (e.g. `CVE-2017-7679`).
+      - $ref: '#/components/parameters/Format'
+      responses:
+        '200':
+          description: Filtered banner stream.
+          content:
+            application/x-ndjson:
+              schema:
+                $ref: '#/components/schemas/Banner'
+components:
+  parameters:
+    Format:
+      name: t
+      in: query
+      schema:
+        type: string
+        enum:
+        - json
+        - sse
+      description: Output format. `json` returns newline-separated JSON; `sse` returns Server-Sent Events.
+    Debug:
+      name: debug
+      in: query
+      schema:
+        type: integer
+        enum:
+        - 0
+        - 1
+      description: Set to 1 to include discarded message counts.
+  schemas:
+    Banner:
+      type: object
+      properties:
+        ip_str:
+          type: string
+        port:
+          type: integer
+        transport:
+          type: string
+          enum:
+          - tcp
+          - udp
+        product:
+          type: string
+        version:
+          type: string
+        data:
+          type: string
+        timestamp:
+          type: string
+          format: date-time
+        hash:
+          type: integer
+        org:
+          type: string
+        isp:
+          type: string
+        asn:
+          type: string
+        hostnames:
+          type: array
+          items:
+            type: string
+        domains:
+          type: array
+          items:
+            type: string
+        location:
+          type: object
+          properties:
+            city:
+              type: string
+            country_code:
+              type: string
+            country_name:
+              type: string
+            latitude:
+              type: number
+            longitude:
+              type: number
+        ssl:
+          type: object
+          additionalProperties: true
+        http:
+          type: object
+          additionalProperties: true
+        cpe23:
+          type: array
+          items:
+            type: string
+        vulns:
+          type: object
+          additionalProperties: true

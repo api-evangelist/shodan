@@ -1,0 +1,259 @@
+openapi: 3.1.0
+info:
+  title: Shodan CVEDB Account Network Alerts API
+  description: Shodan's CVEDB is a free vulnerability database API that supports CVE lookups, CPE-keyed vulnerability search, KEV filtering, EPSS ordering, date-range queries, and product-name search. No API key required; updated daily.
+  version: '1.0'
+  contact:
+    name: Shodan Support
+    email: support@shodan.io
+    url: https://cvedb.shodan.io/
+  license:
+    name: Shodan API Terms of Service
+    url: https://www.shodan.io/legal/tos
+servers:
+- url: https://cvedb.shodan.io
+  description: Production
+tags:
+- name: Network Alerts
+  description: Create and manage alerts on monitored IP ranges.
+paths:
+  /shodan/alert:
+    post:
+      tags:
+      - Network Alerts
+      summary: Create Network Alert
+      operationId: createAlert
+      description: Create a network alert on one or more IP ranges.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - name
+              - filters
+              properties:
+                name:
+                  type: string
+                filters:
+                  type: object
+                  properties:
+                    ip:
+                      type: array
+                      items:
+                        type: string
+                expires:
+                  type: integer
+                  description: Optional expiration in seconds.
+      responses:
+        '200':
+          description: Created alert.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Alert'
+  /shodan/alert/info:
+    get:
+      tags:
+      - Network Alerts
+      summary: List Network Alerts
+      operationId: listAlerts
+      description: Returns the network alerts that have been created on the account.
+      responses:
+        '200':
+          description: List of alerts.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Alert'
+  /shodan/alert/{id}/info:
+    get:
+      tags:
+      - Network Alerts
+      summary: Get Network Alert
+      operationId: getAlert
+      description: Returns the information about a specific network alert.
+      parameters:
+      - $ref: '#/components/parameters/AlertId'
+      responses:
+        '200':
+          description: Alert details.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Alert'
+        '404':
+          $ref: '#/components/responses/NotFound'
+  /shodan/alert/{id}:
+    post:
+      tags:
+      - Network Alerts
+      summary: Update Network Alert
+      operationId: updateAlert
+      description: Edit the IP ranges or name of a network alert.
+      parameters:
+      - $ref: '#/components/parameters/AlertId'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                filters:
+                  type: object
+                  properties:
+                    ip:
+                      type: array
+                      items:
+                        type: string
+      responses:
+        '200':
+          description: Updated alert.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Alert'
+    delete:
+      tags:
+      - Network Alerts
+      summary: Delete Network Alert
+      operationId: deleteAlert
+      description: Remove the network alert and its triggers.
+      parameters:
+      - $ref: '#/components/parameters/AlertId'
+      responses:
+        '200':
+          description: Alert deletion result.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+  /shodan/alert/triggers:
+    get:
+      tags:
+      - Network Alerts
+      summary: List Alert Triggers
+      operationId: listAlertTriggers
+      description: Returns the list of triggers that can be enabled on alerts.
+      responses:
+        '200':
+          description: Trigger metadata.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    name:
+                      type: string
+                    description:
+                      type: string
+                    rule:
+                      type: string
+  /shodan/alert/{id}/trigger/{trigger}:
+    put:
+      tags:
+      - Network Alerts
+      summary: Enable Alert Trigger
+      operationId: enableAlertTrigger
+      description: Enable a trigger on a network alert.
+      parameters:
+      - $ref: '#/components/parameters/AlertId'
+      - $ref: '#/components/parameters/TriggerName'
+      responses:
+        '200':
+          description: Trigger enable result.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+    delete:
+      tags:
+      - Network Alerts
+      summary: Disable Alert Trigger
+      operationId: disableAlertTrigger
+      description: Disable a trigger on a network alert.
+      parameters:
+      - $ref: '#/components/parameters/AlertId'
+      - $ref: '#/components/parameters/TriggerName'
+      responses:
+        '200':
+          description: Trigger disable result.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+components:
+  schemas:
+    Alert:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        created:
+          type: string
+          format: date-time
+        expires:
+          type: integer
+        expiration:
+          type: string
+          format: date-time
+        filters:
+          type: object
+          properties:
+            ip:
+              type: array
+              items:
+                type: string
+        triggers:
+          type: object
+          additionalProperties:
+            type: object
+            properties:
+              enabled:
+                type: boolean
+        size:
+          type: integer
+  parameters:
+    TriggerName:
+      name: trigger
+      in: path
+      required: true
+      schema:
+        type: string
+      description: Trigger name.
+    AlertId:
+      name: id
+      in: path
+      required: true
+      schema:
+        type: string
+      description: Alert identifier.
+  responses:
+    NotFound:
+      description: Resource not found.
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              error:
+                type: string

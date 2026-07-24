@@ -1,0 +1,179 @@
+openapi: 3.1.0
+info:
+  title: Shodan CVEDB Account On-Demand Scanning API
+  description: Shodan's CVEDB is a free vulnerability database API that supports CVE lookups, CPE-keyed vulnerability search, KEV filtering, EPSS ordering, date-range queries, and product-name search. No API key required; updated daily.
+  version: '1.0'
+  contact:
+    name: Shodan Support
+    email: support@shodan.io
+    url: https://cvedb.shodan.io/
+  license:
+    name: Shodan API Terms of Service
+    url: https://www.shodan.io/legal/tos
+servers:
+- url: https://cvedb.shodan.io
+  description: Production
+tags:
+- name: On-Demand Scanning
+  description: Request crawls of specific IPs, netblocks, or the entire Internet.
+paths:
+  /shodan/ports:
+    get:
+      tags:
+      - On-Demand Scanning
+      summary: List Crawled Ports
+      operationId: listPorts
+      description: Returns the list of port numbers that Shodan is crawling on the Internet.
+      responses:
+        '200':
+          description: Array of port numbers.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: integer
+  /shodan/protocols:
+    get:
+      tags:
+      - On-Demand Scanning
+      summary: List Supported Protocols
+      operationId: listProtocols
+      description: Returns the list of protocols that can be used when launching an on-demand Internet scan.
+      responses:
+        '200':
+          description: Map of protocol slug to human-readable name.
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties:
+                  type: string
+  /shodan/scan:
+    post:
+      tags:
+      - On-Demand Scanning
+      summary: Submit On-Demand Scan
+      operationId: createScan
+      description: Request Shodan to crawl an IP or netblock. Each IP consumes one scan credit.
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              required:
+              - ips
+              properties:
+                ips:
+                  type: string
+                  description: Comma-separated list of IPs or CIDR ranges.
+      responses:
+        '200':
+          description: Scan submission confirmation.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Scan'
+  /shodan/scan/internet:
+    post:
+      tags:
+      - On-Demand Scanning
+      summary: Scan Internet For Port
+      operationId: createInternetScan
+      description: Request Shodan to crawl the Internet for a specific port and protocol. Enterprise only.
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              required:
+              - port
+              - protocol
+              properties:
+                port:
+                  type: integer
+                protocol:
+                  type: string
+      responses:
+        '200':
+          description: Internet scan submission confirmation.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Scan'
+  /shodan/scans:
+    get:
+      tags:
+      - On-Demand Scanning
+      summary: List On-Demand Scans
+      operationId: listScans
+      description: Returns the list of on-demand scans submitted by the account.
+      responses:
+        '200':
+          description: Paginated list of scans.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  matches:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Scan'
+                  total:
+                    type: integer
+  /shodan/scan/{id}:
+    get:
+      tags:
+      - On-Demand Scanning
+      summary: Get Scan Status
+      operationId: getScan
+      description: Returns the status and progress of an on-demand scan.
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Scan status.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Scan'
+        '404':
+          $ref: '#/components/responses/NotFound'
+components:
+  schemas:
+    Scan:
+      type: object
+      properties:
+        id:
+          type: string
+        count:
+          type: integer
+        credits_left:
+          type: integer
+        status:
+          type: string
+          enum:
+          - SUBMITTING
+          - QUEUE
+          - PROCESSING
+          - DONE
+        created:
+          type: string
+          format: date-time
+  responses:
+    NotFound:
+      description: Resource not found.
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              error:
+                type: string

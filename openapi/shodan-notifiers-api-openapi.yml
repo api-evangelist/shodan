@@ -1,0 +1,160 @@
+openapi: 3.1.0
+info:
+  title: Shodan CVEDB Account Notifiers API
+  description: Shodan's CVEDB is a free vulnerability database API that supports CVE lookups, CPE-keyed vulnerability search, KEV filtering, EPSS ordering, date-range queries, and product-name search. No API key required; updated daily.
+  version: '1.0'
+  contact:
+    name: Shodan Support
+    email: support@shodan.io
+    url: https://cvedb.shodan.io/
+  license:
+    name: Shodan API Terms of Service
+    url: https://www.shodan.io/legal/tos
+servers:
+- url: https://cvedb.shodan.io
+  description: Production
+tags:
+- name: Notifiers
+  description: Manage notification providers used by alerts.
+paths:
+  /notifier:
+    get:
+      tags:
+      - Notifiers
+      summary: List Notifiers
+      operationId: listNotifiers
+      description: Returns the list of notifiers the user has configured.
+      responses:
+        '200':
+          description: Notifier list.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Notifier'
+    post:
+      tags:
+      - Notifiers
+      summary: Create Notifier
+      operationId: createNotifier
+      description: Create a new notifier for receiving alerts.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/NotifierCreate'
+      responses:
+        '200':
+          description: Created notifier.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Notifier'
+  /notifier/provider:
+    get:
+      tags:
+      - Notifiers
+      summary: List Notifier Providers
+      operationId: listNotifierProviders
+      description: Returns the list of available notification provider types.
+      responses:
+        '200':
+          description: Provider catalog.
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: true
+  /notifier/{id}:
+    get:
+      tags:
+      - Notifiers
+      summary: Get Notifier
+      operationId: getNotifier
+      description: Returns information about a specific notifier.
+      parameters:
+      - $ref: '#/components/parameters/NotifierId'
+      responses:
+        '200':
+          description: Notifier details.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Notifier'
+    put:
+      tags:
+      - Notifiers
+      summary: Update Notifier
+      operationId: updateNotifier
+      description: Update an existing notifier configuration.
+      parameters:
+      - $ref: '#/components/parameters/NotifierId'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/NotifierCreate'
+      responses:
+        '200':
+          description: Updated notifier.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Notifier'
+    delete:
+      tags:
+      - Notifiers
+      summary: Delete Notifier
+      operationId: deleteNotifier
+      description: Delete a notifier.
+      parameters:
+      - $ref: '#/components/parameters/NotifierId'
+      responses:
+        '200':
+          description: Notifier deletion result.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+components:
+  parameters:
+    NotifierId:
+      name: id
+      in: path
+      required: true
+      schema:
+        type: string
+      description: Notifier identifier.
+  schemas:
+    Notifier:
+      type: object
+      properties:
+        id:
+          type: string
+        provider:
+          type: string
+        description:
+          type: string
+        args:
+          type: object
+          additionalProperties: true
+    NotifierCreate:
+      type: object
+      required:
+      - provider
+      - description
+      - args
+      properties:
+        provider:
+          type: string
+        description:
+          type: string
+        args:
+          type: object
+          additionalProperties: true
