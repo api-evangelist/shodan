@@ -1,4 +1,18 @@
 aid: shodan
+accessModel:
+  pricing: freemium
+  onboarding: self-serve
+  trial: false
+  try_now: true
+  public: false
+  label: Freemium · Self-serve signup
+  confidence: high
+  source:
+  - plans
+  - authentication
+  generated: '2026-07-22'
+  method: derived
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/shodan.png
 name: Shodan
 description: >-
   Shodan is the world's first search engine for Internet-connected devices. It continuously crawls the public Internet
@@ -31,147 +45,1116 @@ tags:
   - Scanning
   - Public APIs
 apis:
-  - name: Shodan REST API
-    description: >-
-      The primary Shodan REST API exposes search methods, host lookups, on-demand scanning, network alerts, notifiers,
-      the saved-query directory, DNS lookups, utility methods, account information, bulk data, and organization
-      management. Auth is via the `key` query parameter.
-    humanURL: https://developer.shodan.io/api
-    baseURL: https://api.shodan.io
-    tags:
-      - REST
-      - Search
-      - Host
-      - Scanning
-      - Alerts
-      - Notifiers
-      - DNS
-    properties:
-      - type: Documentation
-        url: https://developer.shodan.io/api
-      - type: APIReference
-        url: https://developer.shodan.io/api
-      - type: Authentication
-        url: https://developer.shodan.io/api/requirements
-      - type: OpenAPI
-        url: openapi/shodan-rest-openapi.yml
-      - type: JSONSchema
-        url: json-schema/shodan-rest-host-schema.json
-      - type: JSONSchema
-        url: json-schema/shodan-rest-search-result-schema.json
-      - type: JSONSchema
-        url: json-schema/shodan-rest-alert-schema.json
-      - type: JSONSchema
-        url: json-schema/shodan-rest-notifier-schema.json
-      - type: JSONSchema
-        url: json-schema/shodan-rest-scan-schema.json
-      - type: JSONStructure
-        url: json-structure/shodan-rest-host-structure.json
-      - type: JSONStructure
-        url: json-structure/shodan-rest-alert-structure.json
-      - type: JSONLD
-        url: json-ld/shodan-context.jsonld
-      - type: Examples
-        url: examples/shodan-rest-host-lookup-example.json
-      - type: Examples
-        url: examples/shodan-rest-search-example.json
-      - type: Examples
-        url: examples/shodan-rest-scan-create-example.json
-      - type: Examples
-        url: examples/shodan-rest-alert-create-example.json
-  - name: Shodan Streaming API
-    description: >-
-      The Shodan Streaming API provides a real-time firehose of banner data as Shodan collects it. Filtered streams are
-      available by ASN, country, port, and CVE. Output is either newline-separated JSON or Server-Sent Events.
-    humanURL: https://developer.shodan.io/api/stream
-    baseURL: https://stream.shodan.io
-    tags:
-      - Streaming
-      - Real-Time
-      - Firehose
-      - SSE
-    properties:
-      - type: Documentation
-        url: https://developer.shodan.io/api/stream
-      - type: APIReference
-        url: https://developer.shodan.io/api/stream
-      - type: AsyncAPI
-        url: asyncapi/shodan-stream-asyncapi.yml
-      - type: OpenAPI
-        url: openapi/shodan-stream-openapi.yml
-      - type: JSONSchema
-        url: json-schema/shodan-stream-banner-schema.json
-      - type: JSONStructure
-        url: json-structure/shodan-stream-banner-structure.json
-      - type: Examples
-        url: examples/shodan-stream-banner-example.json
-  - name: Shodan Trends API
-    description: >-
-      Trends is the historical analytics API for Shodan, exposing breakdowns of historical scan results aggregated by
-      facet (product, port, country, organization, etc.) by month. Access is Enterprise-only.
-    humanURL: https://developer.shodan.io/api/trends
-    baseURL: https://trends.shodan.io
-    tags:
-      - Trends
-      - Analytics
-      - Historical
-      - Enterprise
-    properties:
-      - type: Documentation
-        url: https://developer.shodan.io/api/trends
-      - type: APIReference
-        url: https://developer.shodan.io/api/trends
-      - type: OpenAPI
-        url: openapi/shodan-trends-openapi.yml
-      - type: JSONSchema
-        url: json-schema/shodan-trends-result-schema.json
-      - type: Examples
-        url: examples/shodan-trends-search-example.json
-  - name: InternetDB API
-    description: >-
-      The InternetDB API is a free, unauthenticated lookup service that returns the open ports, CPEs, hostnames, tags,
-      and known CVEs for any IPv4 address. The dataset is refreshed once per week. Free for non-commercial use;
-      commercial use requires an enterprise license.
-    humanURL: https://internetdb.shodan.io/
-    baseURL: https://internetdb.shodan.io
-    tags:
-      - InternetDB
-      - Free
-      - IP Lookup
-      - Public
-    properties:
-      - type: Documentation
-        url: https://internetdb.shodan.io/
-      - type: OpenAPI
-        url: openapi/shodan-internetdb-openapi.yml
-      - type: JSONSchema
-        url: json-schema/shodan-internetdb-host-schema.json
-      - type: Examples
-        url: examples/shodan-internetdb-host-example.json
-  - name: CVEDB API
-    description: >-
-      CVEDB is Shodan's open vulnerability database API. It provides CVE lookups, CPE-keyed vulnerability search, KEV
-      filtering, EPSS ordering, and date-range queries. No API key required; updated daily. Free for non-commercial use.
-    humanURL: https://cvedb.shodan.io/
-    baseURL: https://cvedb.shodan.io
-    tags:
-      - CVE
-      - Vulnerabilities
-      - CPE
-      - KEV
-      - EPSS
-      - Free
-    properties:
-      - type: Documentation
-        url: https://cvedb.shodan.io/
-      - type: OpenAPI
-        url: openapi/shodan-cvedb-openapi.yml
-      - type: JSONSchema
-        url: json-schema/shodan-cvedb-cve-schema.json
-      - type: JSONSchema
-        url: json-schema/shodan-cvedb-cpe-schema.json
-      - type: Examples
-        url: examples/shodan-cvedb-cve-lookup-example.json
+- aid: shodan:shodan-account-api
+  name: Shodan Account API
+  description: Account, profile, and API plan information.
+  humanURL: https://developer.shodan.io/api
+  baseURL: https://api.shodan.io
+  tags:
+  - Account
+  properties:
+  - type: OpenAPI
+    url: openapi/shodan-account-api-openapi.yml
+  - type: Documentation
+    url: https://developer.shodan.io/api
+  - type: APIReference
+    url: https://developer.shodan.io/api
+  - type: Authentication
+    url: https://developer.shodan.io/api/requirements
+  - type: JSONSchema
+    url: json-schema/shodan-rest-host-schema.json
+  - type: JSONSchema
+    url: json-schema/shodan-rest-search-result-schema.json
+  - type: JSONSchema
+    url: json-schema/shodan-rest-alert-schema.json
+  - type: JSONSchema
+    url: json-schema/shodan-rest-notifier-schema.json
+  - type: JSONSchema
+    url: json-schema/shodan-rest-scan-schema.json
+  - type: JSONStructure
+    url: json-structure/shodan-rest-host-structure.json
+  - type: JSONStructure
+    url: json-structure/shodan-rest-alert-structure.json
+  - type: JSONLD
+    url: json-ld/shodan-context.jsonld
+  - type: Examples
+    url: examples/shodan-rest-host-lookup-example.json
+  - type: Examples
+    url: examples/shodan-rest-search-example.json
+  - type: Examples
+    url: examples/shodan-rest-scan-create-example.json
+  - type: Examples
+    url: examples/shodan-rest-alert-create-example.json
+  - type: Documentation
+    url: https://developer.shodan.io/api/stream
+  - type: APIReference
+    url: https://developer.shodan.io/api/stream
+  - type: AsyncAPI
+    url: asyncapi/shodan-stream-asyncapi.yml
+  - type: JSONSchema
+    url: json-schema/shodan-stream-banner-schema.json
+  - type: JSONStructure
+    url: json-structure/shodan-stream-banner-structure.json
+  - type: Examples
+    url: examples/shodan-stream-banner-example.json
+  - type: Documentation
+    url: https://developer.shodan.io/api/trends
+  - type: APIReference
+    url: https://developer.shodan.io/api/trends
+  - type: JSONSchema
+    url: json-schema/shodan-trends-result-schema.json
+  - type: Examples
+    url: examples/shodan-trends-search-example.json
+  - type: Documentation
+    url: https://internetdb.shodan.io/
+  - type: JSONSchema
+    url: json-schema/shodan-internetdb-host-schema.json
+  - type: Examples
+    url: examples/shodan-internetdb-host-example.json
+  - type: Documentation
+    url: https://cvedb.shodan.io/
+  - type: JSONSchema
+    url: json-schema/shodan-cvedb-cve-schema.json
+  - type: JSONSchema
+    url: json-schema/shodan-cvedb-cpe-schema.json
+  - type: Examples
+    url: examples/shodan-cvedb-cve-lookup-example.json
+- aid: shodan:shodan-bulk-data-api
+  name: Shodan Bulk Data API
+  description: Enterprise bulk data exports.
+  humanURL: https://developer.shodan.io/api
+  baseURL: https://api.shodan.io
+  tags:
+  - Bulk Data
+  properties:
+  - type: OpenAPI
+    url: openapi/shodan-bulk-data-api-openapi.yml
+  - type: Documentation
+    url: https://developer.shodan.io/api
+  - type: APIReference
+    url: https://developer.shodan.io/api
+  - type: Authentication
+    url: https://developer.shodan.io/api/requirements
+  - type: JSONSchema
+    url: json-schema/shodan-rest-host-schema.json
+  - type: JSONSchema
+    url: json-schema/shodan-rest-search-result-schema.json
+  - type: JSONSchema
+    url: json-schema/shodan-rest-alert-schema.json
+  - type: JSONSchema
+    url: json-schema/shodan-rest-notifier-schema.json
+  - type: JSONSchema
+    url: json-schema/shodan-rest-scan-schema.json
+  - type: JSONStructure
+    url: json-structure/shodan-rest-host-structure.json
+  - type: JSONStructure
+    url: json-structure/shodan-rest-alert-structure.json
+  - type: JSONLD
+    url: json-ld/shodan-context.jsonld
+  - type: Examples
+    url: examples/shodan-rest-host-lookup-example.json
+  - type: Examples
+    url: examples/shodan-rest-search-example.json
+  - type: Examples
+    url: examples/shodan-rest-scan-create-example.json
+  - type: Examples
+    url: examples/shodan-rest-alert-create-example.json
+  - type: Documentation
+    url: https://developer.shodan.io/api/stream
+  - type: APIReference
+    url: https://developer.shodan.io/api/stream
+  - type: AsyncAPI
+    url: asyncapi/shodan-stream-asyncapi.yml
+  - type: JSONSchema
+    url: json-schema/shodan-stream-banner-schema.json
+  - type: JSONStructure
+    url: json-structure/shodan-stream-banner-structure.json
+  - type: Examples
+    url: examples/shodan-stream-banner-example.json
+  - type: Documentation
+    url: https://developer.shodan.io/api/trends
+  - type: APIReference
+    url: https://developer.shodan.io/api/trends
+  - type: JSONSchema
+    url: json-schema/shodan-trends-result-schema.json
+  - type: Examples
+    url: examples/shodan-trends-search-example.json
+  - type: Documentation
+    url: https://internetdb.shodan.io/
+  - type: JSONSchema
+    url: json-schema/shodan-internetdb-host-schema.json
+  - type: Examples
+    url: examples/shodan-internetdb-host-example.json
+  - type: Documentation
+    url: https://cvedb.shodan.io/
+  - type: JSONSchema
+    url: json-schema/shodan-cvedb-cve-schema.json
+  - type: JSONSchema
+    url: json-schema/shodan-cvedb-cpe-schema.json
+  - type: Examples
+    url: examples/shodan-cvedb-cve-lookup-example.json
+- aid: shodan:shodan-cpe-api
+  name: Shodan CPE API
+  description: The CPE API from Shodan — 1 operation(s) for cpe.
+  humanURL: https://developer.shodan.io/api
+  baseURL: https://api.shodan.io
+  tags:
+  - CPE
+  properties:
+  - type: OpenAPI
+    url: openapi/shodan-cpe-api-openapi.yml
+  - type: Documentation
+    url: https://developer.shodan.io/api
+  - type: APIReference
+    url: https://developer.shodan.io/api
+  - type: Authentication
+    url: https://developer.shodan.io/api/requirements
+  - type: JSONSchema
+    url: json-schema/shodan-rest-host-schema.json
+  - type: JSONSchema
+    url: json-schema/shodan-rest-search-result-schema.json
+  - type: JSONSchema
+    url: json-schema/shodan-rest-alert-schema.json
+  - type: JSONSchema
+    url: json-schema/shodan-rest-notifier-schema.json
+  - type: JSONSchema
+    url: json-schema/shodan-rest-scan-schema.json
+  - type: JSONStructure
+    url: json-structure/shodan-rest-host-structure.json
+  - type: JSONStructure
+    url: json-structure/shodan-rest-alert-structure.json
+  - type: JSONLD
+    url: json-ld/shodan-context.jsonld
+  - type: Examples
+    url: examples/shodan-rest-host-lookup-example.json
+  - type: Examples
+    url: examples/shodan-rest-search-example.json
+  - type: Examples
+    url: examples/shodan-rest-scan-create-example.json
+  - type: Examples
+    url: examples/shodan-rest-alert-create-example.json
+  - type: Documentation
+    url: https://developer.shodan.io/api/stream
+  - type: APIReference
+    url: https://developer.shodan.io/api/stream
+  - type: AsyncAPI
+    url: asyncapi/shodan-stream-asyncapi.yml
+  - type: JSONSchema
+    url: json-schema/shodan-stream-banner-schema.json
+  - type: JSONStructure
+    url: json-structure/shodan-stream-banner-structure.json
+  - type: Examples
+    url: examples/shodan-stream-banner-example.json
+  - type: Documentation
+    url: https://developer.shodan.io/api/trends
+  - type: APIReference
+    url: https://developer.shodan.io/api/trends
+  - type: JSONSchema
+    url: json-schema/shodan-trends-result-schema.json
+  - type: Examples
+    url: examples/shodan-trends-search-example.json
+  - type: Documentation
+    url: https://internetdb.shodan.io/
+  - type: JSONSchema
+    url: json-schema/shodan-internetdb-host-schema.json
+  - type: Examples
+    url: examples/shodan-internetdb-host-example.json
+  - type: Documentation
+    url: https://cvedb.shodan.io/
+  - type: JSONSchema
+    url: json-schema/shodan-cvedb-cve-schema.json
+  - type: JSONSchema
+    url: json-schema/shodan-cvedb-cpe-schema.json
+  - type: Examples
+    url: examples/shodan-cvedb-cve-lookup-example.json
+- aid: shodan:shodan-cve-api
+  name: Shodan CVE API
+  description: The CVE API from Shodan — 2 operation(s) for cve.
+  humanURL: https://developer.shodan.io/api
+  baseURL: https://api.shodan.io
+  tags:
+  - CVE
+  properties:
+  - type: OpenAPI
+    url: openapi/shodan-cve-api-openapi.yml
+  - type: Documentation
+    url: https://developer.shodan.io/api
+  - type: APIReference
+    url: https://developer.shodan.io/api
+  - type: Authentication
+    url: https://developer.shodan.io/api/requirements
+  - type: JSONSchema
+    url: json-schema/shodan-rest-host-schema.json
+  - type: JSONSchema
+    url: json-schema/shodan-rest-search-result-schema.json
+  - type: JSONSchema
+    url: json-schema/shodan-rest-alert-schema.json
+  - type: JSONSchema
+    url: json-schema/shodan-rest-notifier-schema.json
+  - type: JSONSchema
+    url: json-schema/shodan-rest-scan-schema.json
+  - type: JSONStructure
+    url: json-structure/shodan-rest-host-structure.json
+  - type: JSONStructure
+    url: json-structure/shodan-rest-alert-structure.json
+  - type: JSONLD
+    url: json-ld/shodan-context.jsonld
+  - type: Examples
+    url: examples/shodan-rest-host-lookup-example.json
+  - type: Examples
+    url: examples/shodan-rest-search-example.json
+  - type: Examples
+    url: examples/shodan-rest-scan-create-example.json
+  - type: Examples
+    url: examples/shodan-rest-alert-create-example.json
+  - type: Documentation
+    url: https://developer.shodan.io/api/stream
+  - type: APIReference
+    url: https://developer.shodan.io/api/stream
+  - type: AsyncAPI
+    url: asyncapi/shodan-stream-asyncapi.yml
+  - type: JSONSchema
+    url: json-schema/shodan-stream-banner-schema.json
+  - type: JSONStructure
+    url: json-structure/shodan-stream-banner-structure.json
+  - type: Examples
+    url: examples/shodan-stream-banner-example.json
+  - type: Documentation
+    url: https://developer.shodan.io/api/trends
+  - type: APIReference
+    url: https://developer.shodan.io/api/trends
+  - type: JSONSchema
+    url: json-schema/shodan-trends-result-schema.json
+  - type: Examples
+    url: examples/shodan-trends-search-example.json
+  - type: Documentation
+    url: https://internetdb.shodan.io/
+  - type: JSONSchema
+    url: json-schema/shodan-internetdb-host-schema.json
+  - type: Examples
+    url: examples/shodan-internetdb-host-example.json
+  - type: Documentation
+    url: https://cvedb.shodan.io/
+  - type: JSONSchema
+    url: json-schema/shodan-cvedb-cve-schema.json
+  - type: JSONSchema
+    url: json-schema/shodan-cvedb-cpe-schema.json
+  - type: Examples
+    url: examples/shodan-cvedb-cve-lookup-example.json
+- aid: shodan:shodan-directory-api
+  name: Shodan Directory API
+  description: Browse and search saved Shodan queries.
+  humanURL: https://developer.shodan.io/api
+  baseURL: https://api.shodan.io
+  tags:
+  - Directory
+  properties:
+  - type: OpenAPI
+    url: openapi/shodan-directory-api-openapi.yml
+  - type: Documentation
+    url: https://developer.shodan.io/api
+  - type: APIReference
+    url: https://developer.shodan.io/api
+  - type: Authentication
+    url: https://developer.shodan.io/api/requirements
+  - type: JSONSchema
+    url: json-schema/shodan-rest-host-schema.json
+  - type: JSONSchema
+    url: json-schema/shodan-rest-search-result-schema.json
+  - type: JSONSchema
+    url: json-schema/shodan-rest-alert-schema.json
+  - type: JSONSchema
+    url: json-schema/shodan-rest-notifier-schema.json
+  - type: JSONSchema
+    url: json-schema/shodan-rest-scan-schema.json
+  - type: JSONStructure
+    url: json-structure/shodan-rest-host-structure.json
+  - type: JSONStructure
+    url: json-structure/shodan-rest-alert-structure.json
+  - type: JSONLD
+    url: json-ld/shodan-context.jsonld
+  - type: Examples
+    url: examples/shodan-rest-host-lookup-example.json
+  - type: Examples
+    url: examples/shodan-rest-search-example.json
+  - type: Examples
+    url: examples/shodan-rest-scan-create-example.json
+  - type: Examples
+    url: examples/shodan-rest-alert-create-example.json
+  - type: Documentation
+    url: https://developer.shodan.io/api/stream
+  - type: APIReference
+    url: https://developer.shodan.io/api/stream
+  - type: AsyncAPI
+    url: asyncapi/shodan-stream-asyncapi.yml
+  - type: JSONSchema
+    url: json-schema/shodan-stream-banner-schema.json
+  - type: JSONStructure
+    url: json-structure/shodan-stream-banner-structure.json
+  - type: Examples
+    url: examples/shodan-stream-banner-example.json
+  - type: Documentation
+    url: https://developer.shodan.io/api/trends
+  - type: APIReference
+    url: https://developer.shodan.io/api/trends
+  - type: JSONSchema
+    url: json-schema/shodan-trends-result-schema.json
+  - type: Examples
+    url: examples/shodan-trends-search-example.json
+  - type: Documentation
+    url: https://internetdb.shodan.io/
+  - type: JSONSchema
+    url: json-schema/shodan-internetdb-host-schema.json
+  - type: Examples
+    url: examples/shodan-internetdb-host-example.json
+  - type: Documentation
+    url: https://cvedb.shodan.io/
+  - type: JSONSchema
+    url: json-schema/shodan-cvedb-cve-schema.json
+  - type: JSONSchema
+    url: json-schema/shodan-cvedb-cpe-schema.json
+  - type: Examples
+    url: examples/shodan-cvedb-cve-lookup-example.json
+- aid: shodan:shodan-dns-api
+  name: Shodan DNS API
+  description: Forward, reverse, and domain DNS lookups.
+  humanURL: https://developer.shodan.io/api
+  baseURL: https://api.shodan.io
+  tags:
+  - DNS
+  properties:
+  - type: OpenAPI
+    url: openapi/shodan-dns-api-openapi.yml
+  - type: Documentation
+    url: https://developer.shodan.io/api
+  - type: APIReference
+    url: https://developer.shodan.io/api
+  - type: Authentication
+    url: https://developer.shodan.io/api/requirements
+  - type: JSONSchema
+    url: json-schema/shodan-rest-host-schema.json
+  - type: JSONSchema
+    url: json-schema/shodan-rest-search-result-schema.json
+  - type: JSONSchema
+    url: json-schema/shodan-rest-alert-schema.json
+  - type: JSONSchema
+    url: json-schema/shodan-rest-notifier-schema.json
+  - type: JSONSchema
+    url: json-schema/shodan-rest-scan-schema.json
+  - type: JSONStructure
+    url: json-structure/shodan-rest-host-structure.json
+  - type: JSONStructure
+    url: json-structure/shodan-rest-alert-structure.json
+  - type: JSONLD
+    url: json-ld/shodan-context.jsonld
+  - type: Examples
+    url: examples/shodan-rest-host-lookup-example.json
+  - type: Examples
+    url: examples/shodan-rest-search-example.json
+  - type: Examples
+    url: examples/shodan-rest-scan-create-example.json
+  - type: Examples
+    url: examples/shodan-rest-alert-create-example.json
+  - type: Documentation
+    url: https://developer.shodan.io/api/stream
+  - type: APIReference
+    url: https://developer.shodan.io/api/stream
+  - type: AsyncAPI
+    url: asyncapi/shodan-stream-asyncapi.yml
+  - type: JSONSchema
+    url: json-schema/shodan-stream-banner-schema.json
+  - type: JSONStructure
+    url: json-structure/shodan-stream-banner-structure.json
+  - type: Examples
+    url: examples/shodan-stream-banner-example.json
+  - type: Documentation
+    url: https://developer.shodan.io/api/trends
+  - type: APIReference
+    url: https://developer.shodan.io/api/trends
+  - type: JSONSchema
+    url: json-schema/shodan-trends-result-schema.json
+  - type: Examples
+    url: examples/shodan-trends-search-example.json
+  - type: Documentation
+    url: https://internetdb.shodan.io/
+  - type: JSONSchema
+    url: json-schema/shodan-internetdb-host-schema.json
+  - type: Examples
+    url: examples/shodan-internetdb-host-example.json
+  - type: Documentation
+    url: https://cvedb.shodan.io/
+  - type: JSONSchema
+    url: json-schema/shodan-cvedb-cve-schema.json
+  - type: JSONSchema
+    url: json-schema/shodan-cvedb-cpe-schema.json
+  - type: Examples
+    url: examples/shodan-cvedb-cve-lookup-example.json
+- aid: shodan:shodan-internetdb-api
+  name: Shodan InternetDB API
+  description: The InternetDB API from Shodan — 1 operation(s) for internetdb.
+  humanURL: https://developer.shodan.io/api
+  baseURL: https://api.shodan.io
+  tags:
+  - InternetDB
+  properties:
+  - type: OpenAPI
+    url: openapi/shodan-internetdb-api-openapi.yml
+  - type: Documentation
+    url: https://developer.shodan.io/api
+  - type: APIReference
+    url: https://developer.shodan.io/api
+  - type: Authentication
+    url: https://developer.shodan.io/api/requirements
+  - type: JSONSchema
+    url: json-schema/shodan-rest-host-schema.json
+  - type: JSONSchema
+    url: json-schema/shodan-rest-search-result-schema.json
+  - type: JSONSchema
+    url: json-schema/shodan-rest-alert-schema.json
+  - type: JSONSchema
+    url: json-schema/shodan-rest-notifier-schema.json
+  - type: JSONSchema
+    url: json-schema/shodan-rest-scan-schema.json
+  - type: JSONStructure
+    url: json-structure/shodan-rest-host-structure.json
+  - type: JSONStructure
+    url: json-structure/shodan-rest-alert-structure.json
+  - type: JSONLD
+    url: json-ld/shodan-context.jsonld
+  - type: Examples
+    url: examples/shodan-rest-host-lookup-example.json
+  - type: Examples
+    url: examples/shodan-rest-search-example.json
+  - type: Examples
+    url: examples/shodan-rest-scan-create-example.json
+  - type: Examples
+    url: examples/shodan-rest-alert-create-example.json
+  - type: Documentation
+    url: https://developer.shodan.io/api/stream
+  - type: APIReference
+    url: https://developer.shodan.io/api/stream
+  - type: AsyncAPI
+    url: asyncapi/shodan-stream-asyncapi.yml
+  - type: JSONSchema
+    url: json-schema/shodan-stream-banner-schema.json
+  - type: JSONStructure
+    url: json-structure/shodan-stream-banner-structure.json
+  - type: Examples
+    url: examples/shodan-stream-banner-example.json
+  - type: Documentation
+    url: https://developer.shodan.io/api/trends
+  - type: APIReference
+    url: https://developer.shodan.io/api/trends
+  - type: JSONSchema
+    url: json-schema/shodan-trends-result-schema.json
+  - type: Examples
+    url: examples/shodan-trends-search-example.json
+  - type: Documentation
+    url: https://internetdb.shodan.io/
+  - type: JSONSchema
+    url: json-schema/shodan-internetdb-host-schema.json
+  - type: Examples
+    url: examples/shodan-internetdb-host-example.json
+  - type: Documentation
+    url: https://cvedb.shodan.io/
+  - type: JSONSchema
+    url: json-schema/shodan-cvedb-cve-schema.json
+  - type: JSONSchema
+    url: json-schema/shodan-cvedb-cpe-schema.json
+  - type: Examples
+    url: examples/shodan-cvedb-cve-lookup-example.json
+- aid: shodan:shodan-network-alerts-api
+  name: Shodan Network Alerts API
+  description: Create and manage alerts on monitored IP ranges.
+  humanURL: https://developer.shodan.io/api
+  baseURL: https://api.shodan.io
+  tags:
+  - Network Alerts
+  properties:
+  - type: OpenAPI
+    url: openapi/shodan-network-alerts-api-openapi.yml
+  - type: Documentation
+    url: https://developer.shodan.io/api
+  - type: APIReference
+    url: https://developer.shodan.io/api
+  - type: Authentication
+    url: https://developer.shodan.io/api/requirements
+  - type: JSONSchema
+    url: json-schema/shodan-rest-host-schema.json
+  - type: JSONSchema
+    url: json-schema/shodan-rest-search-result-schema.json
+  - type: JSONSchema
+    url: json-schema/shodan-rest-alert-schema.json
+  - type: JSONSchema
+    url: json-schema/shodan-rest-notifier-schema.json
+  - type: JSONSchema
+    url: json-schema/shodan-rest-scan-schema.json
+  - type: JSONStructure
+    url: json-structure/shodan-rest-host-structure.json
+  - type: JSONStructure
+    url: json-structure/shodan-rest-alert-structure.json
+  - type: JSONLD
+    url: json-ld/shodan-context.jsonld
+  - type: Examples
+    url: examples/shodan-rest-host-lookup-example.json
+  - type: Examples
+    url: examples/shodan-rest-search-example.json
+  - type: Examples
+    url: examples/shodan-rest-scan-create-example.json
+  - type: Examples
+    url: examples/shodan-rest-alert-create-example.json
+  - type: Documentation
+    url: https://developer.shodan.io/api/stream
+  - type: APIReference
+    url: https://developer.shodan.io/api/stream
+  - type: AsyncAPI
+    url: asyncapi/shodan-stream-asyncapi.yml
+  - type: JSONSchema
+    url: json-schema/shodan-stream-banner-schema.json
+  - type: JSONStructure
+    url: json-structure/shodan-stream-banner-structure.json
+  - type: Examples
+    url: examples/shodan-stream-banner-example.json
+  - type: Documentation
+    url: https://developer.shodan.io/api/trends
+  - type: APIReference
+    url: https://developer.shodan.io/api/trends
+  - type: JSONSchema
+    url: json-schema/shodan-trends-result-schema.json
+  - type: Examples
+    url: examples/shodan-trends-search-example.json
+  - type: Documentation
+    url: https://internetdb.shodan.io/
+  - type: JSONSchema
+    url: json-schema/shodan-internetdb-host-schema.json
+  - type: Examples
+    url: examples/shodan-internetdb-host-example.json
+  - type: Documentation
+    url: https://cvedb.shodan.io/
+  - type: JSONSchema
+    url: json-schema/shodan-cvedb-cve-schema.json
+  - type: JSONSchema
+    url: json-schema/shodan-cvedb-cpe-schema.json
+  - type: Examples
+    url: examples/shodan-cvedb-cve-lookup-example.json
+- aid: shodan:shodan-notifiers-api
+  name: Shodan Notifiers API
+  description: Manage notification providers used by alerts.
+  humanURL: https://developer.shodan.io/api
+  baseURL: https://api.shodan.io
+  tags:
+  - Notifiers
+  properties:
+  - type: OpenAPI
+    url: openapi/shodan-notifiers-api-openapi.yml
+  - type: Documentation
+    url: https://developer.shodan.io/api
+  - type: APIReference
+    url: https://developer.shodan.io/api
+  - type: Authentication
+    url: https://developer.shodan.io/api/requirements
+  - type: JSONSchema
+    url: json-schema/shodan-rest-host-schema.json
+  - type: JSONSchema
+    url: json-schema/shodan-rest-search-result-schema.json
+  - type: JSONSchema
+    url: json-schema/shodan-rest-alert-schema.json
+  - type: JSONSchema
+    url: json-schema/shodan-rest-notifier-schema.json
+  - type: JSONSchema
+    url: json-schema/shodan-rest-scan-schema.json
+  - type: JSONStructure
+    url: json-structure/shodan-rest-host-structure.json
+  - type: JSONStructure
+    url: json-structure/shodan-rest-alert-structure.json
+  - type: JSONLD
+    url: json-ld/shodan-context.jsonld
+  - type: Examples
+    url: examples/shodan-rest-host-lookup-example.json
+  - type: Examples
+    url: examples/shodan-rest-search-example.json
+  - type: Examples
+    url: examples/shodan-rest-scan-create-example.json
+  - type: Examples
+    url: examples/shodan-rest-alert-create-example.json
+  - type: Documentation
+    url: https://developer.shodan.io/api/stream
+  - type: APIReference
+    url: https://developer.shodan.io/api/stream
+  - type: AsyncAPI
+    url: asyncapi/shodan-stream-asyncapi.yml
+  - type: JSONSchema
+    url: json-schema/shodan-stream-banner-schema.json
+  - type: JSONStructure
+    url: json-structure/shodan-stream-banner-structure.json
+  - type: Examples
+    url: examples/shodan-stream-banner-example.json
+  - type: Documentation
+    url: https://developer.shodan.io/api/trends
+  - type: APIReference
+    url: https://developer.shodan.io/api/trends
+  - type: JSONSchema
+    url: json-schema/shodan-trends-result-schema.json
+  - type: Examples
+    url: examples/shodan-trends-search-example.json
+  - type: Documentation
+    url: https://internetdb.shodan.io/
+  - type: JSONSchema
+    url: json-schema/shodan-internetdb-host-schema.json
+  - type: Examples
+    url: examples/shodan-internetdb-host-example.json
+  - type: Documentation
+    url: https://cvedb.shodan.io/
+  - type: JSONSchema
+    url: json-schema/shodan-cvedb-cve-schema.json
+  - type: JSONSchema
+    url: json-schema/shodan-cvedb-cpe-schema.json
+  - type: Examples
+    url: examples/shodan-cvedb-cve-lookup-example.json
+- aid: shodan:shodan-on-demand-scanning-api
+  name: Shodan On-Demand Scanning API
+  description: Request crawls of specific IPs, netblocks, or the entire Internet.
+  humanURL: https://developer.shodan.io/api
+  baseURL: https://api.shodan.io
+  tags:
+  - On-Demand Scanning
+  properties:
+  - type: OpenAPI
+    url: openapi/shodan-on-demand-scanning-api-openapi.yml
+  - type: Documentation
+    url: https://developer.shodan.io/api
+  - type: APIReference
+    url: https://developer.shodan.io/api
+  - type: Authentication
+    url: https://developer.shodan.io/api/requirements
+  - type: JSONSchema
+    url: json-schema/shodan-rest-host-schema.json
+  - type: JSONSchema
+    url: json-schema/shodan-rest-search-result-schema.json
+  - type: JSONSchema
+    url: json-schema/shodan-rest-alert-schema.json
+  - type: JSONSchema
+    url: json-schema/shodan-rest-notifier-schema.json
+  - type: JSONSchema
+    url: json-schema/shodan-rest-scan-schema.json
+  - type: JSONStructure
+    url: json-structure/shodan-rest-host-structure.json
+  - type: JSONStructure
+    url: json-structure/shodan-rest-alert-structure.json
+  - type: JSONLD
+    url: json-ld/shodan-context.jsonld
+  - type: Examples
+    url: examples/shodan-rest-host-lookup-example.json
+  - type: Examples
+    url: examples/shodan-rest-search-example.json
+  - type: Examples
+    url: examples/shodan-rest-scan-create-example.json
+  - type: Examples
+    url: examples/shodan-rest-alert-create-example.json
+  - type: Documentation
+    url: https://developer.shodan.io/api/stream
+  - type: APIReference
+    url: https://developer.shodan.io/api/stream
+  - type: AsyncAPI
+    url: asyncapi/shodan-stream-asyncapi.yml
+  - type: JSONSchema
+    url: json-schema/shodan-stream-banner-schema.json
+  - type: JSONStructure
+    url: json-structure/shodan-stream-banner-structure.json
+  - type: Examples
+    url: examples/shodan-stream-banner-example.json
+  - type: Documentation
+    url: https://developer.shodan.io/api/trends
+  - type: APIReference
+    url: https://developer.shodan.io/api/trends
+  - type: JSONSchema
+    url: json-schema/shodan-trends-result-schema.json
+  - type: Examples
+    url: examples/shodan-trends-search-example.json
+  - type: Documentation
+    url: https://internetdb.shodan.io/
+  - type: JSONSchema
+    url: json-schema/shodan-internetdb-host-schema.json
+  - type: Examples
+    url: examples/shodan-internetdb-host-example.json
+  - type: Documentation
+    url: https://cvedb.shodan.io/
+  - type: JSONSchema
+    url: json-schema/shodan-cvedb-cve-schema.json
+  - type: JSONSchema
+    url: json-schema/shodan-cvedb-cpe-schema.json
+  - type: Examples
+    url: examples/shodan-cvedb-cve-lookup-example.json
+- aid: shodan:shodan-organization-api
+  name: Shodan Organization API
+  description: Enterprise organization management.
+  humanURL: https://developer.shodan.io/api
+  baseURL: https://api.shodan.io
+  tags:
+  - Organization
+  properties:
+  - type: OpenAPI
+    url: openapi/shodan-organization-api-openapi.yml
+  - type: Documentation
+    url: https://developer.shodan.io/api
+  - type: APIReference
+    url: https://developer.shodan.io/api
+  - type: Authentication
+    url: https://developer.shodan.io/api/requirements
+  - type: JSONSchema
+    url: json-schema/shodan-rest-host-schema.json
+  - type: JSONSchema
+    url: json-schema/shodan-rest-search-result-schema.json
+  - type: JSONSchema
+    url: json-schema/shodan-rest-alert-schema.json
+  - type: JSONSchema
+    url: json-schema/shodan-rest-notifier-schema.json
+  - type: JSONSchema
+    url: json-schema/shodan-rest-scan-schema.json
+  - type: JSONStructure
+    url: json-structure/shodan-rest-host-structure.json
+  - type: JSONStructure
+    url: json-structure/shodan-rest-alert-structure.json
+  - type: JSONLD
+    url: json-ld/shodan-context.jsonld
+  - type: Examples
+    url: examples/shodan-rest-host-lookup-example.json
+  - type: Examples
+    url: examples/shodan-rest-search-example.json
+  - type: Examples
+    url: examples/shodan-rest-scan-create-example.json
+  - type: Examples
+    url: examples/shodan-rest-alert-create-example.json
+  - type: Documentation
+    url: https://developer.shodan.io/api/stream
+  - type: APIReference
+    url: https://developer.shodan.io/api/stream
+  - type: AsyncAPI
+    url: asyncapi/shodan-stream-asyncapi.yml
+  - type: JSONSchema
+    url: json-schema/shodan-stream-banner-schema.json
+  - type: JSONStructure
+    url: json-structure/shodan-stream-banner-structure.json
+  - type: Examples
+    url: examples/shodan-stream-banner-example.json
+  - type: Documentation
+    url: https://developer.shodan.io/api/trends
+  - type: APIReference
+    url: https://developer.shodan.io/api/trends
+  - type: JSONSchema
+    url: json-schema/shodan-trends-result-schema.json
+  - type: Examples
+    url: examples/shodan-trends-search-example.json
+  - type: Documentation
+    url: https://internetdb.shodan.io/
+  - type: JSONSchema
+    url: json-schema/shodan-internetdb-host-schema.json
+  - type: Examples
+    url: examples/shodan-internetdb-host-example.json
+  - type: Documentation
+    url: https://cvedb.shodan.io/
+  - type: JSONSchema
+    url: json-schema/shodan-cvedb-cve-schema.json
+  - type: JSONSchema
+    url: json-schema/shodan-cvedb-cpe-schema.json
+  - type: Examples
+    url: examples/shodan-cvedb-cve-lookup-example.json
+- aid: shodan:shodan-search-methods-api
+  name: Shodan Search Methods API
+  description: Search and lookup endpoints for indexed devices.
+  humanURL: https://developer.shodan.io/api
+  baseURL: https://api.shodan.io
+  tags:
+  - Search Methods
+  properties:
+  - type: OpenAPI
+    url: openapi/shodan-search-methods-api-openapi.yml
+  - type: Documentation
+    url: https://developer.shodan.io/api
+  - type: APIReference
+    url: https://developer.shodan.io/api
+  - type: Authentication
+    url: https://developer.shodan.io/api/requirements
+  - type: JSONSchema
+    url: json-schema/shodan-rest-host-schema.json
+  - type: JSONSchema
+    url: json-schema/shodan-rest-search-result-schema.json
+  - type: JSONSchema
+    url: json-schema/shodan-rest-alert-schema.json
+  - type: JSONSchema
+    url: json-schema/shodan-rest-notifier-schema.json
+  - type: JSONSchema
+    url: json-schema/shodan-rest-scan-schema.json
+  - type: JSONStructure
+    url: json-structure/shodan-rest-host-structure.json
+  - type: JSONStructure
+    url: json-structure/shodan-rest-alert-structure.json
+  - type: JSONLD
+    url: json-ld/shodan-context.jsonld
+  - type: Examples
+    url: examples/shodan-rest-host-lookup-example.json
+  - type: Examples
+    url: examples/shodan-rest-search-example.json
+  - type: Examples
+    url: examples/shodan-rest-scan-create-example.json
+  - type: Examples
+    url: examples/shodan-rest-alert-create-example.json
+  - type: Documentation
+    url: https://developer.shodan.io/api/stream
+  - type: APIReference
+    url: https://developer.shodan.io/api/stream
+  - type: AsyncAPI
+    url: asyncapi/shodan-stream-asyncapi.yml
+  - type: JSONSchema
+    url: json-schema/shodan-stream-banner-schema.json
+  - type: JSONStructure
+    url: json-structure/shodan-stream-banner-structure.json
+  - type: Examples
+    url: examples/shodan-stream-banner-example.json
+  - type: Documentation
+    url: https://developer.shodan.io/api/trends
+  - type: APIReference
+    url: https://developer.shodan.io/api/trends
+  - type: JSONSchema
+    url: json-schema/shodan-trends-result-schema.json
+  - type: Examples
+    url: examples/shodan-trends-search-example.json
+  - type: Documentation
+    url: https://internetdb.shodan.io/
+  - type: JSONSchema
+    url: json-schema/shodan-internetdb-host-schema.json
+  - type: Examples
+    url: examples/shodan-internetdb-host-example.json
+  - type: Documentation
+    url: https://cvedb.shodan.io/
+  - type: JSONSchema
+    url: json-schema/shodan-cvedb-cve-schema.json
+  - type: JSONSchema
+    url: json-schema/shodan-cvedb-cpe-schema.json
+  - type: Examples
+    url: examples/shodan-cvedb-cve-lookup-example.json
+- aid: shodan:shodan-streaming-api
+  name: Shodan Streaming API
+  description: The Streaming API from Shodan — 5 operation(s) for streaming.
+  humanURL: https://developer.shodan.io/api
+  baseURL: https://api.shodan.io
+  tags:
+  - Streaming
+  properties:
+  - type: OpenAPI
+    url: openapi/shodan-streaming-api-openapi.yml
+  - type: Documentation
+    url: https://developer.shodan.io/api
+  - type: APIReference
+    url: https://developer.shodan.io/api
+  - type: Authentication
+    url: https://developer.shodan.io/api/requirements
+  - type: JSONSchema
+    url: json-schema/shodan-rest-host-schema.json
+  - type: JSONSchema
+    url: json-schema/shodan-rest-search-result-schema.json
+  - type: JSONSchema
+    url: json-schema/shodan-rest-alert-schema.json
+  - type: JSONSchema
+    url: json-schema/shodan-rest-notifier-schema.json
+  - type: JSONSchema
+    url: json-schema/shodan-rest-scan-schema.json
+  - type: JSONStructure
+    url: json-structure/shodan-rest-host-structure.json
+  - type: JSONStructure
+    url: json-structure/shodan-rest-alert-structure.json
+  - type: JSONLD
+    url: json-ld/shodan-context.jsonld
+  - type: Examples
+    url: examples/shodan-rest-host-lookup-example.json
+  - type: Examples
+    url: examples/shodan-rest-search-example.json
+  - type: Examples
+    url: examples/shodan-rest-scan-create-example.json
+  - type: Examples
+    url: examples/shodan-rest-alert-create-example.json
+  - type: Documentation
+    url: https://developer.shodan.io/api/stream
+  - type: APIReference
+    url: https://developer.shodan.io/api/stream
+  - type: AsyncAPI
+    url: asyncapi/shodan-stream-asyncapi.yml
+  - type: JSONSchema
+    url: json-schema/shodan-stream-banner-schema.json
+  - type: JSONStructure
+    url: json-structure/shodan-stream-banner-structure.json
+  - type: Examples
+    url: examples/shodan-stream-banner-example.json
+  - type: Documentation
+    url: https://developer.shodan.io/api/trends
+  - type: APIReference
+    url: https://developer.shodan.io/api/trends
+  - type: JSONSchema
+    url: json-schema/shodan-trends-result-schema.json
+  - type: Examples
+    url: examples/shodan-trends-search-example.json
+  - type: Documentation
+    url: https://internetdb.shodan.io/
+  - type: JSONSchema
+    url: json-schema/shodan-internetdb-host-schema.json
+  - type: Examples
+    url: examples/shodan-internetdb-host-example.json
+  - type: Documentation
+    url: https://cvedb.shodan.io/
+  - type: JSONSchema
+    url: json-schema/shodan-cvedb-cve-schema.json
+  - type: JSONSchema
+    url: json-schema/shodan-cvedb-cpe-schema.json
+  - type: Examples
+    url: examples/shodan-cvedb-cve-lookup-example.json
+- aid: shodan:shodan-trends-api
+  name: Shodan Trends API
+  description: The Trends API from Shodan — 1 operation(s) for trends.
+  humanURL: https://developer.shodan.io/api
+  baseURL: https://api.shodan.io
+  tags:
+  - Trends
+  properties:
+  - type: OpenAPI
+    url: openapi/shodan-trends-api-openapi.yml
+  - type: Documentation
+    url: https://developer.shodan.io/api
+  - type: APIReference
+    url: https://developer.shodan.io/api
+  - type: Authentication
+    url: https://developer.shodan.io/api/requirements
+  - type: JSONSchema
+    url: json-schema/shodan-rest-host-schema.json
+  - type: JSONSchema
+    url: json-schema/shodan-rest-search-result-schema.json
+  - type: JSONSchema
+    url: json-schema/shodan-rest-alert-schema.json
+  - type: JSONSchema
+    url: json-schema/shodan-rest-notifier-schema.json
+  - type: JSONSchema
+    url: json-schema/shodan-rest-scan-schema.json
+  - type: JSONStructure
+    url: json-structure/shodan-rest-host-structure.json
+  - type: JSONStructure
+    url: json-structure/shodan-rest-alert-structure.json
+  - type: JSONLD
+    url: json-ld/shodan-context.jsonld
+  - type: Examples
+    url: examples/shodan-rest-host-lookup-example.json
+  - type: Examples
+    url: examples/shodan-rest-search-example.json
+  - type: Examples
+    url: examples/shodan-rest-scan-create-example.json
+  - type: Examples
+    url: examples/shodan-rest-alert-create-example.json
+  - type: Documentation
+    url: https://developer.shodan.io/api/stream
+  - type: APIReference
+    url: https://developer.shodan.io/api/stream
+  - type: AsyncAPI
+    url: asyncapi/shodan-stream-asyncapi.yml
+  - type: JSONSchema
+    url: json-schema/shodan-stream-banner-schema.json
+  - type: JSONStructure
+    url: json-structure/shodan-stream-banner-structure.json
+  - type: Examples
+    url: examples/shodan-stream-banner-example.json
+  - type: Documentation
+    url: https://developer.shodan.io/api/trends
+  - type: APIReference
+    url: https://developer.shodan.io/api/trends
+  - type: JSONSchema
+    url: json-schema/shodan-trends-result-schema.json
+  - type: Examples
+    url: examples/shodan-trends-search-example.json
+  - type: Documentation
+    url: https://internetdb.shodan.io/
+  - type: JSONSchema
+    url: json-schema/shodan-internetdb-host-schema.json
+  - type: Examples
+    url: examples/shodan-internetdb-host-example.json
+  - type: Documentation
+    url: https://cvedb.shodan.io/
+  - type: JSONSchema
+    url: json-schema/shodan-cvedb-cve-schema.json
+  - type: JSONSchema
+    url: json-schema/shodan-cvedb-cpe-schema.json
+  - type: Examples
+    url: examples/shodan-cvedb-cve-lookup-example.json
+- aid: shodan:shodan-utility-api
+  name: Shodan Utility API
+  description: Helper endpoints for HTTP headers and IP detection.
+  humanURL: https://developer.shodan.io/api
+  baseURL: https://api.shodan.io
+  tags:
+  - Utility
+  properties:
+  - type: OpenAPI
+    url: openapi/shodan-utility-api-openapi.yml
+  - type: Documentation
+    url: https://developer.shodan.io/api
+  - type: APIReference
+    url: https://developer.shodan.io/api
+  - type: Authentication
+    url: https://developer.shodan.io/api/requirements
+  - type: JSONSchema
+    url: json-schema/shodan-rest-host-schema.json
+  - type: JSONSchema
+    url: json-schema/shodan-rest-search-result-schema.json
+  - type: JSONSchema
+    url: json-schema/shodan-rest-alert-schema.json
+  - type: JSONSchema
+    url: json-schema/shodan-rest-notifier-schema.json
+  - type: JSONSchema
+    url: json-schema/shodan-rest-scan-schema.json
+  - type: JSONStructure
+    url: json-structure/shodan-rest-host-structure.json
+  - type: JSONStructure
+    url: json-structure/shodan-rest-alert-structure.json
+  - type: JSONLD
+    url: json-ld/shodan-context.jsonld
+  - type: Examples
+    url: examples/shodan-rest-host-lookup-example.json
+  - type: Examples
+    url: examples/shodan-rest-search-example.json
+  - type: Examples
+    url: examples/shodan-rest-scan-create-example.json
+  - type: Examples
+    url: examples/shodan-rest-alert-create-example.json
+  - type: Documentation
+    url: https://developer.shodan.io/api/stream
+  - type: APIReference
+    url: https://developer.shodan.io/api/stream
+  - type: AsyncAPI
+    url: asyncapi/shodan-stream-asyncapi.yml
+  - type: JSONSchema
+    url: json-schema/shodan-stream-banner-schema.json
+  - type: JSONStructure
+    url: json-structure/shodan-stream-banner-structure.json
+  - type: Examples
+    url: examples/shodan-stream-banner-example.json
+  - type: Documentation
+    url: https://developer.shodan.io/api/trends
+  - type: APIReference
+    url: https://developer.shodan.io/api/trends
+  - type: JSONSchema
+    url: json-schema/shodan-trends-result-schema.json
+  - type: Examples
+    url: examples/shodan-trends-search-example.json
+  - type: Documentation
+    url: https://internetdb.shodan.io/
+  - type: JSONSchema
+    url: json-schema/shodan-internetdb-host-schema.json
+  - type: Examples
+    url: examples/shodan-internetdb-host-example.json
+  - type: Documentation
+    url: https://cvedb.shodan.io/
+  - type: JSONSchema
+    url: json-schema/shodan-cvedb-cve-schema.json
+  - type: JSONSchema
+    url: json-schema/shodan-cvedb-cpe-schema.json
+  - type: Examples
+    url: examples/shodan-cvedb-cve-lookup-example.json
 common:
   - type: AgenticAccess
     url: agentic-access/shodan-agentic-access.yml
