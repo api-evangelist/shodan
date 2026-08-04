@@ -1,0 +1,63 @@
+openapi: 3.1.0
+info:
+  title: Shodan InternetDB API
+  description: >-
+    The InternetDB API is a free, unauthenticated lookup that returns the
+    open ports, CPEs, hostnames, tags, and known CVEs for any IPv4 address.
+    The dataset is refreshed weekly. Free for non-commercial use; commercial
+    use requires an enterprise license.
+  version: '1.0'
+  contact:
+    name: Shodan Support
+    email: support@shodan.io
+    url: https://internetdb.shodan.io/
+  license:
+    name: Shodan API Terms of Service
+    url: https://www.shodan.io/legal/tos
+servers:
+  - url: https://internetdb.shodan.io
+    description: Production
+tags:
+  - name: InternetDB
+paths:
+  /{ip}:
+    get:
+      tags: [InternetDB]
+      summary: Get InternetDB Record
+      operationId: getInternetDbHost
+      description: Return the open ports, CPEs, hostnames, tags, and known CVEs for the given IPv4 address.
+      parameters:
+        - name: ip
+          in: path
+          required: true
+          schema: { type: string }
+          description: IPv4 address.
+      responses:
+        '200':
+          description: InternetDB host record.
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/InternetDbHost' }
+        '404':
+          description: No data available for the given IP.
+components:
+  schemas:
+    InternetDbHost:
+      type: object
+      properties:
+        ip: { type: string }
+        ports:
+          type: array
+          items: { type: integer }
+        cpes:
+          type: array
+          items: { type: string }
+        hostnames:
+          type: array
+          items: { type: string }
+        tags:
+          type: array
+          items: { type: string }
+        vulns:
+          type: array
+          items: { type: string }

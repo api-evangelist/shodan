@@ -1,0 +1,42 @@
+{
+  "provider": "shodan",
+  "sources": [
+    "shodan-account-api-openapi.yml",
+    "shodan-bulk-data-api-openapi.yml",
+    "shodan-cpe-api-openapi.yml",
+    "shodan-cve-api-openapi.yml",
+    "shodan-directory-api-openapi.yml",
+    "shodan-dns-api-openapi.yml",
+    "shodan-internetdb-api-openapi.yml",
+    "shodan-network-alerts-api-openapi.yml",
+    "shodan-notifiers-api-openapi.yml",
+    "shodan-on-demand-scanning-api-openapi.yml",
+    "shodan-organization-api-openapi.yml",
+    "shodan-search-methods-api-openapi.yml",
+    "shodan-streaming-api-openapi.yml",
+    "shodan-trends-api-openapi.yml",
+    "shodan-utility-api-openapi.yml"
+  ],
+  "outputs": [
+    "shodan-account-api-openapi.yml",
+    "shodan-bulk-data-api-openapi.yml",
+    "shodan-cpe-api-openapi.yml",
+    "shodan-cve-api-openapi.yml",
+    "shodan-directory-api-openapi.yml",
+    "shodan-dns-api-openapi.yml",
+    "shodan-internetdb-api-openapi.yml",
+    "shodan-network-alerts-api-openapi.yml",
+    "shodan-notifiers-api-openapi.yml",
+    "shodan-on-demand-scanning-api-openapi.yml",
+    "shodan-organization-api-openapi.yml",
+    "shodan-search-methods-api-openapi.yml",
+    "shodan-streaming-api-openapi.yml",
+    "shodan-trends-api-openapi.yml",
+    "shodan-utility-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}
