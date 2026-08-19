@@ -22,7 +22,7 @@ description: >-
   for attack-surface management, security research, threat intelligence, vulnerability discovery, market research, and
   academic study of the Internet itself.
 url: https://developer.shodan.io/
-specificationVersion: '0.20'
+specificationVersion: '0.23'
 created: '2026-05-28'
 modified: '2026-05-30'
 x-source: public-apis/public-apis
