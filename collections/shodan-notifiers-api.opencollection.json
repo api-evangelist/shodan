@@ -1,0 +1,116 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Shodan CVEDB Account Notifiers API",
+    "version": "1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Notifiers",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Notifiers",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://cvedb.shodan.io/notifier"
+          },
+          "docs": "Returns the list of notifiers the user has configured."
+        },
+        {
+          "info": {
+            "name": "Create Notifier",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://cvedb.shodan.io/notifier",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a new notifier for receiving alerts."
+        },
+        {
+          "info": {
+            "name": "List Notifier Providers",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://cvedb.shodan.io/notifier/provider"
+          },
+          "docs": "Returns the list of available notification provider types."
+        },
+        {
+          "info": {
+            "name": "Get Notifier",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://cvedb.shodan.io/notifier/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Notifier identifier."
+              }
+            ]
+          },
+          "docs": "Returns information about a specific notifier."
+        },
+        {
+          "info": {
+            "name": "Update Notifier",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://cvedb.shodan.io/notifier/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Notifier identifier."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update an existing notifier configuration."
+        },
+        {
+          "info": {
+            "name": "Delete Notifier",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://cvedb.shodan.io/notifier/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Notifier identifier."
+              }
+            ]
+          },
+          "docs": "Delete a notifier."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

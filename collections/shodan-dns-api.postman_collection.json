@@ -1,0 +1,319 @@
+{
+  "item": [
+    {
+      "id": "52f84337-3397-4204-a79f-2e9dd4273c90",
+      "name": "DNS",
+      "description": {
+        "content": "Forward, reverse, and domain DNS lookups.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "3d147cd2-a900-4955-9f28-9bed1370c834",
+          "name": "Get Domain DNS Information",
+          "request": {
+            "name": "Get Domain DNS Information",
+            "description": {
+              "content": "Returns the subdomains and DNS entries known for the given domain.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "dns",
+                "domain",
+                ":domain"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "history",
+                  "value": "false"
+                },
+                {
+                  "disabled": false,
+                  "key": "type",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "1"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "domain",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "39d7210c-8fa4-4888-9204-bf184d647e36",
+              "name": "Domain DNS information.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "dns",
+                    "domain",
+                    ":domain"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "history",
+                      "value": "false"
+                    },
+                    {
+                      "key": "type",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "page",
+                      "value": "1"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "domain",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"key_0\": 2789.5203671707845,\n  \"key_1\": false,\n  \"key_2\": 2950.000882331835,\n  \"key_3\": \"string\",\n  \"key_4\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "570042df-0bb1-45de-b9e3-c473ffdc8982",
+          "name": "Resolve Hostnames",
+          "request": {
+            "name": "Resolve Hostnames",
+            "description": {
+              "content": "Look up IP addresses for the given hostnames.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "dns",
+                "resolve"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "hostnames",
+                  "value": "<string>",
+                  "description": "(Required) Comma-separated list of hostnames."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "cd6c59db-b8ae-4719-ae5e-6ba85bed76f9",
+              "name": "Map of hostname to IP.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "dns",
+                    "resolve"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "hostnames",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"key_0\": \"string\",\n  \"key_1\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "ab9fd15a-8df0-4406-8fbb-5b6e579094dd",
+          "name": "Reverse DNS Lookup",
+          "request": {
+            "name": "Reverse DNS Lookup",
+            "description": {
+              "content": "Look up hostnames for the given IP addresses.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "dns",
+                "reverse"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "ips",
+                  "value": "<string>",
+                  "description": "(Required) Comma-separated list of IP addresses."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "25895396-3146-4760-8e84-232783d7e2ee",
+              "name": "Map of IP to hostnames.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "dns",
+                    "reverse"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "ips",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"key_0\": [\n    \"string\",\n    \"string\"\n  ],\n  \"key_1\": [\n    \"string\",\n    \"string\"\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://cvedb.shodan.io",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "36f5a388-4ea9-4278-853a-7edbf29edc73",
+    "name": "Shodan CVEDB Account DNS API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Shodan's CVEDB is a free vulnerability database API that supports CVE lookups, CPE-keyed vulnerability search, KEV filtering, EPSS ordering, date-range queries, and product-name search. No API key required; updated daily.\n\nContact Support:\n Name: Shodan Support\n Email: support@shodan.io",
+      "type": "text/plain"
+    }
+  }
+}

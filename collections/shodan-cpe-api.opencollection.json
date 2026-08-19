@@ -1,0 +1,51 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Shodan CVEDB Account CPE API",
+    "version": "1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "CPE",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Search CPEs",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://cvedb.shodan.io/cpes",
+            "params": [
+              {
+                "name": "product",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "count",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "skip",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Retrieve CPE 2.3 dictionary entries matching the given product."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

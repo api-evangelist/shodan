@@ -1,0 +1,40 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Shodan CVEDB Account API",
+    "version": "1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Account",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Account Profile",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://cvedb.shodan.io/account/profile"
+          },
+          "docs": "Returns information about the Shodan account."
+        },
+        {
+          "info": {
+            "name": "Get API Plan Info",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://cvedb.shodan.io/api-info"
+          },
+          "docs": "Returns information about the API plan including remaining query and scan credits."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,313 @@
+{
+  "item": [
+    {
+      "id": "fa95df56-7e09-46b6-8f17-740d0ba20caf",
+      "name": "Directory",
+      "description": {
+        "content": "Browse and search saved Shodan queries.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "edf70f69-ce1b-4af1-88ec-40e1917a2ae4",
+          "name": "List Saved Queries",
+          "request": {
+            "name": "List Saved Queries",
+            "description": {
+              "content": "Browse the directory of community-saved Shodan queries.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "shodan",
+                "query"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "1"
+                },
+                {
+                  "disabled": false,
+                  "key": "sort",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "order",
+                  "value": "<string>"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "4bddf5ab-531d-438f-a40a-af2ffb09d26a",
+              "name": "List of saved queries.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "shodan",
+                    "query"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "sort",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "order",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"key_0\": 2579.2241265526427,\n  \"key_1\": 7946.407342719508\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "4db786ee-0465-4419-a9a6-65eb1a140197",
+          "name": "Search Saved Queries",
+          "request": {
+            "name": "Search Saved Queries",
+            "description": {
+              "content": "Search the directory of saved Shodan queries.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "shodan",
+                "query",
+                "search"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "query",
+                  "value": "<string>",
+                  "description": "(Required) Shodan search query."
+                },
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "1"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "29601609-ae2b-4781-806f-bca8a5b3b5c8",
+              "name": "Search results.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "shodan",
+                    "query",
+                    "search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "query",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "page",
+                      "value": "1"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"key_0\": 2579.2241265526427,\n  \"key_1\": 7946.407342719508\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "6fd4da96-643f-4e79-9a28-12bfbe047bda",
+          "name": "List Popular Query Tags",
+          "request": {
+            "name": "List Popular Query Tags",
+            "description": {
+              "content": "Returns the most popular tags assigned to saved queries.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "shodan",
+                "query",
+                "tags"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "size",
+                  "value": "10"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "08f648fc-de81-4192-8c88-725db4ef210d",
+              "name": "Tag list.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "shodan",
+                    "query",
+                    "tags"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "size",
+                      "value": "10"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"key_0\": 2579.2241265526427,\n  \"key_1\": 7946.407342719508\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://cvedb.shodan.io",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "a31eba04-ae0a-4c0b-9d17-d6e85a2eaa01",
+    "name": "Shodan CVEDB Account Directory API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Shodan's CVEDB is a free vulnerability database API that supports CVE lookups, CPE-keyed vulnerability search, KEV filtering, EPSS ordering, date-range queries, and product-name search. No API key required; updated daily.\n\nContact Support:\n Name: Shodan Support\n Email: support@shodan.io",
+      "type": "text/plain"
+    }
+  }
+}

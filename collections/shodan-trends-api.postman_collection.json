@@ -1,0 +1,128 @@
+{
+  "item": [
+    {
+      "id": "0d659092-5e6e-4209-b50e-1865ec8640e2",
+      "name": "Trends",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "02e7cc80-96b0-46ef-8955-a63729e62dcb",
+          "name": "Search Historical Trends",
+          "request": {
+            "name": "Search Historical Trends",
+            "description": {
+              "content": "Return monthly counts and faceted aggregations for a historical Shodan search.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "search"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "query",
+                  "value": "<string>",
+                  "description": "(Required) Historical Shodan search query (e.g. `product:nginx`)."
+                },
+                {
+                  "disabled": false,
+                  "key": "facets",
+                  "value": "<string>",
+                  "description": "Comma-separated facets with optional size suffix (e.g. `country:10`)."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "ecd0ae9e-7f0d-4e32-b6c3-499a9a221c51",
+              "name": "Monthly counts and facet breakdowns.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "query",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "facets",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"total\": 4542,\n  \"matches\": [\n    {\n      \"month\": \"string\",\n      \"count\": 5629\n    },\n    {\n      \"month\": \"string\",\n      \"count\": 8842\n    }\n  ],\n  \"facets\": {\n    \"key_0\": [\n      {\n        \"value\": \"string\",\n        \"count\": 5227,\n        \"matches\": [\n          {\n            \"month\": \"string\",\n            \"count\": 7418\n          },\n          {\n            \"month\": \"string\",\n            \"count\": 7394\n          }\n        ]\n      },\n      {\n        \"value\": \"string\",\n        \"count\": 2891,\n        \"matches\": [\n          {\n            \"month\": \"string\",\n            \"count\": 5787\n          },\n          {\n            \"month\": \"string\",\n            \"count\": 9977\n          }\n        ]\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://cvedb.shodan.io",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "4472f817-22da-4b69-bb88-081adf5ccb3a",
+    "name": "Shodan CVEDB Account Trends API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Shodan's CVEDB is a free vulnerability database API that supports CVE lookups, CPE-keyed vulnerability search, KEV filtering, EPSS ordering, date-range queries, and product-name search. No API key required; updated daily.\n\nContact Support:\n Name: Shodan Support\n Email: support@shodan.io",
+      "type": "text/plain"
+    }
+  }
+}

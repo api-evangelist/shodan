@@ -1,0 +1,600 @@
+{
+  "item": [
+    {
+      "id": "0ef12043-0cbd-4b29-8647-b458f3e3ec20",
+      "name": "On-Demand Scanning",
+      "description": {
+        "content": "Request crawls of specific IPs, netblocks, or the entire Internet.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "fdc19265-c7aa-4712-b878-72c46f344bad",
+          "name": "List Crawled Ports",
+          "request": {
+            "name": "List Crawled Ports",
+            "description": {
+              "content": "Returns the list of port numbers that Shodan is crawling on the Internet.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "shodan",
+                "ports"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "5ce78745-c5c3-4e24-b6b7-dc7aff149393",
+              "name": "Array of port numbers.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "shodan",
+                    "ports"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  4259,\n  3141\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d96764de-b56c-4488-afec-267313069b03",
+          "name": "List Supported Protocols",
+          "request": {
+            "name": "List Supported Protocols",
+            "description": {
+              "content": "Returns the list of protocols that can be used when launching an on-demand Internet scan.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "shodan",
+                "protocols"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "434f1daa-7280-4ea8-ab58-dfe421964edd",
+              "name": "Map of protocol slug to human-readable name.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "shodan",
+                    "protocols"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"key_0\": \"string\",\n  \"key_1\": \"string\",\n  \"key_2\": \"string\",\n  \"key_3\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "260bc7e9-606c-408c-be59-bee24cd127ed",
+          "name": "Submit On-Demand Scan",
+          "request": {
+            "name": "Submit On-Demand Scan",
+            "description": {
+              "content": "Request Shodan to crawl an IP or netblock. Each IP consumes one scan credit.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "shodan",
+                "scan"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/x-www-form-urlencoded"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "disabled": false,
+                  "key": "ips",
+                  "value": "<string>",
+                  "description": "(Required) Comma-separated list of IPs or CIDR ranges."
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "41e7b189-fb7c-47f4-8967-2bbea0f72262",
+              "name": "Scan submission confirmation.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "shodan",
+                    "scan"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) Comma-separated list of IPs or CIDR ranges.",
+                        "type": "text/plain"
+                      },
+                      "key": "ips",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"count\": 7945,\n  \"credits_left\": 1904,\n  \"status\": \"DONE\",\n  \"created\": \"1974-12-03T05:23:15.338Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "8160ca10-af0d-4462-9014-3d240b78a7b9",
+          "name": "Scan Internet For Port",
+          "request": {
+            "name": "Scan Internet For Port",
+            "description": {
+              "content": "Request Shodan to crawl the Internet for a specific port and protocol. Enterprise only.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "shodan",
+                "scan",
+                "internet"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/x-www-form-urlencoded"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "disabled": false,
+                  "key": "port",
+                  "value": "<integer>",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "protocol",
+                  "value": "<string>",
+                  "description": "(Required) "
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "90a5e8e9-e7fa-49c1-b08f-94a5fc1002a8",
+              "name": "Internet scan submission confirmation.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "shodan",
+                    "scan",
+                    "internet"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "port",
+                      "value": "<integer>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "protocol",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"count\": 7945,\n  \"credits_left\": 1904,\n  \"status\": \"DONE\",\n  \"created\": \"1974-12-03T05:23:15.338Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "fc0b1a41-3ff4-401d-a98a-32caec8910ac",
+          "name": "List On-Demand Scans",
+          "request": {
+            "name": "List On-Demand Scans",
+            "description": {
+              "content": "Returns the list of on-demand scans submitted by the account.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "shodan",
+                "scans"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "cdb02d91-3a80-456a-bf19-cd1ee2eb8a57",
+              "name": "Paginated list of scans.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "shodan",
+                    "scans"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"matches\": [\n    {\n      \"id\": \"string\",\n      \"count\": 982,\n      \"credits_left\": 1574,\n      \"status\": \"PROCESSING\",\n      \"created\": \"1968-01-22T02:19:23.156Z\"\n    },\n    {\n      \"id\": \"string\",\n      \"count\": 466,\n      \"credits_left\": 2376,\n      \"status\": \"SUBMITTING\",\n      \"created\": \"2009-05-18T16:49:49.034Z\"\n    }\n  ],\n  \"total\": 7068\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "45f6d427-2830-4c03-b026-f01c2e6ff182",
+          "name": "Get Scan Status",
+          "request": {
+            "name": "Get Scan Status",
+            "description": {
+              "content": "Returns the status and progress of an on-demand scan.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "shodan",
+                "scan",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "9062087b-f2e1-4035-90e9-63e989608611",
+              "name": "Scan status.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "shodan",
+                    "scan",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"count\": 7945,\n  \"credits_left\": 1904,\n  \"status\": \"DONE\",\n  \"created\": \"1974-12-03T05:23:15.338Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "6564effe-5eb1-4bba-a69d-bc1428b3623e",
+              "name": "Resource not found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "shodan",
+                    "scan",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://cvedb.shodan.io",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "eb8a3697-67b2-40b8-a92a-b2e8bbefd09a",
+    "name": "Shodan CVEDB Account On-Demand Scanning API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Shodan's CVEDB is a free vulnerability database API that supports CVE lookups, CPE-keyed vulnerability search, KEV filtering, EPSS ordering, date-range queries, and product-name search. No API key required; updated daily.\n\nContact Support:\n Name: Shodan Support\n Email: support@shodan.io",
+      "type": "text/plain"
+    }
+  }
+}

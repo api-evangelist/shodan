@@ -1,0 +1,70 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Shodan CVEDB Account Organization API",
+    "version": "1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Organization",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Organization",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://cvedb.shodan.io/org"
+          },
+          "docs": "Returns information about the organization the account is part of."
+        },
+        {
+          "info": {
+            "name": "Add Organization Member",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://cvedb.shodan.io/org/member/:user",
+            "params": [
+              {
+                "name": "user",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "notify",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Add a user to the organization."
+        },
+        {
+          "info": {
+            "name": "Remove Organization Member",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://cvedb.shodan.io/org/member/:user",
+            "params": [
+              {
+                "name": "user",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Remove a user from the organization."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

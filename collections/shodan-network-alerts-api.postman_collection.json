@@ -1,0 +1,828 @@
+{
+  "item": [
+    {
+      "id": "7cc6def1-1317-41c4-8f16-0152fcbb6ee2",
+      "name": "Network Alerts",
+      "description": {
+        "content": "Create and manage alerts on monitored IP ranges.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "c881f065-403a-433e-a4ed-a1aa40970efe",
+          "name": "Create Network Alert",
+          "request": {
+            "name": "Create Network Alert",
+            "description": {
+              "content": "Create a network alert on one or more IP ranges.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "shodan",
+                "alert"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"filters\": {\n    \"ip\": [\n      \"<string>\",\n      \"<string>\"\n    ]\n  },\n  \"expires\": \"<integer>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "1b4805c7-bb8f-4b1d-bf79-71ef8ac9a853",
+              "name": "Created alert.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "shodan",
+                    "alert"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"filters\": {\n    \"ip\": [\n      \"<string>\",\n      \"<string>\"\n    ]\n  },\n  \"expires\": \"<integer>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"name\": \"string\",\n  \"created\": \"2005-10-17T15:43:42.836Z\",\n  \"expires\": 582,\n  \"expiration\": \"2020-06-07T09:27:50.752Z\",\n  \"filters\": {\n    \"ip\": [\n      \"string\",\n      \"string\"\n    ]\n  },\n  \"triggers\": {\n    \"key_0\": {\n      \"enabled\": true\n    },\n    \"key_1\": {\n      \"enabled\": false\n    },\n    \"key_2\": {\n      \"enabled\": true\n    }\n  },\n  \"size\": 8139\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "08974aa2-6ba1-48bc-8f82-aabddd33e096",
+          "name": "List Network Alerts",
+          "request": {
+            "name": "List Network Alerts",
+            "description": {
+              "content": "Returns the network alerts that have been created on the account.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "shodan",
+                "alert",
+                "info"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "0b5334b7-040c-4bfc-8b8e-9504bc61b8d2",
+              "name": "List of alerts.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "shodan",
+                    "alert",
+                    "info"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"id\": \"string\",\n    \"name\": \"string\",\n    \"created\": \"2020-03-14T09:40:30.333Z\",\n    \"expires\": 4095,\n    \"expiration\": \"2000-10-18T05:23:06.493Z\",\n    \"filters\": {\n      \"ip\": [\n        \"string\",\n        \"string\"\n      ]\n    },\n    \"triggers\": {\n      \"key_0\": {\n        \"enabled\": false\n      },\n      \"key_1\": {\n        \"enabled\": true\n      }\n    },\n    \"size\": 4059\n  },\n  {\n    \"id\": \"string\",\n    \"name\": \"string\",\n    \"created\": \"1998-05-29T07:55:07.830Z\",\n    \"expires\": 2092,\n    \"expiration\": \"1953-03-08T22:25:22.057Z\",\n    \"filters\": {\n      \"ip\": [\n        \"string\",\n        \"string\"\n      ]\n    },\n    \"triggers\": {\n      \"key_0\": {\n        \"enabled\": false\n      },\n      \"key_1\": {\n        \"enabled\": true\n      }\n    },\n    \"size\": 1972\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "b003492f-42c6-4a42-9fb3-b1b9130c54b6",
+          "name": "Get Network Alert",
+          "request": {
+            "name": "Get Network Alert",
+            "description": {
+              "content": "Returns the information about a specific network alert.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "shodan",
+                "alert",
+                ":id",
+                "info"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) Alert identifier."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "9110fd91-10fc-4d48-a7f9-0efdda293658",
+              "name": "Alert details.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "shodan",
+                    "alert",
+                    ":id",
+                    "info"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Alert identifier."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"name\": \"string\",\n  \"created\": \"2005-10-17T15:43:42.836Z\",\n  \"expires\": 582,\n  \"expiration\": \"2020-06-07T09:27:50.752Z\",\n  \"filters\": {\n    \"ip\": [\n      \"string\",\n      \"string\"\n    ]\n  },\n  \"triggers\": {\n    \"key_0\": {\n      \"enabled\": true\n    },\n    \"key_1\": {\n      \"enabled\": false\n    },\n    \"key_2\": {\n      \"enabled\": true\n    }\n  },\n  \"size\": 8139\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d2cf4fce-14d9-4eb4-addf-639f62a02a0c",
+              "name": "Resource not found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "shodan",
+                    "alert",
+                    ":id",
+                    "info"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Alert identifier."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "2f63af17-c710-4511-92dc-7c83cd5f174a",
+          "name": "Update Network Alert",
+          "request": {
+            "name": "Update Network Alert",
+            "description": {
+              "content": "Edit the IP ranges or name of a network alert.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "shodan",
+                "alert",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) Alert identifier."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"filters\": {\n    \"ip\": [\n      \"<string>\",\n      \"<string>\"\n    ]\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "1eeb6a3f-a8c1-49e0-a837-6486387094a8",
+              "name": "Updated alert.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "shodan",
+                    "alert",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Alert identifier."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"filters\": {\n    \"ip\": [\n      \"<string>\",\n      \"<string>\"\n    ]\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"name\": \"string\",\n  \"created\": \"2005-10-17T15:43:42.836Z\",\n  \"expires\": 582,\n  \"expiration\": \"2020-06-07T09:27:50.752Z\",\n  \"filters\": {\n    \"ip\": [\n      \"string\",\n      \"string\"\n    ]\n  },\n  \"triggers\": {\n    \"key_0\": {\n      \"enabled\": true\n    },\n    \"key_1\": {\n      \"enabled\": false\n    },\n    \"key_2\": {\n      \"enabled\": true\n    }\n  },\n  \"size\": 8139\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "881d51fa-f225-4f1f-972a-2bfa86841785",
+          "name": "Delete Network Alert",
+          "request": {
+            "name": "Delete Network Alert",
+            "description": {
+              "content": "Remove the network alert and its triggers.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "shodan",
+                "alert",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) Alert identifier."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "4a6cf79a-e738-4333-8027-945c2ef4dc2f",
+              "name": "Alert deletion result.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "shodan",
+                    "alert",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Alert identifier."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": true\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "06bb156b-c7d2-4c92-b7eb-bb8b8a413763",
+          "name": "List Alert Triggers",
+          "request": {
+            "name": "List Alert Triggers",
+            "description": {
+              "content": "Returns the list of triggers that can be enabled on alerts.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "shodan",
+                "alert",
+                "triggers"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "32a23963-9baa-4b5f-83cc-44a8683435f3",
+              "name": "Trigger metadata.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "shodan",
+                    "alert",
+                    "triggers"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"name\": \"string\",\n    \"description\": \"string\",\n    \"rule\": \"string\"\n  },\n  {\n    \"name\": \"string\",\n    \"description\": \"string\",\n    \"rule\": \"string\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "c9382004-6cfd-42ed-9517-7924beed4c3c",
+          "name": "Enable Alert Trigger",
+          "request": {
+            "name": "Enable Alert Trigger",
+            "description": {
+              "content": "Enable a trigger on a network alert.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "shodan",
+                "alert",
+                ":id",
+                "trigger",
+                ":trigger"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) Alert identifier."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "trigger",
+                  "description": "(Required) Trigger name."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "4b26a441-b527-44c2-9d42-f65de32c6aaa",
+              "name": "Trigger enable result.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "shodan",
+                    "alert",
+                    ":id",
+                    "trigger",
+                    ":trigger"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Alert identifier."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "trigger",
+                      "description": "(Required) Trigger name."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": true\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "6606ff80-f811-4b63-814c-9cf40c46cfc9",
+          "name": "Disable Alert Trigger",
+          "request": {
+            "name": "Disable Alert Trigger",
+            "description": {
+              "content": "Disable a trigger on a network alert.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "shodan",
+                "alert",
+                ":id",
+                "trigger",
+                ":trigger"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) Alert identifier."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "trigger",
+                  "description": "(Required) Trigger name."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "229e493b-4dc8-46cf-bae8-6ff0fc6fa8fd",
+              "name": "Trigger disable result.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "shodan",
+                    "alert",
+                    ":id",
+                    "trigger",
+                    ":trigger"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Alert identifier."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "trigger",
+                      "description": "(Required) Trigger name."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": true\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://cvedb.shodan.io",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "7e6239a2-e26a-4810-aa75-08ed621868df",
+    "name": "Shodan CVEDB Account Network Alerts API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Shodan's CVEDB is a free vulnerability database API that supports CVE lookups, CPE-keyed vulnerability search, KEV filtering, EPSS ordering, date-range queries, and product-name search. No API key required; updated daily.\n\nContact Support:\n Name: Shodan Support\n Email: support@shodan.io",
+      "type": "text/plain"
+    }
+  }
+}

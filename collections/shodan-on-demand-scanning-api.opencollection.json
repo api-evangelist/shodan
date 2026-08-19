@@ -1,0 +1,113 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Shodan CVEDB Account On-Demand Scanning API",
+    "version": "1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "On-Demand Scanning",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Crawled Ports",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://cvedb.shodan.io/shodan/ports"
+          },
+          "docs": "Returns the list of port numbers that Shodan is crawling on the Internet."
+        },
+        {
+          "info": {
+            "name": "List Supported Protocols",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://cvedb.shodan.io/shodan/protocols"
+          },
+          "docs": "Returns the list of protocols that can be used when launching an on-demand Internet scan."
+        },
+        {
+          "info": {
+            "name": "Submit On-Demand Scan",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://cvedb.shodan.io/shodan/scan",
+            "body": {
+              "type": "form-urlencoded",
+              "data": [
+                {
+                  "name": "ips",
+                  "value": ""
+                }
+              ]
+            }
+          },
+          "docs": "Request Shodan to crawl an IP or netblock. Each IP consumes one scan credit."
+        },
+        {
+          "info": {
+            "name": "Scan Internet For Port",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://cvedb.shodan.io/shodan/scan/internet",
+            "body": {
+              "type": "form-urlencoded",
+              "data": [
+                {
+                  "name": "port",
+                  "value": ""
+                },
+                {
+                  "name": "protocol",
+                  "value": ""
+                }
+              ]
+            }
+          },
+          "docs": "Request Shodan to crawl the Internet for a specific port and protocol. Enterprise only."
+        },
+        {
+          "info": {
+            "name": "List On-Demand Scans",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://cvedb.shodan.io/shodan/scans"
+          },
+          "docs": "Returns the list of on-demand scans submitted by the account."
+        },
+        {
+          "info": {
+            "name": "Get Scan Status",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://cvedb.shodan.io/shodan/scan/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Returns the status and progress of an on-demand scan."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

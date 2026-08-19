@@ -1,0 +1,174 @@
+{
+  "item": [
+    {
+      "id": "8b93b4ed-b5db-45cc-bee6-7f2432a25f03",
+      "name": "Account",
+      "description": {
+        "content": "Account, profile, and API plan information.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "65afb81a-6301-4e7f-8d03-33be737910b3",
+          "name": "Get Account Profile",
+          "request": {
+            "name": "Get Account Profile",
+            "description": {
+              "content": "Returns information about the Shodan account.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "account",
+                "profile"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "7c2ace8f-6d72-482f-b629-a38795704379",
+              "name": "Account profile.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "account",
+                    "profile"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"member\": false,\n  \"credits\": 5868,\n  \"display_name\": \"string\",\n  \"created\": \"1975-03-18T15:09:38.258Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "6ae210f1-e106-4134-9b87-f298f31d5914",
+          "name": "Get API Plan Info",
+          "request": {
+            "name": "Get API Plan Info",
+            "description": {
+              "content": "Returns information about the API plan including remaining query and scan credits.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api-info"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "db40cf27-e281-44b9-adf6-2b6ba4c29b8b",
+              "name": "API plan info.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api-info"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"query_credits\": 1211,\n  \"scan_credits\": 6224,\n  \"telnet\": false,\n  \"plan\": \"string\",\n  \"https\": false,\n  \"unlocked\": false,\n  \"monitored_ips\": 4206,\n  \"usage_limits\": {\n    \"key_0\": 9147,\n    \"key_1\": 8255\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://cvedb.shodan.io",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "f9114d99-0d62-4194-8f6b-40e5e79d67b8",
+    "name": "Shodan CVEDB Account API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Shodan's CVEDB is a free vulnerability database API that supports CVE lookups, CPE-keyed vulnerability search, KEV filtering, EPSS ordering, date-range queries, and product-name search. No API key required; updated daily.\n\nContact Support:\n Name: Shodan Support\n Email: support@shodan.io",
+      "type": "text/plain"
+    }
+  }
+}

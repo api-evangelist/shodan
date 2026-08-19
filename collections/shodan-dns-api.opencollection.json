@@ -1,0 +1,89 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Shodan CVEDB Account DNS API",
+    "version": "1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "DNS",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Domain DNS Information",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://cvedb.shodan.io/dns/domain/:domain",
+            "params": [
+              {
+                "name": "domain",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "history",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "type",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Returns the subdomains and DNS entries known for the given domain."
+        },
+        {
+          "info": {
+            "name": "Resolve Hostnames",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://cvedb.shodan.io/dns/resolve",
+            "params": [
+              {
+                "name": "hostnames",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated list of hostnames."
+              }
+            ]
+          },
+          "docs": "Look up IP addresses for the given hostnames."
+        },
+        {
+          "info": {
+            "name": "Reverse DNS Lookup",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://cvedb.shodan.io/dns/reverse",
+            "params": [
+              {
+                "name": "ips",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated list of IP addresses."
+              }
+            ]
+          },
+          "docs": "Look up hostnames for the given IP addresses."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

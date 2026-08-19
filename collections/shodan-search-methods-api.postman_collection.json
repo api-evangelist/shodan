@@ -1,0 +1,648 @@
+{
+  "item": [
+    {
+      "id": "6a893c87-4c33-4576-a3b7-139ee9a4f4ef",
+      "name": "Search Methods",
+      "description": {
+        "content": "Search and lookup endpoints for indexed devices.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "dee58968-f213-4870-b188-425c22bdce37",
+          "name": "Get Host Information",
+          "request": {
+            "name": "Get Host Information",
+            "description": {
+              "content": "Returns all services that have been found on the given host IP.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "shodan",
+                "host",
+                ":ip"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "history",
+                  "value": "false",
+                  "description": "Include historical banners."
+                },
+                {
+                  "disabled": false,
+                  "key": "minify",
+                  "value": "false",
+                  "description": "Return a truncated banner record."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "ip",
+                  "description": "(Required) IPv4 or IPv6 address."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "743383af-a3e6-4d11-9dc2-9732e04dc1c0",
+              "name": "Host record with banners.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "shodan",
+                    "host",
+                    ":ip"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "history",
+                      "value": "false"
+                    },
+                    {
+                      "key": "minify",
+                      "value": "false"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "ip",
+                      "description": "(Required) IPv4 or IPv6 address."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"ip_str\": \"string\",\n  \"ip\": 1490,\n  \"hostnames\": [\n    \"string\",\n    \"string\"\n  ],\n  \"domains\": [\n    \"string\",\n    \"string\"\n  ],\n  \"country_code\": \"string\",\n  \"country_name\": \"string\",\n  \"city\": \"string\",\n  \"region_code\": \"string\",\n  \"postal_code\": \"string\",\n  \"latitude\": 3119.651565217836,\n  \"longitude\": 5387.482976251616,\n  \"org\": \"string\",\n  \"isp\": \"string\",\n  \"asn\": \"string\",\n  \"os\": \"string\",\n  \"last_update\": \"2001-06-12T12:57:50.919Z\",\n  \"ports\": [\n    8639,\n    1666\n  ],\n  \"vulns\": [\n    \"string\",\n    \"string\"\n  ],\n  \"tags\": [\n    \"string\",\n    \"string\"\n  ],\n  \"data\": [\n    {\n      \"port\": 573,\n      \"transport\": \"udp\",\n      \"product\": \"string\",\n      \"version\": \"string\",\n      \"data\": \"string\",\n      \"timestamp\": \"1992-10-18T15:05:23.594Z\",\n      \"hash\": 7843,\n      \"ip_str\": \"string\",\n      \"org\": \"string\",\n      \"isp\": \"string\",\n      \"asn\": \"string\",\n      \"hostnames\": [\n        \"string\",\n        \"string\"\n      ],\n      \"domains\": [\n        \"string\",\n        \"string\"\n      ],\n      \"location\": {\n        \"city\": \"string\",\n        \"country_code\": \"string\",\n        \"country_name\": \"string\",\n        \"latitude\": 1163.4693541750828,\n        \"longitude\": 9332.979217817032\n      },\n      \"ssl\": {\n        \"key_0\": \"string\",\n        \"key_1\": false,\n        \"key_2\": 808\n      },\n      \"http\": {\n        \"key_0\": \"string\",\n        \"key_1\": 3771\n      },\n      \"cpe23\": [\n        \"string\",\n        \"string\"\n      ],\n      \"vulns\": {\n        \"key_0\": \"string\"\n      }\n    },\n    {\n      \"port\": 8961,\n      \"transport\": \"tcp\",\n      \"product\": \"string\",\n      \"version\": \"string\",\n      \"data\": \"string\",\n      \"timestamp\": \"1947-02-16T14:12:27.715Z\",\n      \"hash\": 3744,\n      \"ip_str\": \"string\",\n      \"org\": \"string\",\n      \"isp\": \"string\",\n      \"asn\": \"string\",\n      \"hostnames\": [\n        \"string\",\n        \"string\"\n      ],\n      \"domains\": [\n        \"string\",\n        \"string\"\n      ],\n      \"location\": {\n        \"city\": \"string\",\n        \"country_code\": \"string\",\n        \"country_name\": \"string\",\n        \"latitude\": 768.9102300422945,\n        \"longitude\": 7201.011164444001\n      },\n      \"ssl\": {\n        \"key_0\": 2806\n      },\n      \"http\": {\n        \"key_0\": 9872\n      },\n      \"cpe23\": [\n        \"string\",\n        \"string\"\n      ],\n      \"vulns\": {\n        \"key_0\": \"string\",\n        \"key_1\": 7391.634481138963,\n        \"key_2\": 6365.610307916168,\n        \"key_3\": \"string\"\n      }\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ac840348-163c-4509-9b4d-3f42deb39a0e",
+              "name": "Resource not found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "shodan",
+                    "host",
+                    ":ip"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "history",
+                      "value": "false"
+                    },
+                    {
+                      "key": "minify",
+                      "value": "false"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "ip",
+                      "description": "(Required) IPv4 or IPv6 address."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "1c7bd6e1-0122-478b-bbd7-acaf180fa04d",
+          "name": "Get Search Result Count",
+          "request": {
+            "name": "Get Search Result Count",
+            "description": {
+              "content": "Returns the number of results a search would have, without consuming query credits or returning results.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "shodan",
+                "host",
+                "count"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "query",
+                  "value": "<string>",
+                  "description": "(Required) Shodan search query."
+                },
+                {
+                  "disabled": false,
+                  "key": "facets",
+                  "value": "<string>",
+                  "description": "Comma-separated facet definitions (e.g. `country:5,port:10`)."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "fbf5962b-20e7-433b-8462-842345e11336",
+              "name": "Count and facet summary.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "shodan",
+                    "host",
+                    "count"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "query",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "facets",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"total\": 5890,\n  \"facets\": {\n    \"key_0\": [\n      {\n        \"count\": 9806,\n        \"value\": \"string\"\n      },\n      {\n        \"count\": 8530,\n        \"value\": \"string\"\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "2662fda8-321d-466d-ae84-b5a73bc6cb31",
+          "name": "Search Shodan",
+          "request": {
+            "name": "Search Shodan",
+            "description": {
+              "content": "Search Shodan using the same query syntax as the website. Uses one query credit per page after the first when filters are used.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "shodan",
+                "host",
+                "search"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "query",
+                  "value": "<string>",
+                  "description": "(Required) Shodan search query."
+                },
+                {
+                  "disabled": false,
+                  "key": "facets",
+                  "value": "<string>",
+                  "description": "Comma-separated facet definitions (e.g. `country:5,port:10`)."
+                },
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "1"
+                },
+                {
+                  "disabled": false,
+                  "key": "minify",
+                  "value": "true"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "862a5e1c-44ef-4ecc-b535-97b3921cc20b",
+              "name": "Search results with matches and facets.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "shodan",
+                    "host",
+                    "search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "query",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "facets",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "minify",
+                      "value": "true"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"total\": 1811,\n  \"matches\": [\n    {\n      \"port\": 53,\n      \"transport\": \"tcp\",\n      \"product\": \"string\",\n      \"version\": \"string\",\n      \"data\": \"string\",\n      \"timestamp\": \"1997-10-20T08:29:36.653Z\",\n      \"hash\": 258,\n      \"ip_str\": \"string\",\n      \"org\": \"string\",\n      \"isp\": \"string\",\n      \"asn\": \"string\",\n      \"hostnames\": [\n        \"string\",\n        \"string\"\n      ],\n      \"domains\": [\n        \"string\",\n        \"string\"\n      ],\n      \"location\": {\n        \"city\": \"string\",\n        \"country_code\": \"string\",\n        \"country_name\": \"string\",\n        \"latitude\": 4736.729271070358,\n        \"longitude\": 9527.904784594828\n      },\n      \"ssl\": {\n        \"key_0\": \"string\",\n        \"key_1\": \"string\"\n      },\n      \"http\": {\n        \"key_0\": \"string\",\n        \"key_1\": 9916.681507711592,\n        \"key_2\": true\n      },\n      \"cpe23\": [\n        \"string\",\n        \"string\"\n      ],\n      \"vulns\": {\n        \"key_0\": 9185\n      }\n    },\n    {\n      \"port\": 4647,\n      \"transport\": \"udp\",\n      \"product\": \"string\",\n      \"version\": \"string\",\n      \"data\": \"string\",\n      \"timestamp\": \"1957-05-08T16:32:50.245Z\",\n      \"hash\": 9295,\n      \"ip_str\": \"string\",\n      \"org\": \"string\",\n      \"isp\": \"string\",\n      \"asn\": \"string\",\n      \"hostnames\": [\n        \"string\",\n        \"string\"\n      ],\n      \"domains\": [\n        \"string\",\n        \"string\"\n      ],\n      \"location\": {\n        \"city\": \"string\",\n        \"country_code\": \"string\",\n        \"country_name\": \"string\",\n        \"latitude\": 1646.1664223108107,\n        \"longitude\": 6653.570965789373\n      },\n      \"ssl\": {\n        \"key_0\": 5282.89884856925\n      },\n      \"http\": {\n        \"key_0\": \"string\"\n      },\n      \"cpe23\": [\n        \"string\",\n        \"string\"\n      ],\n      \"vulns\": {\n        \"key_0\": \"string\"\n      }\n    }\n  ],\n  \"facets\": {\n    \"key_0\": [\n      {\n        \"count\": 8492,\n        \"value\": \"string\"\n      },\n      {\n        \"count\": 6460,\n        \"value\": \"string\"\n      }\n    ],\n    \"key_1\": [\n      {\n        \"count\": 171,\n        \"value\": \"string\"\n      },\n      {\n        \"count\": 296,\n        \"value\": \"string\"\n      }\n    ],\n    \"key_2\": [\n      {\n        \"count\": 7660,\n        \"value\": \"string\"\n      },\n      {\n        \"count\": 1868,\n        \"value\": \"string\"\n      }\n    ],\n    \"key_3\": [\n      {\n        \"count\": 2949,\n        \"value\": \"string\"\n      },\n      {\n        \"count\": 82,\n        \"value\": \"string\"\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "e24579f9-8b3e-466d-b0da-610bbdb06d4f",
+          "name": "List Search Facets",
+          "request": {
+            "name": "List Search Facets",
+            "description": {
+              "content": "Returns the list of facets that can be used to summarize search results.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "shodan",
+                "host",
+                "search",
+                "facets"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "3ae3ac56-6ff6-43bd-a5a9-05e7c7fc7723",
+              "name": "Array of facet names.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "shodan",
+                    "host",
+                    "search",
+                    "facets"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  \"string\",\n  \"string\"\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "67005915-3c01-4b83-910e-2551a967c30b",
+          "name": "List Search Filters",
+          "request": {
+            "name": "List Search Filters",
+            "description": {
+              "content": "Returns the list of filters that can be used when searching.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "shodan",
+                "host",
+                "search",
+                "filters"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "495d0a5d-ea92-4745-a945-a5d3f0ee9573",
+              "name": "Array of filter names.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "shodan",
+                    "host",
+                    "search",
+                    "filters"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  \"string\",\n  \"string\"\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "67e2be36-9514-4771-9344-0ebb7af250d2",
+          "name": "Break Query Into Tokens",
+          "request": {
+            "name": "Break Query Into Tokens",
+            "description": {
+              "content": "Determine which filters and tokens make up a search query.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "shodan",
+                "host",
+                "search",
+                "tokens"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "query",
+                  "value": "<string>",
+                  "description": "(Required) Shodan search query."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "38151798-2465-485f-a11a-5613d62d5cf1",
+              "name": "Parsed token structure.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "shodan",
+                    "host",
+                    "search",
+                    "tokens"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "query",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"key_0\": 2622,\n  \"key_1\": 9695.67061834375\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://cvedb.shodan.io",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "699b2111-e1fe-4f28-966a-2d4094156de6",
+    "name": "Shodan CVEDB Account Search Methods API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Shodan's CVEDB is a free vulnerability database API that supports CVE lookups, CPE-keyed vulnerability search, KEV filtering, EPSS ordering, date-range queries, and product-name search. No API key required; updated daily.\n\nContact Support:\n Name: Shodan Support\n Email: support@shodan.io",
+      "type": "text/plain"
+    }
+  }
+}

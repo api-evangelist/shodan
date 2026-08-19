@@ -1,0 +1,194 @@
+{
+  "item": [
+    {
+      "id": "ea73b13d-5ebc-43fb-83c6-a8bbf5ba6643",
+      "name": "Bulk Data",
+      "description": {
+        "content": "Enterprise bulk data exports.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "9ccd1521-bcbc-49a7-b70b-e18ab071438e",
+          "name": "List Bulk Data Sets",
+          "request": {
+            "name": "List Bulk Data Sets",
+            "description": {
+              "content": "Returns the list of bulk data sets available to the account. Enterprise only.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "shodan",
+                "data"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "f1576a95-e444-4e12-b483-896298f16314",
+              "name": "Dataset list.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "shodan",
+                    "data"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"name\": \"string\",\n    \"description\": \"string\"\n  },\n  {\n    \"name\": \"string\",\n    \"description\": \"string\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "ba50e06c-0292-4b0d-ad4a-d66a596f73e8",
+          "name": "List Bulk Data Files",
+          "request": {
+            "name": "List Bulk Data Files",
+            "description": {
+              "content": "Returns the list of files available within a bulk dataset. Enterprise only.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "shodan",
+                "data",
+                ":dataset"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "dataset",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "358ce868-9b8b-403e-9008-20e75fffd13a",
+              "name": "File list.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "shodan",
+                    "data",
+                    ":dataset"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "dataset",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"name\": \"string\",\n    \"size\": 4264,\n    \"timestamp\": \"1993-08-15T09:36:36.470Z\",\n    \"url\": \"http://LdpqTitQVRIDIQbqexqdcglWK.haPD\"\n  },\n  {\n    \"name\": \"string\",\n    \"size\": 9063,\n    \"timestamp\": \"1951-01-29T04:51:09.973Z\",\n    \"url\": \"http://VtSwMLFdEkaetbjPA.qsuwh73nM7-,p8,PuGSZ8AUqPTSsjOIBZFH,JQggCSnkGfDc\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://cvedb.shodan.io",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "eba1f50b-dc8c-4a14-8b09-77f1c60968d5",
+    "name": "Shodan CVEDB Account Bulk Data API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Shodan's CVEDB is a free vulnerability database API that supports CVE lookups, CPE-keyed vulnerability search, KEV filtering, EPSS ordering, date-range queries, and product-name search. No API key required; updated daily.\n\nContact Support:\n Name: Shodan Support\n Email: support@shodan.io",
+      "type": "text/plain"
+    }
+  }
+}

@@ -1,0 +1,176 @@
+{
+  "item": [
+    {
+      "id": "82935f34-5612-4ad8-a35d-9175b0960469",
+      "name": "Utility",
+      "description": {
+        "content": "Helper endpoints for HTTP headers and IP detection.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "5ef561fe-e01d-4450-a6e3-8a710d37520c",
+          "name": "Get Request HTTP Headers",
+          "request": {
+            "name": "Get Request HTTP Headers",
+            "description": {
+              "content": "Returns the HTTP headers seen by the Shodan server.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "tools",
+                "httpheaders"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "e6c0f899-ef60-45f4-824f-1a807107f338",
+              "name": "Request headers as a map.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "tools",
+                    "httpheaders"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"key_0\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "b00f795f-4bfe-497f-8f14-b1540d5a5403",
+          "name": "Get Client IP",
+          "request": {
+            "name": "Get Client IP",
+            "description": {
+              "content": "Returns the IP address that the request was issued from.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "tools",
+                "myip"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "06739894-8c85-4d89-b8f3-12ed9e76a278",
+              "name": "Plain-text IP address.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "tools",
+                    "myip"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"string\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://cvedb.shodan.io",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "1b169776-b87c-44a6-b61f-bd93ae945b52",
+    "name": "Shodan CVEDB Account Utility API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Shodan's CVEDB is a free vulnerability database API that supports CVE lookups, CPE-keyed vulnerability search, KEV filtering, EPSS ordering, date-range queries, and product-name search. No API key required; updated daily.\n\nContact Support:\n Name: Shodan Support\n Email: support@shodan.io",
+      "type": "text/plain"
+    }
+  }
+}

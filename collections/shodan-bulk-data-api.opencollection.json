@@ -1,0 +1,47 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Shodan CVEDB Account Bulk Data API",
+    "version": "1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Bulk Data",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Bulk Data Sets",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://cvedb.shodan.io/shodan/data"
+          },
+          "docs": "Returns the list of bulk data sets available to the account. Enterprise only."
+        },
+        {
+          "info": {
+            "name": "List Bulk Data Files",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://cvedb.shodan.io/shodan/data/:dataset",
+            "params": [
+              {
+                "name": "dataset",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Returns the list of files available within a bulk dataset. Enterprise only."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

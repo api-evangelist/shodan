@@ -1,0 +1,550 @@
+{
+  "item": [
+    {
+      "id": "3830ffb1-3c71-4415-adb0-798ffd2567e8",
+      "name": "Notifiers",
+      "description": {
+        "content": "Manage notification providers used by alerts.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "582c2a62-9102-4afc-956b-dfda0046f52b",
+          "name": "List Notifiers",
+          "request": {
+            "name": "List Notifiers",
+            "description": {
+              "content": "Returns the list of notifiers the user has configured.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "notifier"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "47442bd2-cf4f-4e84-9413-feea04a4f341",
+              "name": "Notifier list.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "notifier"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"id\": \"string\",\n    \"provider\": \"string\",\n    \"description\": \"string\",\n    \"args\": {\n      \"key_0\": 2033.9044543448038\n    }\n  },\n  {\n    \"id\": \"string\",\n    \"provider\": \"string\",\n    \"description\": \"string\",\n    \"args\": {\n      \"key_0\": false,\n      \"key_1\": 6560.605548685453\n    }\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "c91015c0-93ba-4802-ac42-9d9f8c877a7c",
+          "name": "Create Notifier",
+          "request": {
+            "name": "Create Notifier",
+            "description": {
+              "content": "Create a new notifier for receiving alerts.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "notifier"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"provider\": \"<string>\",\n  \"description\": \"<string>\",\n  \"args\": {\n    \"key_0\": \"string\",\n    \"key_1\": 9853\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "a5d7b976-9012-4d5e-bc80-1d82b3ea2343",
+              "name": "Created notifier.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "notifier"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"provider\": \"<string>\",\n  \"description\": \"<string>\",\n  \"args\": {\n    \"key_0\": 3842,\n    \"key_1\": 2559\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"provider\": \"string\",\n  \"description\": \"string\",\n  \"args\": {\n    \"key_0\": 5324.3989784197265,\n    \"key_1\": false\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "6726d4bd-8273-4d0f-8f53-47c56ddc5977",
+          "name": "List Notifier Providers",
+          "request": {
+            "name": "List Notifier Providers",
+            "description": {
+              "content": "Returns the list of available notification provider types.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "notifier",
+                "provider"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "47dad56f-f886-4017-ab76-0667453780f1",
+              "name": "Provider catalog.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "notifier",
+                    "provider"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"key_0\": 2590.628035199192\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "f3e3dbc0-6eaa-4079-9b0d-732f9441590f",
+          "name": "Get Notifier",
+          "request": {
+            "name": "Get Notifier",
+            "description": {
+              "content": "Returns information about a specific notifier.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "notifier",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) Notifier identifier."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "2f6fdad6-9354-4db4-8938-e1bb065be002",
+              "name": "Notifier details.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "notifier",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Notifier identifier."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"provider\": \"string\",\n  \"description\": \"string\",\n  \"args\": {\n    \"key_0\": 5324.3989784197265,\n    \"key_1\": false\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "84d6748f-fef8-4fca-a380-e5d8cb847430",
+          "name": "Update Notifier",
+          "request": {
+            "name": "Update Notifier",
+            "description": {
+              "content": "Update an existing notifier configuration.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "notifier",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) Notifier identifier."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"provider\": \"<string>\",\n  \"description\": \"<string>\",\n  \"args\": {\n    \"key_0\": \"string\",\n    \"key_1\": 9853\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "d3105c0b-8f58-4db2-9537-2e56897012ee",
+              "name": "Updated notifier.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "notifier",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Notifier identifier."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"provider\": \"<string>\",\n  \"description\": \"<string>\",\n  \"args\": {\n    \"key_0\": 3842,\n    \"key_1\": 2559\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"provider\": \"string\",\n  \"description\": \"string\",\n  \"args\": {\n    \"key_0\": 5324.3989784197265,\n    \"key_1\": false\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "eae93808-0edc-4167-be3c-9b5e9fc77c96",
+          "name": "Delete Notifier",
+          "request": {
+            "name": "Delete Notifier",
+            "description": {
+              "content": "Delete a notifier.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "notifier",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) Notifier identifier."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "e6267760-c18b-4837-8e8a-4e793c3e0862",
+              "name": "Notifier deletion result.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "notifier",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Notifier identifier."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": true\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://cvedb.shodan.io",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "406ed945-a941-4392-8b75-7270fbdc3eac",
+    "name": "Shodan CVEDB Account Notifiers API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Shodan's CVEDB is a free vulnerability database API that supports CVE lookups, CPE-keyed vulnerability search, KEV filtering, EPSS ordering, date-range queries, and product-name search. No API key required; updated daily.\n\nContact Support:\n Name: Shodan Support\n Email: support@shodan.io",
+      "type": "text/plain"
+    }
+  }
+}

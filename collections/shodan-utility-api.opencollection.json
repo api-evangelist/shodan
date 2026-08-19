@@ -1,0 +1,40 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Shodan CVEDB Account Utility API",
+    "version": "1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Utility",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Request HTTP Headers",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://cvedb.shodan.io/tools/httpheaders"
+          },
+          "docs": "Returns the HTTP headers seen by the Shodan server."
+        },
+        {
+          "info": {
+            "name": "Get Client IP",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://cvedb.shodan.io/tools/myip"
+          },
+          "docs": "Returns the IP address that the request was issued from."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

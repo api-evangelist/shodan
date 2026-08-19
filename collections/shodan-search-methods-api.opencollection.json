@@ -1,0 +1,150 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Shodan CVEDB Account Search Methods API",
+    "version": "1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Search Methods",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Host Information",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://cvedb.shodan.io/shodan/host/:ip",
+            "params": [
+              {
+                "name": "ip",
+                "value": "",
+                "type": "path",
+                "description": "IPv4 or IPv6 address."
+              },
+              {
+                "name": "history",
+                "value": "",
+                "type": "query",
+                "description": "Include historical banners."
+              },
+              {
+                "name": "minify",
+                "value": "",
+                "type": "query",
+                "description": "Return a truncated banner record."
+              }
+            ]
+          },
+          "docs": "Returns all services that have been found on the given host IP."
+        },
+        {
+          "info": {
+            "name": "Get Search Result Count",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://cvedb.shodan.io/shodan/host/count",
+            "params": [
+              {
+                "name": "query",
+                "value": "",
+                "type": "query",
+                "description": "Shodan search query."
+              },
+              {
+                "name": "facets",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated facet definitions (e.g. `country:5,port:10`)."
+              }
+            ]
+          },
+          "docs": "Returns the number of results a search would have, without consuming query credits or returning results."
+        },
+        {
+          "info": {
+            "name": "Search Shodan",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://cvedb.shodan.io/shodan/host/search",
+            "params": [
+              {
+                "name": "query",
+                "value": "",
+                "type": "query",
+                "description": "Shodan search query."
+              },
+              {
+                "name": "facets",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated facet definitions (e.g. `country:5,port:10`)."
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "minify",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Search Shodan using the same query syntax as the website. Uses one query credit per page after the first when filters are used."
+        },
+        {
+          "info": {
+            "name": "List Search Facets",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://cvedb.shodan.io/shodan/host/search/facets"
+          },
+          "docs": "Returns the list of facets that can be used to summarize search results."
+        },
+        {
+          "info": {
+            "name": "List Search Filters",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://cvedb.shodan.io/shodan/host/search/filters"
+          },
+          "docs": "Returns the list of filters that can be used when searching."
+        },
+        {
+          "info": {
+            "name": "Break Query Into Tokens",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://cvedb.shodan.io/shodan/host/search/tokens",
+            "params": [
+              {
+                "name": "query",
+                "value": "",
+                "type": "query",
+                "description": "Shodan search query."
+              }
+            ]
+          },
+          "docs": "Determine which filters and tokens make up a search query."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
