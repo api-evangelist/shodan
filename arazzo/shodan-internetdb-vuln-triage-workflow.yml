@@ -12,11 +12,11 @@ info:
     underlying OpenAPI description.
   version: 1.0.0
 sourceDescriptions:
-- name: shodanInternetdb
-  url: ../openapi/shodan-internetdb-openapi.yml
+- name: cveApi
+  url: ../openapi/shodan-cve-api-openapi.yml
   type: openapi
-- name: shodanCvedb
-  url: ../openapi/shodan-cvedb-openapi.yml
+- name: internetdbApi
+  url: ../openapi/shodan-internetdb-api-openapi.yml
   type: openapi
 workflows:
 - workflowId: internetdb-vuln-triage

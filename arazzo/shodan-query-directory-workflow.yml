@@ -11,8 +11,11 @@ info:
     description.
   version: 1.0.0
 sourceDescriptions:
-- name: shodanRest
-  url: ../openapi/shodan-rest-openapi.yml
+- name: directoryApi
+  url: ../openapi/shodan-directory-api-openapi.yml
+  type: openapi
+- name: searchMethodsApi
+  url: ../openapi/shodan-search-methods-api-openapi.yml
   type: openapi
 workflows:
 - workflowId: query-directory-explorer

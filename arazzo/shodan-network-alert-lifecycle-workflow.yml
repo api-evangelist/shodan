@@ -10,8 +10,8 @@ info:
     executed without opening the underlying OpenAPI description.
   version: 1.0.0
 sourceDescriptions:
-- name: shodanRest
-  url: ../openapi/shodan-rest-openapi.yml
+- name: networkAlertsApi
+  url: ../openapi/shodan-network-alerts-api-openapi.yml
   type: openapi
 workflows:
 - workflowId: network-alert-lifecycle

@@ -11,8 +11,11 @@ info:
     description.
   version: 1.0.0
 sourceDescriptions:
-- name: shodanRest
-  url: ../openapi/shodan-rest-openapi.yml
+- name: dnsApi
+  url: ../openapi/shodan-dns-api-openapi.yml
+  type: openapi
+- name: searchMethodsApi
+  url: ../openapi/shodan-search-methods-api-openapi.yml
   type: openapi
 workflows:
 - workflowId: resolve-and-host-info

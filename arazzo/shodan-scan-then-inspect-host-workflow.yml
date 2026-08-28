@@ -11,8 +11,11 @@ info:
     OpenAPI description.
   version: 1.0.0
 sourceDescriptions:
-- name: shodanRest
-  url: ../openapi/shodan-rest-openapi.yml
+- name: onDemandScanningApi
+  url: ../openapi/shodan-on-demand-scanning-api-openapi.yml
+  type: openapi
+- name: searchMethodsApi
+  url: ../openapi/shodan-search-methods-api-openapi.yml
   type: openapi
 workflows:
 - workflowId: scan-then-inspect-host

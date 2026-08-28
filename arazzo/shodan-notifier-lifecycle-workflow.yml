@@ -10,8 +10,8 @@ info:
     description.
   version: 1.0.0
 sourceDescriptions:
-- name: shodanRest
-  url: ../openapi/shodan-rest-openapi.yml
+- name: notifiersApi
+  url: ../openapi/shodan-notifiers-api-openapi.yml
   type: openapi
 workflows:
 - workflowId: notifier-lifecycle
