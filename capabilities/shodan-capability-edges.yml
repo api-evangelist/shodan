@@ -1,0 +1,58 @@
+slug: shodan
+provider: Shodan
+generated_by: planning/capability-mapping/scripts/classify_capabilities.py
+model: claude-opus-5
+frame:
+- Telecommunications
+min_confidence: 0.7
+capability_model:
+  source: https://github.com/vincentmakes/turbo-ea-capabilities
+  license: CC-BY-4.0
+  attribution: Turbo EA Capabilities by Vincent Verdet — Turbo EA, https://github.com/vincentmakes/turbo-ea-capabilities,
+    CC BY 4.0
+  notice: NOTICE
+edge_count: 4
+edges:
+- tag: CVE
+  spec_file: shodan-cve-api-openapi.yml
+  capability_id: BC-620.40
+  capability_id_l1: BC-620
+  capability_name: Vulnerability Management
+  confidence: 0.85
+  evidence: '"Shodan''s CVEDB is a free vulnerability database API that supports CVE lookups, CPE-keyed
+    vulnerability search, KEV filtering, EPSS ordering"; GET /cve/{cveId} "Get CVE Details"'
+  reason: Operations serve CVE lookup and vulnerability search — the intelligence input to vulnerability
+    identification and prioritisation, a Cybersecurity Management capability. Sub-capability Vulnerability
+    Management fits directly; not a telecom-specific capability since this is a security devtool.
+- tag: On-Demand Scanning
+  spec_file: shodan-on-demand-scanning-api-openapi.yml
+  capability_id: BC-620.40
+  capability_id_l1: BC-620
+  capability_name: Vulnerability Management
+  confidence: 0.72
+  evidence: POST /shodan/scan "Submit On-Demand Scan"; POST /shodan/scan/internet "Scan Internet For Port";
+    GET /shodan/scan/{id} "Get Scan Status"
+  reason: On-demand port/service scanning of hosts is the scanning activity underpinning Vulnerability
+    Management. Some ambiguity because the scans detect exposed services generally rather than assessing
+    and remediating vulnerabilities.
+- tag: CPE
+  spec_file: shodan-cpe-api-openapi.yml
+  capability_id: BC-620.40
+  capability_id_l1: BC-620
+  capability_name: Vulnerability Management
+  confidence: 0.7
+  evidence: Shodan's CVEDB is a free vulnerability database API that supports CVE lookups, CPE-keyed vulnerability
+    search; searchCpes  Search CPEs
+  reason: CPE (product identifier) search within the CVE vulnerability database, used to find vulnerabilities
+    affecting products — supports vulnerability identification. Confidence moderated because this single
+    operation is a lookup/reference surface rather than full vulnerability remediation workflow.
+- tag: InternetDB
+  spec_file: shodan-internetdb-api-openapi.yml
+  capability_id: BC-620.40
+  capability_id_l1: BC-620
+  capability_name: Vulnerability Management
+  confidence: 0.7
+  evidence: '"returns the open ports, CPEs, hostnames, tags, and known CVEs for any IPv4 address"'
+  reason: A single lookup returning exposed ports and known CVEs for an IP is external attack-surface/vulnerability
+    exposure data, supporting Vulnerability Management. Confidence moderated because it is one generic
+    lookup endpoint with no remediation workflow.

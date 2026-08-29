@@ -1169,6 +1169,9 @@ apis:
   - type: Examples
     url: examples/shodan-cvedb-cve-lookup-example.json
 common:
+  - type: CapabilityMap
+    url: capabilities/shodan-capability-edges.yml
+    name: Shodan Business Capability Map
   - type: IssueTracker
     url: https://github.com/achillean/shodan-python/issues
   - type: Releases
