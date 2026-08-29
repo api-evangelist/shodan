@@ -1,18 +1,20 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: Shodan CVEDB Account Network Alerts API
-  description: Shodan's CVEDB is a free vulnerability database API that supports CVE lookups, CPE-keyed vulnerability search, KEV filtering, EPSS ordering, date-range queries, and product-name search. No API key required; updated daily.
+  title: Shodan REST Network Alerts API
+  description: The Shodan REST API exposes search methods, host lookups, on-demand scanning, network alerts, notifiers, the saved-query directory, DNS lookups, utility methods, account/profile information, bulk data, and organization management for the Shodan search engine for Internet- connected devices.
   version: '1.0'
   contact:
     name: Shodan Support
     email: support@shodan.io
-    url: https://cvedb.shodan.io/
+    url: https://developer.shodan.io/
   license:
     name: Shodan API Terms of Service
     url: https://www.shodan.io/legal/tos
 servers:
-- url: https://cvedb.shodan.io
+- url: https://api.shodan.io
   description: Production
+security:
+- apiKey: []
 tags:
 - name: Network Alerts
   description: Create and manage alerts on monitored IP ranges.
@@ -200,6 +202,31 @@ paths:
                   success:
                     type: boolean
 components:
+  responses:
+    NotFound:
+      description: Resource not found.
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              error:
+                type: string
+  parameters:
+    TriggerName:
+      name: trigger
+      in: path
+      required: true
+      schema:
+        type: string
+      description: Trigger name.
+    AlertId:
+      name: id
+      in: path
+      required: true
+      schema:
+        type: string
+      description: Alert identifier.
   schemas:
     Alert:
       type: object
@@ -232,28 +259,9 @@ components:
                 type: boolean
         size:
           type: integer
-  parameters:
-    TriggerName:
-      name: trigger
-      in: path
-      required: true
-      schema:
-        type: string
-      description: Trigger name.
-    AlertId:
-      name: id
-      in: path
-      required: true
-      schema:
-        type: string
-      description: Alert identifier.
-  responses:
-    NotFound:
-      description: Resource not found.
-      content:
-        application/json:
-          schema:
-            type: object
-            properties:
-              error:
-                type: string
+  securitySchemes:
+    apiKey:
+      type: apiKey
+      in: query
+      name: key
+      description: Shodan API key.

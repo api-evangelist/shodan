@@ -1,42 +1,55 @@
 {
   "provider": "shodan",
   "sources": [
-    "shodan-account-api-openapi.yml",
-    "shodan-bulk-data-api-openapi.yml",
-    "shodan-cpe-api-openapi.yml",
-    "shodan-cve-api-openapi.yml",
-    "shodan-directory-api-openapi.yml",
-    "shodan-dns-api-openapi.yml",
-    "shodan-internetdb-api-openapi.yml",
-    "shodan-network-alerts-api-openapi.yml",
-    "shodan-notifiers-api-openapi.yml",
-    "shodan-on-demand-scanning-api-openapi.yml",
-    "shodan-organization-api-openapi.yml",
-    "shodan-search-methods-api-openapi.yml",
-    "shodan-streaming-api-openapi.yml",
-    "shodan-trends-api-openapi.yml",
-    "shodan-utility-api-openapi.yml"
+    "_original/shodan-cvedb-openapi.yml",
+    "_original/shodan-internetdb-openapi.yml",
+    "_original/shodan-rest-openapi.yml",
+    "_original/shodan-stream-openapi.yml",
+    "_original/shodan-trends-openapi.yml"
   ],
   "outputs": [
-    "shodan-account-api-openapi.yml",
-    "shodan-bulk-data-api-openapi.yml",
     "shodan-cpe-api-openapi.yml",
     "shodan-cve-api-openapi.yml",
-    "shodan-directory-api-openapi.yml",
-    "shodan-dns-api-openapi.yml",
     "shodan-internetdb-api-openapi.yml",
+    "shodan-account-api-openapi.yml",
+    "shodan-bulk-data-api-openapi.yml",
+    "shodan-dns-api-openapi.yml",
+    "shodan-directory-api-openapi.yml",
     "shodan-network-alerts-api-openapi.yml",
     "shodan-notifiers-api-openapi.yml",
     "shodan-on-demand-scanning-api-openapi.yml",
     "shodan-organization-api-openapi.yml",
     "shodan-search-methods-api-openapi.yml",
+    "shodan-utility-api-openapi.yml",
     "shodan-streaming-api-openapi.yml",
-    "shodan-trends-api-openapi.yml",
-    "shodan-utility-api-openapi.yml"
+    "shodan-trends-api-openapi.yml"
   ],
   "archived": [],
   "errors": [],
   "warnings": [],
-  "notes": [],
-  "skipped": []
+  "notes": [
+    "sourced from openapi/_original/ (5 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "shodan-cvedb-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
+    "shodan-internetdb-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
+    "shodan-rest-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
+    "shodan-stream-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
+    "shodan-trends-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0"
+  ],
+  "skipped": [
+    "shodan-account-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "shodan-bulk-data-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "shodan-cpe-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "shodan-cve-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "shodan-directory-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "shodan-dns-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "shodan-internetdb-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "shodan-network-alerts-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "shodan-notifiers-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "shodan-on-demand-scanning-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "shodan-organization-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "shodan-search-methods-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "shodan-streaming-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "shodan-trends-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "shodan-utility-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+  ]
 }

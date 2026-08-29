@@ -1,18 +1,20 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: Shodan CVEDB Account Notifiers API
-  description: Shodan's CVEDB is a free vulnerability database API that supports CVE lookups, CPE-keyed vulnerability search, KEV filtering, EPSS ordering, date-range queries, and product-name search. No API key required; updated daily.
+  title: Shodan REST Notifiers API
+  description: The Shodan REST API exposes search methods, host lookups, on-demand scanning, network alerts, notifiers, the saved-query directory, DNS lookups, utility methods, account/profile information, bulk data, and organization management for the Shodan search engine for Internet- connected devices.
   version: '1.0'
   contact:
     name: Shodan Support
     email: support@shodan.io
-    url: https://cvedb.shodan.io/
+    url: https://developer.shodan.io/
   license:
     name: Shodan API Terms of Service
     url: https://www.shodan.io/legal/tos
 servers:
-- url: https://cvedb.shodan.io
+- url: https://api.shodan.io
   description: Production
+security:
+- apiKey: []
 tags:
 - name: Notifiers
   description: Manage notification providers used by alerts.
@@ -158,3 +160,9 @@ components:
         args:
           type: object
           additionalProperties: true
+  securitySchemes:
+    apiKey:
+      type: apiKey
+      in: query
+      name: key
+      description: Shodan API key.
