@@ -145,85 +145,6 @@ paths:
                 additionalProperties: true
 components:
   schemas:
-    Banner:
-      type: object
-      properties:
-        port:
-          type: integer
-        transport:
-          type: string
-          enum:
-          - tcp
-          - udp
-        product:
-          type: string
-        version:
-          type: string
-        data:
-          type: string
-        timestamp:
-          type: string
-          format: date-time
-        hash:
-          type: integer
-        ip_str:
-          type: string
-        org:
-          type: string
-        isp:
-          type: string
-        asn:
-          type: string
-        hostnames:
-          type: array
-          items:
-            type: string
-        domains:
-          type: array
-          items:
-            type: string
-        location:
-          type: object
-          properties:
-            city:
-              type: string
-            country_code:
-              type: string
-            country_name:
-              type: string
-            latitude:
-              type: number
-            longitude:
-              type: number
-        ssl:
-          type: object
-          additionalProperties: true
-        http:
-          type: object
-          additionalProperties: true
-        cpe23:
-          type: array
-          items:
-            type: string
-        vulns:
-          type: object
-          additionalProperties: true
-    SearchCount:
-      type: object
-      properties:
-        total:
-          type: integer
-        facets:
-          type: object
-          additionalProperties:
-            type: array
-            items:
-              type: object
-              properties:
-                count:
-                  type: integer
-                value:
-                  type: string
     Host:
       type: object
       properties:
@@ -300,17 +221,92 @@ components:
                   type: integer
                 value:
                   type: string
-  responses:
-    NotFound:
-      description: Resource not found.
-      content:
-        application/json:
-          schema:
-            type: object
-            properties:
-              error:
-                type: string
+    SearchCount:
+      type: object
+      properties:
+        total:
+          type: integer
+        facets:
+          type: object
+          additionalProperties:
+            type: array
+            items:
+              type: object
+              properties:
+                count:
+                  type: integer
+                value:
+                  type: string
+    Banner:
+      type: object
+      properties:
+        port:
+          type: integer
+        transport:
+          type: string
+          enum:
+          - tcp
+          - udp
+        product:
+          type: string
+        version:
+          type: string
+        data:
+          type: string
+        timestamp:
+          type: string
+          format: date-time
+        hash:
+          type: integer
+        ip_str:
+          type: string
+        org:
+          type: string
+        isp:
+          type: string
+        asn:
+          type: string
+        hostnames:
+          type: array
+          items:
+            type: string
+        domains:
+          type: array
+          items:
+            type: string
+        location:
+          type: object
+          properties:
+            city:
+              type: string
+            country_code:
+              type: string
+            country_name:
+              type: string
+            latitude:
+              type: number
+            longitude:
+              type: number
+        ssl:
+          type: object
+          additionalProperties: true
+        http:
+          type: object
+          additionalProperties: true
+        cpe23:
+          type: array
+          items:
+            type: string
+        vulns:
+          type: object
+          additionalProperties: true
   parameters:
+    Facets:
+      name: facets
+      in: query
+      schema:
+        type: string
+      description: Comma-separated facet definitions (e.g. `country:5,port:10`).
     IpPath:
       name: ip
       in: path
@@ -325,12 +321,16 @@ components:
       schema:
         type: string
       description: Shodan search query.
-    Facets:
-      name: facets
-      in: query
-      schema:
-        type: string
-      description: Comma-separated facet definitions (e.g. `country:5,port:10`).
+  responses:
+    NotFound:
+      description: Resource not found.
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              error:
+                type: string
   securitySchemes:
     apiKey:
       type: apiKey

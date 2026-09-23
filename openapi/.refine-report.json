@@ -33,7 +33,8 @@
     "shodan-internetdb-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
     "shodan-rest-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
     "shodan-stream-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
-    "shodan-trends-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0"
+    "shodan-trends-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
+    "apis.yml register: already-registered"
   ],
   "skipped": [
     "shodan-account-api-openapi.yml: previously refined output, superseded by openapi/_original/",
