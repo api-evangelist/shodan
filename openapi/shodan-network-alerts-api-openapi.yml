@@ -202,21 +202,6 @@ paths:
                   success:
                     type: boolean
 components:
-  parameters:
-    TriggerName:
-      name: trigger
-      in: path
-      required: true
-      schema:
-        type: string
-      description: Trigger name.
-    AlertId:
-      name: id
-      in: path
-      required: true
-      schema:
-        type: string
-      description: Alert identifier.
   responses:
     NotFound:
       description: Resource not found.
@@ -227,6 +212,21 @@ components:
             properties:
               error:
                 type: string
+  parameters:
+    AlertId:
+      name: id
+      in: path
+      required: true
+      schema:
+        type: string
+      description: Alert identifier.
+    TriggerName:
+      name: trigger
+      in: path
+      required: true
+      schema:
+        type: string
+      description: Trigger name.
   schemas:
     Alert:
       type: object

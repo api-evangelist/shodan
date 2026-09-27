@@ -127,6 +127,25 @@ paths:
               schema:
                 $ref: '#/components/schemas/Banner'
 components:
+  parameters:
+    Format:
+      name: t
+      in: query
+      schema:
+        type: string
+        enum:
+        - json
+        - sse
+      description: Output format. `json` returns newline-separated JSON; `sse` returns Server-Sent Events.
+    Debug:
+      name: debug
+      in: query
+      schema:
+        type: integer
+        enum:
+        - 0
+        - 1
+      description: Set to 1 to include discarded message counts.
   schemas:
     Banner:
       type: object
@@ -191,25 +210,6 @@ components:
         vulns:
           type: object
           additionalProperties: true
-  parameters:
-    Debug:
-      name: debug
-      in: query
-      schema:
-        type: integer
-        enum:
-        - 0
-        - 1
-      description: Set to 1 to include discarded message counts.
-    Format:
-      name: t
-      in: query
-      schema:
-        type: string
-        enum:
-        - json
-        - sse
-      description: Output format. `json` returns newline-separated JSON; `sse` returns Server-Sent Events.
   securitySchemes:
     apiKey:
       type: apiKey

@@ -145,71 +145,11 @@ paths:
                 additionalProperties: true
 components:
   schemas:
-    Host:
-      type: object
-      properties:
-        ip_str:
-          type: string
-        ip:
-          type: integer
-        hostnames:
-          type: array
-          items:
-            type: string
-        domains:
-          type: array
-          items:
-            type: string
-        country_code:
-          type: string
-        country_name:
-          type: string
-        city:
-          type: string
-        region_code:
-          type: string
-        postal_code:
-          type: string
-        latitude:
-          type: number
-        longitude:
-          type: number
-        org:
-          type: string
-        isp:
-          type: string
-        asn:
-          type: string
-        os:
-          type: string
-        last_update:
-          type: string
-          format: date-time
-        ports:
-          type: array
-          items:
-            type: integer
-        vulns:
-          type: array
-          items:
-            type: string
-        tags:
-          type: array
-          items:
-            type: string
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/Banner'
-    SearchResult:
+    SearchCount:
       type: object
       properties:
         total:
           type: integer
-        matches:
-          type: array
-          items:
-            $ref: '#/components/schemas/Banner'
         facets:
           type: object
           additionalProperties:
@@ -221,11 +161,15 @@ components:
                   type: integer
                 value:
                   type: string
-    SearchCount:
+    SearchResult:
       type: object
       properties:
         total:
           type: integer
+        matches:
+          type: array
+          items:
+            $ref: '#/components/schemas/Banner'
         facets:
           type: object
           additionalProperties:
@@ -300,13 +244,73 @@ components:
         vulns:
           type: object
           additionalProperties: true
+    Host:
+      type: object
+      properties:
+        ip_str:
+          type: string
+        ip:
+          type: integer
+        hostnames:
+          type: array
+          items:
+            type: string
+        domains:
+          type: array
+          items:
+            type: string
+        country_code:
+          type: string
+        country_name:
+          type: string
+        city:
+          type: string
+        region_code:
+          type: string
+        postal_code:
+          type: string
+        latitude:
+          type: number
+        longitude:
+          type: number
+        org:
+          type: string
+        isp:
+          type: string
+        asn:
+          type: string
+        os:
+          type: string
+        last_update:
+          type: string
+          format: date-time
+        ports:
+          type: array
+          items:
+            type: integer
+        vulns:
+          type: array
+          items:
+            type: string
+        tags:
+          type: array
+          items:
+            type: string
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/Banner'
+  responses:
+    NotFound:
+      description: Resource not found.
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              error:
+                type: string
   parameters:
-    Facets:
-      name: facets
-      in: query
-      schema:
-        type: string
-      description: Comma-separated facet definitions (e.g. `country:5,port:10`).
     IpPath:
       name: ip
       in: path
@@ -321,16 +325,12 @@ components:
       schema:
         type: string
       description: Shodan search query.
-  responses:
-    NotFound:
-      description: Resource not found.
-      content:
-        application/json:
-          schema:
-            type: object
-            properties:
-              error:
-                type: string
+    Facets:
+      name: facets
+      in: query
+      schema:
+        type: string
+      description: Comma-separated facet definitions (e.g. `country:5,port:10`).
   securitySchemes:
     apiKey:
       type: apiKey
