@@ -54,17 +54,6 @@ components:
           description: YYYY-MM
         count:
           type: integer
-    FacetBucket:
-      type: object
-      properties:
-        value:
-          type: string
-        count:
-          type: integer
-        matches:
-          type: array
-          items:
-            $ref: '#/components/schemas/MonthlyCount'
     TrendsResult:
       type: object
       properties:
@@ -80,6 +69,17 @@ components:
             type: array
             items:
               $ref: '#/components/schemas/FacetBucket'
+    FacetBucket:
+      type: object
+      properties:
+        value:
+          type: string
+        count:
+          type: integer
+        matches:
+          type: array
+          items:
+            $ref: '#/components/schemas/MonthlyCount'
   securitySchemes:
     apiKey:
       type: apiKey

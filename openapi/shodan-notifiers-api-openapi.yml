@@ -126,18 +126,6 @@ paths:
                     type: boolean
 components:
   schemas:
-    Notifier:
-      type: object
-      properties:
-        id:
-          type: string
-        provider:
-          type: string
-        description:
-          type: string
-        args:
-          type: object
-          additionalProperties: true
     NotifierCreate:
       type: object
       required:
@@ -145,6 +133,18 @@ components:
       - description
       - args
       properties:
+        provider:
+          type: string
+        description:
+          type: string
+        args:
+          type: object
+          additionalProperties: true
+    Notifier:
+      type: object
+      properties:
+        id:
+          type: string
         provider:
           type: string
         description:
