@@ -1,0 +1,12 @@
+{
+ "url": "https://internetdb.shodan.io/openapi.json",
+ "requested_url": "https://internetdb.shodan.io/openapi.json",
+ "status": 200,
+ "content_type": "application/json",
+ "bytes": 1630,
+ "sha256": "640a42271f9812cb4cbec521990a5ea4bd4c521c53aca1d1c70e636c292a73d0",
+ "fetched_at": "2026-10-04",
+ "fetched_by": "APIEvangelist-Harvest/1.0 (+https://apievangelist.com)",
+ "match": "equivalent",
+ "note": "Re-fetched from the provider by verify-openapi-sources.py; the provider's current document describes the same operations (Jaccard 1.0), but the bytes differ, so the archive is an earlier or reformatted copy."
+}
