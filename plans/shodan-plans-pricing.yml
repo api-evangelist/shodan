@@ -1,3 +1,8 @@
+# Provenance stamped 2026-10-07 (roadmap#943): written by an API Evangelist sweep (dated 2026-05-28 by the file itself), not
+# harvested from the provider. `method: generated` so the economics campaign may replace it with a
+# dated, verbatim transcription; every figure below is unverified until it does.
+method: generated
+generated: '2026-05-28'
 specification: API Commons Plans
 specificationVersion: '0.1'
 schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main/schema/api-commons.yml#/$defs/Plans
@@ -335,3 +340,80 @@ plans:
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com
+x-canonical:
+  generated: '2026-10-08'
+  vocabulary: all/0-working/economics/plans-canonical.yml
+  models:
+  - free
+  - subscription
+  units:
+  - credit
+  - object
+  plans:
+  - name: Developer (Free)
+    access: free
+    model: free
+    model_how: derived
+    units:
+    - credit
+    - other
+    periods:
+    - month
+    - per-use
+  - name: Membership (One-Time)
+    access: other
+    model: subscription
+    model_how: stated
+    units:
+    - credit
+    - object
+    - other
+    periods:
+    - month
+    - one-time
+    - per-use
+  - name: Freelancer
+    access: other
+    model: subscription
+    model_how: stated
+    units:
+    - credit
+    - object
+    - other
+    periods:
+    - month
+    - per-use
+  - name: Small Business
+    access: other
+    model: subscription
+    model_how: stated
+    units:
+    - credit
+    - object
+    - other
+    periods:
+    - month
+    - per-use
+  - name: Corporate
+    access: other
+    model: subscription
+    model_how: stated
+    units:
+    - credit
+    - object
+    - other
+    periods:
+    - month
+    - per-use
+  - name: Enterprise
+    access: enterprise
+    model: subscription
+    model_how: derived
+    units:
+    - credit
+    - object
+    - other
+    periods:
+    - month
+    - per-use
+    - year
