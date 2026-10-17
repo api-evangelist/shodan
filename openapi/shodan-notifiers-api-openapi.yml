@@ -125,27 +125,7 @@ paths:
                   success:
                     type: boolean
 components:
-  parameters:
-    NotifierId:
-      name: id
-      in: path
-      required: true
-      schema:
-        type: string
-      description: Notifier identifier.
   schemas:
-    Notifier:
-      type: object
-      properties:
-        id:
-          type: string
-        provider:
-          type: string
-        description:
-          type: string
-        args:
-          type: object
-          additionalProperties: true
     NotifierCreate:
       type: object
       required:
@@ -160,6 +140,26 @@ components:
         args:
           type: object
           additionalProperties: true
+    Notifier:
+      type: object
+      properties:
+        id:
+          type: string
+        provider:
+          type: string
+        description:
+          type: string
+        args:
+          type: object
+          additionalProperties: true
+  parameters:
+    NotifierId:
+      name: id
+      in: path
+      required: true
+      schema:
+        type: string
+      description: Notifier identifier.
   securitySchemes:
     apiKey:
       type: apiKey

@@ -217,6 +217,16 @@ components:
       schema:
         type: string
       description: Alert identifier.
+  responses:
+    NotFound:
+      description: Resource not found.
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              error:
+                type: string
   schemas:
     Alert:
       type: object
@@ -249,16 +259,6 @@ components:
                 type: boolean
         size:
           type: integer
-  responses:
-    NotFound:
-      description: Resource not found.
-      content:
-        application/json:
-          schema:
-            type: object
-            properties:
-              error:
-                type: string
   securitySchemes:
     apiKey:
       type: apiKey

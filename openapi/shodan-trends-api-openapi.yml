@@ -46,14 +46,6 @@ paths:
                 $ref: '#/components/schemas/TrendsResult'
 components:
   schemas:
-    MonthlyCount:
-      type: object
-      properties:
-        month:
-          type: string
-          description: YYYY-MM
-        count:
-          type: integer
     FacetBucket:
       type: object
       properties:
@@ -80,6 +72,14 @@ components:
             type: array
             items:
               $ref: '#/components/schemas/FacetBucket'
+    MonthlyCount:
+      type: object
+      properties:
+        month:
+          type: string
+          description: YYYY-MM
+        count:
+          type: integer
   securitySchemes:
     apiKey:
       type: apiKey
