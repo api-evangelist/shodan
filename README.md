@@ -1,4 +1,4 @@
-# Shodan (shodan)
+# Shodan
 
 <!-- API-EVANGELIST-PROVENANCE:BEGIN -->
 > ### About this repository
@@ -66,240 +66,254 @@
 
 Shodan is the world's first search engine for Internet-connected devices. It continuously crawls the public Internet to build a searchable database of servers, IoT devices, industrial control systems, routers, webcams, databases, and any other host that exposes a service. Shodan provides REST, Streaming, and Trends APIs along with on-demand scanning, network alerts, notifiers, DNS lookups, the InternetDB API, and the CVEDB vulnerability database. It is widely used for attack-surface management, security research, threat intelligence, vulnerability discovery, market research, and academic study of the Internet itself.
 
-**APIs.json:** [https://developer.shodan.io/](https://developer.shodan.io/)
+**Areas:** Security · Search · Internet · Devices · IoT · Vulnerabilities · CVE · Attack Surface · Threat Intelligence · Reconnaissance · Networks · DNS
 
-## Tags
+## Shodan on APIs.io
 
-- Security
-- Search
-- Internet
-- Devices
-- IoT
-- Vulnerabilities
-- CVE
-- Attack Surface
-- Threat Intelligence
-- Reconnaissance
-- Network
-- DNS
-- Scanning
-- Public APIs
+Everything profiled for Shodan is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/shodan/](https://apis.io/providers/shodan/)** — or go straight to one of the APIs or properties below.
 
-## Timestamps
+### APIs (15)
 
-- **Created:** 2026-05-28
-- **Modified:** 2026-05-30
+- [Shodan Account API](https://apis.io/apis/shodan/shodan-account-api/) — Account, profile, and API plan information.
+- [Shodan Bulk Data API](https://apis.io/apis/shodan/shodan-bulk-data-api/) — Enterprise bulk data exports.
+- [Shodan CPE API](https://apis.io/apis/shodan/shodan-cpe-api/) — The CPE API from Shodan — 1 operation(s) for cpe.
+- [Shodan CVE API](https://apis.io/apis/shodan/shodan-cve-api/) — The CVE API from Shodan — 2 operation(s) for cve.
+- [Shodan Directory API](https://apis.io/apis/shodan/shodan-directory-api/) — Browse and search saved Shodan queries.
+- [Shodan DNS API](https://apis.io/apis/shodan/shodan-dns-api/) — Forward, reverse, and domain DNS lookups.
+- [Shodan InternetDB API](https://apis.io/apis/shodan/shodan-internetdb-api/) — The InternetDB API from Shodan — 1 operation(s) for internetdb.
+- [Shodan Network Alerts API](https://apis.io/apis/shodan/shodan-network-alerts-api/) — Create and manage alerts on monitored IP ranges.
+- [Shodan Notifiers API](https://apis.io/apis/shodan/shodan-notifiers-api/) — Manage notification providers used by alerts.
+- [Shodan On-Demand Scanning API](https://apis.io/apis/shodan/shodan-on-demand-scanning-api/) — Request crawls of specific IPs, netblocks, or the entire Internet.
+- [Shodan Organization API](https://apis.io/apis/shodan/shodan-organization-api/) — Enterprise organization management.
+- [Shodan Search Methods API](https://apis.io/apis/shodan/shodan-search-methods-api/) — Search and lookup endpoints for indexed devices.
+- [Shodan Streaming API](https://apis.io/apis/shodan/shodan-streaming-api/) — The Streaming API from Shodan — 5 operation(s) for streaming.
+- [Shodan Trends API](https://apis.io/apis/shodan/shodan-trends-api/) — The Trends API from Shodan — 1 operation(s) for trends.
+- [Shodan Utility API](https://apis.io/apis/shodan/shodan-utility-api/) — Helper endpoints for HTTP headers and IP detection.
 
-## APIs
+### Published properties
 
-### Shodan REST API
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
 
-The primary Shodan REST API exposes search methods, host lookups, on-demand scanning, network alerts, notifiers, the saved-query directory, DNS lookups, utility methods, account information, bulk data, and organization management. Auth is via the `key` query parameter.
+#### Arazzo workflows (15)
 
-- **Human URL:** [https://developer.shodan.io/api](https://developer.shodan.io/api)
-- **Base URL:** `https://api.shodan.io`
+Multi-step workflows that chain operations into a business task.
 
-#### Tags
+- [Shodan Account Overview](https://apis.io/arazzos/shodan/shodan-account-overview-workflow/)
+- [Shodan Alert With Notifier](https://apis.io/arazzos/shodan/shodan-alert-with-notifier-workflow/)
+- [Shodan CVEDB Product Vulnerability Enrichment](https://apis.io/arazzos/shodan/shodan-cve-enrichment-workflow/)
+- [Shodan Domain Reconnaissance](https://apis.io/arazzos/shodan/shodan-domain-recon-workflow/)
+- [Shodan InternetDB Vulnerability Triage](https://apis.io/arazzos/shodan/shodan-internetdb-vuln-triage-workflow/)
+- [Shodan Network Alert Lifecycle](https://apis.io/arazzos/shodan/shodan-network-alert-lifecycle-workflow/)
+- [Shodan Notifier Lifecycle](https://apis.io/arazzos/shodan/shodan-notifier-lifecycle-workflow/)
+- [Shodan Query Directory Explorer](https://apis.io/arazzos/shodan/shodan-query-directory-workflow/)
+- [Shodan Resolve Hostname and Inspect Host](https://apis.io/arazzos/shodan/shodan-resolve-and-host-info-workflow/)
+- [Shodan Reverse DNS to Host Info](https://apis.io/arazzos/shodan/shodan-reverse-dns-to-host-info-workflow/)
+- [Shodan Scan Then Inspect Host](https://apis.io/arazzos/shodan/shodan-scan-then-inspect-host-workflow/)
+- [Shodan Search Builder](https://apis.io/arazzos/shodan/shodan-search-builder-workflow/)
+- [Shodan Search to Host Detail](https://apis.io/arazzos/shodan/shodan-search-to-host-detail-workflow/)
+- [Shodan Submit On-Demand Scan and Poll](https://apis.io/arazzos/shodan/shodan-submit-scan-and-poll-workflow/)
+- [Shodan Historical Trends vs Live Exposure](https://apis.io/arazzos/shodan/shodan-trends-vs-live-workflow/)
 
-- REST
-- Search
-- Host
-- Scanning
-- Alerts
-- Notifiers
-- DNS
+#### AsyncAPI (1)
 
-#### Properties
+Event-driven and webhook contracts.
 
-- [Documentation](https://developer.shodan.io/api)
-- [API Reference](https://developer.shodan.io/api)
-- [Authentication](https://developer.shodan.io/api/requirements)
-- [OpenAPI](openapi/shodan-rest-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/shodan-rest.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/shodan-rest.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [JSON Schema](json-schema/shodan-rest-host-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/shodan-rest-search-result-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/shodan-rest-alert-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/shodan-rest-notifier-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/shodan-rest-scan-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Structure](json-structure/shodan-rest-host-structure.json)
-- [JSON Structure](json-structure/shodan-rest-alert-structure.json)
-- [J S O N- L D](json-ld/shodan-context.jsonld)
-- [Example](examples/shodan-rest-host-lookup-example.json)
-- [Example](examples/shodan-rest-search-example.json)
-- [Example](examples/shodan-rest-scan-create-example.json)
-- [Example](examples/shodan-rest-alert-create-example.json)
+- [Shodan Streaming API](https://apis.io/asyncapis/shodan/shodan-stream-asyncapi/)
 
-### Shodan Streaming API
+#### Event channels (5)
 
-The Shodan Streaming API provides a real-time firehose of banner data as Shodan collects it. Filtered streams are available by ASN, country, port, and CVE. Output is either newline-separated JSON or Server-Sent Events.
+Individual events and webhooks the provider emits.
 
-- **Human URL:** [https://developer.shodan.io/api/stream](https://developer.shodan.io/api/stream)
-- **Base URL:** `https://stream.shodan.io`
+- [/shodan/asn/{asn}](https://apis.io/channels/shodan/shodan-asn-asn/)
+- [/shodan/banners](https://apis.io/channels/shodan/shodan-banners/)
+- [/shodan/countries/{countries}](https://apis.io/channels/shodan/shodan-countries-countries/)
+- [/shodan/ports/{ports}](https://apis.io/channels/shodan/shodan-ports-ports/)
+- [/shodan/vulns/{vulns}](https://apis.io/channels/shodan/shodan-vulns-vulns/)
 
-#### Tags
+#### Agentic access (1)
 
-- Streaming
-- Real-Time
-- Firehose
-- SSE
+Which operations an agent can call, which act, and which need a human in the loop.
 
-#### Properties
+- [Shodan Agentic Access](https://apis.io/agentic-access/shodan/shodan-agentic-access/)
 
-- [Documentation](https://developer.shodan.io/api/stream)
-- [API Reference](https://developer.shodan.io/api/stream)
-- [AsyncAPI](asyncapi/shodan-stream-asyncapi.yml) — [AsyncAPI Specification](https://www.asyncapi.com/docs/reference/specification/latest)
-- [OpenAPI](openapi/shodan-stream-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/shodan-stream.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/shodan-stream.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [JSON Schema](json-schema/shodan-stream-banner-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Structure](json-structure/shodan-stream-banner-structure.json)
-- [Example](examples/shodan-stream-banner-example.json)
+#### JSON Schema (11)
 
-### Shodan Trends API
+The data models the API reads and writes.
 
-Trends is the historical analytics API for Shodan, exposing breakdowns of historical scan results aggregated by facet (product, port, country, organization, etc.) by month. Access is Enterprise-only.
+- [Shodan CVEDB CPE](https://apis.io/schemas/shodan/shodan-cvedb-cpe/)
+- [Shodan CVEDB CVE](https://apis.io/schemas/shodan/shodan-cvedb-cve/)
+- [Shodan InternetDB Host](https://apis.io/schemas/shodan/shodan-internetdb-host/)
+- [Shodan Network Alert](https://apis.io/schemas/shodan/shodan-rest-alert/)
+- [Shodan Banner](https://apis.io/schemas/shodan/shodan-rest-banner/)
+- [Shodan Host](https://apis.io/schemas/shodan/shodan-rest-host/)
+- [Shodan Notifier](https://apis.io/schemas/shodan/shodan-rest-notifier/)
+- [Shodan On-Demand Scan](https://apis.io/schemas/shodan/shodan-rest-scan/)
+- [Shodan Search Result](https://apis.io/schemas/shodan/shodan-rest-search-result/)
+- [Shodan Streaming Banner](https://apis.io/schemas/shodan/shodan-stream-banner/)
+- [Shodan Trends Result](https://apis.io/schemas/shodan/shodan-trends-result/)
 
-- **Human URL:** [https://developer.shodan.io/api/trends](https://developer.shodan.io/api/trends)
-- **Base URL:** `https://trends.shodan.io`
+#### JSON Structure (3)
 
-#### Tags
+Data models expressed in JSON Structure.
 
-- Trends
-- Analytics
-- Historical
-- Enterprise
+- [Shodan Rest Alert Structure](https://apis.io/json-structure/shodan/shodan-rest-alert-structure/)
+- [Shodan Rest Host Structure](https://apis.io/json-structure/shodan/shodan-rest-host-structure/)
+- [Shodan Stream Banner Structure](https://apis.io/json-structure/shodan/shodan-stream-banner-structure/)
 
-#### Properties
+#### JSON-LD (1)
 
-- [Documentation](https://developer.shodan.io/api/trends)
-- [API Reference](https://developer.shodan.io/api/trends)
-- [OpenAPI](openapi/shodan-trends-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/shodan-trends.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/shodan-trends.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [JSON Schema](json-schema/shodan-trends-result-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [Example](examples/shodan-trends-search-example.json)
+Linked-data contexts for the provider's vocabulary.
 
-### InternetDB API
+- [Shodan Context](https://apis.io/jsonld/shodan/shodan-context/)
 
-The InternetDB API is a free, unauthenticated lookup service that returns the open ports, CPEs, hostnames, tags, and known CVEs for any IPv4 address. The dataset is refreshed once per week. Free for non-commercial use; commercial use requires an enterprise license.
+#### Vocabulary (1)
 
-- **Human URL:** [https://internetdb.shodan.io/](https://internetdb.shodan.io/)
-- **Base URL:** `https://internetdb.shodan.io`
+The provider's domain terms, defined.
 
-#### Tags
+- [Shodan Domain Vocabulary](https://apis.io/vocabularies/shodan/shodan-vocabulary/)
 
-- InternetDB
-- Free
-- IP Lookup
-- Public
+#### Examples (8)
 
-#### Properties
+Example requests and responses.
 
-- [Documentation](https://internetdb.shodan.io/)
-- [OpenAPI](openapi/shodan-internetdb-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/shodan-internetdb.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/shodan-internetdb.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [JSON Schema](json-schema/shodan-internetdb-host-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [Example](examples/shodan-internetdb-host-example.json)
+- [Shodan Cvedb Cve Lookup Example](https://apis.io/examples/shodan/shodan-cvedb-cve-lookup-example/)
+- [Shodan Internetdb Host Example](https://apis.io/examples/shodan/shodan-internetdb-host-example/)
+- [Shodan Rest Alert Create Example](https://apis.io/examples/shodan/shodan-rest-alert-create-example/)
+- [Shodan Rest Host Lookup Example](https://apis.io/examples/shodan/shodan-rest-host-lookup-example/)
+- [Shodan Rest Scan Create Example](https://apis.io/examples/shodan/shodan-rest-scan-create-example/)
+- [Shodan Rest Search Example](https://apis.io/examples/shodan/shodan-rest-search-example/)
+- [Shodan Stream Banner Example](https://apis.io/examples/shodan/shodan-stream-banner-example/)
+- [Shodan Trends Search Example](https://apis.io/examples/shodan/shodan-trends-search-example/)
 
-### CVEDB API
+#### Collections (25)
 
-CVEDB is Shodan's open vulnerability database API. It provides CVE lookups, CPE-keyed vulnerability search, KEV filtering, EPSS ordering, and date-range queries. No API key required; updated daily. Free for non-commercial use.
+Postman and Open Collection request collections.
 
-- **Human URL:** [https://cvedb.shodan.io/](https://cvedb.shodan.io/)
-- **Base URL:** `https://cvedb.shodan.io`
+- [Shodan CVEDB Account API](https://apis.io/collections/shodan/open-shodan-account-api/)
+- [Shodan CVEDB Account Bulk Data API](https://apis.io/collections/shodan/open-shodan-bulk-data-api/)
+- [Shodan CVEDB Account CPE API](https://apis.io/collections/shodan/open-shodan-cpe-api/)
+- [Shodan CVEDB Account CVE API](https://apis.io/collections/shodan/open-shodan-cve-api/)
+- [Shodan CVEDB API](https://apis.io/collections/shodan/open-shodan-cvedb/)
+- [Shodan CVEDB Account Directory API](https://apis.io/collections/shodan/open-shodan-directory-api/)
+- [Shodan CVEDB Account DNS API](https://apis.io/collections/shodan/open-shodan-dns-api/)
+- [Shodan InternetDB API](https://apis.io/collections/shodan/open-shodan-internetdb/)
+- [Shodan CVEDB Account InternetDB API](https://apis.io/collections/shodan/open-shodan-internetdb-api/)
+- [Shodan CVEDB Account Network Alerts API](https://apis.io/collections/shodan/open-shodan-network-alerts-api/)
+- [Shodan CVEDB Account Notifiers API](https://apis.io/collections/shodan/open-shodan-notifiers-api/)
+- [Shodan CVEDB Account On-Demand Scanning API](https://apis.io/collections/shodan/open-shodan-on-demand-scanning-api/)
+- [Shodan CVEDB Account Organization API](https://apis.io/collections/shodan/open-shodan-organization-api/)
+- [Shodan REST API](https://apis.io/collections/shodan/open-shodan-rest/)
+- [Shodan CVEDB Account Search Methods API](https://apis.io/collections/shodan/open-shodan-search-methods-api/)
+- [Shodan Streaming API](https://apis.io/collections/shodan/open-shodan-stream/)
+- [Shodan CVEDB Account Streaming API](https://apis.io/collections/shodan/open-shodan-streaming-api/)
+- [Shodan Trends API](https://apis.io/collections/shodan/open-shodan-trends/)
+- [Shodan CVEDB Account Trends API](https://apis.io/collections/shodan/open-shodan-trends-api/)
+- [Shodan CVEDB Account Utility API](https://apis.io/collections/shodan/open-shodan-utility-api/)
+- [Shodan CVEDB API](https://apis.io/collections/shodan/postman-shodan-cvedb/)
+- [Shodan InternetDB API](https://apis.io/collections/shodan/postman-shodan-internetdb/)
+- [Shodan REST API](https://apis.io/collections/shodan/postman-shodan-rest/)
+- [Shodan Streaming API](https://apis.io/collections/shodan/postman-shodan-stream/)
+- [Shodan Trends API](https://apis.io/collections/shodan/postman-shodan-trends/)
 
-#### Tags
+#### Governance rules (3)
 
-- CVE
-- Vulnerabilities
-- CPE
-- KEV
-- EPSS
-- Free
+Spectral rulesets for the provider's contracts.
 
-#### Properties
+- [Shodan — asyncapi rules](https://apis.io/rules/shodan/shodan-asyncapi-spectral-rules/)
+- [Shodan — jsonschema rules](https://apis.io/rules/shodan/shodan-jsonschema-spectral-rules/)
+- [Shodan API Rules](https://apis.io/rules/shodan/shodan-rules/)
 
-- [Documentation](https://cvedb.shodan.io/)
-- [OpenAPI](openapi/shodan-cvedb-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/shodan-cvedb.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/shodan-cvedb.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [JSON Schema](json-schema/shodan-cvedb-cve-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/shodan-cvedb-cpe-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [Example](examples/shodan-cvedb-cve-lookup-example.json)
+#### Security (2)
 
-## Common Properties
+Authentication, trust centre, and vulnerability disclosure.
 
-- [Arazzo Workflows](arazzo/) — [Arazzo Specification](https://spec.openapis.org/arazzo/latest.html)
+- [Shodan Authentication](https://apis.io/security/shodan/shodan-authentication/)
+- [Shodan Domain Security](https://apis.io/security/shodan/shodan-domain-security/)
+
+#### Plans and pricing (1)
+
+Published plans, tiers and prices.
+
+- [Shodan Plans Pricing](https://apis.io/plans/shodan/shodan-plans-pricing/)
+
+#### Rate limits (1)
+
+Published request limits.
+
+- [Shodan Rate Limits](https://apis.io/rate-limits/shodan/shodan-rate-limits/)
+
+#### FinOps (1)
+
+What the API costs to run, by operation.
+
+- [Shodan Finops](https://apis.io/finops/shodan/shodan-finops/)
+
+## Where to find this API
+
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
+
 - [Website](https://www.shodan.io/)
-- [Developer Portal](https://developer.shodan.io/)
 - [Documentation](https://developer.shodan.io/)
-- [API Reference](https://developer.shodan.io/api)
+- [Getting started](https://help.shodan.io/the-basics/what-is-shodan)
+- [API reference](https://developer.shodan.io/api)
 - [Pricing](https://account.shodan.io/billing)
-- [Plans](plans/shodan-plans-pricing.yml)
-- [Rate Limits](rate-limits/shodan-rate-limits.yml)
-- [Sign Up](https://account.shodan.io/register)
-- [Login](https://account.shodan.io/login)
-- [Console](https://www.shodan.io/dashboard)
-- [Authentication](https://developer.shodan.io/api/requirements)
-- [Getting Started](https://help.shodan.io/the-basics/what-is-shodan)
-- [Quickstart](https://help.shodan.io/the-basics/search-query-fundamentals)
-- [Tutorials](https://help.shodan.io/)
-- [Knowledge Center](https://help.shodan.io/)
-- [Glossary](https://datapedia.shodan.io/)
-- [Support](mailto:support@shodan.io)
 - [Blog](https://blog.shodan.io/)
-- [Status Page](https://status.shodan.io/)
-- [Terms of Service](https://www.shodan.io/legal/tos)
-- [Privacy Policy](https://www.shodan.io/legal/privacy)
-- [Legal](https://www.shodan.io/legal)
-- [X (Twitter)](https://x.com/shodanhq)
-- [LinkedIn](https://www.linkedin.com/company/shodan)
-- [YouTube](https://www.youtube.com/@shodanhq)
-- [GitHub Organization](https://github.com/achillean)
-- [GitHub Repository](https://github.com/achillean/shodan-python)
-- [GitHub Repository](https://github.com/achillean/shodan-developer-docs)
-- [GitHub Repository](https://github.com/achillean/shodan-ruby)
-- [GitHub Repository](https://github.com/achillean/shodan-perl)
-- [GitHub Repository](https://github.com/achillean/Shodan.NET)
-- [GitHub Repository](https://github.com/achillean/steampipe-plugin-shodan)
-- [C L I](https://help.shodan.io/command-line-interface/0-installation)
-- [SDK](https://github.com/achillean/shodan-python)
-- [SDK](https://github.com/picatz/shodanz)
-- [SDK](https://github.com/ScadaExposure/Shodan-PHP-REST-API)
-- [SDK](https://github.com/prophetl33t/ShodanCPP)
-- [SDK](https://www.nuget.org/packages/Shodan/)
-- [SDK](https://github.com/tparnell8/Shodan.Net)
-- [SDK](https://github.com/shadowscatcher/shodan)
-- [SDK](https://github.com/ns3777k/go-shodan)
-- [SDK](https://github.com/iomonad/shodan)
-- [SDK](https://github.com/fooock/jshodan)
-- [SDK](https://github.com/jesusprubio/shodan-client.js)
-- [SDK](https://github.com/Dudley5000/WWW-Shodan-API)
-- [SDK](https://github.com/darkoperator/Posh-Shodan)
-- [SDK](https://github.com/femiagbabiaka/shodan-rust)
-- [SDK](https://github.com/PercussiveElbow/Shodan)
-- [Tools](https://github.com/achillean/steampipe-plugin-shodan)
-- [Tools](https://monitor.shodan.io)
-- [Tools](https://maps.shodan.io)
-- [Tools](https://images.shodan.io)
-- [Tools](https://enterprise.shodan.io)
-- [Tools](https://snippets.shodan.io)
-- [Tools](https://github.com/BurtTheCoder/mcp-shodan)
-- [Tools](https://github.com/ADEOSec/mcp-shodan)
-- [Tools](https://github.com/Cyreslab-AI/shodan-mcp-server)
-- [Tools](https://github.com/Vorota-ai/shodan-mcp)
-- [Tools](https://github.com/mohdhaji87/Shodan-MCP)
-- [Spectral Rules](rules/shodan-rules.yml)
-- [Vocabulary](vocabulary/shodan-vocabulary.yml)
-- [Fin Ops](finops/shodan-finops.yml)
-- [Features](undefined)
-- [Use Cases](undefined)
-- [Integrations](undefined)
-- [Solutions](undefined)
+- [Terms of service](https://www.shodan.io/legal/tos)
+- [Privacy policy](https://www.shodan.io/legal/privacy)
+- [GitHub](https://github.com/achillean)
+- [Status](https://status.shodan.io/)
 
-## Maintainers
+## API Evangelist rating
 
-**FN:** Kin Lane
-**Email:** kin@apievangelist.com
+**Kin Score 56.7** — strong · rubric 0.25.0 · scored 2026-10-23
+
+| Facet | Score |
+|---|---|
+| Discoverability | 78.6 |
+| Contract quality | 73.7 |
+| Contract governance | 27.3 |
+| Operational transparency | 42.1 |
+| Developer ergonomics | 85.7 |
+| Access clarity | 25.0 |
+
+**Agent readiness 22.8** — agent-aware
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | derived (partial credit) |
+| Reversibility Documented | documented (partial credit) |
+| MCP Server | — |
+| Auth Clarity | bearer (partial credit) |
+| Idempotency | — |
+| Error Semantics | — |
+| OpenAPI Examples | documented (partial credit) |
+| Rate Limit Signal | derived (partial credit) |
+| Event Surface Described | derived (partial credit) |
+| Agent Skills | — |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | — |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+| Pagination Ratio | — |
+| Operation Distinctiveness | distinct |
+
+**Regulatory alignment 16.7** — Horizontal (data, software, accessibility, platform)
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/shodan/](https://apis.io/providers/shodan/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for Shodan: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/shodan/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
